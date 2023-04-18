@@ -1,0 +1,12 @@
+/* 
+  eng.strings
+  CardFortress
+
+  Created by Roberto Corrales on 16/04/23.
+  
+*/
+
+"mainViewTitle" = "Main View";
+"buttonTest" = "Go to other view";
+"labelTest" = "Card fortress app";
+"increaseQty" = "Increase quantity";
