@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var appCoordinator: CardFortressRootCoordinator?
+    let container = Container()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -21,7 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let appWindow = UIWindow(windowScene: windowScene)
         let navigationController: UINavigationController = .init()
-        appCoordinator = .init(navigationController: navigationController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.isTranslucent = false
+        setUpDependencies()
+        appCoordinator = .init(navigationController: navigationController, container: container)
         appCoordinator?.start()
         
         appWindow.rootViewController = navigationController
