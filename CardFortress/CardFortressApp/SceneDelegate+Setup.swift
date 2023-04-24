@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension SceneDelegate {
     func setUpDependencies() {
@@ -18,6 +19,13 @@ extension SceneDelegate {
         
         container.register(ListViewController.self) { r in
             ListViewController(viewModel: r.resolve(ListViewModelProtocol.self)!)
+        }
+        
+        container.register(UINavigationController.self) { r in
+            let navigationController: UINavigationController = .init()
+            navigationController.navigationBar.prefersLargeTitles = true
+            navigationController.navigationBar.isTranslucent = false
+            return navigationController
         }
     }
 }

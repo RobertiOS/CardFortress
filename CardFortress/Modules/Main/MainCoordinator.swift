@@ -12,10 +12,12 @@ protocol MainCoordinatorDelegate: AnyObject {
     func presentAnotherVC()
 }
 
-final class MainCoordinator: Coordinator {
+enum MainCoordinatorResult {
+    case success
+}
+
+final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoordinator {
     //MARK: properties
-    var parentCoordinator: Coordinator?
-    var children: [Coordinator] = []
     var navigationController: UINavigationController
     let container: Container
     
@@ -25,17 +27,17 @@ final class MainCoordinator: Coordinator {
         self.container = container
     }
 
-    func start() {
+    override func start() {
         guard let viewController = container.resolve(ListViewController.self) else { return }
         viewController.delegate = self
-        navigationController.pushViewController(viewController, animated: true)
+        navigateTo(viewController, presentationStyle: .push)
     }
     
     func showDetailView() {
         let secondVC = UIViewController(nibName: nil, bundle: nil)
         secondVC.navigationItem.title = "hola"
         secondVC.view.backgroundColor = .red
-        navigationController.present(secondVC, animated: true)
+        navigateTo(secondVC, presentationStyle: .push)
     }
 
 }

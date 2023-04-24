@@ -8,27 +8,34 @@
 import UIKit
 import Swinject
 
-final class CardFortressRootCoordinator: Coordinator {
+enum CardFortressResultCoordinator {
+    case success
+}
+
+final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinator>, NavigationCoordinator {
 
     // MARK: properties
-    var parentCoordinator: Coordinator?
-    var children: [Coordinator] = []
+    private let window: UIWindow
+    private let container: Container
     var navigationController: UINavigationController
-    let container: Container
     
     // MARK: initialization
     
-    init(navigationController: UINavigationController, container: Container) {
-        self.navigationController = navigationController
+    init(window: UIWindow, container: Container) {
         self.container = container
+        navigationController = container.resolve(UINavigationController.self) ?? UINavigationController()
+        self.window = window
+        window.rootViewController = navigationController
     }
     
     // MARK: actions
     
-    func start() {
+    override func start() {
         let mainCoordinator = MainCoordinator(navigationController: navigationController, container: container)
-        children.append(mainCoordinator)
-        mainCoordinator.parentCoordinator = self
+        mainCoordinator.onFinish = { result in
+            
+        }
+        addChild(coordinator: mainCoordinator)
         mainCoordinator.start()
     }
 }

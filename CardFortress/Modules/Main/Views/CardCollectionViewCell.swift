@@ -47,3 +47,21 @@ final class CardCollectionViewCell: UICollectionViewCell {
         titleLabel.text = title
     }
 }
+
+// MARK: - TestHooks
+
+#if DEBUG
+extension CardCollectionViewCell {
+    struct TestHooks {
+        let target: CardCollectionViewCell
+        var textLabel: String {
+            target.titleLabel.text ?? ""
+        }
+        
+    }
+    
+    var testHooks: TestHooks {
+        TestHooks(target: self)
+    }
+}
+#endif
