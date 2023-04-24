@@ -13,10 +13,14 @@ jobs:
   build:
     runs-on: macOS-latest
     steps:
+    - name: Install Xcodecoverageconverter
+      run: brew install twittemb/formulae/Xcodecoverageconverter
     - name: Checkout
       uses: actions/checkout@v3
     - name: Run tests
-      run: xcodebuild clean test -project 'CardFortress.xcodeproj' -scheme 'CardFortress' -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" -enableCodeCoverage
-          YES build test
+      run: |
+        xcodebuild clean test -project 'CardFortress.xcodeproj' -scheme 'CardFortress' -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" -derivedDataPath Build/ -enableCodeCoverage YES build test
+        xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
+        /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
