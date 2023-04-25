@@ -28,7 +28,7 @@ final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoord
     }
 
     override func start() {
-        guard let viewController = container.resolve(ListViewController.self) else { return }
+        guard let viewController = container.resolve(CardListViewController.self) else { return }
         viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }

@@ -35,25 +35,3 @@ class Coordinator<CoordinatorResult> {
         cleanupFromParentBlock?()
     }
 }
-
-protocol NavigationCoordinator {
-    var navigationController: UINavigationController { get set }
-}
-
-extension NavigationCoordinator {
-    func navigateTo(_ viewController: UIViewController,
-                    presentationStyle: PresentationStyle,
-                    animated: Bool = true) {
-        switch presentationStyle {
-        case .present:
-            navigationController.present(viewController, animated: animated)
-        case .push:
-            navigationController.pushViewController(viewController, animated: animated)
-        }
-    }
-}
-
-enum PresentationStyle {
-    case present
-    case push
-}

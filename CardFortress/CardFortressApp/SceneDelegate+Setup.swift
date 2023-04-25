@@ -17,8 +17,8 @@ extension SceneDelegate {
         }
         //MARK: view controllers
         
-        container.register(ListViewController.self) { r in
-            ListViewController(viewModel: r.resolve(ListViewModelProtocol.self)!)
+        container.register(CardListViewController.self) { r in
+            CardListViewController(viewModel: r.resolve(ListViewModelProtocol.self)!)
         }
         
         container.register(UINavigationController.self) { r in

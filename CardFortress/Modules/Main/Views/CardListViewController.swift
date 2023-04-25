@@ -1,5 +1,5 @@
 //
-//  MainViewController.swift
+//  CardListViewController.swift
 //  CardFortress
 //
 //  Created by Roberto Corrales on 16/04/23.
@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class ListViewController: UIViewController {
+final class CardListViewController: UIViewController {
     
     private var viewModel: ListViewModelProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -74,7 +74,7 @@ final class ListViewController: UIViewController {
     
     private func bindViewModel() {
         viewModel.itemsPublisher
-            .receive(on: RunLoop.main)
+            .receive(on: DispatchQueue.main)
             .sink { [weak self] items in
                 self?.applySnapshot(items: items)
             }
@@ -84,7 +84,7 @@ final class ListViewController: UIViewController {
     }
 }
 
-extension ListViewController: UICollectionViewDelegate {
+extension CardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.presentAnotherVC()
     }
@@ -93,10 +93,12 @@ extension ListViewController: UICollectionViewDelegate {
 // MARK: - TestHooks
 
 #if DEBUG
-extension ListViewController {
+extension CardListViewController {
     struct TestHooks {
-        let target: ListViewController
-        
+        let target: CardListViewController
+        var snapshot: NSDiffableDataSourceSnapshot<Int, String> {
+            target.dataSource.snapshot()
+        }
     }
     
     var testHooks: TestHooks {
