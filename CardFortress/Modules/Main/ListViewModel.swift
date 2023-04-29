@@ -8,23 +8,37 @@
 import Foundation
 import Combine
 
-protocol ListViewModelProtocol {
+protocol ListViewModelProtocol: AnyObject {
     var itemsPublisher: AnyPublisher<[String], Never> { get }
     func fetchItems()
     func updateItems(_ items: [String])
+    var cardListService: CardListServiceProtocol { get set }
 }
 
 final class ListViewModel: ListViewModelProtocol {
+    private var subscriptions = Set<AnyCancellable>()
     
-    private let items = ["Tarjeta 1", "Tarjeta 2", "Tarjeta 3", "Tarjeta 4", "Tarjeta 5", "Tarjeta 6", "Tarjeta 7", "Tarjeta 8", "Tarjeta 9", "Tarjeta 10"]
-    private let itemsSubject = CurrentValueSubject<[String], Never>([])
+    init(cardListService: CardListServiceProtocol = CardListService()) {
+        self.cardListService = cardListService
+    }
+
+    var cardListService: CardListServiceProtocol
+    
+    private let itemsSubject = PassthroughSubject<[String], Never>()
 
     var itemsPublisher: AnyPublisher<[String], Never> {
         itemsSubject.eraseToAnyPublisher()
     }
 
     func fetchItems() {
-        itemsSubject.send(items)
+        cardListService.getCards()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                // no op
+            } receiveValue: { [weak self] cards in
+                self?.itemsSubject.send(cards)
+            }
+            .store(in: &subscriptions)
     }
 
     func updateItems(_ items: [String]) {

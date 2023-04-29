@@ -27,6 +27,9 @@
 		26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
+		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
+		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
+		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +74,9 @@
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
+		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
+		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 				26DF384929F0EA9B007091C3 /* Views */,
 				26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */,
 				26B38C1129ECC22100D0CCD8 /* MainCoordinator.swift */,
+				26F5B4BC29FDA8B7002D224D /* CardListService.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -203,6 +210,8 @@
 				26C4628629F379CF000B06A7 /* CoordinatorTests.swift */,
 				26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */,
 				26F0945229F74045009B0494 /* CardListViewControllerTests.swift */,
+				26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */,
+				26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -377,6 +386,7 @@
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
 				26B38C1C29ECF70C00D0CCD8 /* LocalizableString.swift in Sources */,
 				26B38C1229ECC22100D0CCD8 /* MainCoordinator.swift in Sources */,
+				26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
@@ -390,7 +400,9 @@
 			files = (
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
+				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
+				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -24,7 +24,6 @@ extension SceneDelegate {
         container.register(UINavigationController.self) { r in
             let navigationController: UINavigationController = .init()
             navigationController.navigationBar.prefersLargeTitles = true
-            navigationController.navigationBar.isTranslucent = false
             return navigationController
         }
     }

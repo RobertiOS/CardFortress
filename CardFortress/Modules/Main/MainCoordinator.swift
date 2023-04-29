@@ -32,18 +32,15 @@ final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoord
         viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }
-    
-    func showDetailView() {
-        let secondVC = UIViewController(nibName: nil, bundle: nil)
-        secondVC.navigationItem.title = "hola"
-        secondVC.view.backgroundColor = .red
-        navigateTo(secondVC, presentationStyle: .push)
+    /// start Another coordiantor
+    func showAddCardCoordinator() {
+        // No op
     }
 
 }
 
 extension MainCoordinator: MainCoordinatorDelegate {
     func presentAnotherVC() {
-        showDetailView()
+        showAddCardCoordinator()
     }
 }

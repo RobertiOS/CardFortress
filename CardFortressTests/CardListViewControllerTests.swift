@@ -60,6 +60,12 @@ final class CardListViewControllerTests: XCTestCase {
 }
 
 class MockViewModel: ListViewModelProtocol {
+    var cardListService: CardFortress.CardListServiceProtocol
+    
+    init(cardListService: CardFortress.CardListServiceProtocol = CardListService()) {
+        self.cardListService = cardListService
+    }
+    
     func updateItems(_ items: [String]) {
         itemsSubject.send(items)
     }
