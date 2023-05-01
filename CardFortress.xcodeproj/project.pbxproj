@@ -30,6 +30,13 @@
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
 		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
 		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
+		26F5B4CF29FEBCD9002D224D /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4CE29FEBCD9002D224D /* SecureStore.swift */; };
+		26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4D029FEBD33002D224D /* CreditCard.swift */; };
+		26F5B4D729FED936002D224D /* SecureStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4D629FED936002D224D /* SecureStoreTests.swift */; };
+		26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */; };
+		26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E02A002286002D224D /* UIView+Extensions.swift */; };
+		26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E22A00387E002D224D /* SecureStoreError.swift */; };
+		26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +84,13 @@
 		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
 		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
+		26F5B4CE29FEBCD9002D224D /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		26F5B4D029FEBD33002D224D /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
+		26F5B4D629FED936002D224D /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
+		26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Builder.swift"; sourceTree = "<group>"; };
+		26F5B4E02A002286002D224D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		26F5B4E22A00387E002D224D /* SecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
+		26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,10 +130,9 @@
 		26B38C0E29ECC01A00D0CCD8 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				26DF384929F0EA9B007091C3 /* Views */,
-				26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */,
-				26B38C1129ECC22100D0CCD8 /* MainCoordinator.swift */,
-				26F5B4BC29FDA8B7002D224D /* CardListService.swift */,
+				26DF384929F0EA9B007091C3 /* MainList */,
+				26F5B4D82A0003EA002D224D /* SecureStore */,
+				26F5B4CD29FEBC6F002D224D /* Service */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -127,6 +140,7 @@
 		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				26F5B4D92A000C03002D224D /* Extensions */,
 				26F0945629F7979C009B0494 /* Coordinator */,
 				26B38C1A29ECF66000D0CCD8 /* LocalizableString */,
 				26B38C1929ECF65300D0CCD8 /* Protocols */,
@@ -212,6 +226,7 @@
 				26F0945229F74045009B0494 /* CardListViewControllerTests.swift */,
 				26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */,
 				26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */,
+				26F5B4D629FED936002D224D /* SecureStoreTests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -225,13 +240,16 @@
 			path = CardFortressUITests;
 			sourceTree = "<group>";
 		};
-		26DF384929F0EA9B007091C3 /* Views */ = {
+		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
+				26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */,
+				26B38C1129ECC22100D0CCD8 /* MainCoordinator.swift */,
 				26B7701829EC450200CC9FEB /* CardListViewController.swift */,
 				26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */,
+				26F5B4D229FEBD3A002D224D /* Model */,
 			);
-			path = Views;
+			path = MainList;
 			sourceTree = "<group>";
 		};
 		26F0945629F7979C009B0494 /* Coordinator */ = {
@@ -240,6 +258,41 @@
 				26B381B429EC575900D0CCD8 /* Coordinator.swift */,
 			);
 			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		26F5B4CD29FEBC6F002D224D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				26F5B4BC29FDA8B7002D224D /* CardListService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		26F5B4D229FEBD3A002D224D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26F5B4D029FEBD33002D224D /* CreditCard.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		26F5B4D82A0003EA002D224D /* SecureStore */ = {
+			isa = PBXGroup;
+			children = (
+				26F5B4CE29FEBCD9002D224D /* SecureStore.swift */,
+				26F5B4E22A00387E002D224D /* SecureStoreError.swift */,
+				26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */,
+			);
+			path = SecureStore;
+			sourceTree = "<group>";
+		};
+		26F5B4D92A000C03002D224D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */,
+				26F5B4E02A002286002D224D /* UIView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -381,16 +434,22 @@
 			files = (
 				26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
+				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
 				26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */,
 				26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */,
+				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
+				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
 				26B38C1C29ECF70C00D0CCD8 /* LocalizableString.swift in Sources */,
 				26B38C1229ECC22100D0CCD8 /* MainCoordinator.swift in Sources */,
 				26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */,
+				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
+				26F5B4CF29FEBCD9002D224D /* SecureStore.swift in Sources */,
+				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,6 +459,7 @@
 			files = (
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
+				26F5B4D729FED936002D224D /* SecureStoreTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
 				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,

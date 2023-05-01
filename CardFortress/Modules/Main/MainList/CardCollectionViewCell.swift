@@ -11,10 +11,16 @@ final class CardCollectionViewCell: UICollectionViewCell {
     
     private let titleLabel: UILabel = {
         let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .black
         label.textAlignment = .center
+        return label
+    }()
+    
+    private let cardNumber: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textColor = .black
         return label
     }()
 
@@ -33,18 +39,24 @@ final class CardCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.cgColor
         
-        addSubview(titleLabel)
+        addAutolayoutSubviews(titleLabel, cardNumber)
         
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            
+            cardNumber.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
+            cardNumber.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+//            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+//            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+//            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+//            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            
+            
         ])
     }
     
-    func configure(with title: String) {
-        titleLabel.text = title
+    func configure(with creditCard: CreditCard) {
+        titleLabel.text = creditCard.name
+        cardNumber.text = "/(creditCard.number)"
     }
 }
 

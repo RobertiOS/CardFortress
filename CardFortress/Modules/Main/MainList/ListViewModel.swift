@@ -9,9 +9,9 @@ import Foundation
 import Combine
 
 protocol ListViewModelProtocol: AnyObject {
-    var itemsPublisher: AnyPublisher<[String], Never> { get }
+    var itemsPublisher: AnyPublisher<[CreditCard], Error> { get }
     func fetchItems()
-    func updateItems(_ items: [String])
+    func updateItems(_ items: [CreditCard])
     var cardListService: CardListServiceProtocol { get set }
 }
 
@@ -24,24 +24,26 @@ final class ListViewModel: ListViewModelProtocol {
 
     var cardListService: CardListServiceProtocol
     
-    private let itemsSubject = PassthroughSubject<[String], Never>()
+    private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
 
-    var itemsPublisher: AnyPublisher<[String], Never> {
+    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
         itemsSubject.eraseToAnyPublisher()
     }
 
     func fetchItems() {
         cardListService.getCards()
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-                // no op
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.itemsSubject.send(completion: .failure(error))
+                }
             } receiveValue: { [weak self] cards in
                 self?.itemsSubject.send(cards)
             }
             .store(in: &subscriptions)
     }
 
-    func updateItems(_ items: [String]) {
+    func updateItems(_ items: [CreditCard]) {
         itemsSubject.send(items)
     }
 }

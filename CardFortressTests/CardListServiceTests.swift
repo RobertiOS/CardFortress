@@ -15,7 +15,8 @@ class CardListServiceTests: XCTestCase {
     var subscritions: Set<AnyCancellable>!
     override func setUp() {
         super.setUp()
-        cardListService = CardListService()
+        let secureStoreMock = SecureStoreMock()
+        cardListService = CardListService(secureStore: secureStoreMock)
         subscritions = .init()
     }
     
@@ -25,9 +26,9 @@ class CardListServiceTests: XCTestCase {
         subscritions = nil
     }
     
-    func testFetchItems() {
+    func testFetchCreditCards() {
         //given
-        var creditCards: [String] = []
+        var creditCards: [CreditCard] = []
         let expectation = self.expectation(description: "fetch cards")
         
         cardListService.getCards()
@@ -41,7 +42,29 @@ class CardListServiceTests: XCTestCase {
         waitForExpectations(timeout: 0.4)
         
         XCTAssertFalse(creditCards.isEmpty)
-        XCTAssertEqual(creditCards.count, 10)
+        XCTAssertEqual(creditCards.count, 1)
+    }
+    
+}
+
+class SecureStoreMock: SecureStoreProtocol {
+    func saveCreditCardDataToKeychain(card: CardFortress.CreditCard) throws {
+        
+    }
+    
+    func getCreditCardFromKeychain(identifier: UUID) throws -> CardFortress.CreditCard? {
+        return nil
+    }
+    
+    func getAllCreditCardsFromKeychain() -> Future<[CardFortress.CreditCard], Error> {
+        Future { promise in
+            promise(.success([CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "12/12/12", name: "Visa")]))
+        }
+    }
+    
+    func removeAllCreditCards() -> Future<Bool, Error> {
+        Future { promise in
+        }
     }
     
 }

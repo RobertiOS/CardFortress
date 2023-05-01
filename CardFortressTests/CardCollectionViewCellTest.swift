@@ -13,12 +13,13 @@ final class CardCollectionViewCellTest: XCTestCase {
     func testCardCollectionViewCell_DisplaysText() {
        //given
         let cell: CardCollectionViewCell = .init()
+        let card = CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "123", name: "Visa")
         
         //when
-        cell.configure(with: "text 123")
+        cell.configure(with: card)
         
         //then
-        XCTAssertEqual("text 123", cell.testHooks.textLabel)
+        XCTAssertEqual("Visa", cell.testHooks.textLabel)
     }
 
 }

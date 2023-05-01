@@ -13,7 +13,7 @@ final class CardListViewController: UIViewController {
     private var viewModel: ListViewModelProtocol
     private var cancellables = Set<AnyCancellable>()
     private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Int, String>!
+    private var dataSource: UICollectionViewDiffableDataSource<Int, CreditCard>!
     
     weak var delegate: MainCoordinatorDelegate?
     
@@ -58,15 +58,15 @@ final class CardListViewController: UIViewController {
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, String>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Int, CreditCard>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardCollectionViewCell
             cell.configure(with: item)
             return cell
         }
     }
     
-    private func applySnapshot(items: [String]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, String>()
+    private func applySnapshot(items: [CreditCard]) {
+        var snapshot = NSDiffableDataSourceSnapshot<Int, CreditCard>()
         snapshot.appendSections([0])
         snapshot.appendItems(items)
         dataSource.apply(snapshot, animatingDifferences: true)
@@ -75,9 +75,13 @@ final class CardListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.itemsPublisher
             .receive(on: DispatchQueue.main)
-            .sink { [weak self] items in
+            .sink(receiveCompletion: { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.presentAlert(with: error)
+                }
+            }, receiveValue: { [weak self] items in
                 self?.applySnapshot(items: items)
-            }
+            })
             .store(in: &cancellables)
         
         viewModel.fetchItems()
@@ -96,7 +100,7 @@ extension CardListViewController: UICollectionViewDelegate {
 extension CardListViewController {
     struct TestHooks {
         let target: CardListViewController
-        var snapshot: NSDiffableDataSourceSnapshot<Int, String> {
+        var snapshot: NSDiffableDataSourceSnapshot<Int, CreditCard> {
             target.dataSource.snapshot()
         }
     }
