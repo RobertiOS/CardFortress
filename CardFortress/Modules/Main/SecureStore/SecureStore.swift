@@ -98,7 +98,8 @@ final class SecureStore: SecureStoreProtocol  {
             "number": card.number,
             "cvv": card.cvv,
             "date": card.date,
-            "name": card.name
+            "cardName": card.cardName,
+            "cardHolderName": card.cardHolderName
         ]
         
         var keychainQuery = sSQueryable.query

@@ -58,7 +58,7 @@ class SecureStoreMock: SecureStoreProtocol {
     
     func getAllCreditCardsFromKeychain() -> Future<[CardFortress.CreditCard], Error> {
         Future { promise in
-            promise(.success([CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "12/12/12", name: "Visa")]))
+            promise(.success([CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "12/12/12", cardName: "Visa", cardHolderName: "Juan Perez")]))
         }
     }
     

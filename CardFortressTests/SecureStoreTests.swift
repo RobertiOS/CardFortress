@@ -21,13 +21,13 @@ final class SecureStoreTests: XCTestCase {
     }
 
     override func tearDownWithError() throws {
-//        testDeleteAllCards()
+        _ = secureStore.removeAllCreditCards()
         secureStore = nil
         subscriptions = nil
     }
 
     func testSaveCreditCard() throws {
-        let creditCard = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", name: "Visa")
+        let creditCard = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
         try secureStore.saveCreditCardDataToKeychain(card: creditCard)
     }
     
@@ -35,7 +35,7 @@ final class SecureStoreTests: XCTestCase {
         
         //given
         let creditCard = try secureStore.getCreditCardFromKeychain(identifier: UUID())
-        let creditCard2 = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", name: "Visa")
+        let creditCard2 = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
         try secureStore.saveCreditCardDataToKeychain(card: creditCard2)
@@ -51,7 +51,7 @@ final class SecureStoreTests: XCTestCase {
         
         //given
         let identifier = UUID()
-        let mockCard = CreditCard(identifier: identifier, number: 111, cvv: 111, date: "12221", name: "Visa")
+        let mockCard = CreditCard(identifier: identifier, number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
         try secureStore.saveCreditCardDataToKeychain(card: mockCard)
@@ -61,12 +61,12 @@ final class SecureStoreTests: XCTestCase {
         XCTAssertEqual(creditCard.number, 111)
         XCTAssertEqual(creditCard.cvv, 111)
         XCTAssertEqual(creditCard.date, "12221")
-        XCTAssertEqual(creditCard.name, "Visa")
+        XCTAssertEqual(creditCard.cardName, "Visa")
         
         // when
         creditCard.date = "11/22/11"
         creditCard.cvv = 123
-        creditCard.name = "Test"
+        creditCard.cardName = "Test"
         creditCard.number = 123421234
         creditCard.identifier = identifier
         try secureStore.saveCreditCardDataToKeychain(card: creditCard)
@@ -78,13 +78,13 @@ final class SecureStoreTests: XCTestCase {
         XCTAssertEqual(creditCard2.number, 123421234)
         XCTAssertEqual(creditCard2.cvv, 123)
         XCTAssertEqual(creditCard2.date, "11/22/11")
-        XCTAssertEqual(creditCard2.name, "Test")
+        XCTAssertEqual(creditCard2.cardName, "Test")
     }
     
     func testGetAllCards() throws {
         //given
         let expectation = self.expectation(description: "wait for cards")
-        let mockCard = CreditCard(number: 111, cvv: 111, date: "12221", name: "Visa")
+        let mockCard = CreditCard(number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
         try secureStore.saveCreditCardDataToKeychain(card: mockCard)
@@ -109,6 +109,30 @@ final class SecureStoreTests: XCTestCase {
     }
     
     func testDeleteAllCards() {
+        //given
+        let expectation = self.expectation(description: "Delete all cards")
+        
+        //when
+        secureStore.removeAllCreditCards()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                switch completion {
+                case .failure(let error):
+                    XCTFail(error.localizedDescription)
+                    expectation.fulfill()
+                case .finished:
+                    expectation.fulfill()
+                }
+            } receiveValue: { deleted in
+                XCTAssertTrue(deleted)
+                
+            }
+            .store(in: &subscriptions)
+
+        waitForExpectations(timeout: 1)
+    }
+    
+    func testDeleteAllCardsFails() {
         //given
         let expectation = self.expectation(description: "Delete all cards")
         

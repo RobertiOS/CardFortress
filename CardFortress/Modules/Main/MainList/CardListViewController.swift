@@ -40,7 +40,7 @@ final class CardListViewController: UIViewController {
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: (view.bounds.width - 30), height: 300)
+        layout.itemSize = CGSize(width: (view.bounds.width - 30), height: 250)
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false

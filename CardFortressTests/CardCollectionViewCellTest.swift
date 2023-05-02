@@ -13,7 +13,7 @@ final class CardCollectionViewCellTest: XCTestCase {
     func testCardCollectionViewCell_DisplaysText() {
        //given
         let cell: CardCollectionViewCell = .init()
-        let card = CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "123", name: "Visa")
+        let card = CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Roberto")
         
         //when
         cell.configure(with: card)

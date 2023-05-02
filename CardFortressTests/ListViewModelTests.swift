@@ -72,7 +72,7 @@ final class ListViewModelTests: XCTestCase {
             }
             .store(in: &subscriptions)
         viewModel.updateItems([
-            CreditCard(number: 123, cvv: 123, date: "123", name: "Visa"),
+            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
         ])
 
         waitForExpectations(timeout: 0.3)
@@ -80,16 +80,16 @@ final class ListViewModelTests: XCTestCase {
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
-        XCTAssertEqual(creditCards.first?.name, "Visa")
+        XCTAssertEqual(creditCards.first?.cardName, "Visa")
     }
 }
 
 class MockListService: CardListServiceProtocol {
     func getCards() -> Future<[CreditCard], Error> {
         let cards = [
-            CreditCard(number: 123, cvv: 123, date: "123", name: "Visa"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", name: "MasterCard"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", name: "Banpro")
+            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "MasterCard", cardHolderName: "Juan Perez"),
+            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Bank", cardHolderName: "Juan Perez")
         ]
         return Future { promise in
                 promise(.success(cards))

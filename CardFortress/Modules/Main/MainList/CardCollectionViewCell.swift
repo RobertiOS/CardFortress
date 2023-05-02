@@ -13,13 +13,30 @@ final class CardCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textColor = .black
-        label.textAlignment = .center
+        label.textAlignment = .left
         return label
     }()
     
     private let cardNumber: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    private let dateLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    private let cardHolderNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textAlignment = .center
         label.textColor = .black
         return label
     }()
@@ -34,29 +51,52 @@ final class CardCollectionViewCell: UICollectionViewCell {
     }
     
     private func setupViews() {
-        backgroundColor = .white
+        backgroundColor = UIColor.white
         layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.cgColor
         
-        addAutolayoutSubviews(titleLabel, cardNumber)
+        addAutolayoutSubviews(titleLabel, cardNumber, dateLabel, cardHolderNameLabel)
         
         NSLayoutConstraint.activate([
             
-            cardNumber.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 50),
-            cardNumber.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-//            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-//            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-//            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-//            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+            titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             
+            cardNumber.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
+            cardNumber.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            cardNumber.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 10),
+            
+            dateLabel.topAnchor.constraint(equalTo: cardNumber.bottomAnchor, constant: 10),
+            dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 100),
+            
+            cardHolderNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
+            cardHolderNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10)
             
         ])
     }
     
     func configure(with creditCard: CreditCard) {
-        titleLabel.text = creditCard.name
-        cardNumber.text = "/(creditCard.number)"
+        titleLabel.text = creditCard.cardName
+        cardNumber.attributedText = getTextForCreditCardNumber(cardNumber: creditCard.number)
+        dateLabel.text = "\(creditCard.date)"
+        cardHolderNameLabel.text = "\(creditCard.cardHolderName)"
+    }
+    
+    func getTextForCreditCardNumber(cardNumber: Int) -> NSAttributedString {
+        let texto = "\(cardNumber)"
+        var formatedText = ""
+        for (i, c) in texto.enumerated() {
+            if i > 0 && i % 4 == 0 {
+                formatedText += " "
+            }
+            formatedText.append(c)
+        }
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.kern: 5, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+
+        let attributedText = NSAttributedString(string: formatedText, attributes: attributes)
+        return attributedText
     }
 }
 

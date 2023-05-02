@@ -41,8 +41,8 @@ final class CardListViewControllerTests: XCTestCase {
         let snapshot = sut.testHooks.snapshot
         XCTAssert(snapshot.numberOfItems == 0, "Initial snapshot should have 0 items")
         let cards = [
-            CreditCard(number: 123, cvv: 123, date: "123", name: "Visa"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", name: "MasterCard")
+            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez")
         ]
         
         let expectation = self.expectation(description: "Items should be emited")

@@ -13,22 +13,20 @@ struct CreditCard: Decodable {
     var number: Int
     var cvv: Int
     var date: String
-    var name: String
-    
-    enum CodingKeys: CodingKey {
-        case identifier
-        case number
-        case cvv
-        case date
-        case name
-    }
+    var cardName: String
+    var cardHolderName: String
 }
 
 
 
 extension CreditCard {
-    init(number: Int, cvv: Int, date: String, name: String) {
-        self.init(identifier: UUID(), number: number, cvv: cvv, date: date, name: name)
+    init(number: Int, cvv: Int, date: String, cardName: String, cardHolderName: String) {
+        self.init(identifier: UUID(),
+                  number: number,
+                  cvv: cvv,
+                  date: date,
+                  cardName: cardName,
+                  cardHolderName: cardHolderName)
     }
 }
 
