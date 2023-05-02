@@ -28,13 +28,13 @@ jobs:
             build test
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
           /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
-      # - name: Check if build/tests passed
-      #   run: |
-      #     if [ ${{ success() }} = true ]; then
-      #       echo "the tests passed"
-      #     else
-      #       echo "There was an error"
-      #       exit 1
-      #     fi
+      - name: Validate if build/tests passed
+        run: |
+            if [ $? -eq 0 ]; then
+              echo "Tests and build have passed succesfully"
+            else
+              echo "Tests and build have passed failed, the pull request can't be merged"
+              exit 1
+            fi
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
