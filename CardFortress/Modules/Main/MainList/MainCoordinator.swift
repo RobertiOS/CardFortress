@@ -9,7 +9,6 @@ import UIKit
 import Swinject
 
 protocol MainCoordinatorDelegate: AnyObject {
-    func presentAnotherVC()
 }
 
 enum MainCoordinatorResult {
@@ -40,7 +39,4 @@ final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoord
 }
 
 extension MainCoordinator: MainCoordinatorDelegate {
-    func presentAnotherVC() {
-        showAddCardCoordinator()
-    }
 }

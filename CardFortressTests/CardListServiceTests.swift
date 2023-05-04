@@ -31,7 +31,7 @@ class CardListServiceTests: XCTestCase {
         var creditCards: [CreditCard] = []
         let expectation = self.expectation(description: "fetch cards")
         
-        cardListService.getCards()
+        cardListService.getCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
             .sink { completion in
                 
@@ -45,12 +45,38 @@ class CardListServiceTests: XCTestCase {
         XCTAssertEqual(creditCards.count, 1)
     }
     
+    func testDeleteCreditCards() {
+        //given
+        let expectation = self.expectation(description: "delete cards")
+        
+        cardListService.deleteAllCreditCardsFromSecureStore()
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                
+            } receiveValue: { status in
+                if case .success = status {
+                    expectation.fulfill()
+                }
+            }.store(in: &subscritions)
+        waitForExpectations(timeout: 0.4)
+    }
+    
 }
 
 class SecureStoreMock: SecureStoreProtocol {
-    func saveCreditCardDataToKeychain(card: CardFortress.CreditCard) throws {
-        
+    func removeAllCreditCards() -> Future<CardFortress.SecureStoreResult, Error> {
+        Future { promise in
+            promise(.success(.success))
+        }
     }
+    
+    
+    func addCreditCardToKeychain(_ card: CardFortress.CreditCard) -> Future<CardFortress.SecureStoreResult, Error> {
+        Future { promise in
+            promise(.success(.success))
+        }
+    }
+    
     
     func getCreditCardFromKeychain(identifier: UUID) throws -> CardFortress.CreditCard? {
         return nil
@@ -61,12 +87,6 @@ class SecureStoreMock: SecureStoreProtocol {
             promise(.success([CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "12/12/12", cardName: "Visa", cardHolderName: "Juan Perez")]))
         }
     }
-    
-    func removeAllCreditCards() -> Future<Bool, Error> {
-        Future { promise in
-        }
-    }
-    
 }
 
 

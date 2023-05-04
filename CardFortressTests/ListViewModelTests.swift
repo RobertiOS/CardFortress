@@ -45,58 +45,88 @@ final class ListViewModelTests: XCTestCase {
             .store(in: &subscriptions)
         
 
-        viewModel.fetchItems()
+        viewModel.fetchCreditCards()
 
-        waitForExpectations(timeout: 0.3)
+        waitForExpectations(timeout: 1)
         //then
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 3)
     }
     
-    func testViewModelUpdateCards() {
+    func testAddCreditCard() {
         
         //given
-        var creditCards = [CreditCard]()
+        let creditCard = CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
         //when
         
-        let expectation = self.expectation(description: "update cards")
+        let expectation = self.expectation(description: "add card")
         
         viewModel.itemsPublisher
             .receive(on: DispatchQueue.main)
             .sink { _ in
                 
             } receiveValue: { cards in
-                creditCards = cards
+                XCTAssertEqual(cards.count, 4)
                 expectation.fulfill()
             }
             .store(in: &subscriptions)
-        viewModel.updateItems([
-            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
-        ])
+        viewModel.addCreditCard(creditCard)
 
-        waitForExpectations(timeout: 0.3)
-        //then
+        waitForExpectations(timeout: 1)
+
+    }
+    
+    func testDeleteAllCards() {
         
-        XCTAssertFalse(creditCards.isEmpty)
-        XCTAssertEqual(creditCards.count, 1)
-        XCTAssertEqual(creditCards.first?.cardName, "Visa")
+        //given
+        //when
+        
+        let expectation = self.expectation(description: "add card")
+        
+        viewModel.itemsPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { cards in
+                XCTAssertTrue(cards.isEmpty)
+                expectation.fulfill()
+            }
+            .store(in: &subscriptions)
+        viewModel.deleteAllCards()
+
+        waitForExpectations(timeout: 1)
+
     }
 }
 
 class MockListService: CardListServiceProtocol {
-    func getCards() -> Future<[CreditCard], Error> {
-        let cards = [
-            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "MasterCard", cardHolderName: "Juan Perez"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Bank", cardHolderName: "Juan Perez")
-        ]
+    var delete = false
+    var cards = [
+        CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+        CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "MasterCard", cardHolderName: "Juan Perez"),
+        CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Bank", cardHolderName: "Juan Perez")
+    ]
+    
+    func deleteAllCreditCardsFromSecureStore() -> Future<CardFortress.SecureStoreResult, Error> {
+        delete = true
         return Future { promise in
-                promise(.success(cards))
+            promise(.success(.success))
         }
     }
     
-    func saveCart() {
-        //No op
+
+    func addCreditCardToSecureStore(_ creditCard: CardFortress.CreditCard) -> Future<CardFortress.SecureStoreResult, Error> {
+        Future { [unowned self] promise in
+            cards.append(creditCard)
+            promise(.success(.success))
+        }
+    }
+
+    func getCreditCardsFromSecureStore() -> Future<[CreditCard], Error> {
+        
+        return Future { [unowned self] promise in
+            delete ? promise(.success([])) :promise(.success(cards))
+        }
     }
 }

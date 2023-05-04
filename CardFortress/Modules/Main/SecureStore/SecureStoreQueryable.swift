@@ -27,6 +27,7 @@ extension CreditCardSSQueryable: SecureStoreQueryable {
         var query: [String : Any] = [:]
         query[String(kSecClass)] = kSecClassGenericPassword
         query[String(kSecReturnData)] = kCFBooleanTrue
+        query[String(kSecAttrService)] = service
         
         #if !targetEnvironment(simulator)
         if let accessGroup = accessGroup {

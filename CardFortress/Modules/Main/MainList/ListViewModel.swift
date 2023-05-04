@@ -10,28 +10,46 @@ import Combine
 
 protocol ListViewModelProtocol: AnyObject {
     var itemsPublisher: AnyPublisher<[CreditCard], Error> { get }
-    func fetchItems()
-    func updateItems(_ items: [CreditCard])
+    func fetchCreditCards()
     var cardListService: CardListServiceProtocol { get set }
+    /// this function can add or update a card
+    func addCreditCard(_ creditCard: CreditCard)
+    func deleteAllCards()
 }
 
 final class ListViewModel: ListViewModelProtocol {
     private var subscriptions = Set<AnyCancellable>()
+    var cardListService: CardListServiceProtocol
+    private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
     
     init(cardListService: CardListServiceProtocol = CardListService()) {
         self.cardListService = cardListService
     }
 
-    var cardListService: CardListServiceProtocol
-    
-    private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
-
     var itemsPublisher: AnyPublisher<[CreditCard], Error> {
         itemsSubject.eraseToAnyPublisher()
     }
+    
+    func addCreditCard(_ creditCard: CreditCard) {
+        cardListService.addCreditCardToSecureStore(creditCard)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.itemsSubject.send(completion: .failure(error))
+                }
+            } receiveValue: { [weak self] result in
+                switch result {
+                case .success:
+                    self?.fetchCreditCards()
+                case .failure(let error):
+                    self?.itemsSubject.send(completion: .failure(error))
+                }
+            }
+            .store(in: &subscriptions)
+    }
 
-    func fetchItems() {
-        cardListService.getCards()
+    func fetchCreditCards() {
+        cardListService.getCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
                 if case .failure(let error) = completion {
@@ -42,9 +60,18 @@ final class ListViewModel: ListViewModelProtocol {
             }
             .store(in: &subscriptions)
     }
-
-    func updateItems(_ items: [CreditCard]) {
-        itemsSubject.send(items)
+    
+    func deleteAllCards() {
+        cardListService.deleteAllCreditCardsFromSecureStore()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.itemsSubject.send(completion: .failure(error))
+                }
+            } receiveValue: { [weak self] status in
+                self?.itemsSubject.send([])
+            }
+            .store(in: &subscriptions)
     }
 }
 

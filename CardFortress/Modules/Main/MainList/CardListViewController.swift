@@ -15,6 +15,24 @@ final class CardListViewController: UIViewController {
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Int, CreditCard>!
     
+    private lazy var addCardBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "plus.app.fill")
+        button.tintColor = .blue
+        button.target = self
+        button.action = #selector(self.presentAddCreditCardAlertController)
+        return button
+    }()
+    
+    private lazy var deleteAllCardsBarButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "trash.fill")
+        button.tintColor = .red
+        button.target = self
+        button.action = #selector(self.deleteAllCreditCards)
+        return button
+    }()
+    
     weak var delegate: MainCoordinatorDelegate?
     
     init(viewModel: ListViewModelProtocol) {
@@ -28,13 +46,16 @@ final class CardListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = LocalizableString.mainViewTitle.value
+        
         setupViews()
         configureDataSource()
         bindViewModel()
     }
     
     private func setupViews() {
+        navigationItem.title = LocalizableString.mainViewTitle.value
+        view.backgroundColor = .white
+        navigationItem.rightBarButtonItems = [addCardBarButton, deleteAllCardsBarButton ]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
@@ -45,15 +66,13 @@ final class CardListViewController: UIViewController {
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.backgroundColor = .white
-        collectionView.delegate = self
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-            collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
+            collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
     }
     
@@ -73,6 +92,7 @@ final class CardListViewController: UIViewController {
     }
     
     private func bindViewModel() {
+        viewModel.fetchCreditCards()
         viewModel.itemsPublisher
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] completion in
@@ -83,14 +103,49 @@ final class CardListViewController: UIViewController {
                 self?.applySnapshot(items: items)
             })
             .store(in: &cancellables)
-        
-        viewModel.fetchItems()
     }
-}
 
-extension CardListViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.presentAnotherVC()
+    //MARK: Actions
+    
+    @objc
+    private func presentAddCreditCardAlertController() {
+        let alertController = UIAlertController(title: "Add Credit Card", message: nil, preferredStyle: .alert)
+        let textFieldData = [("Card Number", UIKeyboardType.numberPad), ("CVV", UIKeyboardType.numberPad), ("Expiration Date (MM/YY)", UIKeyboardType.numbersAndPunctuation), ("Card Name (optional)", nil), ("Cardholder Name (optional)", nil)]
+
+        for (placeholder, keyboardType) in textFieldData {
+            alertController.addTextField {
+                $0.placeholder = placeholder
+                $0.keyboardType = keyboardType ?? .default
+            }
+        }
+
+        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] _ in
+            guard let self,
+                  let fields = alertController.textFields,
+                  let number = fields[0].text, !number.isEmpty,
+                  let cvv = fields[1].text, !cvv.isEmpty,
+                  let date = fields[2].text, !date.isEmpty else {
+                return
+            }
+            let card = CreditCard(identifier: UUID(), number: Int(number) ?? 0, cvv: Int(cvv) ?? 0, date: date, cardName: fields[3].text ?? "", cardHolderName: fields[4].text ?? "")
+            self.viewModel.addCreditCard(card)
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+
+        present(alertController, animated: true)
+    }
+
+    @objc
+    private func deleteAllCreditCards() {
+        
+        let alertController = UIAlertController(title: "Delete all credit cards", message: nil, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            guard let self else { return }
+            self.viewModel.deleteAllCards()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true)
     }
 }
 
@@ -102,6 +157,18 @@ extension CardListViewController {
         let target: CardListViewController
         var snapshot: NSDiffableDataSourceSnapshot<Int, CreditCard> {
             target.dataSource.snapshot()
+        }
+
+        var viewControllerTitle: String? {
+            target.title
+        }
+        
+        func presentAddCreditCardAlertController() {
+            target.presentAddCreditCardAlertController()
+        }
+        
+        func deleteAllCreditCards() {
+            target.deleteAllCreditCards()
         }
     }
     

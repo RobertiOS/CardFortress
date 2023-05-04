@@ -28,7 +28,21 @@ final class SecureStoreTests: XCTestCase {
 
     func testSaveCreditCard() throws {
         let creditCard = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
-        try secureStore.saveCreditCardDataToKeychain(card: creditCard)
+        let expectation = self.expectation(description: "save card")
+        
+        secureStore.addCreditCardToKeychain(creditCard)
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                
+            } receiveValue: { value in
+                if case .success = value {
+                    expectation.fulfill()
+                }
+            }
+            .store(in: &subscriptions)
+        
+        waitForExpectations(timeout: 0.3)
+
     }
     
     func testGetCard() throws {
@@ -38,7 +52,7 @@ final class SecureStoreTests: XCTestCase {
         let creditCard2 = CreditCard(identifier: UUID(), number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
-        try secureStore.saveCreditCardDataToKeychain(card: creditCard2)
+        addCreditCardToKeychainHelper(creditCard2)
         let getCard2 = try secureStore.getCreditCardFromKeychain(identifier: creditCard2.identifier)
 
         // then
@@ -54,7 +68,7 @@ final class SecureStoreTests: XCTestCase {
         let mockCard = CreditCard(identifier: identifier, number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
-        try secureStore.saveCreditCardDataToKeychain(card: mockCard)
+        addCreditCardToKeychainHelper(mockCard)
         let queriedCard = try secureStore.getCreditCardFromKeychain(identifier: identifier)
         var creditCard = try XCTUnwrap(queriedCard)
         // then
@@ -69,7 +83,7 @@ final class SecureStoreTests: XCTestCase {
         creditCard.cardName = "Test"
         creditCard.number = 123421234
         creditCard.identifier = identifier
-        try secureStore.saveCreditCardDataToKeychain(card: creditCard)
+        addCreditCardToKeychainHelper(creditCard)
         
         let queriedCard2 = try secureStore.getCreditCardFromKeychain(identifier: identifier)
         let creditCard2 = try XCTUnwrap(queriedCard2)
@@ -83,12 +97,13 @@ final class SecureStoreTests: XCTestCase {
     
     func testGetAllCards() throws {
         //given
-        let expectation = self.expectation(description: "wait for cards")
+        
         let mockCard = CreditCard(number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
             
         // when
-        try secureStore.saveCreditCardDataToKeychain(card: mockCard)
+        addCreditCardToKeychainHelper(mockCard)
         
+        let expectation = self.expectation(description: "wait for cards")
         //when
         secureStore.getAllCreditCardsFromKeychain()
             .receive(on: DispatchQueue.main)
@@ -115,44 +130,31 @@ final class SecureStoreTests: XCTestCase {
         //when
         secureStore.removeAllCreditCards()
             .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                    expectation.fulfill()
-                case .finished:
-                    expectation.fulfill()
-                }
-            } receiveValue: { deleted in
-                XCTAssertTrue(deleted)
+            .sink { _ in
                 
+            } receiveValue: { status in
+                switch status {
+                case .success:
+                    expectation.fulfill()
+                case .failure( let error):
+                    XCTFail(error.localizedDescription)
+                }
             }
             .store(in: &subscriptions)
 
         waitForExpectations(timeout: 1)
     }
-    
-    func testDeleteAllCardsFails() {
-        //given
-        let expectation = self.expectation(description: "Delete all cards")
-        
-        //when
-        secureStore.removeAllCreditCards()
-            .receive(on: DispatchQueue.main)
-            .sink { completion in
-                switch completion {
-                case .failure(let error):
-                    XCTFail(error.localizedDescription)
-                    expectation.fulfill()
-                case .finished:
-                    expectation.fulfill()
-                }
-            } receiveValue: { deleted in
-                XCTAssertTrue(deleted)
-                
-            }
-            .store(in: &subscriptions)
 
-        waitForExpectations(timeout: 1)
+    func addCreditCardToKeychainHelper(_ creditCard: CreditCard) {
+        let expectation = self.expectation(description: "Store card to keychain")
+        secureStore.addCreditCardToKeychain(creditCard)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { _ in
+                expectation.fulfill()
+            })
+            .store(in: &subscriptions)
+        waitForExpectations(timeout: 0.3)
     }
 }

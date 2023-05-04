@@ -13,19 +13,23 @@ import Combine
 
 final class CardListViewControllerTests: XCTestCase {
 
-    var sut: CardListViewController!
+    var viewController: CardListViewController!
     var viewModel: ListViewModelProtocol!
     var cancellables = Set<AnyCancellable>()
     
     override func setUp() {
         super.setUp()
         viewModel = MockViewModel()
-        sut = CardListViewController(viewModel: viewModel)
-        sut.loadViewIfNeeded()
+        viewController = CardListViewController(viewModel: viewModel)
+        
+        let window = UIWindow(frame: UIScreen.main.bounds)
+        window.rootViewController = viewController
+        window.makeKeyAndVisible()
+        viewController.loadViewIfNeeded()
     }
     
     override func tearDown() {
-        sut = nil
+        viewController = nil
         viewModel = nil
         super.tearDown()
     }
@@ -33,17 +37,51 @@ final class CardListViewControllerTests: XCTestCase {
     func testTitle_isCorrect() {
         //given
         let title = "Card Fortress"
-        XCTAssertEqual(title, sut.navigationItem.title)
+        XCTAssertEqual(title, viewController.navigationItem.title)
+    }
+    
+    func testaddCardAlertIsPresented() throws {
+        //given
+        XCTAssertNil(viewController.presentedViewController)
+        
+        //when
+        viewController.testHooks.presentAddCreditCardAlertController()
+        let alertController = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
+
+        //then
+        XCTAssertEqual(alertController.textFields?.count, 5)
+        XCTAssertEqual(alertController.title, "Add Credit Card")
+        XCTAssertEqual(alertController.actions.count, 2)
+    }
+    
+    func testdeleteCardAlertIsPresented() throws {
+        //given
+        XCTAssertNil(viewController.presentedViewController)
+        //when
+        viewController.testHooks.deleteAllCreditCards()
+        XCTAssertNotNil(viewController.presentedViewController)
+        
+        let alertController = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
+        //then
+        XCTAssertEqual(alertController.textFields?.count, 0)
+        XCTAssertEqual(alertController.title, "Delete all credit cards")
+        XCTAssertEqual(alertController.actions.count, 2)
+
     }
     
     
     func testUpdate_CollectionViewDataSource() {
-        let snapshot = sut.testHooks.snapshot
+        let snapshot = viewController.testHooks.snapshot
         XCTAssert(snapshot.numberOfItems == 0, "Initial snapshot should have 0 items")
         let cards = [
             CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez"),
             CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez")
         ]
+        
+        cards.forEach {
+            viewModel.addCreditCard($0)
+        }
         
         let expectation = self.expectation(description: "Items should be emited")
         
@@ -56,25 +94,28 @@ final class CardListViewControllerTests: XCTestCase {
             })
             
             .store(in: &cancellables)
-        viewModel.updateItems(cards)
+        viewModel.fetchCreditCards()
         
         waitForExpectations(timeout: 0.3)
-        let updatedSnapshot = sut.testHooks.snapshot
-        XCTAssert(updatedSnapshot.numberOfItems == cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
+        let updatedSnapshot = viewController.testHooks.snapshot
+        XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
     }
-    
 }
 
 class MockViewModel: ListViewModelProtocol {
+    func deleteAllCards() {
+        itemsSubject.send([])
+    }
     
+    var cards: [CreditCard] = []
+    func addCreditCard(_ creditCard: CardFortress.CreditCard) {
+        cards.append(creditCard)
+    }
+
     var cardListService: CardFortress.CardListServiceProtocol
     
     init(cardListService: CardFortress.CardListServiceProtocol = CardListService()) {
         self.cardListService = cardListService
-    }
-    
-    func updateItems(_ items: [CreditCard]) {
-        itemsSubject.send(items)
     }
 
     let itemsSubject = PassthroughSubject<[CreditCard], Error>()
@@ -83,7 +124,8 @@ class MockViewModel: ListViewModelProtocol {
         itemsSubject.eraseToAnyPublisher()
     }
 
-    func fetchItems() {
-        // do nothing
+    func fetchCreditCards() {
+        
+        itemsSubject.send(cards)
     }
 }
