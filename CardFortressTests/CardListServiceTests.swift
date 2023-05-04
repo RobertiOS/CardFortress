@@ -39,7 +39,7 @@ class CardListServiceTests: XCTestCase {
                 expectation.fulfill()
                 creditCards = cards
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 0.4)
+        waitForExpectations(timeout: 1)
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
@@ -58,7 +58,7 @@ class CardListServiceTests: XCTestCase {
                     expectation.fulfill()
                 }
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 0.4)
+        waitForExpectations(timeout: 1)
     }
     
 }

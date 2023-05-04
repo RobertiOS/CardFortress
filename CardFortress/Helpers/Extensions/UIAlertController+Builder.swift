@@ -17,7 +17,7 @@ extension UIAlertController {
         private var alertStyle: UIAlertController.Style = .alert
         private var showTextField = false
 
-        public var textFields: [UITextField]?
+        public var textFields: [((UITextField) -> Void)?]?
 
         @discardableResult func withTitle(_ title: String?) -> Builder {
             self.title = title
@@ -50,17 +50,27 @@ extension UIAlertController {
             self.showTextField = showTextField
             return self
         }
+        
+        @discardableResult func addTextField(_ textFields: [((UITextField) -> Void)?]) -> Builder {
+            self.textFields = textFields
+            return self
+        }
+        
+        @discardableResult func addActions(_ actions: [UIAlertAction]) -> Builder {
+            self.actions = actions
+            return self
+        }
 
         func present(in viewController: UIViewController) {
-
             DispatchQueue.main.async { [weak self] in
                 guard let self = self, viewController.isViewLoaded, viewController.view.window != nil else { return }
                 let alert = UIAlertController(title: self.title, message: self.message, preferredStyle: self.alertStyle)
                 if self.showTextField {
                     alert.addTextField()
-                    self.textFields = alert.textFields
+                    self.textFields?.forEach {
+                        alert.addTextField(configurationHandler: $0)
+                    }
                 }
-
                 self.actions.forEach { alert.addAction($0) }
                 viewController.present(alert, animated: true)
             }

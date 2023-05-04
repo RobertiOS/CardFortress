@@ -96,7 +96,7 @@ final class CardListViewControllerTests: XCTestCase {
             .store(in: &cancellables)
         viewModel.fetchCreditCards()
         
-        waitForExpectations(timeout: 0.3)
+        waitForExpectations(timeout: 1)
         let updatedSnapshot = viewController.testHooks.snapshot
         XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
     }

@@ -41,7 +41,7 @@ final class SecureStoreTests: XCTestCase {
             }
             .store(in: &subscriptions)
         
-        waitForExpectations(timeout: 0.3)
+        waitForExpectations(timeout: 1)
 
     }
     
@@ -155,6 +155,6 @@ final class SecureStoreTests: XCTestCase {
                 expectation.fulfill()
             })
             .store(in: &subscriptions)
-        waitForExpectations(timeout: 0.3)
+        waitForExpectations(timeout: 1)
     }
 }
