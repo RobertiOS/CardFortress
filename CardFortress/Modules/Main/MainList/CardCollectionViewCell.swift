@@ -9,6 +9,10 @@ import UIKit
 
 final class CardCollectionViewCell: UICollectionViewCell {
     
+    struct Constants {
+        static let fontName = "Credit Card"
+    }
+    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -26,7 +30,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
     
     private let dateLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: Constants.fontName, size: 20.0)!
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -34,7 +38,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
     
     private let cardHolderNameLabel: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.font = UIFont(name: Constants.fontName, size: 20.0)!
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -109,7 +113,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         titleLabel.text = creditCard.cardName
         cardNumber.attributedText = getTextForCreditCardNumber(cardNumber: creditCard.number)
         dateLabel.text = "\(creditCard.date)"
-        cardHolderNameLabel.text = "\(creditCard.cardHolderName)"
+        cardHolderNameLabel.text = "\(creditCard.cardHolderName.uppercased())"
         cvvLabel.text = "\(creditCard.cvv)"
     }
     
@@ -122,7 +126,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
             }
             formatedText.append(c)
         }
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.kern: 5, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold)]
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.kern: 5, NSAttributedString.Key.font: UIFont(name: Constants.fontName, size: 18.0)!]
 
         let attributedText = NSAttributedString(string: formatedText, attributes: attributes)
         return attributedText

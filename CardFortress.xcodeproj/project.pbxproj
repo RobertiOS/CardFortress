@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
+		2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2631E24E2A04BEF200197FEA /* CREDC___.otf */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
 		26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */; };
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
@@ -59,6 +60,7 @@
 
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
+		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinator.swift; sourceTree = "<group>"; };
 		26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +123,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2631E2502A04BF0100197FEA /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				2631E24E2A04BEF200197FEA /* CREDC___.otf */,
+				26B7701D29EC450400CC9FEB /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,12 +220,12 @@
 		26B7701329EC450200CC9FEB /* CardFortress */ = {
 			isa = PBXGroup;
 			children = (
+				26B7702229EC450400CC9FEB /* Info.plist */,
+				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
 				26B38C0D29ECC00C00D0CCD8 /* Modules */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
-				26B7701D29EC450400CC9FEB /* Assets.xcassets */,
 				26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */,
-				26B7702229EC450400CC9FEB /* Info.plist */,
 			);
 			path = CardFortress;
 			sourceTree = "<group>";
@@ -408,6 +419,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */,
 				26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */,
 				26B7701E29EC450400CC9FEB /* Assets.xcassets in Resources */,
 				26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */,
