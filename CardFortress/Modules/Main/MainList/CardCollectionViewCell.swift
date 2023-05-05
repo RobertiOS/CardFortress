@@ -19,7 +19,6 @@ final class CardCollectionViewCell: UICollectionViewCell {
     
     private let cardNumber: UILabel = {
         let label = UILabel()
-        label.font = .systemFont(ofSize: 20, weight: .semibold)
         label.textAlignment = .center
         label.textColor = .black
         return label
@@ -40,6 +39,20 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
+    
+    private let cvvLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .semibold)
+        label.textAlignment = .center
+        label.textColor = .black
+        return label
+    }()
+    
+    private let chipImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "chip")
+        return imageView
+    }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -56,7 +69,14 @@ final class CardCollectionViewCell: UICollectionViewCell {
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.cgColor
         
-        addAutolayoutSubviews(titleLabel, cardNumber, dateLabel, cardHolderNameLabel)
+        addAutolayoutSubviews([
+            titleLabel,
+            cardNumber,
+            dateLabel,
+            cardHolderNameLabel,
+            cvvLabel,
+            chipImageView
+        ])
         
         NSLayoutConstraint.activate([
             
@@ -64,15 +84,23 @@ final class CardCollectionViewCell: UICollectionViewCell {
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             
-            cardNumber.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 50),
+            chipImageView.heightAnchor.constraint(equalToConstant: 50),
+            chipImageView.widthAnchor.constraint(equalToConstant: 65),
+            chipImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            chipImageView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
+            
+            cardNumber.topAnchor.constraint(equalTo: chipImageView.bottomAnchor, constant: 10),
             cardNumber.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            cardNumber.leadingAnchor.constraint(greaterThanOrEqualTo: contentView.leadingAnchor, constant: 10),
+            cardNumber.heightAnchor.constraint(equalToConstant: 30),
             
             dateLabel.topAnchor.constraint(equalTo: cardNumber.bottomAnchor, constant: 10),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 100),
             
             cardHolderNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
-            cardHolderNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10)
+            cardHolderNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            
+            cvvLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            cvvLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
             
         ])
     }
@@ -82,6 +110,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         cardNumber.attributedText = getTextForCreditCardNumber(cardNumber: creditCard.number)
         dateLabel.text = "\(creditCard.date)"
         cardHolderNameLabel.text = "\(creditCard.cardHolderName)"
+        cvvLabel.text = "\(creditCard.cvv)"
     }
     
     func getTextForCreditCardNumber(cardNumber: Int) -> NSAttributedString {
@@ -93,7 +122,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
             }
             formatedText.append(c)
         }
-        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.kern: 5, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 16)]
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.kern: 5, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 22, weight: .bold)]
 
         let attributedText = NSAttributedString(string: formatedText, attributes: attributes)
         return attributedText
