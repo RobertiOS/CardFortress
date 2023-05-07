@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
 		2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2631E24E2A04BEF200197FEA /* CREDC___.otf */; };
+		2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 2655DFBC2A059158003EFDA2 /* CreditCardValidator */; };
+		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
 		26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */; };
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
@@ -61,6 +63,7 @@
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
 		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
+		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinator.swift; sourceTree = "<group>"; };
 		26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -102,6 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -305,6 +309,7 @@
 			children = (
 				26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */,
 				26F5B4E02A002286002D224D /* UIView+Extensions.swift */,
+				26888FD82A0756FE00936748 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -327,6 +332,7 @@
 			name = CardFortress;
 			packageProductDependencies = (
 				26DF384529F0CC19007091C3 /* Swinject */,
+				2655DFBC2A059158003EFDA2 /* CreditCardValidator */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -402,6 +408,7 @@
 			mainGroup = 26B7700829EC450200CC9FEB;
 			packageReferences = (
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
+				2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -463,6 +470,7 @@
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
+				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26F5B4CF29FEBCD9002D224D /* SecureStore.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 			);
@@ -820,6 +828,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/RobertiOS/CreditCardValidator";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -831,6 +847,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2655DFBC2A059158003EFDA2 /* CreditCardValidator */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */;
+			productName = CreditCardValidator;
+		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */;

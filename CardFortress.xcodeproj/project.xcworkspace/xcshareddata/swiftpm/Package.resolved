@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "creditcardvalidator",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/RobertiOS/CreditCardValidator",
+      "state" : {
+        "branch" : "master",
+        "revision" : "23902f733451eb3ab59b7de33b21c81f33514b35"
+      }
+    },
+    {
       "identity" : "swinject",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/Swinject/Swinject.git",
