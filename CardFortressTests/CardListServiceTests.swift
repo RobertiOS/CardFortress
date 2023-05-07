@@ -31,6 +31,7 @@ class CardListServiceTests: XCTestCase {
         var creditCards: [CreditCard] = []
         let expectation = self.expectation(description: "fetch cards")
         
+        //when //then
         cardListService.getCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -49,6 +50,7 @@ class CardListServiceTests: XCTestCase {
         //given
         let expectation = self.expectation(description: "delete cards")
         
+        //when //then
         cardListService.deleteAllCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -61,31 +63,24 @@ class CardListServiceTests: XCTestCase {
         waitForExpectations(timeout: 1)
     }
     
-}
-
-class SecureStoreMock: SecureStoreProtocol {
-    func removeAllCreditCards() -> Future<CardFortress.SecureStoreResult, Error> {
-        Future { promise in
-            promise(.success(.success))
-        }
-    }
-    
-    
-    func addCreditCardToKeychain(_ card: CardFortress.CreditCard) -> Future<CardFortress.SecureStoreResult, Error> {
-        Future { promise in
-            promise(.success(.success))
-        }
-    }
-    
-    
-    func getCreditCardFromKeychain(identifier: UUID) throws -> CardFortress.CreditCard? {
-        return nil
-    }
-    
-    func getAllCreditCardsFromKeychain() -> Future<[CardFortress.CreditCard], Error> {
-        Future { promise in
-            promise(.success([CreditCard(identifier: UUID(), number: 123, cvv: 123, date: "12/12/12", cardName: "Visa", cardHolderName: "Juan Perez")]))
-        }
+    func testAddCreditCards() {
+        //given
+        let creditCard = CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
+        let expectation = self.expectation(description: "Add credit card")
+        
+        cardListService.addCreditCardToSecureStore(creditCard)
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                
+            } receiveValue: { state in
+                switch state {
+                case .success:
+                    expectation.fulfill()
+                case .failure(_):
+                    XCTFail()
+                }
+            }.store(in: &subscritions)
+        waitForExpectations(timeout: 1)
     }
 }
 

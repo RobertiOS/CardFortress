@@ -19,7 +19,7 @@ final class CardListService: CardListServiceProtocol {
 
     private let secureStore: SecureStoreProtocol
 
-    init(secureStore: SecureStoreProtocol = SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))) {
+    init(secureStore: SecureStoreProtocol) {
         self.secureStore = secureStore
     }
     

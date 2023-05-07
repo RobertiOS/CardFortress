@@ -10,10 +10,21 @@ import UIKit
 
 extension SceneDelegate {
     func setUpDependencies() {
+        
+        //MARK: service and secure store
+        
+        container.register(SecureStore.self) { r in
+            SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
+        }
+        
+        container.register(CardListService.self) { r in
+            CardListService(secureStore: r.resolve(SecureStore.self)!)
+        }
+        
         //MARK: view models
       
         container.register(ListViewModelProtocol.self) { r in
-            ListViewModel()
+            ListViewModel(cardListService: r.resolve(CardListService.self)!)
         }
         //MARK: view controllers
         

@@ -19,7 +19,7 @@ final class CardListViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewModel = MockViewModel()
+        viewModel = MockListViewModel(cardListService: MockListService())
         viewController = CardListViewController(viewModel: viewModel)
         
         let window = UIWindow(frame: UIScreen.main.bounds)
@@ -99,33 +99,5 @@ final class CardListViewControllerTests: XCTestCase {
         waitForExpectations(timeout: 1)
         let updatedSnapshot = viewController.testHooks.snapshot
         XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
-    }
-}
-
-class MockViewModel: ListViewModelProtocol {
-    func deleteAllCards() {
-        itemsSubject.send([])
-    }
-    
-    var cards: [CreditCard] = []
-    func addCreditCard(_ creditCard: CardFortress.CreditCard) {
-        cards.append(creditCard)
-    }
-
-    var cardListService: CardFortress.CardListServiceProtocol
-    
-    init(cardListService: CardFortress.CardListServiceProtocol = CardListService()) {
-        self.cardListService = cardListService
-    }
-
-    let itemsSubject = PassthroughSubject<[CreditCard], Error>()
-
-    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
-        itemsSubject.eraseToAnyPublisher()
-    }
-
-    func fetchCreditCards() {
-        
-        itemsSubject.send(cards)
     }
 }

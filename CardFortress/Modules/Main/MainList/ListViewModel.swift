@@ -22,7 +22,7 @@ final class ListViewModel: ListViewModelProtocol {
     var cardListService: CardListServiceProtocol
     private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
     
-    init(cardListService: CardListServiceProtocol = CardListService()) {
+    init(cardListService: CardListServiceProtocol) {
         self.cardListService = cardListService
     }
 
