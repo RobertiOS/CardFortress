@@ -7,15 +7,34 @@ on:
   pull_request:
     branches:
       - main
+      - development
 
 jobs:
   build:
-    runs-on: macOS-latest
+    runs-on: macos-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
-    - name: Run tests
-      run: xcodebuild clean test -project 'CardFortress.xcodeproj' -scheme 'CardFortress' -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" -enableCodeCoverage
-          YES build test
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v3
+      - name: Install Xcodecoverageconverter
+        run: brew install twittemb/formulae/Xcodecoverageconverter
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Run tests
+        run: |
+          xcodebuild clean test \
+            -project 'CardFortress.xcodeproj' \
+            -scheme 'CardFortress' \
+            -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" \
+            -derivedDataPath Build/ \
+            -enableCodeCoverage YES \
+            build test
+          xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
+          /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
+      - name: Validate if build/tests passed
+        run: |
+            if [ $? -eq 0 ]; then
+              echo "Tests and build have passed succesfully"
+            else
+              echo "Tests and build have passed failed, the pull request can't be merged"
+              exit 1
+            fi
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3

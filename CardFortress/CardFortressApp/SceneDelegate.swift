@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Swinject
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     var appCoordinator: CardFortressRootCoordinator?
+    let container = Container()
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
@@ -18,17 +20,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
-        let appWindow = UIWindow(windowScene: windowScene)
-        let navigationController: UINavigationController = .init()
-        appCoordinator = .init(navigationController: navigationController)
+        window = UIWindow(windowScene: windowScene)
+        setUpDependencies()
+        appCoordinator = .init(window: window!, container: container)
         appCoordinator?.start()
-        
-        appWindow.rootViewController = navigationController
-        appWindow.makeKeyAndVisible()
-        
-        window = appWindow
-        
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

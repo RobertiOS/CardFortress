@@ -1,0 +1,37 @@
+{
+  "configurations" : [
+    {
+      "id" : "EA89B9A9-25F1-41F9-8C90-95267F901481",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:CardFortress.xcodeproj",
+      "identifier" : "26B7701029EC450200CC9FEB",
+      "name" : "CardFortress"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:CardFortress.xcodeproj",
+        "identifier" : "26B7702629EC450400CC9FEB",
+        "name" : "CardFortressTests"
+      }
+    },
+    {
+      "enabled" : false,
+      "target" : {
+        "containerPath" : "container:CardFortress.xcodeproj",
+        "identifier" : "26B7703029EC450400CC9FEB",
+        "name" : "CardFortressUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
