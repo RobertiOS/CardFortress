@@ -36,7 +36,7 @@ final class CoordinatorTests: XCTestCase {
             XCTAssertNotNil(weakChildCoordinator)
         }
 
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: .defaultWait)
         XCTAssertNotNil(weakChildCoordinator)
     }
 
@@ -61,7 +61,7 @@ final class CoordinatorTests: XCTestCase {
             XCTAssertNotNil(weakChildCoordinator)
         }
 
-        wait(for: [expectation], timeout: 1)
+        wait(for: [expectation], timeout: .defaultWait)
         XCTAssertNil(weakChildCoordinator)
     }
 

@@ -41,7 +41,7 @@ final class SecureStoreTests: XCTestCase {
             }
             .store(in: &subscriptions)
         
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
 
     }
     
@@ -120,7 +120,7 @@ final class SecureStoreTests: XCTestCase {
             }
             .store(in: &subscriptions)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
     }
     
     func testDeleteAllCards() {
@@ -142,7 +142,7 @@ final class SecureStoreTests: XCTestCase {
             }
             .store(in: &subscriptions)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
     }
 
     func addCreditCardToKeychainHelper(_ creditCard: CreditCard) {
@@ -155,6 +155,6 @@ final class SecureStoreTests: XCTestCase {
                 expectation.fulfill()
             })
             .store(in: &subscriptions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
     }
 }

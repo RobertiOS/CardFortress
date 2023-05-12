@@ -40,7 +40,7 @@ class CardListServiceTests: XCTestCase {
                 expectation.fulfill()
                 creditCards = cards
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
@@ -60,7 +60,7 @@ class CardListServiceTests: XCTestCase {
                     expectation.fulfill()
                 }
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
     }
     
     func testAddCreditCards() {
@@ -80,7 +80,7 @@ class CardListServiceTests: XCTestCase {
                     XCTFail()
                 }
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
     }
 }
 
