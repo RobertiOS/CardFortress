@@ -70,7 +70,7 @@ final class SecureStoreTests: XCTestCase {
         // when
         addCreditCardToKeychainHelper(mockCard)
         let queriedCard = try secureStore.getCreditCardFromKeychain(identifier: identifier)
-        var creditCard = try XCTUnwrap(queriedCard)
+        let creditCard = try XCTUnwrap(queriedCard)
         // then
         XCTAssertEqual(creditCard.number, 111)
         XCTAssertEqual(creditCard.cvv, 111)
@@ -78,21 +78,21 @@ final class SecureStoreTests: XCTestCase {
         XCTAssertEqual(creditCard.cardName, "Visa")
         
         // when
-        creditCard.date = "11/22/11"
-        creditCard.cvv = 123
-        creditCard.cardName = "Test"
-        creditCard.number = 123421234
-        creditCard.identifier = identifier
-        addCreditCardToKeychainHelper(creditCard)
+        
+        let updatedCard = CreditCard(
+            identifier: identifier,
+            number: 123421234,
+            cvv: 123,
+            date: "11/22/11",
+            cardName: "Test",
+            cardHolderName: "juan"
+        )
+        addCreditCardToKeychainHelper(updatedCard)
         
         let queriedCard2 = try secureStore.getCreditCardFromKeychain(identifier: identifier)
-        let creditCard2 = try XCTUnwrap(queriedCard2)
         
         // then
-        XCTAssertEqual(creditCard2.number, 123421234)
-        XCTAssertEqual(creditCard2.cvv, 123)
-        XCTAssertEqual(creditCard2.date, "11/22/11")
-        XCTAssertEqual(creditCard2.cardName, "Test")
+        XCTAssertEqual(queriedCard2, updatedCard)
     }
     
     func testGetAllCards() throws {

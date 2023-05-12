@@ -1,13 +1,13 @@
 //
-//  CreditCard.swift
+//  SecureStoreCreditCard.swift
 //  CardFortress
 //
-//  Created by Roberto Corrales on 30/04/23.
+//  Created by Roberto Corrales on 5/10/23.
 //
 
 import Foundation
 
-struct CreditCard: Decodable {
+struct SecureStoreCreditCard: Decodable {
     /// unique identifier for the cards
     let identifier: UUID
     let number: Int
@@ -19,7 +19,7 @@ struct CreditCard: Decodable {
 
 
 
-extension CreditCard {
+extension SecureStoreCreditCard {
     init(number: Int, cvv: Int, date: String, cardName: String, cardHolderName: String) {
         self.init(identifier: UUID(),
                   number: number,
@@ -30,4 +30,4 @@ extension CreditCard {
     }
 }
 
-extension CreditCard: Hashable {}
+extension SecureStoreCreditCard: Hashable {}

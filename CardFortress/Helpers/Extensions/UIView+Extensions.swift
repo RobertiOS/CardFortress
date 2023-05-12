@@ -8,25 +8,26 @@
 import Foundation
 import UIKit
 
+@resultBuilder
+struct SubviewBuilder {
+
+    static func buildBlock(_ components: UIView...) -> [UIView] {
+        return components
+    }
+
+    static func buildBlock(_ components: [UIView]...) -> [UIView] {
+        components.flatMap { $0 }
+    }
+
+}
+
+
 extension UIView {
-    
-    func addAutolayoutSubview(_ view: UIView) {
-        view.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(view)
-    }
-    
-    func addAutolayoutSubviews(_ views: [UIView]) {
-        views.forEach { view in
-            view.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(view)
+    func addAutoLayoutSubviews(@SubviewBuilder views: () -> [UIView]) {
+        views().forEach {
+            $0.translatesAutoresizingMaskIntoConstraints = false
+            addSubview($0)
         }
+        
     }
-
-    func addAutolayoutSubviews(_ views: UIView...) {
-        views.forEach { view in
-            view.translatesAutoresizingMaskIntoConstraints = false
-            addSubview(view)
-        }
-    }
-
 }

@@ -94,16 +94,15 @@ final class CardCollectionViewCell: UICollectionViewCell {
         layer.cornerRadius = 8
         layer.borderWidth = 1
         layer.borderColor = UIColor.gray.cgColor
-        addAutolayoutSubviews([
-            cardNameLabel,
-            cardNumberLabel,
-            dateLabel,
-            cardHolderNameLabel,
-//            cvvLabel,
-            chipImageView,
-            cardTypeImageView,
+        addAutoLayoutSubviews {
+            cardNameLabel
+            cardNumberLabel
+            dateLabel
+            cardHolderNameLabel
+            chipImageView
+            cardTypeImageView
             copyCardNumberButton
-        ])
+        }
         
         NSLayoutConstraint.activate([
             
