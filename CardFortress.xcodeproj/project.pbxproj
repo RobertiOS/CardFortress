@@ -31,6 +31,9 @@
 		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
+		26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainListFactory.swift */; };
+		26CEBA652A15D71D00AF62DE /* CardFordtressRootFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */; };
+		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */; };
@@ -94,6 +97,9 @@
 		26C4628629F379CF000B06A7 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCellTest.swift; sourceTree = "<group>"; };
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
+		26CE97C52A11F70F00AF62DE /* MainListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListFactory.swift; sourceTree = "<group>"; };
+		26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFordtressRootFactory.swift; sourceTree = "<group>"; };
+		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -167,19 +173,19 @@
 		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				26B38C0E29ECC01A00D0CCD8 /* Main */,
+				26F5B4CD29FEBC6F002D224D /* Service */,
+				26F5B4D82A0003EA002D224D /* SecureStore */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		26B38C0E29ECC01A00D0CCD8 /* Main */ = {
+		26B38C0E29ECC01A00D0CCD8 /* Project */ = {
 			isa = PBXGroup;
 			children = (
+				26F5B4D229FEBD3A002D224D /* Models */,
 				26DF384929F0EA9B007091C3 /* MainList */,
-				26F5B4D82A0003EA002D224D /* SecureStore */,
-				26F5B4CD29FEBC6F002D224D /* Service */,
 			);
-			path = Main;
+			path = Project;
 			sourceTree = "<group>";
 		};
 		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
@@ -217,6 +223,7 @@
 				26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */,
 				26B7701629EC450200CC9FEB /* SceneDelegate.swift */,
 				26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */,
+				26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */,
 			);
 			path = CardFortressApp;
 			sourceTree = "<group>";
@@ -255,6 +262,7 @@
 				26B7702229EC450400CC9FEB /* Info.plist */,
 				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
+				26B38C0E29ECC01A00D0CCD8 /* Project */,
 				26B38C0D29ECC00C00D0CCD8 /* Modules */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
 				26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */,
@@ -265,6 +273,7 @@
 		26B7702A29EC450400CC9FEB /* CardFortressTests */ = {
 			isa = PBXGroup;
 			children = (
+				26CEBA632A15D3DD00AF62DE /* SecureStoreTests */,
 				26888FDA2A076F6200936748 /* Mocks */,
 				26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */,
 				26C4628629F379CF000B06A7 /* CoordinatorTests.swift */,
@@ -272,9 +281,9 @@
 				26F0945229F74045009B0494 /* CardListViewControllerTests.swift */,
 				26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */,
 				26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */,
-				26F5B4D629FED936002D224D /* SecureStoreTests.swift */,
 				2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */,
 				265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */,
+				26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -288,6 +297,14 @@
 			path = CardFortressUITests;
 			sourceTree = "<group>";
 		};
+		26CEBA632A15D3DD00AF62DE /* SecureStoreTests */ = {
+			isa = PBXGroup;
+			children = (
+				26F5B4D629FED936002D224D /* SecureStoreTests.swift */,
+			);
+			path = SecureStoreTests;
+			sourceTree = "<group>";
+		};
 		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
@@ -295,7 +312,7 @@
 				26B38C1129ECC22100D0CCD8 /* MainCoordinator.swift */,
 				26B7701829EC450200CC9FEB /* CardListViewController.swift */,
 				26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */,
-				26F5B4D229FEBD3A002D224D /* Model */,
+				26CE97C52A11F70F00AF62DE /* MainListFactory.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -316,12 +333,12 @@
 			path = Service;
 			sourceTree = "<group>";
 		};
-		26F5B4D229FEBD3A002D224D /* Model */ = {
+		26F5B4D229FEBD3A002D224D /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				26F5B4D029FEBD33002D224D /* CreditCard.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		26F5B4D82A0003EA002D224D /* SecureStore */ = {
@@ -488,6 +505,7 @@
 				26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
+				26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */,
 				26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */,
 				26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
@@ -501,6 +519,7 @@
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
+				26CEBA652A15D71D00AF62DE /* CardFordtressRootFactory.swift in Sources */,
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26F5B4CF29FEBCD9002D224D /* SecureStore.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
@@ -514,6 +533,7 @@
 			files = (
 				26888FDE2A0770A400936748 /* MockListService.swift in Sources */,
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
+				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,
 				26888FE02A07716900936748 /* MockSecureStore.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
 				26F5B4D729FED936002D224D /* SecureStoreTests.swift in Sources */,

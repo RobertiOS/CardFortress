@@ -48,7 +48,7 @@ final class SecureStore: SecureStoreProtocol  {
     // MARK: Properties
     
     func getAllCreditCardsFromKeychain() -> Future<[CreditCard], Error> {
-
+        
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitAll
         return Future<[CreditCard], Error> { promise in
@@ -57,29 +57,27 @@ final class SecureStore: SecureStoreProtocol  {
                 var items: CFTypeRef?
                 let status = SecItemCopyMatching(keychainQuery as CFDictionary, &items)
                 
-                DispatchQueue.main.async {
-                    switch status {
-                    case errSecSuccess:
-                        if let items = items as? [Data] {
-                            let jsonDecoder = JSONDecoder()
-                            let cards = items.compactMap {
-                                do {
-                                    let card = try jsonDecoder.decode(CreditCard.self, from: $0)
-                                    return card
-                                } catch {
-                                    promise(.failure(SecureStoreError.jsonDecodingError(message: error.localizedDescription)))
-                                    return nil
-                                }
+                switch status {
+                case errSecSuccess:
+                    if let items = items as? [Data] {
+                        let jsonDecoder = JSONDecoder()
+                        let cards = items.compactMap {
+                            do {
+                                let card = try jsonDecoder.decode(CreditCard.self, from: $0)
+                                return card
+                            } catch {
+                                promise(.failure(SecureStoreError.jsonDecodingError(message: error.localizedDescription)))
+                                return nil
                             }
-                            promise(.success(cards))
-                            
                         }
-                    case errSecItemNotFound:
-                        promise(.success([]))
+                        promise(.success(cards))
                         
-                    default:
-                        promise(.failure(self.error(from: status)))
                     }
+                case errSecItemNotFound:
+                    promise(.success([]))
+                    
+                default:
+                    promise(.failure(self.error(from: status)))
                 }
             }
         }

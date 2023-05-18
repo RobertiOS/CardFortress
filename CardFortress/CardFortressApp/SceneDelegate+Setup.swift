@@ -13,29 +13,12 @@ extension SceneDelegate {
         
         //MARK: service and secure store
         
-        container.register(SecureStore.self) { r in
+        container.register(SecureStoreProtocol.self) { r in
             SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
         }
         
-        container.register(CardListService.self) { r in
-            CardListService(secureStore: r.resolve(SecureStore.self)!)
-        }
-        
-        //MARK: view models
-      
-        container.register(ListViewModelProtocol.self) { r in
-            ListViewModel(cardListService: r.resolve(CardListService.self)!)
-        }
-        //MARK: view controllers
-        
-        container.register(CardListViewController.self) { r in
-            CardListViewController(viewModel: r.resolve(ListViewModelProtocol.self)!)
-        }
-        
-        container.register(UINavigationController.self) { r in
-            let navigationController: UINavigationController = .init()
-            navigationController.navigationBar.prefersLargeTitles = true
-            return navigationController
+        container.register(CardListServiceProtocol.self) { r in
+            CardListService(secureStore: r.resolve(SecureStoreProtocol.self)!)
         }
     }
 }

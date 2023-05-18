@@ -12,18 +12,29 @@ enum CardFortressResultCoordinator {
     case success
 }
 
-final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinator>, NavigationCoordinator {
+final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinator> {
 
     // MARK: properties
     private let window: UIWindow
     private let container: Container
-    var navigationController: UINavigationController
+    private let navigationController: UINavigationController
+    private let rootFactory: CardFordtressRootFactoryProtocol
     
     // MARK: initialization
     
-    init(window: UIWindow, container: Container) {
+    convenience init(window: UIWindow,
+                     container: Container) {
+        self.init(window: window,
+                  container: container,
+                  rootfactory: CardFordtressRootFactory(container: container))
+    }
+    
+    init(window: UIWindow,
+         container: Container,
+         rootfactory: CardFordtressRootFactoryProtocol) {
         self.container = container
-        navigationController = container.resolve(UINavigationController.self) ?? UINavigationController()
+        self.rootFactory = rootfactory
+        navigationController = rootfactory.makeNavigationController()
         self.window = window
         window.rootViewController = navigationController
     }
@@ -31,10 +42,11 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     // MARK: actions
     
     override func start() {
-        let mainCoordinator = MainCoordinator(navigationController: navigationController, container: container)
-        mainCoordinator.onFinish = { result in
-            
-        }
+        let mainListFactory = rootFactory.makeMainListFactory()
+        let mainCoordinator = MainCoordinator(
+            container: container,
+            viewControllerFactory: mainListFactory,
+            navigationController: navigationController)
         addChild(coordinator: mainCoordinator)
         mainCoordinator.start()
     }
