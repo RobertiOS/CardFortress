@@ -24,8 +24,12 @@ final class CardFordtressRootFactory: CardFordtressRootFactoryProtocol {
     }
 
     func makeNavigationController() -> UINavigationController {
-        let navigationController: UINavigationController = .init()
+        let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.backgroundColor = .systemBackground
+        navigationController.navigationBar.barTintColor = .red
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+        
         return navigationController
     }
     

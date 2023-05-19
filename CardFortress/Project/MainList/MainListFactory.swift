@@ -9,7 +9,7 @@ import UIKit
 import Swinject
 
 protocol MainListFactoryProtocol {
-    func makeMainListViewController() -> CardListViewController
+    func makeMainListViewController() -> CardListViewControllerProtocol
 }
 
 final class MainListFactory: MainListFactoryProtocol {
@@ -19,7 +19,7 @@ final class MainListFactory: MainListFactoryProtocol {
         self.container = container
     }
     
-    func makeMainListViewController() -> CardListViewController {
+    func makeMainListViewController() -> CardListViewControllerProtocol {
         guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
         let listViewModel = ListViewModel(cardListService: service)
         let viewcontroller = CardListViewController(viewModel: listViewModel)
