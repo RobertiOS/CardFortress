@@ -31,3 +31,9 @@ extension CreditCard {
 }
 
 extension CreditCard: Hashable {}
+
+extension CreditCard {
+    static func make() -> Self {
+        CreditCard(number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
+    }
+}
