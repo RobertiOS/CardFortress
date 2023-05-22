@@ -31,3 +31,10 @@ extension SecureStoreCreditCard {
 }
 
 extension SecureStoreCreditCard: Hashable {}
+
+
+extension SecureStoreCreditCard {
+    static func make() -> Self {
+        SecureStoreCreditCard(number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
+    }
+}
