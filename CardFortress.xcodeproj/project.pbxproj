@@ -16,7 +16,6 @@
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
-		26888FE02A07716900936748 /* MockSecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDF2A07716900936748 /* MockSecureStore.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
 		26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */; };
@@ -79,7 +78,6 @@
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
-		26888FDF2A07716900936748 /* MockSecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSecureStore.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinator.swift; sourceTree = "<group>"; };
@@ -168,7 +166,6 @@
 			isa = PBXGroup;
 			children = (
 				26888FDD2A0770A400936748 /* MockListService.swift */,
-				26888FDF2A07716900936748 /* MockSecureStore.swift */,
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */,
 			);
@@ -541,7 +538,6 @@
 				26888FDE2A0770A400936748 /* MockListService.swift in Sources */,
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
 				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,
-				26888FE02A07716900936748 /* MockSecureStore.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
 				26366FC42A19302A00C9B8DA /* SecureStorePOCTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
