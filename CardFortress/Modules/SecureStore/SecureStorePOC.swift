@@ -8,29 +8,6 @@
 import Foundation
 import Combine
 
-enum SecureStoreStatus {
-    case success
-    case failure(Error)
-}
-
-enum CreditCardProperties: String, CaseIterable {
-    case identifier
-    case number
-    case cvv
-    case date
-    case cardName
-    case cardHolderName
-    
-    static var allCasesToString: [String] {
-        Self.allCases.map { $0.rawValue }
-    }
-}
-
-struct EncodedCard {
-    let identifier: UUID
-    let data: Data
-}
-
 protocol SecureStoreProtocolPOC {
     /// Removes all credit cards from secure store
     /// - Returns:returns an secure store result
@@ -72,9 +49,10 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
             let query = sSQueryable.query
             let status = SecItemDelete(query as CFDictionary)
             switch status {
-            case errSecSuccess,
-            errSecItemNotFound:
+            case errSecSuccess:
                 continuation.resume(returning: .success)
+            case errSecItemNotFound:
+                continuation.resume(returning: .failure(.itemNotFound))
             default:
                 let secureStoreError = error(from: status)
                 continuation.resume(throwing: secureStoreError)
@@ -144,7 +122,9 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
             }
         }
     }
-    
+}
+
+extension SecureStoreProtocolPOC {
     nonisolated func createEncodedCreditCard(for creditCardpayload: [String : Any]) throws -> EncodedCard {
         let requiredKeys = CreditCardProperties.allCasesToString
         let missingKeys = requiredKeys.filter { !creditCardpayload.keys.contains($0) }
