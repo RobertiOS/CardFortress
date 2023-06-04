@@ -65,7 +65,7 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
         
         return try await withCheckedThrowingContinuation { continuation in
             var status = SecItemCopyMatching(keychainQuery as CFDictionary, nil)
-            let creditCardData = try? getEncodeCreditCard(secureStoreCreditCard: creditCard)
+            let creditCardData = try? getEncodedCreditCard(secureStoreCreditCard: creditCard)
             switch status {
             case errSecSuccess:
                 var attributesToUpdate: [String: Any] = [:]
@@ -138,7 +138,7 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
     
     //MARK: Helpers
     
-    func getEncodeCreditCard(secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
+    private func getEncodedCreditCard(secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
         let payload: [String: Any] = [
             CreditCardProperty.identifier.rawValue : secureStoreCreditCard.identifier.uuidString,
             CreditCardProperty.number.rawValue : secureStoreCreditCard.number,
