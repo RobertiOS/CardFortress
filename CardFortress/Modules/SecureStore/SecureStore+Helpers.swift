@@ -7,19 +7,14 @@
 
 import Foundation
 
-enum CreditCardProperties: String, CaseIterable {
+enum CreditCardProperty: String, CaseIterable {
     case identifier
     case number
     case cvv
     case date
     case cardName
     case cardHolderName
-    
-    static var allCasesToString: [String] {
-        Self.allCases.map { $0.rawValue }
-    }
 }
-
 enum SecureStoreResult: Equatable {
     case success
     case failure(SecureStoreFailure)
@@ -27,9 +22,4 @@ enum SecureStoreResult: Equatable {
 
 enum SecureStoreFailure: Error, Equatable {
     case itemNotFound
-}
-
-struct EncodedCard {
-    let identifier: UUID
-    let data: Data
 }

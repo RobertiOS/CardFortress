@@ -69,7 +69,6 @@ final class CardListViewControllerTests: XCTestCase {
 
     }
     
-    
     func testUpdate_CollectionViewDataSource() {
         let snapshot = viewController.testHooks.snapshot
         XCTAssert(snapshot.numberOfItems == 0, "Initial snapshot should have 0 items")

@@ -24,27 +24,18 @@ final class CardListService: CardListServiceProtocol {
     }
     
     func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<SecureStoreResult, Error> {
-        let cardData : [String : Any] = [
-            "identifier": creditCard.identifier.uuidString,
-            "number": creditCard.number,
-            "cvv": creditCard.cvv,
-            "date": creditCard.date,
-            "cardName": creditCard.cardName,
-            "cardHolderName": creditCard.cardHolderName
-        ]
-        return Future { [weak self] promise in
+        Future { [weak self] promise in
             guard let self else { return }
             Task(priority: .userInitiated) {
                 do {
-                    let encodedCard = try self.secureStorePOC.createEncodedCreditCard(for: cardData)
-                    let result = try await self.secureStorePOC.addCreditCardToKeychain(encodedCard)
+                    let secureStoreCD: SecureStoreCreditCard = .init(creditCard: creditCard)
+                    let result = try await self.secureStorePOC.addCreditCardToKeychain(secureStoreCD)
                     promise(.success(result))
                 } catch {
                     promise(.failure(error))
                 }
             }
         }
-        
     }
 
     func getCreditCardsFromSecureStore() -> Future<[CreditCard], Error> {
@@ -52,18 +43,10 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
-                    let cardData = try await self.secureStorePOC.getAllCreditCardsFromKeychain()
-                    let jsonDecoder = JSONDecoder()
-                    let cards = cardData.compactMap {
-                        do {
-                            let card = try jsonDecoder.decode(CreditCard.self, from: $0)
-                            return card
-                        } catch {
-                            promise(.failure(error))
-                            return nil
-                        }
+                    let creditCards: [CreditCard] = try await self.secureStorePOC.getAllCreditCardsFromKeychain().map {
+                        .init(creditCard: $0)
                     }
-                    promise(.success(cards))
+                    promise(.success(creditCards))
                 } catch {
                     promise(.failure(error))
                 }

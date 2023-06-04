@@ -9,48 +9,32 @@ import Foundation
 @testable import CardFortress
 
 class SecureStorePOCMock: SecureStoreProtocolPOC {
-    
     var addCreditCardToKeychainCalledCount = 0
     var getCreditCardsCalledCount = 0
     var getCreditCardCalledCount = 0
     var deleteCreditCardsCalledCount = 0
     
-    private var cardData : [String : Any] = [
-        "identifier": UUID().uuidString,
-        "number": Int.random(in: 1...40),
-        "cvv": Int.random(in: 1...40),
-        "date": "124",
-        "cardName": "Card \(Int.random(in: 1...40))",
-        "cardHolderName": "Juan Perez \(Int.random(in: 1...40))"
-    ]
-
-    func removeAllCreditCards() async throws -> CardFortress.SecureStoreResult {
+    var creditCards: [SecureStoreCreditCard] = [.make()]
+    
+    func removeAllCreditCards() async throws -> SecureStoreResult {
         deleteCreditCardsCalledCount += 1
+        creditCards.removeAll()
         return .success
     }
     
-    func addCreditCardToKeychain(_ encodedCard: CardFortress.EncodedCard) async throws -> CardFortress.SecureStoreResult {
+    func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
         addCreditCardToKeychainCalledCount += 1
+        creditCards.append(creditCard)
         return .success
     }
     
-    func getCreditCardFromKeychain(identifier: UUID) async throws -> Data? {
-        
-        var cardData : [String : Any] = [
-            "identifier": identifier.uuidString,
-            "number": Int.random(in: 1...40),
-            "cvv": Int.random(in: 1...40),
-            "date": "124",
-            "cardName": "Card \(Int.random(in: 1...40))",
-            "cardHolderName": "Juan Perez \(Int.random(in: 1...40))"
-        ]
+    func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard? {
         getCreditCardCalledCount += 1
-        return try createEncodedCreditCard(for: cardData).data
+        return creditCards.first { $0.identifier == identifier }
     }
     
-    func getAllCreditCardsFromKeychain() async throws -> [Data] {
+    func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
         getCreditCardsCalledCount += 1
-        let data = try createEncodedCreditCard(for: cardData).data
-        return [data]
+        return creditCards
     }
 }

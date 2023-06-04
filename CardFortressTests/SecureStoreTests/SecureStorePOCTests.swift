@@ -25,12 +25,12 @@ final class SecureStorePOCTests: XCTestCase {
 
     func test_SecureStore_AddCreditCard() async throws {
         //given
-        let endcodedCreditCard = try makeEncodedCardHelper()
+        let creditCard: SecureStoreCreditCard = .make()
 
         //when
         let expectation = expectation(description: "add credit card")
         Task {
-            let result = try await secureStorePOC.addCreditCardToKeychain(endcodedCreditCard)
+            let result = try await secureStorePOC.addCreditCardToKeychain(creditCard)
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
@@ -44,9 +44,8 @@ final class SecureStorePOCTests: XCTestCase {
 
         let getCardExpectation = expectation(description: "get credit card")
         Task {
-            let data = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
-            let decodedCreditCard = try JSONDecoder().decode(SecureStoreCreditCard.self, from: data!)
-            XCTAssertEqual(creditCard, decodedCreditCard)
+            let creditCard2 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            XCTAssertEqual(creditCard, creditCard2)
             getCardExpectation.fulfill()
         }
         await waitForExpectations(timeout: .defaultWait)
@@ -67,9 +66,8 @@ final class SecureStorePOCTests: XCTestCase {
         //when
         let getCardEditedCardExpectation = expectation(description: "get edited card")
         Task {
-            let data = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
-            let decodedCreditCard = try JSONDecoder().decode(SecureStoreCreditCard.self, from: data!)
-            XCTAssertEqual(editedCreditCard, decodedCreditCard)
+            let creditCard3 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            XCTAssertEqual(editedCreditCard, creditCard3)
             getCardEditedCardExpectation.fulfill()
         }
         await waitForExpectations(timeout: .defaultWait)
@@ -83,9 +81,8 @@ final class SecureStorePOCTests: XCTestCase {
         try await addCardHelper(creditCard: creditCard)
         let expectation = expectation(description: "get credit card")
         Task {
-            let data = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
-            let decodedCreditCard = try JSONDecoder().decode(SecureStoreCreditCard.self, from: data!)
-            XCTAssertEqual(creditCard, decodedCreditCard)
+            let creditCard2 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            XCTAssertEqual(creditCard, creditCard2)
             expectation.fulfill()
         }
         await waitForExpectations(timeout: .defaultWait)
@@ -99,8 +96,8 @@ final class SecureStorePOCTests: XCTestCase {
         //then
         let expectation = expectation(description: "get credit card")
         Task {
-            let result = try await secureStorePOC.getAllCreditCardsFromKeychain()
-            XCTAssertEqual(result.count, 2)
+            let creditCards = try await secureStorePOC.getAllCreditCardsFromKeychain()
+            XCTAssertEqual(creditCards.count, 2)
             expectation.fulfill()
         }
         await waitForExpectations(timeout: .defaultWait)
@@ -108,20 +105,9 @@ final class SecureStorePOCTests: XCTestCase {
 
 
     func addCardHelper(creditCard: SecureStoreCreditCard) async throws {
-        
-        let cardData : [String : Any] = [
-            "identifier": creditCard.identifier.uuidString,
-            "number": creditCard.number,
-            "cvv": creditCard.cvv,
-            "date": creditCard.date,
-            "cardName": creditCard.cardName,
-            "cardHolderName": creditCard.cardHolderName
-        ]
-        
-        let encodedCard = try secureStorePOC.createEncodedCreditCard(for: cardData)
         let expectation = expectation(description: "add credit card")
         Task {
-            let result = try await secureStorePOC.addCreditCardToKeychain(encodedCard)
+            let result = try await secureStorePOC.addCreditCardToKeychain(creditCard)
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
@@ -136,60 +122,4 @@ final class SecureStorePOCTests: XCTestCase {
         }
         await waitForExpectations(timeout: .defaultWait)
     }
-    
-    func test_EncodeCreditCard() throws {
-        //given
-        let identifier = UUID().uuidString
-        let cardData : [String : Any] = [
-            "identifier": identifier,
-            "number": 1234,
-            "cvv": 123,
-            "date": "12/24",
-            "cardName": "Card",
-            "cardHolderName": "Juan Perez"
-        ]
-        
-        //when
-        
-        let encodedCard = try secureStorePOC.createEncodedCreditCard(for: cardData)
-        let card = try JSONDecoder().decode(SecureStoreCreditCard.self, from: encodedCard.data)
-        
-        //then
-        XCTAssertEqual(encodedCard.identifier, UUID(uuidString: identifier))
-        XCTAssertEqual(card.identifier.uuidString, identifier)
-        XCTAssertEqual(card.number, 1234)
-        XCTAssertEqual(card.date, "12/24")
-        XCTAssertEqual(card.cardName, "Card")
-        XCTAssertEqual(card.cardHolderName, "Juan Perez")
-    }
-    
-    func test_EncodeCreditCard_MissingKeys() throws {
-        //given
-        let identifier = UUID().uuidString
-        let cardData : [String : Any] = [
-            "identifier": identifier,
-            "number": 1234,
-            "date": "12/24",
-            "cardName": "Card",
-        ]
-        
-        //when
-
-        XCTAssertThrowsError(try secureStorePOC.createEncodedCreditCard(for: cardData)) { error in
-            XCTAssertEqual(error.localizedDescription, "Missing keys: cvv, cardHolderName")
-        }
-    }
-    
-    func makeEncodedCardHelper() throws -> EncodedCard {
-        let cardData : [String : Any] = [
-            "identifier": UUID().uuidString,
-            "number": Int.random(in: 1...40),
-            "cvv": Int.random(in: 1...40),
-            "date": "124",
-            "cardName": "Card \(Int.random(in: 1...40))",
-            "cardHolderName": "Juan Perez \(Int.random(in: 1...40))"
-        ]
-        return try secureStorePOC.createEncodedCreditCard(for: cardData)
-    }
-
 }

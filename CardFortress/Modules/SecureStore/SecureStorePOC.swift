@@ -16,17 +16,14 @@ protocol SecureStoreProtocolPOC {
     /// Adds a credit card to the secure store
     /// - Parameter card: the card to be added
     /// - Returns: returns an secure store result
-    func addCreditCardToKeychain(_ encodedCard: EncodedCard) async throws -> SecureStoreResult
+    func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult
     /// Returns a credit card
     /// - Parameter identifier: The identifier of the credit card (UUID)
     /// - Returns: optional credit card
-    func getCreditCardFromKeychain(identifier: UUID) async throws -> Data?
+    func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard?
     /// Returns all credit cards from secure store
     /// - Returns: Array of credit cards
-    func getAllCreditCardsFromKeychain() async throws -> [Data]
-    /// Creates an EncodedCard object that can be used for storing a credit card on keychain
-    /// - Returns: An encoded credit card
-    nonisolated func createEncodedCreditCard(for creditCardpayload: [String : Any]) throws -> EncodedCard
+    func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard]
 }
 
 extension SecureStoreProtocolPOC {
@@ -60,21 +57,23 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
         }
     }
     /// priority user initiated
-    func addCreditCardToKeychain(_ encodedCard: EncodedCard) async throws -> SecureStoreResult {
+    func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
+        
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecReturnData)] = false
-        keychainQuery[String(kSecAttrAccount)] = encodedCard.identifier.uuidString
+        keychainQuery[String(kSecAttrAccount)] = creditCard.identifier.uuidString
         
         return try await withCheckedThrowingContinuation { continuation in
             var status = SecItemCopyMatching(keychainQuery as CFDictionary, nil)
+            let creditCardData = try? getEncodeCreditCard(secureStoreCreditCard: creditCard)
             switch status {
             case errSecSuccess:
                 var attributesToUpdate: [String: Any] = [:]
-                attributesToUpdate[String(kSecValueData)] = encodedCard.data
+                attributesToUpdate[String(kSecValueData)] = creditCardData
                 status = SecItemUpdate(keychainQuery as CFDictionary,
                                        attributesToUpdate as CFDictionary)
             case errSecItemNotFound:
-                keychainQuery[String(kSecValueData)] = encodedCard.data
+                keychainQuery[String(kSecValueData)] = creditCardData
                 status = SecItemAdd(keychainQuery as CFDictionary, nil)
             default:
                 continuation.resume(throwing: error(from: status))
@@ -88,23 +87,29 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
         }
     }
     
-    func getCreditCardFromKeychain(identifier: UUID) async throws -> Data? {
+    func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard? {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecAttrAccount)] = identifier.uuidString
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitOne
         return try await withCheckedThrowingContinuation { continuation in
             var item: CFTypeRef?
             let status = SecItemCopyMatching(keychainQuery as CFDictionary, &item)
-
+            
             if status == errSecSuccess, let data = item as? Data {
-                continuation.resume(returning: data)
+                do {
+                    let creditCard = try JSONDecoder().decode(SecureStoreCreditCard.self, from: data)
+                    continuation.resume(returning: creditCard)
+                } catch {
+                    continuation.resume(throwing: SecureStoreError.unhandledError(message: "Error while decoding credit cards"))
+                }
+                
             } else {
                 continuation.resume(throwing: error(from: status))
             }
         }
     }
     
-    func getAllCreditCardsFromKeychain() async throws -> [Data] {
+    func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitAll
         return try await withCheckedThrowingContinuation { continuation in
@@ -113,7 +118,15 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
             switch status {
             case errSecSuccess:
                 if let items = items as? [Data] {
-                    continuation.resume(returning: items)
+                    let secureStoreCD = items.compactMap {
+                        do {
+                            return try JSONDecoder().decode(SecureStoreCreditCard.self, from: $0)
+                        } catch {
+                            continuation.resume(throwing: SecureStoreError.unhandledError(message: "Error while decoding credit cards"))
+                            return nil
+                        }
+                    }
+                    continuation.resume(returning: secureStoreCD)
                 }
             case errSecItemNotFound:
                 continuation.resume(returning: [])
@@ -122,23 +135,18 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
             }
         }
     }
-}
-
-extension SecureStoreProtocolPOC {
-    nonisolated func createEncodedCreditCard(for creditCardpayload: [String : Any]) throws -> EncodedCard {
-        let requiredKeys = CreditCardProperties.allCasesToString
-        let missingKeys = requiredKeys.filter { !creditCardpayload.keys.contains($0) }
-        if !missingKeys.isEmpty {
-            let missingKeysString = missingKeys.joined(separator: ", ")
-            throw NSError(domain: "Missing keys", code: 0, userInfo: [NSLocalizedDescriptionKey: "Missing keys: \(missingKeysString)"])
-        }
-        guard let identifier = creditCardpayload["identifier"] as? String,
-              let uuidItentifier = UUID(uuidString: identifier) else {
-            throw NSError(domain: "Missing identifier", code: 0, userInfo: nil)
-        }
-        
-        let data = try JSONSerialization.data(withJSONObject: creditCardpayload, options: .prettyPrinted)
-        
-        return EncodedCard(identifier: uuidItentifier, data: data)
+    
+    //MARK: Helpers
+    
+    func getEncodeCreditCard(secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
+        let payload: [String: Any] = [
+            CreditCardProperty.identifier.rawValue : secureStoreCreditCard.identifier.uuidString,
+            CreditCardProperty.number.rawValue : secureStoreCreditCard.number,
+            CreditCardProperty.cvv.rawValue : secureStoreCreditCard.cvv,
+            CreditCardProperty.date.rawValue : secureStoreCreditCard.date,
+            CreditCardProperty.cardName.rawValue : secureStoreCreditCard.cardName,
+            CreditCardProperty.cardHolderName.rawValue : secureStoreCreditCard.cardHolderName
+        ]
+        return try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
     }
 }
