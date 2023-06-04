@@ -18,23 +18,29 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     private let window: UIWindow
     private let container: Container
     private let navigationController: UINavigationController
-    private let rootFactory: CardFordtressRootFactoryProtocol
+    private let viewControllerFactory: RootVCFactoryProtocol
+    private let coordinatorFactory: CoordinatorFactory
     
     // MARK: initialization
     
     convenience init(window: UIWindow,
                      container: Container) {
-        self.init(window: window,
-                  container: container,
-                  rootfactory: CardFordtressRootFactory(container: container))
+        self.init(
+            window: window,
+            container: container,
+            coordinatorFactory: CoordinatorFactory(container: container),
+            viewControllerFactory: RootVCFactory()
+        )
     }
     
     init(window: UIWindow,
          container: Container,
-         rootfactory: CardFordtressRootFactoryProtocol) {
+         coordinatorFactory: CoordinatorFactory,
+         viewControllerFactory: RootVCFactoryProtocol) {
         self.container = container
-        self.rootFactory = rootfactory
-        navigationController = rootfactory.makeNavigationController()
+        self.viewControllerFactory = viewControllerFactory
+        self.navigationController = viewControllerFactory.makeNavigationController()
+        self.coordinatorFactory = coordinatorFactory
         self.window = window
         window.rootViewController = navigationController
     }
@@ -42,12 +48,7 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     // MARK: actions
     
     override func start() {
-        let mainListFactory = rootFactory.makeMainListFactory()
-        let mainCoordinator = MainCoordinator(
-            container: container,
-            viewControllerFactory: mainListFactory,
-            navigationController: navigationController)
-        addChild(coordinator: mainCoordinator)
+        let mainCoordinator = coordinatorFactory.makeMainListCoordinator(navigationController: navigationController)
         mainCoordinator.start()
     }
 }

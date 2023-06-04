@@ -18,6 +18,7 @@
 		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
+		26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
 		26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */; };
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
@@ -36,7 +37,7 @@
 		26C84E862A1DB97000F65D32 /* SecureStorePOCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */; };
 		26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */; };
 		26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainListFactory.swift */; };
-		26CEBA652A15D71D00AF62DE /* CardFordtressRootFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */; };
+		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
 		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
@@ -81,6 +82,7 @@
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
 		26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStoreCreditCard+Extensions.swift"; sourceTree = "<group>"; };
+		26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinator.swift; sourceTree = "<group>"; };
 		26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorePOCMock.swift; sourceTree = "<group>"; };
 		26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStore+Helpers.swift"; sourceTree = "<group>"; };
 		26CE97C52A11F70F00AF62DE /* MainListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListFactory.swift; sourceTree = "<group>"; };
-		26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFordtressRootFactory.swift; sourceTree = "<group>"; };
+		26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
 		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -174,6 +176,15 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		26A39C2F2A2D2C80001C3FAF /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */,
+				26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
 		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +206,7 @@
 		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				26A39C2F2A2D2C80001C3FAF /* Factory */,
 				26F5B4D92A000C03002D224D /* Extensions */,
 				26F0945629F7979C009B0494 /* Coordinator */,
 				26B38C1A29ECF66000D0CCD8 /* LocalizableString */,
@@ -227,7 +239,6 @@
 				26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */,
 				26B7701629EC450200CC9FEB /* SceneDelegate.swift */,
 				26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */,
-				26CEBA642A15D71D00AF62DE /* CardFordtressRootFactory.swift */,
 			);
 			path = CardFortressApp;
 			sourceTree = "<group>";
@@ -527,11 +538,12 @@
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
-				26CEBA652A15D71D00AF62DE /* CardFordtressRootFactory.swift in Sources */,
+				26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */,
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 				265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */,
+				26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
