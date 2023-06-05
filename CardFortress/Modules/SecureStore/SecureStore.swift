@@ -1,5 +1,5 @@
 //
-//  SecureStorePOC.swift
+//  SecureStore.swift
 //  CardFortress
 //
 //  Created by Roberto Corrales on 5/20/23.
@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol SecureStoreProtocolPOC {
+protocol SecureStoreProtocol {
     /// Removes all credit cards from secure store
     /// - Returns:returns an secure store result
     @discardableResult
@@ -26,14 +26,14 @@ protocol SecureStoreProtocolPOC {
     func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard]
 }
 
-extension SecureStoreProtocolPOC {
+extension SecureStoreProtocol {
     func error(from status: OSStatus) -> SecureStoreError {
         let message = SecCopyErrorMessageString(status, nil) as String? ?? NSLocalizedString("Unhandled Error", comment: "")
         return SecureStoreError.unhandledError(message: message)
     }
 }
 
-actor SecureStorePOC: SecureStoreProtocolPOC {
+actor SecureStore: SecureStoreProtocol {
     private var sSQueryable: SecureStoreQueryable
     
     init(sSQueryable: SecureStoreQueryable) {
@@ -56,7 +56,7 @@ actor SecureStorePOC: SecureStoreProtocolPOC {
             }
         }
     }
-    /// priority user initiated
+
     func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
         
         var keychainQuery = sSQueryable.query

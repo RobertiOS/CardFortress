@@ -1,5 +1,5 @@
 //
-//  SecureStorePOCTests.swift
+//  SecureStoreTests.swift
 //  CardFortressTests
 //
 //  Created by Roberto Corrales on 5/20/23.
@@ -9,18 +9,18 @@ import XCTest
 @testable import CardFortress
 
 
-final class SecureStorePOCTests: XCTestCase {
+final class SecureStoreTests: XCTestCase {
 
-    var secureStorePOC: SecureStoreProtocolPOC!
+    var secureStore: SecureStoreProtocol!
 
     override func setUp() {
         super.setUp()
-        secureStorePOC = SecureStorePOC(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
+        secureStore = SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
     }
     
     override func tearDown() async throws {
         try await removeAllCardsHelper()
-        secureStorePOC = nil
+        secureStore = nil
     }
 
     func test_SecureStore_AddCreditCard() async throws {
@@ -30,7 +30,7 @@ final class SecureStorePOCTests: XCTestCase {
         //when
         let expectation = expectation(description: "add credit card")
         Task {
-            let result = try await secureStorePOC.addCreditCardToKeychain(creditCard)
+            let result = try await secureStore.addCreditCardToKeychain(creditCard)
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
@@ -44,7 +44,7 @@ final class SecureStorePOCTests: XCTestCase {
 
         let getCardExpectation = expectation(description: "get credit card")
         Task {
-            let creditCard2 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            let creditCard2 = try await secureStore.getCreditCardFromKeychain(identifier: creditCard.identifier)
             XCTAssertEqual(creditCard, creditCard2)
             getCardExpectation.fulfill()
         }
@@ -66,7 +66,7 @@ final class SecureStorePOCTests: XCTestCase {
         //when
         let getCardEditedCardExpectation = expectation(description: "get edited card")
         Task {
-            let creditCard3 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            let creditCard3 = try await secureStore.getCreditCardFromKeychain(identifier: creditCard.identifier)
             XCTAssertEqual(editedCreditCard, creditCard3)
             getCardEditedCardExpectation.fulfill()
         }
@@ -81,7 +81,7 @@ final class SecureStorePOCTests: XCTestCase {
         try await addCardHelper(creditCard: creditCard)
         let expectation = expectation(description: "get credit card")
         Task {
-            let creditCard2 = try await secureStorePOC.getCreditCardFromKeychain(identifier: creditCard.identifier)
+            let creditCard2 = try await secureStore.getCreditCardFromKeychain(identifier: creditCard.identifier)
             XCTAssertEqual(creditCard, creditCard2)
             expectation.fulfill()
         }
@@ -96,7 +96,7 @@ final class SecureStorePOCTests: XCTestCase {
         //then
         let expectation = expectation(description: "get credit card")
         Task {
-            let creditCards = try await secureStorePOC.getAllCreditCardsFromKeychain()
+            let creditCards = try await secureStore.getAllCreditCardsFromKeychain()
             XCTAssertEqual(creditCards.count, 2)
             expectation.fulfill()
         }
@@ -107,7 +107,7 @@ final class SecureStorePOCTests: XCTestCase {
     func addCardHelper(creditCard: SecureStoreCreditCard) async throws {
         let expectation = expectation(description: "add credit card")
         Task {
-            let result = try await secureStorePOC.addCreditCardToKeychain(creditCard)
+            let result = try await secureStore.addCreditCardToKeychain(creditCard)
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
@@ -117,7 +117,7 @@ final class SecureStorePOCTests: XCTestCase {
     func removeAllCardsHelper() async throws {
         let expectation = expectation(description: "delete credit cards")
         Task {
-            try await secureStorePOC.removeAllCreditCards()
+            try await secureStore.removeAllCreditCards()
             expectation.fulfill()
         }
         await waitForExpectations(timeout: .defaultWait)

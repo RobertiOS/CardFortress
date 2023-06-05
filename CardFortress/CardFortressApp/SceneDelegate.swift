@@ -22,7 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: windowScene)
         setUpDependencies()
-        appCoordinator = .init(window: window!,
+        appCoordinator = .init(window: window,
                                container: container)
         appCoordinator?.start()
         window?.makeKeyAndVisible()

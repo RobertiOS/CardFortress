@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
 		2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2631E24E2A04BEF200197FEA /* CREDC___.otf */; };
-		26366FC22A18A38100C9B8DA /* SecureStorePOC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC12A18A38100C9B8DA /* SecureStorePOC.swift */; };
-		26366FC42A19302A00C9B8DA /* SecureStorePOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC32A19302A00C9B8DA /* SecureStorePOCTests.swift */; };
+		26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC12A18A38100C9B8DA /* SecureStore.swift */; };
+		26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */; };
 		2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 2655DFBC2A059158003EFDA2 /* CreditCardValidator */; };
 		265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
@@ -34,7 +34,7 @@
 		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
-		26C84E862A1DB97000F65D32 /* SecureStorePOCMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */; };
+		26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */; };
 		26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainListFactory.swift */; };
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
@@ -74,8 +74,8 @@
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
 		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
-		26366FC12A18A38100C9B8DA /* SecureStorePOC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorePOC.swift; sourceTree = "<group>"; };
-		26366FC32A19302A00C9B8DA /* SecureStorePOCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorePOCTests.swift; sourceTree = "<group>"; };
+		26366FC12A18A38100C9B8DA /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
+		26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
 		265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreCreditCard.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
@@ -103,7 +103,7 @@
 		26C4628629F379CF000B06A7 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCellTest.swift; sourceTree = "<group>"; };
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
-		26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorePOCMock.swift; sourceTree = "<group>"; };
+		26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreMock.swift; sourceTree = "<group>"; };
 		26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStore+Helpers.swift"; sourceTree = "<group>"; };
 		26CE97C52A11F70F00AF62DE /* MainListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListFactory.swift; sourceTree = "<group>"; };
 		26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
@@ -171,7 +171,7 @@
 			children = (
 				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
-				26C84E852A1DB97000F65D32 /* SecureStorePOCMock.swift */,
+				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -315,7 +315,7 @@
 		26CEBA632A15D3DD00AF62DE /* SecureStoreTests */ = {
 			isa = PBXGroup;
 			children = (
-				26366FC32A19302A00C9B8DA /* SecureStorePOCTests.swift */,
+				26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */,
 			);
 			path = SecureStoreTests;
 			sourceTree = "<group>";
@@ -362,7 +362,7 @@
 				265FC8582A0C532B00939A12 /* Model */,
 				26F5B4E22A00387E002D224D /* SecureStoreError.swift */,
 				26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */,
-				26366FC12A18A38100C9B8DA /* SecureStorePOC.swift */,
+				26366FC12A18A38100C9B8DA /* SecureStore.swift */,
 				26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */,
 			);
 			path = SecureStore;
@@ -520,7 +520,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */,
-				26366FC22A18A38100C9B8DA /* SecureStorePOC.swift in Sources */,
+				26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
 				26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */,
@@ -555,14 +555,14 @@
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
 				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
-				26366FC42A19302A00C9B8DA /* SecureStorePOCTests.swift in Sources */,
+				26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
 				265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */,
 				2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */,
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
 				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,
 				26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */,
-				26C84E862A1DB97000F65D32 /* SecureStorePOCMock.swift in Sources */,
+				26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

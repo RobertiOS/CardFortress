@@ -17,10 +17,10 @@ protocol CardListServiceProtocol {
 
 final class CardListService: CardListServiceProtocol {
 
-    private let secureStorePOC: SecureStoreProtocolPOC
+    private let secureStore: SecureStoreProtocol
 
-    init(secureStorePOC: SecureStoreProtocolPOC) {
-        self.secureStorePOC = secureStorePOC
+    init(secureStore: SecureStoreProtocol) {
+        self.secureStore = secureStore
     }
     
     func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<SecureStoreResult, Error> {
@@ -29,7 +29,7 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) {
                 do {
                     let secureStoreCD: SecureStoreCreditCard = .init(creditCard: creditCard)
-                    let result = try await self.secureStorePOC.addCreditCardToKeychain(secureStoreCD)
+                    let result = try await self.secureStore.addCreditCardToKeychain(secureStoreCD)
                     promise(.success(result))
                 } catch {
                     promise(.failure(error))
@@ -43,7 +43,7 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
-                    let creditCards: [CreditCard] = try await self.secureStorePOC.getAllCreditCardsFromKeychain().map {
+                    let creditCards: [CreditCard] = try await self.secureStore.getAllCreditCardsFromKeychain().map {
                         .init(creditCard: $0)
                     }
                     promise(.success(creditCards))
@@ -59,7 +59,7 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
-                    let result = try await self.secureStorePOC.removeAllCreditCards()
+                    let result = try await self.secureStore.removeAllCreditCards()
                     promise(.success(result))
                 } catch {
                     promise(.failure(error))

@@ -15,7 +15,7 @@ enum CardFortressResultCoordinator {
 final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinator> {
 
     // MARK: properties
-    private let window: UIWindow
+    private let window: UIWindow?
     private let container: Container
     private let navigationController: UINavigationController
     private let viewControllerFactory: RootVCFactoryProtocol
@@ -23,7 +23,7 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     
     // MARK: initialization
     
-    convenience init(window: UIWindow,
+    convenience init(window: UIWindow?,
                      container: Container) {
         self.init(
             window: window,
@@ -33,7 +33,7 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
         )
     }
     
-    init(window: UIWindow,
+    init(window: UIWindow?,
          container: Container,
          coordinatorFactory: CoordinatorFactory,
          viewControllerFactory: RootVCFactoryProtocol) {
@@ -42,7 +42,7 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
         self.navigationController = viewControllerFactory.makeNavigationController()
         self.coordinatorFactory = coordinatorFactory
         self.window = window
-        window.rootViewController = navigationController
+        window?.rootViewController = navigationController
     }
     
     // MARK: actions

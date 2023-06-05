@@ -1,5 +1,5 @@
 //
-//  SecureStorePOCMock.swift
+//  SecureStoreMock.swift
 //  CardFortressTests
 //
 //  Created by Roberto Corrales on 5/23/23.
@@ -8,7 +8,7 @@
 import Foundation
 @testable import CardFortress
 
-class SecureStorePOCMock: SecureStoreProtocolPOC {
+class SecureStoreMock: SecureStoreProtocol {
     var addCreditCardToKeychainCalledCount = 0
     var getCreditCardsCalledCount = 0
     var getCreditCardCalledCount = 0

@@ -12,12 +12,12 @@ import Combine
 
 class CardListServiceTests: XCTestCase {
     var cardListService: CardListServiceProtocol!
-    var secureStorePOCMock: SecureStorePOCMock!
+    var secureStoreMock: SecureStoreMock!
     var subscritions: Set<AnyCancellable>!
     override func setUp() {
         super.setUp()
-        secureStorePOCMock = SecureStorePOCMock()
-        cardListService = CardListService(secureStorePOC: secureStorePOCMock)
+        secureStoreMock = SecureStoreMock()
+        cardListService = CardListService(secureStore: secureStoreMock)
         subscritions = .init()
     }
     
@@ -25,7 +25,7 @@ class CardListServiceTests: XCTestCase {
         super.tearDown()
         cardListService = nil
         subscritions = nil
-        secureStorePOCMock = nil
+        secureStoreMock = nil
     }
     
     func testGetCreditCards() {
@@ -46,7 +46,7 @@ class CardListServiceTests: XCTestCase {
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
-        XCTAssertEqual(secureStorePOCMock.getCreditCardsCalledCount, 1)
+        XCTAssertEqual(secureStoreMock.getCreditCardsCalledCount, 1)
     }
     
     func testDeleteCreditCards() {
@@ -64,7 +64,7 @@ class CardListServiceTests: XCTestCase {
                 }
             }.store(in: &subscritions)
         waitForExpectations(timeout: .defaultWait)
-        XCTAssertEqual(secureStorePOCMock.deleteCreditCardsCalledCount, 1)
+        XCTAssertEqual(secureStoreMock.deleteCreditCardsCalledCount, 1)
     }
     
     func testAddCreditCards() {
@@ -85,7 +85,7 @@ class CardListServiceTests: XCTestCase {
                 }
             }.store(in: &subscritions)
         waitForExpectations(timeout: .defaultWait)
-        XCTAssertEqual(secureStorePOCMock.addCreditCardToKeychainCalledCount, 1)
+        XCTAssertEqual(secureStoreMock.addCreditCardToKeychainCalledCount, 1)
     }
 }
 

@@ -12,9 +12,9 @@ extension SceneDelegate {
     func setUpDependencies() {
         
         //MARK: service
-        let secureStorePOC = SecureStorePOC(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
+        let secureStore = SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
         container.register(CardListServiceProtocol.self) { r in
-            CardListService(secureStorePOC: secureStorePOC)
+            CardListService(secureStore: secureStore)
         }
     }
 }
