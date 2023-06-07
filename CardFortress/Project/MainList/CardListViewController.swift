@@ -8,7 +8,11 @@
 import UIKit
 import Combine
 
-final class CardListViewController: UIViewController {
+protocol CardListViewControllerProtocol: UIViewController {
+    var delegate: MainCoordinatorDelegate? { get set }
+}
+
+final class CardListViewController: UIViewController, CardListViewControllerProtocol {
     
     private var viewModel: ListViewModelProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -54,7 +58,7 @@ final class CardListViewController: UIViewController {
     
     private func setupViews() {
         navigationItem.title = LocalizableString.mainViewTitle.value
-        view.backgroundColor = .white
+        view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItems = [addCardBarButton, deleteAllCardsBarButton ]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical

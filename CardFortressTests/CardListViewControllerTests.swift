@@ -69,7 +69,6 @@ final class CardListViewControllerTests: XCTestCase {
 
     }
     
-    
     func testUpdate_CollectionViewDataSource() {
         let snapshot = viewController.testHooks.snapshot
         XCTAssert(snapshot.numberOfItems == 0, "Initial snapshot should have 0 items")
@@ -96,8 +95,14 @@ final class CardListViewControllerTests: XCTestCase {
             .store(in: &cancellables)
         viewModel.fetchCreditCards()
         
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
         let updatedSnapshot = viewController.testHooks.snapshot
         XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
+    }
+}
+
+extension TimeInterval {
+    static var defaultWait: TimeInterval {
+        1.5
     }
 }

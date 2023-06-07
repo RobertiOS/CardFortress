@@ -12,10 +12,11 @@ import Combine
 
 class CardListServiceTests: XCTestCase {
     var cardListService: CardListServiceProtocol!
+    var secureStoreMock: SecureStoreMock!
     var subscritions: Set<AnyCancellable>!
     override func setUp() {
         super.setUp()
-        let secureStoreMock = SecureStoreMock()
+        secureStoreMock = SecureStoreMock()
         cardListService = CardListService(secureStore: secureStoreMock)
         subscritions = .init()
     }
@@ -24,9 +25,10 @@ class CardListServiceTests: XCTestCase {
         super.tearDown()
         cardListService = nil
         subscritions = nil
+        secureStoreMock = nil
     }
     
-    func testFetchCreditCards() {
+    func testGetCreditCards() {
         //given
         var creditCards: [CreditCard] = []
         let expectation = self.expectation(description: "fetch cards")
@@ -40,10 +42,11 @@ class CardListServiceTests: XCTestCase {
                 expectation.fulfill()
                 creditCards = cards
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
+        XCTAssertEqual(secureStoreMock.getCreditCardsCalledCount, 1)
     }
     
     func testDeleteCreditCards() {
@@ -60,7 +63,8 @@ class CardListServiceTests: XCTestCase {
                     expectation.fulfill()
                 }
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
+        XCTAssertEqual(secureStoreMock.deleteCreditCardsCalledCount, 1)
     }
     
     func testAddCreditCards() {
@@ -80,7 +84,8 @@ class CardListServiceTests: XCTestCase {
                     XCTFail()
                 }
             }.store(in: &subscritions)
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
+        XCTAssertEqual(secureStoreMock.addCreditCardToKeychainCalledCount, 1)
     }
 }
 

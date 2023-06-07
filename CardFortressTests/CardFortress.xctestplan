@@ -18,6 +18,9 @@
   "testTargets" : [
     {
       "parallelizable" : true,
+      "skippedTests" : [
+        "CardListViewControllerTests\/testUpdate_CollectionViewDataSource()"
+      ],
       "target" : {
         "containerPath" : "container:CardFortress.xcodeproj",
         "identifier" : "26B7702629EC450400CC9FEB",

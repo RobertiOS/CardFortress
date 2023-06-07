@@ -9,12 +9,12 @@ import Foundation
 
 struct CreditCard: Decodable {
     /// unique identifier for the cards
-    var identifier: UUID
-    var number: Int
-    var cvv: Int
-    var date: String
-    var cardName: String
-    var cardHolderName: String
+    let identifier: UUID
+    let number: Int
+    let cvv: Int
+    let date: String
+    let cardName: String
+    let cardHolderName: String
 }
 
 
@@ -31,3 +31,9 @@ extension CreditCard {
 }
 
 extension CreditCard: Hashable {}
+
+extension CreditCard {
+    static func make() -> Self {
+        CreditCard(number: 111, cvv: 111, date: "12221", cardName: "Visa", cardHolderName: "Juan Perez")
+    }
+}

@@ -18,16 +18,20 @@ enum MainCoordinatorResult {
 final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoordinator {
     //MARK: properties
     var navigationController: UINavigationController
-    let container: Container
+    private let viewControllerFactory: MainListFactoryProtocol
+    private let container: Container
     
     //MARK: initialization
-    init(navigationController: UINavigationController, container: Container) {
-        self.navigationController = navigationController
+    init(container: Container,
+         viewControllerFactory: MainListFactoryProtocol,
+         navigationController: UINavigationController) {
         self.container = container
+        self.viewControllerFactory = viewControllerFactory
+        self.navigationController = navigationController
     }
 
     override func start() {
-        guard let viewController = container.resolve(CardListViewController.self) else { return }
+        let viewController = viewControllerFactory.makeMainListViewController()
         viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }

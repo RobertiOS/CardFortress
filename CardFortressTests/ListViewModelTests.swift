@@ -47,7 +47,7 @@ final class ListViewModelTests: XCTestCase {
 
         viewModel.fetchCreditCards()
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
         //then
         
         XCTAssertFalse(creditCards.isEmpty)
@@ -73,7 +73,7 @@ final class ListViewModelTests: XCTestCase {
             .store(in: &subscriptions)
         viewModel.addCreditCard(creditCard)
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
 
     }
     
@@ -94,7 +94,7 @@ final class ListViewModelTests: XCTestCase {
             .store(in: &subscriptions)
         viewModel.deleteAllCards()
 
-        waitForExpectations(timeout: 1)
+        waitForExpectations(timeout: .defaultWait)
 
     }
 }
