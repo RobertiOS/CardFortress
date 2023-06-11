@@ -13,15 +13,15 @@ protocol MainListCoordinatorFactory {
 }
 
 final class CoordinatorFactory: MainListCoordinatorFactory {
-    
+
     private let container: Container
-    
+
     init(container: Container) {
         self.container = container
     }
-    
-    //MARK: - MainListCoordinatorFactory
-    
+
+    // MARK: - MainListCoordinatorFactory
+
     func makeMainListCoordinator(navigationController: UINavigationController) -> Coordinator<MainCoordinatorResult> {
         let mainFactory = MainListFactory(container: container)
         let mainCoordinator = MainCoordinator(

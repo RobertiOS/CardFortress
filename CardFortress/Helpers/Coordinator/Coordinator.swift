@@ -9,7 +9,7 @@ import UIKit
 
 class Coordinator<CoordinatorResult> {
 
-    private var childCoordinators: [UUID: Any]  = [:]
+    private var childCoordinators: [UUID: Any] = [:]
     private let identifier = UUID()
 
     open func start() { }

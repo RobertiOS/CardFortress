@@ -16,12 +16,12 @@ enum MainCoordinatorResult {
 }
 
 final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoordinator {
-    //MARK: properties
+    // MARK: properties
     var navigationController: UINavigationController
     private let viewControllerFactory: MainListFactoryProtocol
     private let container: Container
-    
-    //MARK: initialization
+
+    // MARK: initialization
     init(container: Container,
          viewControllerFactory: MainListFactoryProtocol,
          navigationController: UINavigationController) {

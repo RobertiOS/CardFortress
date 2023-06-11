@@ -14,16 +14,16 @@ protocol MainListFactoryProtocol {
 
 final class MainListFactory: MainListFactoryProtocol {
     private let container: Container
-    
+
     init(container: Container) {
         self.container = container
     }
-    
+
     func makeMainListViewController() -> CardListViewControllerProtocol {
         guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
         let listViewModel = ListViewModel(cardListService: service)
         let viewcontroller = CardListViewController(viewModel: listViewModel)
         return viewcontroller
-        
+
     }
 }

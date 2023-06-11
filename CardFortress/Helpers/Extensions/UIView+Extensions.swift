@@ -21,13 +21,12 @@ struct SubviewBuilder {
 
 }
 
-
 extension UIView {
     func addAutoLayoutSubviews(@SubviewBuilder views: () -> [UIView]) {
         views().forEach {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
-        
+
     }
 }

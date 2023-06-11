@@ -35,11 +35,11 @@ extension SecureStoreProtocol {
 
 actor SecureStore: SecureStoreProtocol {
     private var sSQueryable: SecureStoreQueryable
-    
+
     init(sSQueryable: SecureStoreQueryable) {
         self.sSQueryable = sSQueryable
     }
-    
+
     @discardableResult
     func removeAllCreditCards() async throws -> SecureStoreResult {
         try await withCheckedThrowingContinuation { continuation in
@@ -58,11 +58,11 @@ actor SecureStore: SecureStoreProtocol {
     }
 
     func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
-        
+
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecReturnData)] = false
         keychainQuery[String(kSecAttrAccount)] = creditCard.identifier.uuidString
-        
+
         return try await withCheckedThrowingContinuation { continuation in
             var status = SecItemCopyMatching(keychainQuery as CFDictionary, nil)
             let creditCardData = try? getEncodedCreditCard(secureStoreCreditCard: creditCard)
@@ -78,7 +78,7 @@ actor SecureStore: SecureStoreProtocol {
             default:
                 continuation.resume(throwing: error(from: status))
             }
-            //TODO: refactor
+            // TODO: refactor
             if status == errSecSuccess {
                 continuation.resume(returning: .success)
             } else {
@@ -86,7 +86,7 @@ actor SecureStore: SecureStoreProtocol {
             }
         }
     }
-    
+
     func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard? {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecAttrAccount)] = identifier.uuidString
@@ -94,7 +94,7 @@ actor SecureStore: SecureStoreProtocol {
         return try await withCheckedThrowingContinuation { continuation in
             var item: CFTypeRef?
             let status = SecItemCopyMatching(keychainQuery as CFDictionary, &item)
-            
+
             if status == errSecSuccess, let data = item as? Data {
                 do {
                     let creditCard = try JSONDecoder().decode(SecureStoreCreditCard.self, from: data)
@@ -102,13 +102,13 @@ actor SecureStore: SecureStoreProtocol {
                 } catch {
                     continuation.resume(throwing: SecureStoreError.unhandledError(message: "Error while decoding credit cards"))
                 }
-                
+
             } else {
                 continuation.resume(throwing: error(from: status))
             }
         }
     }
-    
+
     func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitAll
@@ -135,17 +135,17 @@ actor SecureStore: SecureStoreProtocol {
             }
         }
     }
-    
-    //MARK: Helpers
-    
+
+    // MARK: Helpers
+
     private func getEncodedCreditCard(secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
         let payload: [String: Any] = [
-            CreditCardProperty.identifier.rawValue : secureStoreCreditCard.identifier.uuidString,
-            CreditCardProperty.number.rawValue : secureStoreCreditCard.number,
-            CreditCardProperty.cvv.rawValue : secureStoreCreditCard.cvv,
-            CreditCardProperty.date.rawValue : secureStoreCreditCard.date,
-            CreditCardProperty.cardName.rawValue : secureStoreCreditCard.cardName,
-            CreditCardProperty.cardHolderName.rawValue : secureStoreCreditCard.cardHolderName
+            CreditCardProperty.identifier.rawValue: secureStoreCreditCard.identifier.uuidString,
+            CreditCardProperty.number.rawValue: secureStoreCreditCard.number,
+            CreditCardProperty.cvv.rawValue: secureStoreCreditCard.cvv,
+            CreditCardProperty.date.rawValue: secureStoreCreditCard.date,
+            CreditCardProperty.cardName.rawValue: secureStoreCreditCard.cardName,
+            CreditCardProperty.cardHolderName.rawValue: secureStoreCreditCard.cardHolderName
         ]
         return try JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
     }

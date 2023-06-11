@@ -10,10 +10,10 @@ import UIKit
 
 extension SceneDelegate {
     func setUpDependencies() {
-        
-        //MARK: service
+
+        // MARK: service
         let secureStore = SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
-        container.register(CardListServiceProtocol.self) { r in
+        container.register(CardListServiceProtocol.self) { _ in
             CardListService(secureStore: secureStore)
         }
     }

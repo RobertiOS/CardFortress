@@ -14,7 +14,6 @@ protocol CardListServiceProtocol {
     func deleteAllCreditCardsFromSecureStore() -> Future<SecureStoreResult, Error>
 }
 
-
 final class CardListService: CardListServiceProtocol {
 
     private let secureStore: SecureStoreProtocol
@@ -22,7 +21,7 @@ final class CardListService: CardListServiceProtocol {
     init(secureStore: SecureStoreProtocol) {
         self.secureStore = secureStore
     }
-    
+
     func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<SecureStoreResult, Error> {
         Future { [weak self] promise in
             guard let self else { return }

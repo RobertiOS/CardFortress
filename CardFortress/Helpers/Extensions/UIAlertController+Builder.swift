@@ -49,12 +49,12 @@ extension UIAlertController {
             self.showTextField = showTextField
             return self
         }
-        
+
         @discardableResult func addTextField(_ textFields: [((UITextField) -> Void)?]) -> Builder {
             self.textFields = textFields
             return self
         }
-        
+
         @discardableResult func addActions(_ actions: [UIAlertAction]) -> Builder {
             self.actions = actions
             return self
@@ -77,27 +77,27 @@ extension UIAlertController {
         #if DEBUG
         struct TestHooks {
             let target: Builder
-            
+
             init(target: Builder) {
                 self.target = target
             }
-            
+
             var actions: [UIAlertAction] {
                 target.actions
             }
-            
+
             var title: String? {
                 target.title
             }
-            
+
             var message: String? {
                 target.message
             }
-            
+
             var alertStyle: UIAlertController.Style {
                 target.alertStyle
             }
-            
+
             var showTextField: Bool {
                 target.showTextField
             }
@@ -106,11 +106,11 @@ extension UIAlertController {
                 target.textFields
             }
         }
-        
+
         var testHooks: TestHooks {
             TestHooks(target: self)
         }
-        
+
         #endif
     }
 }
@@ -126,8 +126,7 @@ extension UIViewController {
     }
 }
 
-
-//extension UIAlertController.Builder {
+// extension UIAlertController.Builder {
 //    struct TestHooks {
 //        let target: UIAlertController.Builder
 //
@@ -143,4 +142,4 @@ extension UIViewController {
 //    var testHooks: TestHooks {
 //        TestHooks(target: self)
 //    }
-//}
+// }

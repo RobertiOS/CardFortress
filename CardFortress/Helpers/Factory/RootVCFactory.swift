@@ -20,7 +20,7 @@ final class RootVCFactory: RootVCFactoryProtocol {
         navigationController.navigationBar.backgroundColor = .systemBackground
         navigationController.navigationBar.barTintColor = .red
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
-        
+
         return navigationController
     }
 }

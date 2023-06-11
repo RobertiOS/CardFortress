@@ -17,8 +17,6 @@ struct SecureStoreCreditCard: Decodable {
     let cardHolderName: String
 }
 
-
-
 extension SecureStoreCreditCard {
     init(number: Int, cvv: Int, date: String, cardName: String, cardHolderName: String) {
         self.init(identifier: UUID(),
@@ -31,7 +29,6 @@ extension SecureStoreCreditCard {
 }
 
 extension SecureStoreCreditCard: Hashable {}
-
 
 extension SecureStoreCreditCard {
     static func make() -> Self {

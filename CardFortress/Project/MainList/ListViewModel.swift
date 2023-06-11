@@ -21,7 +21,7 @@ final class ListViewModel: ListViewModelProtocol {
     private var subscriptions = Set<AnyCancellable>()
     var cardListService: CardListServiceProtocol
     private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
-    
+
     init(cardListService: CardListServiceProtocol) {
         self.cardListService = cardListService
     }
@@ -29,7 +29,7 @@ final class ListViewModel: ListViewModelProtocol {
     var itemsPublisher: AnyPublisher<[CreditCard], Error> {
         itemsSubject.eraseToAnyPublisher()
     }
-    
+
     func addCreditCard(_ creditCard: CreditCard) {
         cardListService.addCreditCardToSecureStore(creditCard)
             .receive(on: DispatchQueue.main)
@@ -60,7 +60,7 @@ final class ListViewModel: ListViewModelProtocol {
             }
             .store(in: &subscriptions)
     }
-    
+
     func deleteAllCards() {
         cardListService.deleteAllCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
@@ -68,10 +68,9 @@ final class ListViewModel: ListViewModelProtocol {
                 if case .failure(let error) = completion {
                     self?.itemsSubject.send(completion: .failure(error))
                 }
-            } receiveValue: { [weak self] status in
+            } receiveValue: { [weak self] _ in
                 self?.itemsSubject.send([])
             }
             .store(in: &subscriptions)
     }
 }
-

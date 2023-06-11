@@ -17,8 +17,6 @@ struct CreditCard: Decodable {
     let cardHolderName: String
 }
 
-
-
 extension CreditCard {
     init(number: Int, cvv: Int, date: String, cardName: String, cardHolderName: String) {
         self.init(identifier: UUID(),

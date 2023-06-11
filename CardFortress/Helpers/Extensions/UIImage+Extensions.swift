@@ -10,8 +10,7 @@ import UIKit
 extension UIImage {
     /// Given a required height, returns a (rasterised) copy
         /// of the image, aspect-fitted to that height.
-        func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage
-        {
+        func aspectFittedToHeight(_ newHeight: CGFloat) -> UIImage {
             let scale = newHeight / self.size.height
             let newWidth = self.size.width * scale
             let newSize = CGSize(width: newWidth, height: newHeight)

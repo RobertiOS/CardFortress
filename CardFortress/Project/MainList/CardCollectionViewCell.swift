@@ -9,17 +9,17 @@ import UIKit
 import CreditCardValidator
 
 final class CardCollectionViewCell: UICollectionViewCell {
-    
-    //MARK: - Constants
+
+    // MARK: - Constants
 
     private struct Constants {
         static let fontName = "Credit Card"
         static let copyImage = "CopyImage"
         static let chipImage = "chip"
     }
-    
-    //MARK: Properties
-    
+
+    // MARK: Properties
+
     private let cardNameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -27,14 +27,14 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         return label
     }()
-    
+
     private let cardNumberLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = .black
         return label
     }()
-    
+
     private let dateLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.fontName, size: 20.0)!
@@ -42,7 +42,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
-    
+
     private let cardHolderNameLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: Constants.fontName, size: 20.0)!
@@ -50,7 +50,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
-    
+
     private let cvvLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .semibold)
@@ -58,13 +58,13 @@ final class CardCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         return label
     }()
-    
+
     private let chipImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.chipImage)
         return imageView
     }()
-    
+
     private lazy var copyCardNumberButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(copyCardNumberToClipboard), for: .touchUpInside)
@@ -72,22 +72,22 @@ final class CardCollectionViewCell: UICollectionViewCell {
         button.tintColor = .gray
         return button
     }()
-    
+
     private let cardTypeImageView = UIImageView()
-    
-    //MARK: - Initialization
+
+    // MARK: - Initialization
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
         setupViews()
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    //MARK: - view construction
-    
+
+    // MARK: - view construction
+
     private func setupViews() {
         contentView.isUserInteractionEnabled = false
         backgroundColor = UIColor.white
@@ -103,44 +103,44 @@ final class CardCollectionViewCell: UICollectionViewCell {
             cardTypeImageView
             copyCardNumberButton
         }
-        
+
         NSLayoutConstraint.activate([
-            
+
             cardNameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
             cardNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
             cardNameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            
+
             chipImageView.heightAnchor.constraint(equalToConstant: 50),
             chipImageView.widthAnchor.constraint(equalToConstant: 65),
             chipImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             chipImageView.topAnchor.constraint(equalTo: cardNameLabel.bottomAnchor, constant: 10),
-            
+
             cardNumberLabel.topAnchor.constraint(equalTo: chipImageView.bottomAnchor, constant: 10),
             cardNumberLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             cardNumberLabel.heightAnchor.constraint(equalToConstant: 30),
-            
+
             copyCardNumberButton.topAnchor.constraint(equalTo: cardNumberLabel.topAnchor),
             copyCardNumberButton.leadingAnchor.constraint(equalTo: cardNumberLabel.trailingAnchor, constant: 5),
             copyCardNumberButton.heightAnchor.constraint(equalToConstant: 30),
             copyCardNumberButton.widthAnchor.constraint(equalToConstant: 30),
-            
+
             dateLabel.topAnchor.constraint(equalTo: cardNumberLabel.bottomAnchor, constant: 10),
             dateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 100),
-            
+
             cardHolderNameLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
             cardHolderNameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
 
             cardTypeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
             cardTypeImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
-            
+
 //            cvvLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
 //            cvvLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10)
-            
+
         ])
     }
-    
-    //MARK: - Configutation
-    
+
+    // MARK: - Configutation
+
     public func configure(with creditCard: CreditCard) {
         cardNameLabel.text = creditCard.cardName
         cardNumberLabel.attributedText = getformatedTextTextForCreditCardNumber(cardNumber: creditCard.number)
@@ -151,7 +151,7 @@ final class CardCollectionViewCell: UICollectionViewCell {
         cardTypeImageView.image = image.aspectFittedToHeight(65)
         }
     }
-    
+
     private func getformatedTextTextForCreditCardNumber(cardNumber: Int) -> NSAttributedString {
         var formatedText = ""
         for (i, c) in "\(cardNumber)".enumerated() {
@@ -167,9 +167,9 @@ final class CardCollectionViewCell: UICollectionViewCell {
         let attributedText = NSAttributedString(string: formatedText, attributes: attributes)
         return attributedText
     }
-    
-    //MARK: actions
-    
+
+    // MARK: actions
+
     @objc
     private func copyCardNumberToClipboard() {
         UIPasteboard.general.string = self.cardNumberLabel.text
@@ -192,37 +192,37 @@ extension CardCollectionViewCell {
         var cardNameText: String? {
             target.cardNameLabel.text
         }
-        
+
         var cardNumberLabelText: String? {
             target.cardNumberLabel.text
         }
-        
+
         var dateLabelText: String? {
             target.dateLabel.text
         }
-        
+
         var cardHolderNameText: String? {
             target.cardHolderNameLabel.text
         }
-        
+
         var cvvLabelText: String? {
             target.cvvLabel.text
         }
-        
+
         var chipImage: UIImage? {
             target.chipImageView.image
         }
-        
+
         var cardTypeImage: UIImage? {
             target.cardTypeImageView.image
         }
-        
+
         var copyCardNumberButton: UIButton {
             target.copyCardNumberButton
         }
-        
+
     }
-    
+
     var testHooks: TestHooks {
         TestHooks(target: self)
     }

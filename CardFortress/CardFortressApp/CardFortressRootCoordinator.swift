@@ -20,9 +20,9 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     private let navigationController: UINavigationController
     private let viewControllerFactory: RootVCFactoryProtocol
     private let coordinatorFactory: CoordinatorFactory
-    
+
     // MARK: initialization
-    
+
     convenience init(window: UIWindow?,
                      container: Container) {
         self.init(
@@ -32,7 +32,7 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
             viewControllerFactory: RootVCFactory()
         )
     }
-    
+
     init(window: UIWindow?,
          container: Container,
          coordinatorFactory: CoordinatorFactory,
@@ -44,9 +44,9 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
         self.window = window
         window?.rootViewController = navigationController
     }
-    
+
     // MARK: actions
-    
+
     override func start() {
         let mainCoordinator = coordinatorFactory.makeMainListCoordinator(navigationController: navigationController)
         mainCoordinator.start()
