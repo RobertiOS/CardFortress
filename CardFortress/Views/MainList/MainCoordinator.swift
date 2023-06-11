@@ -15,15 +15,15 @@ enum MainCoordinatorResult {
     case success
 }
 
-final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoordinator {
+final class MainCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
     //MARK: properties
     var navigationController: UINavigationController
-    private let viewControllerFactory: MainListFactoryProtocol
+    private let viewControllerFactory: CreditCardListFactoryProtocol
     private let container: Container
     
     //MARK: initialization
     init(container: Container,
-         viewControllerFactory: MainListFactoryProtocol,
+         viewControllerFactory: CreditCardListFactoryProtocol,
          navigationController: UINavigationController) {
         self.container = container
         self.viewControllerFactory = viewControllerFactory

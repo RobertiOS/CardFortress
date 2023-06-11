@@ -9,25 +9,49 @@ import UIKit
 import Swinject
 
 protocol MainListCoordinatorFactory {
-    func makeMainListCoordinator(navigationController: UINavigationController) -> Coordinator<MainCoordinatorResult>
+    func makeMainListCoordinator() -> TabBarCoordinatorProtocol
+    func makeAddCreditCardCoordinator() -> TabBarCoordinatorProtocol
 }
 
 final class CoordinatorFactory: MainListCoordinatorFactory {
     
     private let container: Container
+    private let viewControllerFactory: MainViewControllerFactory
     
-    init(container: Container) {
+    init(container: Container,
+         viewControllerFactory: MainViewControllerFactory) {
         self.container = container
+        self.viewControllerFactory = viewControllerFactory
     }
     
     //MARK: - MainListCoordinatorFactory
     
-    func makeMainListCoordinator(navigationController: UINavigationController) -> Coordinator<MainCoordinatorResult> {
-        let mainFactory = MainListFactory(container: container)
+    func makeMainListCoordinator() -> TabBarCoordinatorProtocol {
+        let tabBarItem: UITabBarItem = .init(tabBarIndex: .main)
+        let navigationController = makeNavigationController(tabBarItem: tabBarItem)
         let mainCoordinator = MainCoordinator(
             container: container,
-            viewControllerFactory: mainFactory,
+            viewControllerFactory: viewControllerFactory,
             navigationController: navigationController)
         return mainCoordinator
+    }
+    
+    func makeAddCreditCardCoordinator() -> TabBarCoordinatorProtocol {
+        let tabBarItem: UITabBarItem = .init(tabBarIndex: .add)
+        let navigationController = makeNavigationController(tabBarItem: tabBarItem)
+        let coordinator = AddCreditCardCoordinator(navigationController: navigationController,
+                                                   containter: container,
+                                                   factory: viewControllerFactory)
+        return coordinator
+    }
+    
+    private func makeNavigationController(tabBarItem: UITabBarItem) -> UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.backgroundColor = .systemBackground
+        navigationController.navigationBar.barTintColor = .red
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+        navigationController.tabBarItem = tabBarItem
+        return navigationController
     }
 }

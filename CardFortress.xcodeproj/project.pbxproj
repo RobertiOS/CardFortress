@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
+		261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */; };
+		261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */; };
+		261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */; };
+		261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA5832A364B4200367CC4 /* AddCreditCardViewController.swift */; };
+		261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA5852A364C5C00367CC4 /* UITabBarItem+Extensions.swift */; };
+		261EA5892A3672FF00367CC4 /* CFTexField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA5882A3672FF00367CC4 /* CFTexField.swift */; };
 		2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */ = {isa = PBXBuildFile; fileRef = 2631E24E2A04BEF200197FEA /* CREDC___.otf */; };
 		26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC12A18A38100C9B8DA /* SecureStore.swift */; };
 		26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */; };
@@ -36,7 +42,7 @@
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
 		26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */; };
-		26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainListFactory.swift */; };
+		26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */; };
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
 		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
@@ -73,6 +79,12 @@
 
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
+		261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinator.swift; sourceTree = "<group>"; };
+		261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorProtocol.swift; sourceTree = "<group>"; };
+		261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewModel.swift; sourceTree = "<group>"; };
+		261EA5832A364B4200367CC4 /* AddCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewController.swift; sourceTree = "<group>"; };
+		261EA5852A364C5C00367CC4 /* UITabBarItem+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarItem+Extensions.swift"; sourceTree = "<group>"; };
+		261EA5882A3672FF00367CC4 /* CFTexField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTexField.swift; sourceTree = "<group>"; };
 		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
 		26366FC12A18A38100C9B8DA /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
@@ -105,7 +117,7 @@
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
 		26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreMock.swift; sourceTree = "<group>"; };
 		26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStore+Helpers.swift"; sourceTree = "<group>"; };
-		26CE97C52A11F70F00AF62DE /* MainListFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListFactory.swift; sourceTree = "<group>"; };
+		26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
 		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
@@ -149,6 +161,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		261EA5792A3589AC00367CC4 /* AddCreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */,
+				261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */,
+				261EA5832A364B4200367CC4 /* AddCreditCardViewController.swift */,
+			);
+			path = AddCreditCard;
+			sourceTree = "<group>";
+		};
+		261EA5872A3672E600367CC4 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				261EA5882A3672FF00367CC4 /* CFTexField.swift */,
+			);
+			path = CustomViews;
+			sourceTree = "<group>";
+		};
 		2631E2502A04BF0100197FEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -194,18 +224,21 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
-		26B38C0E29ECC01A00D0CCD8 /* Project */ = {
+		26B38C0E29ECC01A00D0CCD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				26F5B4D229FEBD3A002D224D /* Models */,
+				26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */,
+				261EA5792A3589AC00367CC4 /* AddCreditCard */,
 				26DF384929F0EA9B007091C3 /* MainList */,
+				26F5B4D229FEBD3A002D224D /* Models */,
 			);
-			path = Project;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				261EA5872A3672E600367CC4 /* CustomViews */,
 				26A39C2F2A2D2C80001C3FAF /* Factory */,
 				26F5B4D92A000C03002D224D /* Extensions */,
 				26F0945629F7979C009B0494 /* Coordinator */,
@@ -219,6 +252,7 @@
 			isa = PBXGroup;
 			children = (
 				26F0945429F7978E009B0494 /* NavigationCoordinator.swift */,
+				261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -277,7 +311,7 @@
 				26B7702229EC450400CC9FEB /* Info.plist */,
 				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
-				26B38C0E29ECC01A00D0CCD8 /* Project */,
+				26B38C0E29ECC01A00D0CCD8 /* Views */,
 				26B38C0D29ECC00C00D0CCD8 /* Modules */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
 				26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */,
@@ -327,7 +361,6 @@
 				26B38C1129ECC22100D0CCD8 /* MainCoordinator.swift */,
 				26B7701829EC450200CC9FEB /* CardListViewController.swift */,
 				26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */,
-				26CE97C52A11F70F00AF62DE /* MainListFactory.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -375,6 +408,7 @@
 				26F5B4E02A002286002D224D /* UIView+Extensions.swift */,
 				26888FD82A0756FE00936748 /* UIImage+Extensions.swift */,
 				26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */,
+				261EA5852A364C5C00367CC4 /* UITabBarItem+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -523,26 +557,32 @@
 				26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
-				26CE97C62A11F70F00AF62DE /* MainListFactory.swift in Sources */,
+				26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */,
 				26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */,
 				26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */,
+				261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */,
+				261EA5892A3672FF00367CC4 /* CFTexField.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
 				26B38C1C29ECF70C00D0CCD8 /* LocalizableString.swift in Sources */,
+				261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */,
 				26B38C1229ECC22100D0CCD8 /* MainCoordinator.swift in Sources */,
 				26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */,
 				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
+				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
+				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
 				26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */,
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 				265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */,
+				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
 				26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
