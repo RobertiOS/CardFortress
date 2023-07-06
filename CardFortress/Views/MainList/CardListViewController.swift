@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 protocol CardListViewControllerProtocol: UIViewController {
-    var delegate: MainCoordinatorDelegate? { get set }
 }
 
 final class CardListViewController: UIViewController, CardListViewControllerProtocol {
@@ -37,8 +36,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         return button
     }()
     
-    weak var delegate: MainCoordinatorDelegate?
-    
     init(viewModel: ListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -48,12 +45,19 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Life Cicle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupViews()
         configureDataSource()
         bindViewModel()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchCreditCards()
     }
     
     private func setupViews() {
@@ -122,6 +126,8 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
                 $0.keyboardType = keyboardType ?? .default
             }
         }
+        
+        
 
         alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] _ in
             guard let self,

@@ -10,3 +10,13 @@
 "buttonTest" = "Go to other view";
 "labelTest" = "Card fortress app";
 "increaseQty" = "Increase quantity";
+ "cardNumberLabel" = "Card Number";
+ "expirationDateLabel" = "Expiration Date";
+ "cardHolderNameLabel" = "Card Holder Name";
+ "cardNameLabel" = "Card Name";
+ "addCreditCardButtonTitle" = "Add";
+ "addCreditCardTitle" = "Add New Card";
+ "cardNumberPlaceHolder" = "0000 0000 0000 0000";
+ "expirationDatePlaceHolder" = "MM / YY";
+ "cardHolderNamePlaceHolder" = "Juan Perez";
+ "cardNamePlaceHolder" = "e.g: Bank Name";

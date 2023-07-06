@@ -8,22 +8,20 @@
 import UIKit
 import Swinject
 
-protocol MainCoordinatorDelegate: AnyObject {
-}
 
 enum MainCoordinatorResult {
     case success
 }
 
-final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoordinator {
+final class MainCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
     //MARK: properties
     var navigationController: UINavigationController
-    private let viewControllerFactory: MainListFactoryProtocol
+    private let viewControllerFactory: CreditCardListFactoryProtocol
     private let container: Container
     
     //MARK: initialization
     init(container: Container,
-         viewControllerFactory: MainListFactoryProtocol,
+         viewControllerFactory: CreditCardListFactoryProtocol,
          navigationController: UINavigationController) {
         self.container = container
         self.viewControllerFactory = viewControllerFactory
@@ -32,15 +30,6 @@ final class MainCoordinator: Coordinator<MainCoordinatorResult>, NavigationCoord
 
     override func start() {
         let viewController = viewControllerFactory.makeMainListViewController()
-        viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }
-    /// start Another coordiantor
-    func showAddCardCoordinator() {
-        // No op
-    }
-
-}
-
-extension MainCoordinator: MainCoordinatorDelegate {
 }
