@@ -17,7 +17,7 @@ class NavigationCoordinatorTests: XCTestCase {
         navigationController = UINavigationController()
         navigationCoordinator = MockNavigationCoordinator(navigationController: navigationController)
         let window = UIWindow(frame: UIScreen.main.bounds)
-        window.rootViewController = navigationCoordinator.navigationController
+        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
     

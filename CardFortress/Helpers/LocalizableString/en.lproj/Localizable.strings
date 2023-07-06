@@ -10,3 +10,20 @@
 "buttonTest" = "Go to other view";
 "labelTest" = "Card fortress app";
 "increaseQty" = "Increase quantity";
+"cardNumberLabel" = "Card Number";
+"expirationDateLabel" = "Expiry Date";
+"cardHolderNameLabel" = "Name on card";
+"cardNameLabel" = "Card Name";
+"addCreditCardButtonTitle" = "Add your card";
+"addCreditCardTitle" = "New Card";
+"cardNumberPlaceHolder" = "0000 0000 0000 0000";
+"expirationDatePlaceHolder" = "MM / YY";
+"cardHolderNamePlaceHolder" = "Juan Perez";
+"cardNamePlaceHolder" = "e.g: Bank Name";
+"addYourCardInformation" = "Enter your card information";
+"scanYourCard" = "Scan your card";
+"cvvPlaceHolder" = "123";
+"cvvLabel" = "cvv";
+
+"cfTextFieldGenericErrorMessage" = "This field is required.";
+"snackBarCardAdded" = "The Card Was Added Successfuly";

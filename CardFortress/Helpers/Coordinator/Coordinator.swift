@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Coordinator<CoordinatorResult> {
+class Coordinator<CoordinatorResult>: NSObject {
 
     private var childCoordinators: [UUID: Any]  = [:]
     private let identifier = UUID()

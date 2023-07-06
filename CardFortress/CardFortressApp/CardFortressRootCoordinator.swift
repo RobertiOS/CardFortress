@@ -17,8 +17,6 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     // MARK: properties
     private let window: UIWindow?
     private let container: Container
-    private let navigationController: UINavigationController
-    private let viewControllerFactory: RootVCFactoryProtocol
     private let coordinatorFactory: CoordinatorFactory
     private let containerTabBarController = UITabBarController.init()
 
@@ -33,7 +31,6 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
                 container: container,
                 viewControllerFactory: MainViewControllerFactory(container: container)
             ),
-            viewControllerFactory: RootVCFactory(),
             tabs: [.main, .add]
         )
     }
@@ -41,11 +38,8 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
     init(window: UIWindow?,
          container: Container,
          coordinatorFactory: CoordinatorFactory,
-         viewControllerFactory: RootVCFactoryProtocol,
          tabs: [TabBarCoordinatorIndex]) {
         self.container = container
-        self.viewControllerFactory = viewControllerFactory
-        self.navigationController = viewControllerFactory.makeNavigationController()
         self.coordinatorFactory = coordinatorFactory
         self.window = window
         super.init()
@@ -89,6 +83,31 @@ final class CardFortressRootCoordinator: Coordinator<CardFortressResultCoordinat
             }
         }
     }
+}
+
+extension CardFortressRootCoordinator {
+    
+    var testHooks: TestHooks {
+        .init(target: self)
+    }
+    
+    struct TestHooks {
+        let target: CardFortressRootCoordinator
+        
+        init(target: CardFortressRootCoordinator) {
+            self.target = target
+        }
+        
+        var tabs: [Tab] {
+            target.tabs
+        }
+        
+        var tabBarController: UITabBarController {
+            target.containerTabBarController
+        }
+
+    }
+    
 }
 
 enum TabBarCoordinatorIndex: CaseIterable {

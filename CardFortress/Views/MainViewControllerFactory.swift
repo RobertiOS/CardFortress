@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import VisionKit
 
 protocol CreditCardListFactoryProtocol: AnyObject {
     func makeMainListViewController() -> CardListViewControllerProtocol
@@ -16,8 +17,14 @@ protocol AddCreditCardFactoryProtocol: AnyObject {
     func makeAddCardViewController() -> AddCreditCardViewControllerProtocol
 }
 
+protocol VisionKitFactoryProtocol: AnyObject {
+    func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol
+}
 
-final class MainViewControllerFactory: CreditCardListFactoryProtocol, AddCreditCardFactoryProtocol {
+
+final class MainViewControllerFactory: CreditCardListFactoryProtocol,
+                                       AddCreditCardFactoryProtocol,
+                                       VisionKitFactoryProtocol {
     private let container: Container
     
     init(container: Container) {
@@ -36,9 +43,11 @@ final class MainViewControllerFactory: CreditCardListFactoryProtocol, AddCreditC
         guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
         let viewModel = AddCreditCardViewController.ViewModel(service: service)
         let viewController = AddCreditCardViewController(viewModel: viewModel)
-        viewController.title = "Add credit card"
         viewController.view.backgroundColor = .systemBackground
         return viewController
     }
     
+    func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol {
+        VisionKitViewController()
+    }
 }

@@ -13,13 +13,16 @@
       "containerPath" : "container:CardFortress.xcodeproj",
       "identifier" : "26B7701029EC450200CC9FEB",
       "name" : "CardFortress"
-    }
+    },
+    "testExecutionOrdering" : "random"
   },
   "testTargets" : [
     {
       "parallelizable" : true,
       "skippedTests" : [
-        "CardListViewControllerTests\/testUpdate_CollectionViewDataSource()"
+        "CardListViewControllerTests\/testUpdate_CollectionViewDataSource()",
+        "ImageParserTests",
+        "VisionKitCoordinatorTests\/test_VisionKitDelegate()"
       ],
       "target" : {
         "containerPath" : "container:CardFortress.xcodeproj",

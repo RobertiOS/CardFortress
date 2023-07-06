@@ -9,7 +9,6 @@ import UIKit
 import Combine
 
 protocol CardListViewControllerProtocol: UIViewController {
-    var delegate: MainCoordinatorDelegate? { get set }
 }
 
 final class CardListViewController: UIViewController, CardListViewControllerProtocol {
@@ -18,15 +17,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     private var cancellables = Set<AnyCancellable>()
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Int, CreditCard>!
-    
-    private lazy var addCardBarButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(systemName: "plus.app.fill")
-        button.tintColor = .blue
-        button.target = self
-        button.action = #selector(self.presentAddCreditCardAlertController)
-        return button
-    }()
     
     private lazy var deleteAllCardsBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -37,8 +27,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         return button
     }()
     
-    weak var delegate: MainCoordinatorDelegate?
-    
     init(viewModel: ListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -48,6 +36,8 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: - Life Cicle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -56,10 +46,15 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         bindViewModel()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchCreditCards()
+    }
+    
     private func setupViews() {
         navigationItem.title = LocalizableString.mainViewTitle.value
         view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItems = [addCardBarButton, deleteAllCardsBarButton ]
+        navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10

@@ -86,6 +86,19 @@ final class CardCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @SubviewBuilder
+    var views: [UIView] {
+        get {
+            cardNameLabel
+            cardNumberLabel
+            dateLabel
+            cardHolderNameLabel
+            chipImageView
+            cardTypeImageView
+            copyCardNumberButton
+        }
+    }
+    
     //MARK: - view construction
     
     private func setupViews() {

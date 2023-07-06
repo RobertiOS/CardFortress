@@ -43,9 +43,17 @@ extension UIView {
         }
     }
     
-    func addConstraints(@ConstraintsBuilder constraints:() -> [NSLayoutConstraint]) {
+    func activateConstraints(@ConstraintsBuilder constraints:() -> [NSLayoutConstraint]) {
         constraints().forEach {
             $0.isActive = true
+        }
+    }
+}
+
+extension UIStackView {
+    func addArrangedSubviews(@SubviewBuilder views: () -> [UIView]) {
+        views().forEach {
+            addArrangedSubview($0)
         }
     }
 }

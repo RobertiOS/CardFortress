@@ -29,7 +29,7 @@ final class CoordinatorFactory: MainListCoordinatorFactory {
     func makeMainListCoordinator() -> TabBarCoordinatorProtocol {
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .main)
         let navigationController = makeNavigationController(tabBarItem: tabBarItem)
-        let mainCoordinator = MainCoordinator(
+        let mainCoordinator = CardListCoordinator(
             container: container,
             viewControllerFactory: viewControllerFactory,
             navigationController: navigationController)
@@ -49,7 +49,6 @@ final class CoordinatorFactory: MainListCoordinatorFactory {
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.backgroundColor = .systemBackground
-        navigationController.navigationBar.barTintColor = .red
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
         navigationController.tabBarItem = tabBarItem
         return navigationController
