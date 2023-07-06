@@ -8,8 +8,6 @@
 import UIKit
 import Swinject
 
-protocol MainCoordinatorDelegate: AnyObject {
-}
 
 enum MainCoordinatorResult {
     case success
@@ -32,15 +30,6 @@ final class MainCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoo
 
     override func start() {
         let viewController = viewControllerFactory.makeMainListViewController()
-        viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }
-    /// start Another coordiantor
-    func showAddCardCoordinator() {
-        // No op
-    }
-
-}
-
-extension MainCoordinator: MainCoordinatorDelegate {
 }

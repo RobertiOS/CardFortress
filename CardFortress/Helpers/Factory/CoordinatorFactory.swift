@@ -49,7 +49,6 @@ final class CoordinatorFactory: MainListCoordinatorFactory {
         let navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.backgroundColor = .systemBackground
-        navigationController.navigationBar.barTintColor = .red
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
         navigationController.tabBarItem = tabBarItem
         return navigationController
