@@ -18,8 +18,21 @@ struct SubviewBuilder {
     static func buildBlock(_ components: [UIView]...) -> [UIView] {
         components.flatMap { $0 }
     }
-
 }
+
+@resultBuilder
+struct ConstraintsBuilder {
+
+    static func buildBlock(_ components: NSLayoutConstraint...) -> [NSLayoutConstraint] {
+        return components
+    }
+
+    static func buildBlock(_ components: [NSLayoutConstraint]...) -> [NSLayoutConstraint] {
+        components.flatMap { $0 }
+    }
+}
+
+
 
 
 extension UIView {
@@ -28,6 +41,19 @@ extension UIView {
             $0.translatesAutoresizingMaskIntoConstraints = false
             addSubview($0)
         }
-        
+    }
+    
+    func activateConstraints(@ConstraintsBuilder constraints:() -> [NSLayoutConstraint]) {
+        constraints().forEach {
+            $0.isActive = true
+        }
+    }
+}
+
+extension UIStackView {
+    func addArrangedSubviews(@SubviewBuilder views: () -> [UIView]) {
+        views().forEach {
+            addArrangedSubview($0)
+        }
     }
 }

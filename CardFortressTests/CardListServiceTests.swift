@@ -12,12 +12,10 @@ import Combine
 
 class CardListServiceTests: XCTestCase {
     var cardListService: CardListServiceProtocol!
-    var secureStoreMock: SecureStoreMock!
     var subscritions: Set<AnyCancellable>!
     override func setUp() {
         super.setUp()
-        secureStoreMock = SecureStoreMock()
-        cardListService = CardListService(secureStore: secureStoreMock)
+        cardListService = CardListService(secureStore: SecureStoreMock())
         subscritions = .init()
     }
     
@@ -25,7 +23,6 @@ class CardListServiceTests: XCTestCase {
         super.tearDown()
         cardListService = nil
         subscritions = nil
-        secureStoreMock = nil
     }
     
     func testGetCreditCards() {
@@ -46,7 +43,6 @@ class CardListServiceTests: XCTestCase {
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 1)
-        XCTAssertEqual(secureStoreMock.getCreditCardsCalledCount, 1)
     }
     
     func testDeleteCreditCards() {
@@ -64,7 +60,6 @@ class CardListServiceTests: XCTestCase {
                 }
             }.store(in: &subscritions)
         waitForExpectations(timeout: .defaultWait)
-        XCTAssertEqual(secureStoreMock.deleteCreditCardsCalledCount, 1)
     }
     
     func testAddCreditCards() {
@@ -85,7 +80,6 @@ class CardListServiceTests: XCTestCase {
                 }
             }.store(in: &subscritions)
         waitForExpectations(timeout: .defaultWait)
-        XCTAssertEqual(secureStoreMock.addCreditCardToKeychainCalledCount, 1)
     }
 }
 

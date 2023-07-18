@@ -105,4 +105,7 @@ extension TimeInterval {
     static var defaultWait: TimeInterval {
         1.5
     }
+    static var largeWait: TimeInterval {
+        5
+    }
 }

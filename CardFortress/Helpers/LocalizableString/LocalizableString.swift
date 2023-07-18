@@ -12,6 +12,28 @@ enum LocalizableString {
     case buttonTest
     case labelTest
     case increaseQty
+    
+    //MARK: Add credit card view controller
+    case cardNumberLabel
+    case expirationDateLabel
+    case cardHolderNameLabel
+    case cardNameLabel
+    case addCreditCardButtonTitle
+    case addCreditCardTitle
+    case cardNumberPlaceHolder
+    case expirationDatePlaceHolder
+    case cardHolderNamePlaceHolder
+    case cardNamePlaceHolder
+    case addYourCardInformation
+    case scanYourCard
+    case cvvPlaceHolder
+    case cvvLabel
+    
+    //MARK: - CFTextField
+    case cfTextFieldGenericErrorMessage
+    
+    //MARK: - snackbar
+    case snackBarCardAdded
 }
 
 extension LocalizableString {

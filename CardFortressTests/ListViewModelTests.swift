@@ -15,8 +15,7 @@ final class ListViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        let service = MockListService()
-        viewModel = ListViewModel(cardListService: service)
+        viewModel = ListViewModel(cardListService: MockListService())
         subscriptions = .init()
     }
     
