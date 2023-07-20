@@ -63,6 +63,9 @@
 		26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */; };
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
 		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
+		26D09A602A68FA7400B9D885 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */; };
+		26D09A632A68FB3C00B9D885 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */; };
+		26D09A652A68FB3C00B9D885 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A642A68FB3C00B9D885 /* FirebaseAuth */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */; };
@@ -155,6 +158,7 @@
 		26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
 		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
+		26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -175,7 +179,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */,
+				26D09A652A68FB3C00B9D885 /* FirebaseAuth in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
+				26D09A632A68FB3C00B9D885 /* FirebaseAnalytics in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -394,6 +400,7 @@
 			isa = PBXGroup;
 			children = (
 				26B7702229EC450400CC9FEB /* Info.plist */,
+				26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */,
 				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
 				26B38C0E29ECC01A00D0CCD8 /* Views */,
@@ -534,6 +541,8 @@
 				26DF384529F0CC19007091C3 /* Swinject */,
 				2655DFBC2A059158003EFDA2 /* CreditCardValidator */,
 				26921EAB2A6641BE00DA1313 /* SnackBar */,
+				26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */,
+				26D09A642A68FB3C00B9D885 /* FirebaseAuth */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -611,6 +620,7 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
+				26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -630,6 +640,7 @@
 			files = (
 				2631E24F2A04BEF200197FEA /* CREDC___.otf in Resources */,
 				26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */,
+				26D09A602A68FA7400B9D885 /* GoogleService-Info.plist in Resources */,
 				26B7701E29EC450400CC9FEB /* Assets.xcassets in Resources */,
 				26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */,
 			);
@@ -1084,6 +1095,14 @@
 				minimumVersion = 0.1.2;
 			};
 		};
+		26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -1104,6 +1123,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
+		};
+		26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		26D09A642A68FB3C00B9D885 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
