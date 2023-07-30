@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
+		261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */; };
+		261B56E12A6C77F7007F69CF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */; };
+		261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */; };
 		261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */; };
 		261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */; };
 		261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */; };
@@ -44,7 +47,7 @@
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
 		26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
-		26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */; };
+		26B381B729EC581D00D0CCD8 /* CardFortressAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */; };
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
 		26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */; };
 		26B38C1C29ECF70C00D0CCD8 /* LocalizableString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C1B29ECF70C00D0CCD8 /* LocalizableString.swift */; };
@@ -67,6 +70,8 @@
 		26D09A632A68FB3C00B9D885 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */; };
 		26D09A652A68FB3C00B9D885 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A642A68FB3C00B9D885 /* FirebaseAuth */; };
 		26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */; };
+		26D09A952A69912700B9D885 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A942A69912700B9D885 /* LoginView.swift */; };
+		26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A962A69915A00B9D885 /* LoginViewModel.swift */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */; };
@@ -101,6 +106,9 @@
 
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
+		261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinator.swift; sourceTree = "<group>"; };
 		261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewModel.swift; sourceTree = "<group>"; };
@@ -135,7 +143,7 @@
 		26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStoreCreditCard+Extensions.swift"; sourceTree = "<group>"; };
 		26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinator.swift; sourceTree = "<group>"; };
+		26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressAppCoordinator.swift; sourceTree = "<group>"; };
 		26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModel.swift; sourceTree = "<group>"; };
 		26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCoordinator.swift; sourceTree = "<group>"; };
 		26B38C1B29ECF70C00D0CCD8 /* LocalizableString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableString.swift; sourceTree = "<group>"; };
@@ -161,6 +169,8 @@
 		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
 		26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationAPI.swift; sourceTree = "<group>"; };
+		26D09A942A69912700B9D885 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		26D09A962A69915A00B9D885 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
@@ -364,9 +374,10 @@
 			isa = PBXGroup;
 			children = (
 				26B7701429EC450200CC9FEB /* AppDelegate.swift */,
-				26B381B629EC581D00D0CCD8 /* CardFortressRootCoordinator.swift */,
+				26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */,
 				26B7701629EC450200CC9FEB /* SceneDelegate.swift */,
 				26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */,
+				261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */,
 			);
 			path = CardFortressApp;
 			sourceTree = "<group>";
@@ -459,6 +470,9 @@
 			isa = PBXGroup;
 			children = (
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
+				26D09A942A69912700B9D885 /* LoginView.swift */,
+				26D09A962A69915A00B9D885 /* LoginViewModel.swift */,
+				261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -528,6 +542,7 @@
 				26921A362A63228B00DA1313 /* UIColor+Extensions.swift */,
 				26921A3A2A6460A700DA1313 /* UITextField+Extensions.swift */,
 				26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */,
+				261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -684,24 +699,28 @@
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
 				26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */,
-				26B381B729EC581D00D0CCD8 /* CardFortressRootCoordinator.swift in Sources */,
+				26B381B729EC581D00D0CCD8 /* CardFortressAppCoordinator.swift in Sources */,
 				26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */,
 				261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */,
 				263617D32A3FA4FB002E7E9E /* ImageParser.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
+				261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */,
 				26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
 				26B38C1C29ECF70C00D0CCD8 /* LocalizableString.swift in Sources */,
+				261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */,
 				261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */,
 				26921A3B2A6460A700DA1313 /* UITextField+Extensions.swift in Sources */,
 				26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */,
 				26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */,
 				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
+				26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
+				261B56E12A6C77F7007F69CF /* LoginCoordinator.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,
@@ -717,6 +736,7 @@
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 				265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
+				26D09A952A69912700B9D885 /* LoginView.swift in Sources */,
 				26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

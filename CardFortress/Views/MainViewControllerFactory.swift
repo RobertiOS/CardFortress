@@ -8,9 +8,11 @@
 import UIKit
 import Swinject
 import VisionKit
+import SwiftUI
 
 protocol CreditCardListFactoryProtocol: AnyObject {
     func makeMainListViewController() -> CardListViewControllerProtocol
+    func makeNavigationController(tabBarItem: UITabBarItem?) -> UINavigationController
 }
 
 protocol AddCreditCardFactoryProtocol: AnyObject {
@@ -21,10 +23,15 @@ protocol VisionKitFactoryProtocol: AnyObject {
     func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol
 }
 
+protocol LoginFactoryProtocol: AnyObject {
+    func makeLoginViewController(delegate: LoginViewDelegate?) -> UIViewController
+}
+
 
 final class MainViewControllerFactory: CreditCardListFactoryProtocol,
                                        AddCreditCardFactoryProtocol,
-                                       VisionKitFactoryProtocol {
+                                       VisionKitFactoryProtocol,
+                                       LoginFactoryProtocol {
     private let container: Container
     
     init(container: Container) {
@@ -49,5 +56,23 @@ final class MainViewControllerFactory: CreditCardListFactoryProtocol,
     
     func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol {
         VisionKitViewController()
+    }
+    
+    func makeNavigationController(tabBarItem: UITabBarItem? = nil) -> UINavigationController {
+        let navigationController = UINavigationController()
+        navigationController.navigationBar.prefersLargeTitles = true
+        navigationController.navigationBar.backgroundColor = UIColor.orange
+        navigationController.navigationBar.backgroundColor = .systemBackground
+        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
+        if let tabBarItem {
+            navigationController.tabBarItem = tabBarItem
+        }
+        return navigationController
+    }
+    
+    func makeLoginViewController(delegate: LoginViewDelegate? = nil) -> UIViewController {
+        let viewModel = LoginView.ViewModel()
+        viewModel.delegate = delegate
+        return UIHostingController(rootView: LoginView(viewModel: viewModel))
     }
 }

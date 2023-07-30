@@ -8,12 +8,23 @@
 import UIKit
 import Swinject
 
-protocol MainListCoordinatorFactory {
+protocol TabBarCoordinatorFactory {
     func makeMainListCoordinator() -> TabBarCoordinatorProtocol
     func makeAddCreditCardCoordinator() -> TabBarCoordinatorProtocol
 }
 
-final class CoordinatorFactory: MainListCoordinatorFactory {
+protocol AppCoordinatorFactory {
+    func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator
+}
+
+protocol LoginCoordinatorFactory {
+    func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator
+}
+
+final class CoordinatorFactory:
+    TabBarCoordinatorFactory,
+    AppCoordinatorFactory,
+    LoginCoordinatorFactory {
     
     private let container: Container
     private let viewControllerFactory: MainViewControllerFactory
@@ -24,11 +35,11 @@ final class CoordinatorFactory: MainListCoordinatorFactory {
         self.viewControllerFactory = viewControllerFactory
     }
     
-    //MARK: - MainListCoordinatorFactory
+    //MARK: - TabBarCoordinatorFactory
     
     func makeMainListCoordinator() -> TabBarCoordinatorProtocol {
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .main)
-        let navigationController = makeNavigationController(tabBarItem: tabBarItem)
+        let navigationController = viewControllerFactory.makeNavigationController(tabBarItem: tabBarItem)
         let mainCoordinator = CardListCoordinator(
             container: container,
             viewControllerFactory: viewControllerFactory,
@@ -38,19 +49,27 @@ final class CoordinatorFactory: MainListCoordinatorFactory {
     
     func makeAddCreditCardCoordinator() -> TabBarCoordinatorProtocol {
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .add)
-        let navigationController = makeNavigationController(tabBarItem: tabBarItem)
+        let navigationController = viewControllerFactory.makeNavigationController(tabBarItem: tabBarItem)
         let coordinator = AddCreditCardCoordinator(navigationController: navigationController,
                                                    containter: container,
                                                    factory: viewControllerFactory)
         return coordinator
     }
     
-    private func makeNavigationController(tabBarItem: UITabBarItem) -> UINavigationController {
-        let navigationController = UINavigationController()
-        navigationController.navigationBar.prefersLargeTitles = true
-        navigationController.navigationBar.backgroundColor = .systemBackground
-        navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
-        navigationController.tabBarItem = tabBarItem
-        return navigationController
+    func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator {
+        TabBarCoordinator(
+            coordinatorFactory: self,
+            navigationController: navigationController
+        )
     }
+    
+    func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator {
+        let authenticationAPI = container.resolve(AuthenticationAPI.self)
+        return LoginCoordinator(
+            factory: viewControllerFactory,
+            navigationController: navigationController,
+            authenticationAPI: authenticationAPI
+        )
+    }
+    
 }

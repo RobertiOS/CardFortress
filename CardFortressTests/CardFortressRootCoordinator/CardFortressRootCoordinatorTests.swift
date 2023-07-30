@@ -11,7 +11,7 @@ import Swinject
 
 final class CardFortressRootCoordinatorTests: XCTestCase {
 
-    var coordinator: CardFortressRootCoordinator!
+    var coordinator: CardFortressTabBarCoordinator!
     var container: Container!
     
     override func setUp() {

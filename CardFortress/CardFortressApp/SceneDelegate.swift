@@ -11,7 +11,7 @@ import Swinject
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    var appCoordinator: CardFortressRootCoordinator?
+    var appCoordinator: CardFortressAppCoordinator?
     let container = Container()
 
 
