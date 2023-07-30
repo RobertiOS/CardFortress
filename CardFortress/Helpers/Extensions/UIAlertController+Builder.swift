@@ -74,44 +74,6 @@ extension UIAlertController {
                 viewController.present(alert, animated: true)
             }
         }
-        #if DEBUG
-        struct TestHooks {
-            let target: Builder
-            
-            init(target: Builder) {
-                self.target = target
-            }
-            
-            var actions: [UIAlertAction] {
-                target.actions
-            }
-            
-            var title: String? {
-                target.title
-            }
-            
-            var message: String? {
-                target.message
-            }
-            
-            var alertStyle: UIAlertController.Style {
-                target.alertStyle
-            }
-            
-            var showTextField: Bool {
-                target.showTextField
-            }
-
-            var textFields: [((UITextField) -> Void)?]? {
-                target.textFields
-            }
-        }
-        
-        var testHooks: TestHooks {
-            TestHooks(target: self)
-        }
-        
-        #endif
     }
 }
 
@@ -126,21 +88,43 @@ extension UIViewController {
     }
 }
 
+#if DEBUG
+extension UIAlertController.Builder {
+    struct TestHooks {
+        let target: UIAlertController.Builder
+        
+        init(target: UIAlertController.Builder) {
+            self.target = target
+        }
+        
+        var actions: [UIAlertAction] {
+            target.actions
+        }
+        
+        var title: String? {
+            target.title
+        }
+        
+        var message: String? {
+            target.message
+        }
+        
+        var alertStyle: UIAlertController.Style {
+            target.alertStyle
+        }
+        
+        var showTextField: Bool {
+            target.showTextField
+        }
+        
+        var textFields: [((UITextField) -> Void)?]? {
+            target.textFields
+        }
+    }
+    
+    var testHooks: TestHooks {
+        TestHooks(target: self)
+    }
+}
+#endif
 
-//extension UIAlertController.Builder {
-//    struct TestHooks {
-//        let target: UIAlertController.Builder
-//
-//        init(target: UIAlertController.Builder) {
-//            self.target = target
-//        }
-//
-//        var actions: [UIAlertAction] {
-//            target.actions
-//        }
-//    }
-//
-//    var testHooks: TestHooks {
-//        TestHooks(target: self)
-//    }
-//}
