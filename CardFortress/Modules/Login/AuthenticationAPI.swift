@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol AuthenticationAPI {
     func signUp(withEmail: String, password: String) async -> AuthenticationResult
     func signIn(withEmail: String, password: String) async -> AuthenticationResult
+    var currentUser: User? { get }
 }
 
 enum AuthenticationResult {
@@ -22,25 +23,26 @@ enum AuthenticationResult {
 
 
 final class Authentication: AuthenticationAPI {
+    //MARK: - properties
+    var currentUser: User?
+    
+    let auth = Auth.auth()
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
-        await withCheckedContinuation({ continuation in
-            Auth.auth().signIn(withEmail: withEmail, password: password) { (authResult, error) in
-                if let error = error as? NSError {
-                    switch AuthErrorCode(_nsError: error).code {
-                    case .wrongPassword:
-                        return continuation.resume(returning: .wrongPassword)
-                    case .invalidEmail:
-                        continuation.resume(returning: .invalidEmail)
-                    default:
-                        continuation.resume(returning: .other(error))
-                    }
-                } else {
-                    continuation.resume(returning: .success)
-                    let userInfo = Auth.auth().currentUser
-                    let email = userInfo?.email
-                }
+        do {
+            let result = try await auth.signIn(withEmail: withEmail, password: password)
+            currentUser = result.user
+            return .success
+        } catch {
+            switch AuthErrorCode(_nsError: error as NSError).code {
+            case .wrongPassword:
+                return .wrongPassword
+            case .invalidEmail:
+                return .invalidEmail
+            default:
+                return .other(error)
             }
-        })
+        }
+        
     }
     
     func signUp(withEmail: String, password: String) async -> AuthenticationResult {
