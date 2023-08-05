@@ -12,6 +12,10 @@ import VisionKit
 final class AddCreditCardMockFactory: CreditCardListFactoryProtocol,
                                       AddCreditCardFactoryProtocol,
                                       VisionKitFactoryProtocol {
+    func makeNavigationController(tabBarItem: UITabBarItem?) -> UINavigationController {
+        UINavigationController()
+    }
+    
     func makeMainListViewController() -> CardListViewControllerProtocol {
         CardListViewControllerMock()
     }

@@ -8,11 +8,11 @@
 import UIKit
 
 final class TabBarCoordinator: Coordinator<Void> {
-    private let coordinatorFactory: CoordinatorFactory
+    private let coordinatorFactory: TabBarCoordinatorFactory
     private let containerTabBarController = UITabBarController.init()
     private let navigationController: UINavigationController
     
-    init(coordinatorFactory: CoordinatorFactory,
+    init(coordinatorFactory: TabBarCoordinatorFactory,
          navigationController: UINavigationController) {
         self.coordinatorFactory = coordinatorFactory
         self.navigationController = navigationController
