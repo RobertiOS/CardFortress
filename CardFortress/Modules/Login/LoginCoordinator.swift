@@ -34,17 +34,22 @@ final class LoginCoordinator: Coordinator<LoginCoordinator.LoginCoordinatorResul
 extension LoginCoordinator: LoginViewDelegate {
     func login(email: String, password: String) async -> AuthenticationResult? {
         let result = await authenticationAPI?.signIn(withEmail: email, password: password)
+        await handleLoginCoordinatorResult(result)
+        return result
+    }
+    
+    @MainActor
+    func handleLoginCoordinatorResult(_ result: AuthenticationResult?) {
         switch result {
         case .success:
-            //TODO: - Revisit
-            DispatchQueue.main.async { [weak self] in
-                self?.finish(.success)
+            Task(priority: .userInitiated) { [weak self] in
                 self?.loginViewController.dismiss(animated: true)
+                self?.finish(.success)
+ 
             }
         default:
             break
         }
-        return result
     }
 }
 
