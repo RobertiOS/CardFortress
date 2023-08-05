@@ -9,6 +9,7 @@
     }
   ],
   "defaultOptions" : {
+    "language" : "en",
     "targetForVariableExpansion" : {
       "containerPath" : "container:CardFortress.xcodeproj",
       "identifier" : "26B7701029EC450200CC9FEB",
