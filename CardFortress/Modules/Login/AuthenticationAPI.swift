@@ -21,6 +21,23 @@ enum AuthenticationResult {
     case wrongPassword
 }
 
+extension AuthenticationResult: Equatable {
+    static func ==(lhs: AuthenticationResult, rhs: AuthenticationResult) -> Bool {
+            switch (lhs, rhs) {
+            case (.success, .success):
+                return true
+            case let (.other(lhsError), .other(rhsError)):
+                return lhsError.localizedDescription == rhsError.localizedDescription
+            case (.invalidEmail, .invalidEmail):
+                return true
+            case (.wrongPassword, .wrongPassword):
+                return true
+            default:
+                return false
+            }
+        }
+}
+
 
 final class Authentication: AuthenticationAPI {
     //MARK: - properties

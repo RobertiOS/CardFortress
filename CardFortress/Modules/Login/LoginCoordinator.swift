@@ -42,11 +42,8 @@ extension LoginCoordinator: LoginViewDelegate {
     func handleLoginCoordinatorResult(_ result: AuthenticationResult?) {
         switch result {
         case .success:
-            Task(priority: .userInitiated) { [weak self] in
-                self?.loginViewController.dismiss(animated: true)
-                self?.finish(.success)
- 
-            }
+            loginViewController.dismiss(animated: true)
+            finish(.success)
         default:
             break
         }
