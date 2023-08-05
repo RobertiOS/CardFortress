@@ -35,7 +35,7 @@
 		26921A422A64E7BC00DA1313 /* CFTextFieldTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A412A64E7BC00DA1313 /* CFTextFieldTests.swift */; };
 		26921A442A64EBFD00DA1313 /* VisionKitCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A432A64EBFD00DA1313 /* VisionKitCoordinatorTests.swift */; };
 		26921A462A64F57B00DA1313 /* SecureStoreErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */; };
-		26921A482A65822900DA1313 /* CardFortressRootCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A472A65822900DA1313 /* CardFortressRootCoordinatorTests.swift */; };
+		26921A482A65822900DA1313 /* TabBarCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A472A65822900DA1313 /* TabBarCoordinatorTests.swift */; };
 		26921A4A2A65930900DA1313 /* VisionKitViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A492A65930900DA1313 /* VisionKitViewControllerProtocol.swift */; };
 		26921EA52A660C9800DA1313 /* ImageParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EA42A660C9800DA1313 /* ImageParserTests.swift */; };
 		26921EA72A66160A00DA1313 /* GenericError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EA62A66160A00DA1313 /* GenericError.swift */; };
@@ -59,6 +59,8 @@
 		26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */; };
 		26B7703629EC450400CC9FEB /* CardFortressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703529EC450400CC9FEB /* CardFortressUITests.swift */; };
 		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
+		26B80EA22A76F5AF002D119E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B80EA12A76F5AF002D119E /* FirebaseAuth */; };
+		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
 		26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
@@ -132,7 +134,7 @@
 		26921A412A64E7BC00DA1313 /* CFTextFieldTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTextFieldTests.swift; sourceTree = "<group>"; };
 		26921A432A64EBFD00DA1313 /* VisionKitCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisionKitCoordinatorTests.swift; sourceTree = "<group>"; };
 		26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreErrorTests.swift; sourceTree = "<group>"; };
-		26921A472A65822900DA1313 /* CardFortressRootCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFortressRootCoordinatorTests.swift; sourceTree = "<group>"; };
+		26921A472A65822900DA1313 /* TabBarCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorTests.swift; sourceTree = "<group>"; };
 		26921A492A65930900DA1313 /* VisionKitViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionKitViewControllerProtocol.swift; sourceTree = "<group>"; };
 		26921EA42A660C9800DA1313 /* ImageParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParserTests.swift; sourceTree = "<group>"; };
 		26921EA62A66160A00DA1313 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B7703529EC450400CC9FEB /* CardFortressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressUITests.swift; sourceTree = "<group>"; };
 		26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26C4628629F379CF000B06A7 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCellTest.swift; sourceTree = "<group>"; };
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
@@ -202,6 +205,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B80EA22A76F5AF002D119E /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,6 +279,7 @@
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 				26995FE72A4B8A6000FCACE9 /* AddCreditCardMockFactory.swift */,
+				26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -309,7 +314,7 @@
 		26AC69682A575143001404E5 /* CardFortressRootCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				26921A472A65822900DA1313 /* CardFortressRootCoordinatorTests.swift */,
+				26921A472A65822900DA1313 /* TabBarCoordinatorTests.swift */,
 			);
 			path = CardFortressRootCoordinator;
 			sourceTree = "<group>";
@@ -339,7 +344,6 @@
 		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				26DCCBBD2A4A37C600B6742B /* PropertyWrappers */,
 				261EA5872A3672E600367CC4 /* CustomViews */,
 				26A39C2F2A2D2C80001C3FAF /* Factory */,
 				26F5B4D92A000C03002D224D /* Extensions */,
@@ -397,6 +401,7 @@
 				26B7702A29EC450400CC9FEB /* CardFortressTests */,
 				26B7703429EC450400CC9FEB /* CardFortressUITests */,
 				26B7701229EC450200CC9FEB /* Products */,
+				26B80EA02A76F5AF002D119E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -458,6 +463,13 @@
 			path = CardFortressUITests;
 			sourceTree = "<group>";
 		};
+		26B80EA02A76F5AF002D119E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		26CEBA632A15D3DD00AF62DE /* SecureStoreTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,13 +487,6 @@
 				261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */,
 			);
 			path = Login;
-			sourceTree = "<group>";
-		};
-		26DCCBBD2A4A37C600B6742B /* PropertyWrappers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = PropertyWrappers;
 			sourceTree = "<group>";
 		};
 		26DF384929F0EA9B007091C3 /* MainList */ = {
@@ -588,6 +593,9 @@
 				26B7702929EC450400CC9FEB /* PBXTargetDependency */,
 			);
 			name = CardFortressTests;
+			packageProductDependencies = (
+				26B80EA12A76F5AF002D119E /* FirebaseAuth */,
+			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -756,8 +764,9 @@
 				26921A422A64E7BC00DA1313 /* CFTextFieldTests.swift in Sources */,
 				26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
+				26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */,
 				26921A3E2A64E22100DA1313 /* AddCreditCardCoordinatorTests.swift in Sources */,
-				26921A482A65822900DA1313 /* CardFortressRootCoordinatorTests.swift in Sources */,
+				26921A482A65822900DA1313 /* TabBarCoordinatorTests.swift in Sources */,
 				265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */,
 				2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */,
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
@@ -1155,6 +1164,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
+		};
+		26B80EA12A76F5AF002D119E /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 		26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */ = {
 			isa = XCSwiftPackageProductDependency;

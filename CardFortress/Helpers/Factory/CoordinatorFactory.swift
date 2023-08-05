@@ -56,12 +56,16 @@ final class CoordinatorFactory:
         return coordinator
     }
     
+    //MARK: - AppCoordinatorFactory
+    
     func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator {
         TabBarCoordinator(
             coordinatorFactory: self,
             navigationController: navigationController
         )
     }
+    
+    //MARK: - LoginCoordinatorFactory
     
     func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator {
         let authenticationAPI = container.resolve(AuthenticationAPI.self)
