@@ -26,7 +26,7 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         coordinator = AddCreditCardCoordinator(
             navigationController: navigationController,
             containter: container,
-            factory: AddCreditCardMockFactory())
+            factory: MockMainViewControllerFactory())
     }
 
     override func tearDown() {

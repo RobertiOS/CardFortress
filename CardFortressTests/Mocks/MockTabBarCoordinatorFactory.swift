@@ -27,9 +27,3 @@ final class MockTabBarCoordinatorFactory: TabBarCoordinatorFactory {
     }
     
 }
-
-extension MockTabBarCoordinatorFactory {
-    final class MockTabBarCoordinator: Coordinator<Void>, TabBarCoordinatorProtocol {
-        var navigationController: UINavigationController = UINavigationController(rootViewController: UIViewController())
-    }
-}

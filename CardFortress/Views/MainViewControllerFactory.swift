@@ -28,7 +28,7 @@ protocol LoginFactoryProtocol: AnyObject {
 }
 
 
-final class MainViewControllerFactory: CreditCardListFactoryProtocol,
+class MainViewControllerFactory: CreditCardListFactoryProtocol,
                                        AddCreditCardFactoryProtocol,
                                        VisionKitFactoryProtocol,
                                        LoginFactoryProtocol {
@@ -38,24 +38,14 @@ final class MainViewControllerFactory: CreditCardListFactoryProtocol,
         self.container = container
     }
     
+    //MARK: - CreditCardListFactoryProtocol
+    
     func makeMainListViewController() -> CardListViewControllerProtocol {
         guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
         let listViewModel = ListViewModel(cardListService: service)
         let viewcontroller = CardListViewController(viewModel: listViewModel)
         return viewcontroller
         
-    }
-    
-    func makeAddCardViewController() -> AddCreditCardViewControllerProtocol {
-        guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
-        let viewModel = AddCreditCardViewController.ViewModel(service: service)
-        let viewController = AddCreditCardViewController(viewModel: viewModel)
-        viewController.view.backgroundColor = .systemBackground
-        return viewController
-    }
-    
-    func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol {
-        VisionKitViewController()
     }
     
     func makeNavigationController(tabBarItem: UITabBarItem? = nil) -> UINavigationController {
@@ -69,6 +59,24 @@ final class MainViewControllerFactory: CreditCardListFactoryProtocol,
         }
         return navigationController
     }
+    
+    //MARK: - AddCreditCardFactoryProtocol
+    
+    func makeAddCardViewController() -> AddCreditCardViewControllerProtocol {
+        guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
+        let viewModel = AddCreditCardViewController.ViewModel(service: service)
+        let viewController = AddCreditCardViewController(viewModel: viewModel)
+        viewController.view.backgroundColor = .systemBackground
+        return viewController
+    }
+    
+    //MARK: - VisionKitFactoryProtocol
+    
+    func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol {
+        VisionKitViewController()
+    }
+    
+    //MARK: - LoginFactoryProtocol
     
     func makeLoginViewController(delegate: LoginViewDelegate? = nil) -> UIViewController {
         let viewModel = LoginView.ViewModel()

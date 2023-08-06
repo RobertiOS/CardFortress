@@ -21,7 +21,7 @@ final class VisionKitCoordinatorTests: XCTestCase {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        coordinator = VisionKitCoordinator(factory: AddCreditCardMockFactory(), navigationController: navigationController)
+        coordinator = VisionKitCoordinator(factory: MockMainViewControllerFactory(), navigationController: navigationController)
     }
 
     override func tearDown() {

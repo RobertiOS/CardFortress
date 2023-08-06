@@ -46,7 +46,6 @@ final class LoginCoordinatorTests: XCTestCase {
     @MainActor
     func test_login() async {
         //given
-        let loginViewController = factory.loginViewController
         let emailPassword = "user"
         let password = "password"
         //when
