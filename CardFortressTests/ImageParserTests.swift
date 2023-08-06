@@ -26,37 +26,22 @@ final class ImageParserTests: XCTestCase {
         //given
         let image = UIImage(named: "creditCardMock")
         //when
-       
-        let expectation = self.expectation(description: "Wait for image parser")
-        
-        Task {
-            let creditCard = await imageParser.mapUIImageToCreditCard(image: image)
-            //then
-            XCTAssertEqual(creditCard?.cardName, "ROBERTO CORRALES")
-            XCTAssertEqual(creditCard?.number, 4349121529668838)
-            XCTAssertEqual(creditCard?.date, "01/2025")
-            expectation.fulfill()
-        }
-        
-        await waitForExpectations(timeout: .largeWait)
+        let creditCard = await imageParser.mapUIImageToCreditCard(image: image)
+        //then
+        XCTAssertEqual(creditCard?.cardName, "ROBERTO CORRALES")
+        XCTAssertEqual(creditCard?.number, 4349121529668838)
+        XCTAssertEqual(creditCard?.date, "01/2025")
     }
     
     func test_ImageParser_nilImage() async {
         //given
         let image: UIImage? = nil
         //when
-        let expectation = self.expectation(description: "Wait for image parser")
         
-        Task {
-            let creditCard = await imageParser.mapUIImageToCreditCard(image: image)
-            //then
-            XCTAssertNil(creditCard?.cardName)
-            XCTAssertNil(creditCard?.number)
-            XCTAssertNil(creditCard?.date)
-            expectation.fulfill()
-        }
-        
-        await waitForExpectations(timeout: .largeWait)
-
+        let creditCard = await imageParser.mapUIImageToCreditCard(image: image)
+        //then
+        XCTAssertNil(creditCard?.cardName)
+        XCTAssertNil(creditCard?.number)
+        XCTAssertNil(creditCard?.date)
     }
 }

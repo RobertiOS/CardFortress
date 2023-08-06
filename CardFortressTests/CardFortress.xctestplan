@@ -22,7 +22,6 @@
       "parallelizable" : true,
       "skippedTests" : [
         "CardListViewControllerTests\/testUpdate_CollectionViewDataSource()",
-        "ImageParserTests",
         "VisionKitCoordinatorTests\/test_VisionKitDelegate()"
       ],
       "target" : {
