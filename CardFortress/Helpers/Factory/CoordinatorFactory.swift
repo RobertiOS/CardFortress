@@ -21,7 +21,7 @@ protocol LoginCoordinatorFactory {
     func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator
 }
 
-final class CoordinatorFactory:
+class CoordinatorFactory:
     TabBarCoordinatorFactory,
     AppCoordinatorFactory,
     LoginCoordinatorFactory {
