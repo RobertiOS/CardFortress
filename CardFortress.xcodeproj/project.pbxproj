@@ -59,11 +59,11 @@
 		26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */; };
 		26B7703629EC450400CC9FEB /* CardFortressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703529EC450400CC9FEB /* CardFortressUITests.swift */; };
 		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
-		26B80EA22A76F5AF002D119E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B80EA12A76F5AF002D119E /* FirebaseAuth */; };
 		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
 		26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */; };
 		26B830612A7EEA6D002D119E /* LoginFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* LoginFactoryMock.swift */; };
 		26B830632A7EEB35002D119E /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
+		26B8306D2A7F54E1002D119E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B8306C2A7F54E1002D119E /* FirebaseAuth */; settings = {ATTRIBUTES = (Required, ); }; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
 		26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
@@ -211,7 +211,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B80EA22A76F5AF002D119E /* FirebaseAuth in Frameworks */,
+				26B8306D2A7F54E1002D119E /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,7 +611,7 @@
 			);
 			name = CardFortressTests;
 			packageProductDependencies = (
-				26B80EA12A76F5AF002D119E /* FirebaseAuth */,
+				26B8306C2A7F54E1002D119E /* FirebaseAuth */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -1160,8 +1160,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
+				kind = exactVersion;
+				version = 10.13.0;
 			};
 		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
@@ -1185,7 +1185,7 @@
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
 		};
-		26B80EA12A76F5AF002D119E /* FirebaseAuth */ = {
+		26B8306C2A7F54E1002D119E /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
