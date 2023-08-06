@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class TabBarCoordinator: Coordinator<Void> {
+class TabBarCoordinator: Coordinator<Void> {
     private let coordinatorFactory: TabBarCoordinatorFactory
     private let containerTabBarController = UITabBarController.init()
     private let navigationController: UINavigationController

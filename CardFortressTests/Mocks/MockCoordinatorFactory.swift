@@ -23,16 +23,11 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     let listTabBarCoordinator = MockTabBarCoordinator()
     let addCreditCardCoordiantor = MockTabBarCoordinator()
     
-    lazy var tabBarCoordinator = TabBarCoordinator(
-        coordinatorFactory: self,
-        navigationController: UINavigationController()
+    lazy var tabBarCoordinator = MockTabBarCoordinatorContainer(
+        coordinatorFactory: self
     )
     
-    lazy var loginCoordinator = LoginCoordinator(
-        factory: LoginFactoryMock(),
-        navigationController: UINavigationController(),
-        authenticationAPI: AuthenticationAPIMock()
-    )
+    let loginCoordinator = MockLoginCoordinator()
     
     //MARK: - Methods
     
@@ -61,4 +56,36 @@ final class MockCoordinatorFactory: CoordinatorFactory {
 
 final class MockTabBarCoordinator: Coordinator<Void>, TabBarCoordinatorProtocol {
     var navigationController: UINavigationController = UINavigationController(rootViewController: UIViewController())
+    var startCalledCount = 0
+    
+    override func start() {
+        startCalledCount += 1
+    }
+}
+
+final class MockLoginCoordinator: LoginCoordinator {
+    var startCalledCount = 0
+    
+    override func start() {
+        startCalledCount += 1
+    }
+    
+    convenience init() {
+        self.init(factory: LoginFactoryMock(),
+                  navigationController: UINavigationController(),
+                  authenticationAPI: AuthenticationAPIMock()
+        )
+    }
+}
+
+final class MockTabBarCoordinatorContainer: TabBarCoordinator {
+    var startCalledCount = 0
+    
+    override func start() {
+        startCalledCount += 1
+    }
+    
+    convenience init(coordinatorFactory: TabBarCoordinatorFactory) {
+        self.init(coordinatorFactory: coordinatorFactory, navigationController: UINavigationController())
+    }
 }
