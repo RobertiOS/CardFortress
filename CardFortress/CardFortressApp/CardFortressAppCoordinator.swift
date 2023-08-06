@@ -19,13 +19,15 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     // MARK: initialization
     
     convenience init(window: UIWindow?,
-                     container: Container) {
+                     container: Container,
+                     coordinatorFactory: CoordinatorFactory? = nil,
+                     viewControllerFactory: MainViewControllerFactory? = nil) {
         self.init(
             window: window,
             container: container,
-            coordinatorFactory: CoordinatorFactory(
+            coordinatorFactory: coordinatorFactory ?? CoordinatorFactory(
                 container: container,
-                viewControllerFactory: MainViewControllerFactory(container: container)
+                viewControllerFactory: viewControllerFactory ?? MainViewControllerFactory(container: container)
             )
         )
     }
@@ -51,7 +53,6 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     }
     
     func startTabBarCoordinator() {
-        
         let coordinator = coordinatorFactory.makeTabBarCoordinator(navigationController: navigationController)
         addChild(coordinator: coordinator)
         coordinator.start()
@@ -71,22 +72,6 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
         }
         coordinator.start()
     }
-}
-
-extension CardFortressAppCoordinator {
-    
-    var testHooks: TestHooks {
-        .init(target: self)
-    }
-    
-    struct TestHooks {
-        let target: CardFortressAppCoordinator
-        
-        init(target: CardFortressAppCoordinator) {
-            self.target = target
-        }
-    }
-    
 }
 
 

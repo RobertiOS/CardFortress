@@ -8,7 +8,7 @@
 import UIKit
 import Swinject
 
-final class LoginCoordinator: Coordinator<LoginCoordinator.LoginCoordinatorResult>, NavigationCoordinator {
+class LoginCoordinator: Coordinator<LoginCoordinator.LoginCoordinatorResult>, NavigationCoordinator {
     
     var navigationController: UINavigationController
     private let factory: LoginFactoryProtocol
