@@ -57,6 +57,4 @@ final class VisionKitCoordinatorTests: XCTestCase {
             XCTAssertNotNil($0)
         }
     }
-    
-    
 }
