@@ -48,7 +48,7 @@ final class CardFortressAppCoordinatorTests: XCTestCase {
         //then
         XCTAssertEqual(loginCoordinator.startCalledCount, 1)
     }
-    
+
     func test_loginCoordinatorFinish() {
         //given
         let loginCoordinator = mockCoordinatorFactory.loginCoordinator
@@ -63,6 +63,32 @@ final class CardFortressAppCoordinatorTests: XCTestCase {
         
         //then
         XCTAssertEqual(tabBarCoordinator.startCalledCount, 1)
+        
+    }
+    
+    func test_tabBarCoordinatorFinish() {
+        //given
+        let loginCoordinator = mockCoordinatorFactory.loginCoordinator
+        let tabBarCoordinator = mockCoordinatorFactory.tabBarCoordinator
+        
+        //then
+        
+        XCTAssertEqual(loginCoordinator.startCalledCount, 0)
+        XCTAssertNil(loginCoordinator.onFinish)
+        XCTAssertNil(tabBarCoordinator.onFinish)
+        
+        //when
+        coordinator.start()
+        loginCoordinator.finish(.success)
+        
+        //then
+        XCTAssertEqual(loginCoordinator.startCalledCount, 1)
+        XCTAssertEqual(tabBarCoordinator.startCalledCount, 1)
+        
+        //when
+        tabBarCoordinator.finish(.signOut)
+        
+        XCTAssertEqual(loginCoordinator.startCalledCount, 2)
         
     }
 

@@ -6,16 +6,24 @@
 //
 
 import UIKit
+import Swinject
 
-class TabBarCoordinator: Coordinator<Void> {
+enum TabBarCoordinatorResult {
+    case signOut
+}
+
+class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
     private let coordinatorFactory: TabBarCoordinatorFactory
-    private let containerTabBarController = UITabBarController.init()
+    private let containerTabBarController = UITabBarController()
     private let navigationController: UINavigationController
+    private let container: Container
     
     init(coordinatorFactory: TabBarCoordinatorFactory,
-         navigationController: UINavigationController) {
+         navigationController: UINavigationController,
+         container: Container = Container()) {
         self.coordinatorFactory = coordinatorFactory
         self.navigationController = navigationController
+        self.container = container
     }
     
     
@@ -27,6 +35,7 @@ class TabBarCoordinator: Coordinator<Void> {
             switch $0 {
             case .main:
                 let mainCoordinator = coordinatorFactory.makeMainListCoordinator()
+                mainCoordinator.delegate = self
                 return Tab(coordinator: mainCoordinator, index: $0)
             case .add:
                 let addCoordinator = coordinatorFactory.makeAddCreditCardCoordinator()
@@ -110,6 +119,19 @@ extension TabBarCoordinator {
         
         var tabBarController: UITabBarController {
             target.containerTabBarController
+        }
+    }
+}
+
+extension TabBarCoordinator: CardListCoordinatorDelegate {
+    func signOut() {
+        guard let authAPI = container.resolve(AuthenticationAPI.self) else { return }
+        
+        if case .other(_) = authAPI.signOut() {
+            // TODO: - Handle error
+        } else  {
+            containerTabBarController.dismiss(animated: true)
+            finish(.signOut)
         }
     }
 }

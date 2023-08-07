@@ -9,7 +9,7 @@ import UIKit
 import Swinject
 
 protocol TabBarCoordinatorFactory {
-    func makeMainListCoordinator() -> TabBarCoordinatorProtocol
+    func makeMainListCoordinator() -> CardListCoordinating
     func makeAddCreditCardCoordinator() -> TabBarCoordinatorProtocol
 }
 
@@ -37,7 +37,7 @@ class CoordinatorFactory:
     
     //MARK: - TabBarCoordinatorFactory
     
-    func makeMainListCoordinator() -> TabBarCoordinatorProtocol {
+    func makeMainListCoordinator() -> CardListCoordinating {
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .main)
         let navigationController = viewControllerFactory.makeNavigationController(tabBarItem: tabBarItem)
         let mainCoordinator = CardListCoordinator(
@@ -61,7 +61,8 @@ class CoordinatorFactory:
     func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator {
         TabBarCoordinator(
             coordinatorFactory: self,
-            navigationController: navigationController
+            navigationController: navigationController,
+            container: container
         )
     }
     

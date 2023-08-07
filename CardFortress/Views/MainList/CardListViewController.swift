@@ -9,9 +9,16 @@ import UIKit
 import Combine
 
 protocol CardListViewControllerProtocol: UIViewController {
+    var delegate: CardListViewControllerDelegate? { get set }
+}
+
+protocol CardListViewControllerDelegate: AnyObject {
+    func signOut()
 }
 
 final class CardListViewController: UIViewController, CardListViewControllerProtocol {
+    
+    weak var delegate: CardListViewControllerDelegate?
     
     private var viewModel: ListViewModelProtocol
     private var cancellables = Set<AnyCancellable>()
@@ -24,6 +31,15 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         button.tintColor = .red
         button.target = self
         button.action = #selector(self.deleteAllCreditCards)
+        return button
+    }()
+    
+    private lazy var signOutButton: UIBarButtonItem = {
+        let button = UIBarButtonItem()
+        button.image = UIImage(systemName: "rectangle.portrait.and.arrow.forward")
+        button.tintColor = .red
+        button.target = self
+        button.action = #selector(self.signOut)
         return button
     }()
     
@@ -55,6 +71,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         navigationItem.title = LocalizableString.mainViewTitle.value
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
+        navigationItem.leftBarButtonItem = signOutButton
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
         layout.minimumInteritemSpacing = 10
@@ -144,6 +161,19 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
             guard let self else { return }
             self.viewModel.deleteAllCards()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true)
+    }
+    
+    @objc
+    private func signOut() {
+        
+        let alertController = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .alert)
+
+        alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] _ in
+            guard let self else { return }
+            self.delegate?.signOut()
         }))
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         present(alertController, animated: true)

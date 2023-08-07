@@ -7,6 +7,7 @@
 
 import XCTest
 @testable import CardFortress
+import Swinject
 
 final class TabBarCoordinatorTests: XCTestCase {
 
@@ -18,7 +19,16 @@ final class TabBarCoordinatorTests: XCTestCase {
         super.setUp()
         navigationController = UINavigationController()
         mockTabBarCoordinatorFactory = MockTabBarCoordinatorFactory()
-        coordinator = .init(coordinatorFactory: mockTabBarCoordinatorFactory, navigationController: navigationController)
+        
+        let container: Container = {
+            let container = Container()
+            container.register(AuthenticationAPI.self) { r in
+                AuthenticationAPIMock()
+            }
+            return container
+        }()
+        
+        coordinator = .init(coordinatorFactory: mockTabBarCoordinatorFactory, navigationController: navigationController, container: container)
     }
     
     override func tearDown() {
@@ -91,6 +101,18 @@ final class TabBarCoordinatorTests: XCTestCase {
             TabBarCoordinatorIndex.main.selectedImage,
             listSelectedImage
         )
+    }
+    
+    func test_signOut() {
+        //when
+        coordinator.start()
+        
+        //then
+        coordinator.onFinish = { result in
+            XCTAssertEqual(result, .signOut)
+        }
+        coordinator.signOut()
+        
     }
 
 }

@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol AuthenticationAPI {
     func signUp(withEmail: String, password: String) async -> AuthenticationResult
     func signIn(withEmail: String, password: String) async -> AuthenticationResult
+    func signOut() -> AuthenticationResult?
     var currentUser: User? { get }
 }
 
@@ -64,5 +65,14 @@ final class Authentication: AuthenticationAPI {
     
     func signUp(withEmail: String, password: String) async -> AuthenticationResult {
         .success
+    }
+    
+    func signOut() -> AuthenticationResult? {
+        do {
+            try auth.signOut()
+        } catch {
+            return .other(error)
+        }
+        return nil
     }
 }

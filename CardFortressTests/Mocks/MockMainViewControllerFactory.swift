@@ -54,6 +54,7 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
 
 
 final class CardListViewControllerMock: UIViewController, CardListViewControllerProtocol {
+    var delegate: CardFortress.CardListViewControllerDelegate?
 
 }
 
