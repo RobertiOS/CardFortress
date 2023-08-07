@@ -55,6 +55,14 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     func startTabBarCoordinator() {
         let coordinator = coordinatorFactory.makeTabBarCoordinator(navigationController: navigationController)
         addChild(coordinator: coordinator)
+
+        coordinator.onFinish = { [weak self] result in
+            switch result {
+            case .signOut:
+                self?.startLoginCoordinator()
+            }
+        }
+
         coordinator.start()
     }
 

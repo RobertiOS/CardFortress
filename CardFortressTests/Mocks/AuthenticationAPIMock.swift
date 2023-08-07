@@ -12,6 +12,10 @@ import FirebaseAuth
 
 final class AuthenticationAPIMock: AuthenticationAPI {
     
+    func signOut() -> CardFortress.AuthenticationResult? {
+        nil
+    }
+    
     func signUp(withEmail: String, password: String) async -> CardFortress.AuthenticationResult {
         return .success
     }

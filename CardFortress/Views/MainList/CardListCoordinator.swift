@@ -8,16 +8,20 @@
 import UIKit
 import Swinject
 
-
-enum MainCoordinatorResult {
-    case success
+protocol CardListCoordinatorDelegate: AnyObject {
+    func signOut()
 }
 
-final class CardListCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
+protocol CardListCoordinating: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
+    var delegate: CardListCoordinatorDelegate? { get set }
+}
+
+final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
     //MARK: properties
     var navigationController: UINavigationController
     private let viewControllerFactory: CreditCardListFactoryProtocol
     private let container: Container
+    weak var delegate: CardListCoordinatorDelegate?
     
     //MARK: initialization
     init(container: Container,
@@ -30,6 +34,13 @@ final class CardListCoordinator: Coordinator<Void>, NavigationCoordinator, TabBa
 
     override func start() {
         let viewController = viewControllerFactory.makeMainListViewController()
+        viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
+    }
+}
+
+extension CardListCoordinator: CardListViewControllerDelegate {
+    func signOut() {
+        delegate?.signOut()
     }
 }

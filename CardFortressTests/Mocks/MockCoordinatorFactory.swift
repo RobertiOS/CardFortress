@@ -33,7 +33,7 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     
     //MARK: - TabBarCoordinatorFactory
     
-    override func makeMainListCoordinator() -> TabBarCoordinatorProtocol {
+    override func makeMainListCoordinator() -> CardListCoordinating {
         listTabBarCoordinator
     }
     
@@ -54,7 +54,9 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     }
 }
 
-final class MockTabBarCoordinator: Coordinator<Void>, TabBarCoordinatorProtocol {
+final class MockTabBarCoordinator: Coordinator<Void>, CardListCoordinating {
+    var delegate: CardListCoordinatorDelegate?
+    
     var navigationController: UINavigationController = UINavigationController(rootViewController: UIViewController())
     var startCalledCount = 0
     
@@ -86,6 +88,9 @@ final class MockTabBarCoordinatorContainer: TabBarCoordinator {
     }
     
     convenience init(coordinatorFactory: TabBarCoordinatorFactory) {
-        self.init(coordinatorFactory: coordinatorFactory, navigationController: UINavigationController())
+        self.init(
+            coordinatorFactory: coordinatorFactory,
+            navigationController: UINavigationController(),
+            container: Container())
     }
 }

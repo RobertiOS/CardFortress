@@ -324,13 +324,13 @@
 			path = Factory;
 			sourceTree = "<group>";
 		};
-		26AC69682A575143001404E5 /* CardFortressRootCoordinator */ = {
+		26AC69682A575143001404E5 /* CardFortressAppCoordinator */ = {
 			isa = PBXGroup;
 			children = (
 				26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */,
 				26921A472A65822900DA1313 /* TabBarCoordinatorTests.swift */,
 			);
-			path = CardFortressRootCoordinator;
+			path = CardFortressAppCoordinator;
 			sourceTree = "<group>";
 		};
 		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
@@ -449,7 +449,7 @@
 			children = (
 				26B8305B2A7EE9C8002D119E /* Login */,
 				26921A402A64E79D00DA1313 /* CustomViews */,
-				26AC69682A575143001404E5 /* CardFortressRootCoordinator */,
+				26AC69682A575143001404E5 /* CardFortressAppCoordinator */,
 				266D71E82A552FA100E731C7 /* VisionKit */,
 				269956442A4B843400FCACE9 /* AddCreditCard */,
 				26CEBA632A15D3DD00AF62DE /* SecureStoreTests */,

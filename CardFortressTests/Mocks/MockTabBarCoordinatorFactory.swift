@@ -18,7 +18,7 @@ final class MockTabBarCoordinatorFactory: TabBarCoordinatorFactory {
         }
     }
     
-    func makeMainListCoordinator() -> CardFortress.TabBarCoordinatorProtocol {
+    func makeMainListCoordinator() -> CardListCoordinating {
         listTabBarCoordinator
     }
     
