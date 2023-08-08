@@ -11,28 +11,24 @@ struct LoginView: View {
     
     //MARK: - properties
     
-    @State private var email = "robert@gmail.com"
-    @State private var password = "123456"
-    @State private var isErrorViewHidden = true
-    @State private var errorMessage = ""
-    @State private var disableUI = false
-
-    let viewModel: ViewModel
+    @StateObject var viewModel: ViewModel
     
     //MARK: Views
-
+    
     var body: some View {
-        VStack {
-            topContainerView
-            fieldsContainerView
-            buttonContainerView
-            bottomContainterView
+        ScrollView {
+            VStack {
+                topContainerView
+                fieldsContainerView
+                buttonContainerView
+                bottomContainterView
+            }
+            .padding()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(
+                LinearGradient(gradient: .init(colors: [.cfPurple, .white]), startPoint: .top, endPoint: .bottom)
+            )
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-        .background(
-            LinearGradient(gradient: .init(colors: [.cfPurple, .white]), startPoint: .top, endPoint: .bottom)
-        )
     }
     
     @ViewBuilder
@@ -52,20 +48,20 @@ struct LoginView: View {
     
     @ViewBuilder
     private var fieldsContainerView: some View {
-        TextField("your email", text: $email)
+        TextField("your email", text: $viewModel.email)
             .textFieldStyle(
                 OutlinedTextFieldStyle(icon: Image(systemName: "person.fill"))
             )
             .font(.system(size: 20))
             .padding(.bottom, 10)
-        SecureField("your password", text: $password)
+        SecureField("your password", text: $viewModel.password)
             .textFieldStyle(
                 OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill"))
             )
             .font(.system(size: 20))
             .padding(.bottom, 10)
         
-        if !errorMessage.isEmpty {
+        if let errorMessage = viewModel.errorMessage, !errorMessage.isEmpty {
             Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 30))
                 .background(.red)
@@ -78,26 +74,11 @@ struct LoginView: View {
     private var buttonContainerView: some View {
         Button {
             Task {
-                disableUI = true
-                let result = await viewModel.login(
-                    email: email,
-                    password: password
-                )
-                switch result {
-                case .success:
-                    setError(error: "")
-                case .invalidEmail:
-                    setError(error: "invalid email")
-                case .wrongPassword:
-                    setError(error: "wrong password")
-                default:
-                    setError(error: "unknown error")
-                }
-                disableUI = false
+                await viewModel.login()
             }
         } label: {
                 VStack {
-                    if disableUI {
+                    if viewModel.isloading {
                         ProgressView()
                     } else {
                         Text("Login")
@@ -109,13 +90,12 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity)
                 .background(
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
-                        .fill(disableUI ? Color.cfPurple.opacity(0.5) : Color.cfPurple)
+                        .fill(viewModel.isloading ? Color.cfPurple.opacity(0.5) : Color.cfPurple)
                 )
-                            }
-        .disabled(disableUI)
+        }
+        .disabled(viewModel.isloading)
         Button {
-            isErrorViewHidden = true
-           
+            //TODO: handle button action
         } label: {
             
             Text("Sign Up")
@@ -156,16 +136,6 @@ struct LoginView: View {
         }
         .padding(.top)
         .frame(height: 50)
-        
-        Text("Don't have account? Sign up")
-            .padding(.top)
-    }
-    
-    private func setError(error: String) {
-        withAnimation(.easeOut(duration: 0.4)) {
-            errorMessage = error
-            isErrorViewHidden = false
-        }
     }
     
 }
