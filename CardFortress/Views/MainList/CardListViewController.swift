@@ -10,6 +10,7 @@ import Combine
 
 protocol CardListViewControllerProtocol: UIViewController {
     var delegate: CardListViewControllerDelegate? { get set }
+    var viewModel: ListViewModelProtocol { get set }
 }
 
 protocol CardListViewControllerDelegate: AnyObject {
@@ -20,7 +21,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     
     weak var delegate: CardListViewControllerDelegate?
     
-    private var viewModel: ListViewModelProtocol
+    var viewModel: ListViewModelProtocol
     private var cancellables = Set<AnyCancellable>()
     private var collectionView: UICollectionView!
     private var dataSource: UICollectionViewDiffableDataSource<Int, CreditCard>!
