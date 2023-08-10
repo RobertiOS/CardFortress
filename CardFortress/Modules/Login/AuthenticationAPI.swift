@@ -9,9 +9,24 @@ import Foundation
 import FirebaseAuth
 
 protocol AuthenticationAPI {
+    /// Creates an account, if the account is created succesfully the new user is logged in
+    /// - Parameters:
+    ///   - withEmail: The email of the new account
+    ///   - password: The password of the account
+    /// - Returns: if the account is created successfuly, it returns success
     func signUp(withEmail: String, password: String) async -> AuthenticationResult
+    /// Login with an existing account
+    /// - Parameters:
+    ///   - withEmail: The email of the user
+    ///   - password: The password of the account
+    /// - Returns: if the user is logged in, it returns success
     func signIn(withEmail: String, password: String) async -> AuthenticationResult
+    
+    /// Sign out from the current account
+    /// - Returns: if the user is signed out successfully it returns sucess
     func signOut() -> AuthenticationResult?
+    
+    /// The user that is currently logged in
     var currentUser: User? { get }
 }
 
@@ -20,6 +35,7 @@ enum AuthenticationResult {
     case other(Error)
     case invalidEmail
     case wrongPassword
+    case emailAlreadyInUse
 }
 
 extension AuthenticationResult: Equatable {
@@ -51,20 +67,34 @@ final class Authentication: AuthenticationAPI {
             currentUser = result.user
             return .success
         } catch {
-            switch AuthErrorCode(_nsError: error as NSError).code {
-            case .wrongPassword:
-                return .wrongPassword
-            case .invalidEmail:
-                return .invalidEmail
-            default:
-                return .other(error)
-            }
+            return handleAuthenticationError(error: error)
         }
         
     }
     
     func signUp(withEmail: String, password: String) async -> AuthenticationResult {
-        .success
+        do {
+            let result = try await auth.createUser(withEmail: withEmail, password: password)
+            currentUser = result.user
+            return .success
+        } catch {
+            return handleAuthenticationError(error: error)
+        }
+    }
+    
+    // MARK: - Helper methods
+    
+    private func handleAuthenticationError(error: Error) -> AuthenticationResult {
+        switch AuthErrorCode(_nsError: error as NSError).code {
+        case .wrongPassword:
+            return .wrongPassword
+        case .invalidEmail:
+            return .invalidEmail
+        case .emailAlreadyInUse:
+            return .emailAlreadyInUse
+        default:
+            return .other(error)
+        }
     }
     
     func signOut() -> AuthenticationResult? {
