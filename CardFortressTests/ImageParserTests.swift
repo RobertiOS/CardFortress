@@ -14,11 +14,11 @@ final class ImageParserTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        
         imageParser = ImageParser()
     }
 
-    override func tearDownWithError() throws {
+    override func tearDown() {
+        super.tearDown()
         imageParser = nil
     }
     

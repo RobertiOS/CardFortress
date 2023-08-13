@@ -22,7 +22,7 @@ protocol AuthenticationAPI {
                 password: String,
                 name: String,
                 lastName: String,
-                image: UIImage) async -> AuthenticationResult
+                image: UIImage?) async -> AuthenticationResult
     /// Login with an existing account
     /// - Parameters:
     ///   - withEmail: The email of the user
@@ -40,10 +40,11 @@ protocol AuthenticationAPI {
 
 enum AuthenticationResult {
     case success
-    case other(Error)
     case invalidEmail
     case wrongPassword
     case emailAlreadyInUse
+    case unkown
+    case other(Error)
 }
 
 extension AuthenticationResult: Equatable {
@@ -91,7 +92,7 @@ final class Authentication: AuthenticationAPI {
                 password: String,
                 name: String,
                 lastName: String,
-                image: UIImage
+                image: UIImage? = nil
     ) async -> AuthenticationResult {
         do {
             let result = try await auth.createUser(withEmail: withEmail, password: password)

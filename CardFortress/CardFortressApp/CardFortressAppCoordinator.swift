@@ -67,7 +67,7 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     }
 
     func startLoginCoordinator() {
-        let coordinator = coordinatorFactory.makeLoginCoordinator(navigationController: navigationController)
+        let coordinator = coordinatorFactory.makeAuthCoordinator(navigationController: navigationController)
         addChild(coordinator: coordinator)
         
         coordinator.onFinish = { [weak self] result in

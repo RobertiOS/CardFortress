@@ -15,8 +15,11 @@ enum VisionKitResult {
     case withError(Error)
 }
 
+protocol VisionKitCoordinating: Coordinator<VisionKitResult>, NavigationCoordinator {
+    
+}
 
-final class VisionKitCoordinator: Coordinator<VisionKitResult>, NavigationCoordinator {
+final class VisionKitCoordinator: Coordinator<VisionKitResult>, VisionKitCoordinating {
     
     var navigationController: UINavigationController
     private let factory: VisionKitFactoryProtocol

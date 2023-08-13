@@ -25,10 +25,10 @@ struct LoginView: View {
             }
             .padding()
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(
-                LinearGradient(gradient: .init(colors: [.cfPurple, .white]), startPoint: .top, endPoint: .bottom)
-            )
         }
+        .background(
+            LinearGradient(gradient: .init(colors: [.cfPurple, .white]), startPoint: .top, endPoint: .bottom)
+        )
     }
     
     @ViewBuilder
@@ -95,9 +95,8 @@ struct LoginView: View {
         }
         .disabled(viewModel.isloading)
         Button {
-            //TODO: handle button action
+            viewModel.startCreateUser()
         } label: {
-            
             Text("Sign Up")
                 .frame(maxWidth: .infinity)
                 .padding()

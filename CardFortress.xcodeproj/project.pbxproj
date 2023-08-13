@@ -29,6 +29,9 @@
 		266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9A2A88B071007F5427 /* FirebaseAuth */; };
 		266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9C2A88B071007F5427 /* FirebaseFirestore */; };
 		266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EEC9E2A894319007F5427 /* DataStorageAPI.swift */; };
+		266EECA52A89869B007F5427 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266EECA42A89869B007F5427 /* FirebaseAuth */; };
+		266EECA72A89869B007F5427 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266EECA62A89869B007F5427 /* FirebaseFirestore */; };
+		266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
@@ -133,6 +136,7 @@
 		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		266EDAB52A884739007F5427 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		266EEC9E2A894319007F5427 /* DataStorageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPI.swift; sourceTree = "<group>"; };
+		266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -220,6 +224,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				266EECA52A89869B007F5427 /* FirebaseAuth in Frameworks */,
+				266EECA72A89869B007F5427 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -487,6 +493,7 @@
 				26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */,
 				26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */,
 				26921EA42A660C9800DA1313 /* ImageParserTests.swift */,
+				266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -640,6 +647,8 @@
 			);
 			name = CardFortressTests;
 			packageProductDependencies = (
+				266EECA42A89869B007F5427 /* FirebaseAuth */,
+				266EECA62A89869B007F5427 /* FirebaseFirestore */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -804,6 +813,7 @@
 				26B830632A7EEB35002D119E /* AuthenticationAPIMock.swift in Sources */,
 				26888FDE2A0770A400936748 /* MockListService.swift in Sources */,
 				26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */,
+				266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
 				26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */,
@@ -1219,6 +1229,16 @@
 			productName = FirebaseAuth;
 		};
 		266EEC9C2A88B071007F5427 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		266EECA42A89869B007F5427 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		266EECA62A89869B007F5427 /* FirebaseFirestore */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseFirestore;

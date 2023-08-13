@@ -22,7 +22,7 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     
     let listTabBarCoordinator = MockTabBarCoordinator()
     let addCreditCardCoordiantor = MockTabBarCoordinator()
-    
+    let visionKitCoordinator = MockVisionKitCoordinator()
     lazy var tabBarCoordinator = MockTabBarCoordinatorContainer(
         coordinatorFactory: self
     )
@@ -49,8 +49,14 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     
     //MARK: - LoginCoordinatorFactory
     
-    override func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
+    override func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating {
         loginCoordinator
+    }
+    
+    //MARK: - Vision kit factory
+    
+    override func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating {
+        visionKitCoordinator
     }
 }
 
@@ -92,5 +98,16 @@ final class MockTabBarCoordinatorContainer: TabBarCoordinator {
             coordinatorFactory: coordinatorFactory,
             navigationController: UINavigationController(),
             container: Container())
+    }
+}
+
+final class MockVisionKitCoordinator: Coordinator<VisionKitResult>, VisionKitCoordinating {
+    var navigationController: UINavigationController = .init()
+    
+    var startCalledCount = 0
+    
+    override func start() {
+        super.start()
+        startCalledCount += 1
     }
 }
