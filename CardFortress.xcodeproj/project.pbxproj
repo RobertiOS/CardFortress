@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
 		261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */; };
-		261B56E12A6C77F7007F69CF /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */; };
+		261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */; };
 		261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */; };
 		261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */; };
 		261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */; };
@@ -24,6 +24,11 @@
 		2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 2655DFBC2A059158003EFDA2 /* CreditCardValidator */; };
 		265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
+		266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB32A8846BA007F5427 /* CreateUserView.swift */; };
+		266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB52A884739007F5427 /* CreateUserViewModel.swift */; };
+		266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9A2A88B071007F5427 /* FirebaseAuth */; };
+		266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9C2A88B071007F5427 /* FirebaseFirestore */; };
+		266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EEC9E2A894319007F5427 /* DataStorageAPI.swift */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
@@ -61,9 +66,8 @@
 		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
 		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
 		26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */; };
-		26B830612A7EEA6D002D119E /* LoginFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* LoginFactoryMock.swift */; };
+		26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */; };
 		26B830632A7EEB35002D119E /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
-		26B8306D2A7F54E1002D119E /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26B8306C2A7F54E1002D119E /* FirebaseAuth */; settings = {ATTRIBUTES = (Required, ); }; };
 		26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */; };
 		26B83A662A7FF39B002D119E /* CardFortressAppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
@@ -74,8 +78,6 @@
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
 		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
 		26D09A602A68FA7400B9D885 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */; };
-		26D09A632A68FB3C00B9D885 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */; };
-		26D09A652A68FB3C00B9D885 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 26D09A642A68FB3C00B9D885 /* FirebaseAuth */; };
 		26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */; };
 		26D09A952A69912700B9D885 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A942A69912700B9D885 /* LoginView.swift */; };
 		26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A962A69915A00B9D885 /* LoginViewModel.swift */; };
@@ -114,7 +116,7 @@
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
 		261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
-		261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinator.swift; sourceTree = "<group>"; };
 		261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinatorProtocol.swift; sourceTree = "<group>"; };
@@ -128,6 +130,9 @@
 		26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
 		265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreCreditCard.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
+		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		266EDAB52A884739007F5427 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
+		266EEC9E2A894319007F5427 /* DataStorageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPI.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -168,7 +173,7 @@
 		26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorTests.swift; sourceTree = "<group>"; };
-		26B830602A7EEA6D002D119E /* LoginFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFactoryMock.swift; sourceTree = "<group>"; };
+		26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFactoryMock.swift; sourceTree = "<group>"; };
 		26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIMock.swift; sourceTree = "<group>"; };
 		26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFortressAppCoordinatorTests.swift; sourceTree = "<group>"; };
@@ -204,10 +209,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */,
-				26D09A652A68FB3C00B9D885 /* FirebaseAuth in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
-				26D09A632A68FB3C00B9D885 /* FirebaseAnalytics in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
+				266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */,
+				266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,7 +220,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B8306D2A7F54E1002D119E /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,6 +286,24 @@
 			path = VisionKit;
 			sourceTree = "<group>";
 		};
+		266EDAB12A88466B007F5427 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				26D09A942A69912700B9D885 /* LoginView.swift */,
+				26D09A962A69915A00B9D885 /* LoginViewModel.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		266EDAB22A884677007F5427 /* CreateUser */ = {
+			isa = PBXGroup;
+			children = (
+				266EDAB32A8846BA007F5427 /* CreateUserView.swift */,
+				266EDAB52A884739007F5427 /* CreateUserViewModel.swift */,
+			);
+			path = CreateUser;
+			sourceTree = "<group>";
+		};
 		26888FDA2A076F6200936748 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -290,7 +312,7 @@
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 				26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */,
 				26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */,
-				26B830602A7EEA6D002D119E /* LoginFactoryMock.swift */,
+				26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */,
 				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
 				26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */,
 			);
@@ -336,7 +358,6 @@
 		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				26D09A692A69029900B9D885 /* Login */,
 				26F5B4CD29FEBC6F002D224D /* Service */,
 				26F5B4D82A0003EA002D224D /* SecureStore */,
 			);
@@ -346,6 +367,7 @@
 		26B38C0E29ECC01A00D0CCD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				26D09A692A69029900B9D885 /* Authentication */,
 				26360D3F2A3DF77C002E7E9E /* Vision */,
 				26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */,
 				261EA5792A3589AC00367CC4 /* AddCreditCard */,
@@ -501,15 +523,16 @@
 			path = SecureStoreTests;
 			sourceTree = "<group>";
 		};
-		26D09A692A69029900B9D885 /* Login */ = {
+		26D09A692A69029900B9D885 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				266EDAB22A884677007F5427 /* CreateUser */,
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
-				26D09A942A69912700B9D885 /* LoginView.swift */,
-				26D09A962A69915A00B9D885 /* LoginViewModel.swift */,
-				261B56E02A6C77F7007F69CF /* LoginCoordinator.swift */,
+				266EDAB12A88466B007F5427 /* Login */,
+				261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */,
+				266EEC9E2A894319007F5427 /* DataStorageAPI.swift */,
 			);
-			path = Login;
+			path = Authentication;
 			sourceTree = "<group>";
 		};
 		26DF384929F0EA9B007091C3 /* MainList */ = {
@@ -595,8 +618,8 @@
 				26DF384529F0CC19007091C3 /* Swinject */,
 				2655DFBC2A059158003EFDA2 /* CreditCardValidator */,
 				26921EAB2A6641BE00DA1313 /* SnackBar */,
-				26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */,
-				26D09A642A68FB3C00B9D885 /* FirebaseAuth */,
+				266EEC9A2A88B071007F5427 /* FirebaseAuth */,
+				266EEC9C2A88B071007F5427 /* FirebaseFirestore */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -617,7 +640,6 @@
 			);
 			name = CardFortressTests;
 			packageProductDependencies = (
-				26B8306C2A7F54E1002D119E /* FirebaseAuth */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -677,7 +699,7 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
-				26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -748,10 +770,12 @@
 				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
 				26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
+				266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
+				266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
-				261B56E12A6C77F7007F69CF /* LoginCoordinator.swift in Sources */,
+				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,
@@ -759,6 +783,7 @@
 				26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */,
 				26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */,
 				26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */,
+				266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */,
 				269956432A4B4D9800FCACE9 /* PreviewCreditCardView.swift in Sources */,
 				26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */,
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
@@ -799,7 +824,7 @@
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
 				26921A462A64F57B00DA1313 /* SecureStoreErrorTests.swift in Sources */,
 				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,
-				26B830612A7EEA6D002D119E /* LoginFactoryMock.swift in Sources */,
+				26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */,
 				26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */,
 				26921A442A64EBFD00DA1313 /* VisionKitCoordinatorTests.swift in Sources */,
 				26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */,
@@ -1156,20 +1181,20 @@
 				kind = branch;
 			};
 		};
+		266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.13.0;
+			};
+		};
 		26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 0.1.2;
-			};
-		};
-		26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = exactVersion;
-				version = 10.13.0;
 			};
 		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
@@ -1188,25 +1213,20 @@
 			package = 2655DFBB2A059158003EFDA2 /* XCRemoteSwiftPackageReference "CreditCardValidator" */;
 			productName = CreditCardValidator;
 		};
+		266EEC9A2A88B071007F5427 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		266EEC9C2A88B071007F5427 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
 		26921EAB2A6641BE00DA1313 /* SnackBar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
-		};
-		26B8306C2A7F54E1002D119E /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		26D09A622A68FB3C00B9D885 /* FirebaseAnalytics */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAnalytics;
-		};
-		26D09A642A68FB3C00B9D885 /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26D09A612A68FB3C00B9D885 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

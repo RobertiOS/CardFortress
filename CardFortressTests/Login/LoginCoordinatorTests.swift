@@ -10,13 +10,13 @@ import XCTest
 
 final class LoginCoordinatorTests: XCTestCase {
 
-    var coordinator: LoginCoordinator!
+    var coordinator: AuthCoordinator!
     var navigationController: UINavigationController!
-    var factory: LoginFactoryMock!
+    var factory: AuthenticationFactoryMock!
     
     override func setUp() {
         super.setUp()
-        factory = LoginFactoryMock()
+        factory = AuthenticationFactoryMock()
         navigationController = UINavigationController()
         coordinator = .init(
             factory: factory,

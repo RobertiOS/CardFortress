@@ -1,5 +1,5 @@
 //
-//  LoginFactoryMock.swift
+//  AuthenticationFactoryMock.swift
 //  CardFortressTests
 //
 //  Created by Roberto Corrales on 8/5/23.
@@ -8,7 +8,7 @@
 import UIKit
 @testable import CardFortress
 
-final class LoginFactoryMock: LoginFactoryProtocol {
+final class AuthenticationFactoryMock: AuthenticationFactoryProtocol {
     
     let loginViewController = UIViewController()
     

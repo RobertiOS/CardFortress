@@ -49,7 +49,7 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     
     //MARK: - LoginCoordinatorFactory
     
-    override func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator {
+    override func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
         loginCoordinator
     }
 }
@@ -65,7 +65,7 @@ final class MockTabBarCoordinator: Coordinator<Void>, CardListCoordinating {
     }
 }
 
-final class MockLoginCoordinator: LoginCoordinator {
+final class MockLoginCoordinator: AuthCoordinator {
     var startCalledCount = 0
     
     override func start() {
@@ -73,7 +73,7 @@ final class MockLoginCoordinator: LoginCoordinator {
     }
     
     convenience init() {
-        self.init(factory: LoginFactoryMock(),
+        self.init(factory: AuthenticationFactoryMock(),
                   navigationController: UINavigationController(),
                   authenticationAPI: AuthenticationAPIMock()
         )

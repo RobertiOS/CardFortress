@@ -1,5 +1,5 @@
 //
-//  LoginCoordinator.swift
+//  AuthCoordinator.swift
 //  CardFortress
 //
 //  Created by Roberto Corrales on 7/22/23.
@@ -7,15 +7,25 @@
 
 import UIKit
 import Swinject
+import SwiftUI
 
-class LoginCoordinator: Coordinator<LoginCoordinator.LoginCoordinatorResult>, NavigationCoordinator {
-    
+enum LoginCoordinatorResult {
+    case success
+    case failure(error: Error)
+}
+
+enum AuthRoutes {
+    case signIn
+    case signUp
+}
+
+class AuthCoordinator: Coordinator<LoginCoordinatorResult>, NavigationCoordinator, ObservableObject {
+
     var navigationController: UINavigationController
-    private let factory: LoginFactoryProtocol
+    private let factory: AuthenticationFactoryProtocol
     private let authenticationAPI: AuthenticationAPI?
-    private var loginViewController: UIViewController = .init()
 
-    init(factory: LoginFactoryProtocol,
+    init(factory: AuthenticationFactoryProtocol,
          navigationController: UINavigationController,
          authenticationAPI: AuthenticationAPI?) {
         self.factory = factory
@@ -26,12 +36,14 @@ class LoginCoordinator: Coordinator<LoginCoordinator.LoginCoordinatorResult>, Na
 
     override func start() {
         super.start()
-        self.loginViewController = factory.makeLoginViewController(delegate: self)
-        navigateTo(loginViewController, presentationStyle: .push)
+        let loginView = factory.makeLoginView(delegate: self)
+            .environmentObject(self)
+        let hostingController = UIHostingController(rootView: loginView)
+        navigateTo(hostingController, presentationStyle: .push)
     }
 }
 
-extension LoginCoordinator: LoginViewDelegate {
+extension AuthCoordinator: LoginViewDelegate {
     func login(email: String, password: String) async -> AuthenticationResult? {
         let result = await authenticationAPI?.signIn(withEmail: email, password: password)
         await handleLoginCoordinatorResult(result)
@@ -42,18 +54,10 @@ extension LoginCoordinator: LoginViewDelegate {
     func handleLoginCoordinatorResult(_ result: AuthenticationResult?) {
         switch result {
         case .success:
-            loginViewController.dismiss(animated: true)
+            navigationController.dismiss(animated: true)
             finish(.success)
         default:
             break
         }
     }
 }
-
-extension LoginCoordinator {
-    enum LoginCoordinatorResult {
-        case success
-        case failure(error: Error)
-    }
-}
-
