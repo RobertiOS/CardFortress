@@ -49,7 +49,7 @@ final class DataStorage: DataStorageAPI {
         userUid: String) async -> StorageResult {
         let data: [String : Any] = ["name": firstName, lastName: lastName]
             do {
-                try await db.collection(.userInformation).document(userUUid).setData(data)
+                try await db.collection(.userInformation).document(userUid).setData(data)
                 return .success
             } catch {
                 return .failure(error: error)

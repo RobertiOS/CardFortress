@@ -9,6 +9,14 @@ import UIKit
 @testable import CardFortress
 
 final class AuthenticationFactoryMock: AuthenticationFactoryProtocol {
+    func makeLoginView(delegate: CardFortress.LoginViewDelegate?) -> CardFortress.LoginView {
+        LoginView(viewModel: .init())
+    }
+    
+    func makeCreateUserView(delegate: CardFortress.CreateUserViewDelegate?) -> CardFortress.CreateUserView {
+        CreateUserView(viewModel: .init())
+    }
+    
     
     let loginViewController = UIViewController()
     

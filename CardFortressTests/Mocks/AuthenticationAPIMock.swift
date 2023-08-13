@@ -5,12 +5,15 @@
 //  Created by Roberto Corrales on 8/5/23.
 //
 
-import Foundation
+import UIKit
 import FirebaseAuth
 
 @testable import CardFortress
 
 final class AuthenticationAPIMock: AuthenticationAPI {
+    func signUp(withEmail: String, password: String, name: String, lastName: String, image: UIImage?) async -> CardFortress.AuthenticationResult {
+        .success
+    }
     
     func signOut() -> CardFortress.AuthenticationResult? {
         nil

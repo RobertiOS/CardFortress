@@ -25,7 +25,7 @@ protocol VisionKitFactoryProtocol: AnyObject {
 
 protocol AuthenticationFactoryProtocol: AnyObject {
     func makeLoginView(delegate: LoginViewDelegate?) -> LoginView
-    func makeCreateUserView() -> CreateUserView
+    func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView
 }
 
 
@@ -80,11 +80,13 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
     //MARK: - LoginFactoryProtocol
     func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
         let viewModel = LoginView.ViewModel()
+        viewModel.delegate = delegate
         return LoginView(viewModel: viewModel)
     }
     
-    func makeCreateUserView() -> CreateUserView {
+    func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView {
         let viewModel = CreateUserViewModel()
+        viewModel.delegate = delegate
         return CreateUserView(viewModel: viewModel)
     }
 }

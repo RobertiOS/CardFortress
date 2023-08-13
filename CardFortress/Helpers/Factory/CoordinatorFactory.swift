@@ -18,13 +18,18 @@ protocol AppCoordinatorFactory {
 }
 
 protocol LoginCoordinatorFactory {
-    func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator
+    func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating
+}
+
+protocol VisionKitCoordinatorFactory {
+    func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating
 }
 
 class CoordinatorFactory:
     TabBarCoordinatorFactory,
     AppCoordinatorFactory,
-    LoginCoordinatorFactory {
+    LoginCoordinatorFactory,
+    VisionKitCoordinatorFactory {
     
     private let container: Container
     private let viewControllerFactory: MainViewControllerFactory
@@ -51,8 +56,8 @@ class CoordinatorFactory:
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .add)
         let navigationController = viewControllerFactory.makeNavigationController(tabBarItem: tabBarItem)
         let coordinator = AddCreditCardCoordinator(navigationController: navigationController,
-                                                   containter: container,
-                                                   factory: viewControllerFactory)
+                                                   factory: viewControllerFactory,
+                                                   coordinatorFactory: self)
         return coordinator
     }
     
@@ -68,7 +73,7 @@ class CoordinatorFactory:
     
     //MARK: - LoginCoordinatorFactory
     
-    func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
+    func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating {
         let authenticationAPI = container.resolve(AuthenticationAPI.self)
         return AuthCoordinator(
             factory: viewControllerFactory,
@@ -77,4 +82,9 @@ class CoordinatorFactory:
         )
     }
     
+    //MARK: - Vision kit factory
+    
+    func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating {
+        VisionKitCoordinator(factory: viewControllerFactory, navigationController: navigationController)
+    }
 }

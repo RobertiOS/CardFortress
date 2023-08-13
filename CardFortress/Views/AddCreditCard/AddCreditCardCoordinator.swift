@@ -19,21 +19,18 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, 
     //MARK: - Properties
 
     var navigationController: UINavigationController
-    private let containter: Container
-    private let factory: AddCreditCardFactoryProtocol & VisionKitFactoryProtocol
     private let addCreditCardViewController: AddCreditCardViewControllerProtocol
-    
+    private let coordinatorFactory: VisionKitCoordinatorFactory
     
     //MARK: - Initialization
     
     init(navigationController: UINavigationController,
-         containter: Container,
-         factory: AddCreditCardFactoryProtocol & VisionKitFactoryProtocol) {
+         factory: AddCreditCardFactoryProtocol,
+         coordinatorFactory: VisionKitCoordinatorFactory) {
         self.navigationController = navigationController
-        self.containter = containter
-        self.factory = factory
-        
+        self.coordinatorFactory = coordinatorFactory
         addCreditCardViewController = factory.makeAddCardViewController()
+        
         super.init()
         addCreditCardViewController.delegate = self
     }
@@ -45,7 +42,7 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, 
     //MARK: - Vision Coordinator
     
     private func startVisionKit() {
-        let coordinator = VisionKitCoordinator(factory: factory, navigationController: navigationController)
+        let coordinator = coordinatorFactory.makeVisionKitCoordinator(navigationController: navigationController)
     
         coordinator.onFinish = { [weak self] in
             switch $0 {
@@ -93,6 +90,10 @@ extension AddCreditCardCoordinator {
         
         func startVisionKitCoordinator() {
             target.startVisionKitCoordinator()
+        }
+        
+        var addCreditCardVCViewModel: AddCreditCardViewController.ViewModel {
+            target.addCreditCardViewController.viewModel
         }
     }
 }

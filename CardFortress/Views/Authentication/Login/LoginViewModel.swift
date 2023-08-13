@@ -9,6 +9,7 @@ import Foundation
 
 protocol LoginViewDelegate: AnyObject {
     func login(email: String, password: String) async -> AuthenticationResult?
+    func startCreateUser()
 }
 
 extension LoginView {
@@ -40,6 +41,10 @@ extension LoginView {
                 errorMessage = "unknown error"
             }
             isloading = false
+        }
+        
+        func startCreateUser() {
+            delegate?.startCreateUser()
         }
     }
 }
