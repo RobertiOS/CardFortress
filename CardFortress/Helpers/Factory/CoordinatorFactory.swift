@@ -18,7 +18,7 @@ protocol AppCoordinatorFactory {
 }
 
 protocol LoginCoordinatorFactory {
-    func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator
+    func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator
 }
 
 class CoordinatorFactory:
@@ -68,9 +68,9 @@ class CoordinatorFactory:
     
     //MARK: - LoginCoordinatorFactory
     
-    func makeLoginCoordinator(navigationController: UINavigationController) -> LoginCoordinator {
+    func makeLoginCoordinator(navigationController: UINavigationController) -> AuthCoordinator {
         let authenticationAPI = container.resolve(AuthenticationAPI.self)
-        return LoginCoordinator(
+        return AuthCoordinator(
             factory: viewControllerFactory,
             navigationController: navigationController,
             authenticationAPI: authenticationAPI

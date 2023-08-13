@@ -23,15 +23,16 @@ protocol VisionKitFactoryProtocol: AnyObject {
     func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol
 }
 
-protocol LoginFactoryProtocol: AnyObject {
-    func makeLoginViewController(delegate: LoginViewDelegate?) -> UIViewController
+protocol AuthenticationFactoryProtocol: AnyObject {
+    func makeLoginView(delegate: LoginViewDelegate?) -> LoginView
+    func makeCreateUserView() -> CreateUserView
 }
 
 
 class MainViewControllerFactory: CreditCardListFactoryProtocol,
                                        AddCreditCardFactoryProtocol,
                                        VisionKitFactoryProtocol,
-                                       LoginFactoryProtocol {
+                                 AuthenticationFactoryProtocol {
     private let container: Container
     
     init(container: Container) {
@@ -77,10 +78,13 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
     }
     
     //MARK: - LoginFactoryProtocol
-    
-    func makeLoginViewController(delegate: LoginViewDelegate? = nil) -> UIViewController {
+    func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
         let viewModel = LoginView.ViewModel()
-        viewModel.delegate = delegate
-        return UIHostingController(rootView: LoginView(viewModel: viewModel))
+        return LoginView(viewModel: viewModel)
+    }
+    
+    func makeCreateUserView() -> CreateUserView {
+        let viewModel = CreateUserViewModel()
+        return CreateUserView(viewModel: viewModel)
     }
 }

@@ -54,8 +54,8 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
 
 
 final class CardListViewControllerMock: UIViewController, CardListViewControllerProtocol {
+    var viewModel: CardFortress.ListViewModelProtocol = MockListViewModel(cardListService: MockListService())
     var delegate: CardFortress.CardListViewControllerDelegate?
-
 }
 
 final class AddCreditCardViewControllerMock: UIViewController ,AddCreditCardViewControllerProtocol {

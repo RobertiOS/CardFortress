@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
-    
+
     //MARK: - properties
-    
+
     @StateObject var viewModel: ViewModel
     
     //MARK: Views
