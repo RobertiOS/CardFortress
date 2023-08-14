@@ -11,6 +11,8 @@ import FirebaseAuth
 @testable import CardFortress
 
 final class AuthenticationAPIMock: AuthenticationAPI {
+    var currentUser: CardFortress.CurrentUser?
+    
     func signUp(withEmail: String, password: String, name: String, lastName: String, image: UIImage?) async -> CardFortress.AuthenticationResult {
         .success
     }
@@ -27,6 +29,5 @@ final class AuthenticationAPIMock: AuthenticationAPI {
         return .success
     }
     
-    var currentUser: User?
     
 }
