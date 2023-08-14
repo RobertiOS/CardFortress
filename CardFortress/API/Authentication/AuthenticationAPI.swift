@@ -35,7 +35,7 @@ protocol AuthenticationAPI {
     func signOut() -> AuthenticationResult?
     
     /// The user that is currently logged in
-    var currentUser: User? { get }
+    var currentUser: CurrentUser? { get }
 }
 
 enum AuthenticationResult {
@@ -45,6 +45,23 @@ enum AuthenticationResult {
     case emailAlreadyInUse
     case unkown
     case other(Error)
+    
+    var errorMessage: String {
+        switch self {
+        case .success:
+            return "Success"
+        case .invalidEmail:
+            return "Invalid email"
+        case .wrongPassword:
+            return "Wrong Password"
+        case .emailAlreadyInUse:
+            return "Email already in use"
+        case .unkown:
+            return "Unkown Error"
+        case .other(let error):
+            return error.localizedDescription
+        }
+    }
 }
 
 extension AuthenticationResult: Equatable {
@@ -67,7 +84,7 @@ extension AuthenticationResult: Equatable {
 
 final class Authentication: AuthenticationAPI {
     //MARK: - properties
-    var currentUser: User?
+    var currentUser: CurrentUser?
 
     let dataStorageAPI: DataStorageAPI
     
@@ -80,7 +97,7 @@ final class Authentication: AuthenticationAPI {
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
         do {
             let result = try await auth.signIn(withEmail: withEmail, password: password)
-            currentUser = result.user
+            try await setCurrentUser()
             return .success
         } catch {
             return handleAuthenticationError(error: error)
@@ -96,19 +113,20 @@ final class Authentication: AuthenticationAPI {
     ) async -> AuthenticationResult {
         do {
             let result = try await auth.createUser(withEmail: withEmail, password: password)
-            currentUser = result.user
             
-            if let userUid = currentUser?.uid {
+            if let userUid = auth.currentUser?.uid {
+                let userData = UserData(name: name, lastName: lastName)
                 let storeUserData = await dataStorageAPI.storeUserData(
-                    firstName: name,
-                    lastName: lastName,
-                    userImage: nil,
-                    userUid: userUid)
+                    userUid: userUid,
+                    userData: userData)
                 switch storeUserData {
                 case .success:
+                    try await setCurrentUser()
                     return .success
                 case .failure(let error):
                     return .other(error)
+                default:
+                    break
                 }
             }
             return .success
@@ -137,6 +155,23 @@ final class Authentication: AuthenticationAPI {
             return .emailAlreadyInUse
         default:
             return .other(error)
+        }
+    }
+    
+    
+    //TODO: - Revisit
+    func setCurrentUser() async throws {
+        guard let uid = auth.currentUser?.uid else { throw NSError() }
+        let result = await dataStorageAPI.getUserData(uid: uid)
+        switch result {
+        case.success(let data):
+            currentUser = .init(
+                name: data?.name ?? "",
+                lastName: data?.lastName ?? "",
+                email: auth.currentUser?.email ?? ""
+            )
+        case .failure(let error):
+            throw error
         }
     }
 }

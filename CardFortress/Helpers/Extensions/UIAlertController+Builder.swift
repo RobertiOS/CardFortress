@@ -86,6 +86,15 @@ extension UIViewController {
             .withButton(title: NSLocalizedString("OK", comment: "OK Button title shown in modal"))
             .present(in: self)
     }
+    
+    func presentAlert(with error: String) {
+        UIAlertController
+            .Builder()
+            .withTitle(NSLocalizedString("Error", comment: "Error title shown in modal"))
+            .withMessage(error)
+            .withButton(title: NSLocalizedString("OK", comment: "OK Button title shown in modal"))
+            .present(in: self)
+    }
 }
 
 #if DEBUG

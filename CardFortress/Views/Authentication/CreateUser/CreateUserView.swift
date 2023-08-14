@@ -28,18 +28,23 @@ struct CreateUserView: View {
                         await viewModel.createUser()
                     }
                 } label: {
-                    
-                    Text("Sign Up")
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .foregroundColor(Color.white)
-                        .font(.system(size: 20, weight: .semibold))
-                        .background(.cyan)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 10, style: .continuous)
-                                .stroke(Color.cfPurple, lineWidth: 2)
-                        ).background()
+                    VStack {
+                        if viewModel.isLoading {
+                            ProgressView()
+                        } else {
+                            Text("Continue")
+                                .foregroundColor(Color.white)
+                                .font(.system(size: 20, weight: .semibold))
+                        }
+                    }
+                    .frame(height: 60)
+                    .frame(maxWidth: .infinity)
+                    .background(
+                        RoundedRectangle(cornerRadius: 10, style: .continuous)
+                            .fill(viewModel.isLoading ? Color.cyan.opacity(0.5) : Color.cyan)
+                    )
                 }
+                .disabled(viewModel.isLoading)
             }
             .padding()
         }
