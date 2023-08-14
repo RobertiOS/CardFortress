@@ -86,7 +86,10 @@ extension AuthCoordinator: CreateUserViewDelegate {
             navigationController.dismiss(animated: true)
             finish(.success)
         default:
-            break
+            if let result {
+                let presenter = navigationController.presentedViewController ?? navigationController
+                presenter.presentAlert(with: result.errorMessage)
+            }
         }
     }
 }

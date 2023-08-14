@@ -32,6 +32,8 @@
 		266EECA52A89869B007F5427 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266EECA42A89869B007F5427 /* FirebaseAuth */; };
 		266EECA72A89869B007F5427 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266EECA62A89869B007F5427 /* FirebaseFirestore */; };
 		266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */; };
+		266EECAD2A89DF21007F5427 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAC2A89DF21007F5427 /* UserData.swift */; };
+		266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAF2A89E0A2007F5427 /* CurrentUser.swift */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
@@ -137,6 +139,8 @@
 		266EDAB52A884739007F5427 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		266EEC9E2A894319007F5427 /* DataStorageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPI.swift; sourceTree = "<group>"; };
 		266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
+		266EECAC2A89DF21007F5427 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		266EECAF2A89E0A2007F5427 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -310,6 +314,41 @@
 			path = CreateUser;
 			sourceTree = "<group>";
 		};
+		266EECAA2A89DECD007F5427 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				266EDAB22A884677007F5427 /* CreateUser */,
+				266EDAB12A88466B007F5427 /* Login */,
+				261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		266EECAB2A89DF0B007F5427 /* DataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				266EEC9E2A894319007F5427 /* DataStorageAPI.swift */,
+				266EECAE2A89E08B007F5427 /* Model */,
+			);
+			path = DataStorage;
+			sourceTree = "<group>";
+		};
+		266EECAE2A89E08B007F5427 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				266EECAC2A89DF21007F5427 /* UserData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		266EECB12A89E0A6007F5427 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				266EECAF2A89E0A2007F5427 /* CurrentUser.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		26888FDA2A076F6200936748 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
@@ -361,19 +400,20 @@
 			path = CardFortressAppCoordinator;
 			sourceTree = "<group>";
 		};
-		26B38C0D29ECC00C00D0CCD8 /* Modules */ = {
+		26B38C0D29ECC00C00D0CCD8 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				26F5B4CD29FEBC6F002D224D /* Service */,
+				266EECAB2A89DF0B007F5427 /* DataStorage */,
+				26D09A692A69029900B9D885 /* Authentication */,
 				26F5B4D82A0003EA002D224D /* SecureStore */,
 			);
-			path = Modules;
+			path = API;
 			sourceTree = "<group>";
 		};
 		26B38C0E29ECC01A00D0CCD8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				26D09A692A69029900B9D885 /* Authentication */,
+				266EECAA2A89DECD007F5427 /* Authentication */,
 				26360D3F2A3DF77C002E7E9E /* Vision */,
 				26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */,
 				261EA5792A3589AC00367CC4 /* AddCreditCard */,
@@ -465,7 +505,7 @@
 				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
 				26B38C0E29ECC01A00D0CCD8 /* Views */,
-				26B38C0D29ECC00C00D0CCD8 /* Modules */,
+				26B38C0D29ECC00C00D0CCD8 /* API */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
 				26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */,
 			);
@@ -533,11 +573,8 @@
 		26D09A692A69029900B9D885 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				266EDAB22A884677007F5427 /* CreateUser */,
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
-				266EDAB12A88466B007F5427 /* Login */,
-				261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */,
-				266EEC9E2A894319007F5427 /* DataStorageAPI.swift */,
+				266EECB12A89E0A6007F5427 /* Model */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -545,6 +582,7 @@
 		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
+				26F5B4CD29FEBC6F002D224D /* Service */,
 				26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */,
 				26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */,
 				26B7701829EC450200CC9FEB /* CardListViewController.swift */,
@@ -785,6 +823,8 @@
 				266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
+				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
+				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,

@@ -29,19 +29,23 @@ final class CreateUserViewModel: ObservableObject {
     @Published var confirmationPassword = ""
     @Published var errorMessage = ""
     
+    @Published var isLoading = false
+    
     weak var delegate: CreateUserViewDelegate?
     
     //MARK: - Public methods
+    
+    @MainActor
     func createUser() async {
-        
+        isLoading = true
         guard password == confirmationPassword else {
             errorMessage = "Passwords do not match"
+            isLoading = false
             return
         }
         
-        let result = await delegate?.createUser(name: name, lastName: lastName, email: email, password: password)
-        
-        
+        _ = await delegate?.createUser(name: name, lastName: lastName, email: email, password: password)
+        isLoading = false
     }
     
 }
