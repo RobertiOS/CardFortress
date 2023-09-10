@@ -6,7 +6,6 @@
 //
 
 import Foundation
-@testable import CardFortress
 
 class SecureStoreMock: SecureStoreProtocol {
     var addCreditCardToKeychainCalledCount = 0

@@ -72,11 +72,12 @@ struct LoginView: View {
     
     @ViewBuilder
     private var buttonContainerView: some View {
-        Button {
-            Task {
-                await viewModel.login()
-            }
-        } label: {
+        HStack {
+            Button {
+                Task {
+                    await viewModel.login()
+                }
+            } label: {
                 VStack {
                     if viewModel.isloading {
                         ProgressView()
@@ -92,8 +93,28 @@ struct LoginView: View {
                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                         .fill(viewModel.isloading ? Color.cfPurple.opacity(0.5) : Color.cfPurple)
                 )
+            }
+            .disabled(viewModel.isloading)
+            
+            Button {
+                Task {
+                    await viewModel.loginWithBiometrics()
+                }
+            } label: {
+                VStack {
+                    viewModel.biometricsImage?
+                        .resizable()
+                        .frame(width: 40, height: 40)
+                        .padding(10)
+                        .tint(.white)
+                }
+                .background(
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(viewModel.isloading ? Color.cfPurple.opacity(0.5) : Color.cfPurple)
+                )
+            }
+            .disabled(viewModel.isloading)
         }
-        .disabled(viewModel.isloading)
         Button {
             viewModel.startCreateUser()
         } label: {

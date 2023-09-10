@@ -5,15 +5,14 @@
 //  Created by Roberto Corrales on 5/6/23.
 //
 
-@testable import CardFortress
 import Combine
 import Foundation
 
 final class MockListService: CardListServiceProtocol {
     var delete = false
     var cards = [
-        CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
-        CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "MasterCard", cardHolderName: "Juan Perez"),
+        CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Roberto"),
+        CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "MasterCard", cardHolderName: "Carlos Perez"),
         CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Bank", cardHolderName: "Juan Perez")
     ]
     

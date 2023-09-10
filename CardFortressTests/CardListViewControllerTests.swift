@@ -100,12 +100,3 @@ final class CardListViewControllerTests: XCTestCase {
         XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
     }
 }
-
-extension TimeInterval {
-    static var defaultWait: TimeInterval {
-        1.5
-    }
-    static var largeWait: TimeInterval {
-        5
-    }
-}
