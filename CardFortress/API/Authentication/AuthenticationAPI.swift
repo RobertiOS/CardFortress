@@ -36,6 +36,10 @@ protocol AuthenticationAPI {
     
     /// The user that is currently logged in
     var currentUser: CurrentUser? { get }
+    
+    /// Sign-in with biometics of the device e.g: touch id, face ID
+    /// - Returns:if the user is logged in, it returns success
+    func signInWithBiometrics() async -> AuthenticationResult
 }
 
 enum AuthenticationResult {
@@ -83,26 +87,74 @@ extension AuthenticationResult: Equatable {
 
 
 final class Authentication: AuthenticationAPI {
+    
+    //MARK: Configuration
+    
+    struct Config {
+        let useBiometrics: Bool
+        
+        static var defaults: Self {
+            .init(useBiometrics: true)
+        }
+    }
+    
+    
     //MARK: - properties
     var currentUser: CurrentUser?
-
     let dataStorageAPI: DataStorageAPI
+    let secureUserDataAPI: SecureUserDataAPI
+    let biometricsAPI: BiometricAuthAPI
+    let config: Config
     
-    init(dataStorageAPI: DataStorageAPI = DataStorage()) {
+    init(
+        dataStorageAPI: DataStorageAPI = DataStorage(),
+        secureUserDataAPI: SecureUserDataAPI = SecureUserData(),
+        biometricsAPI: BiometricAuthAPI = BiometricAuth(),
+        config: Config = Config.defaults
+    ) {
         self.dataStorageAPI = dataStorageAPI
+        self.secureUserDataAPI = secureUserDataAPI
+        self.config = config
+        self.biometricsAPI = biometricsAPI
     }
     
     let auth = Auth.auth()
    
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
         do {
-            let result = try await auth.signIn(withEmail: withEmail, password: password)
+            _ = try await auth.signIn(withEmail: withEmail, password: password)
+            /// store credentials on keychain if the user is logged-in successfully
+            if config.useBiometrics {
+                await secureUserDataAPI.storeUserCredentials(userData: .init(userName: withEmail, password: password))
+            }
             try await setCurrentUser()
             return .success
         } catch {
             return handleAuthenticationError(error: error)
         }
         
+    }
+    
+    func signInWithBiometrics() async -> AuthenticationResult {
+        if config.useBiometrics {
+            let result = await biometricsAPI.evaluate()
+            switch result {
+            case (false, .some(let error)):
+                return .other(error)
+            case (true, .none):
+                let userData = await secureUserDataAPI.getUserCredentials()
+                switch userData {
+                case .success(let loginInfo):
+                    return await signIn(withEmail: loginInfo.userName, password: loginInfo.password)
+                case .failure(_):
+                    return .other(GenericError.genericError(description: "Other error"))
+                }
+            default:
+                return .other(GenericError.genericError(description: "Biometrics disabled on the API"))
+            }
+        } else {
+            return .other(GenericError.genericError(description: "Biometrics disabled on the API"))
+        }
     }
     
     func signUp(withEmail: String,
@@ -113,11 +165,9 @@ final class Authentication: AuthenticationAPI {
     ) async -> AuthenticationResult {
         do {
             let result = try await auth.createUser(withEmail: withEmail, password: password)
-            
-            if let userUid = auth.currentUser?.uid {
                 let userData = UserData(name: name, lastName: lastName)
                 let storeUserData = await dataStorageAPI.storeUserData(
-                    userUid: userUid,
+                    userUid: result.user.uid,
                     userData: userData)
                 switch storeUserData {
                 case .success:
@@ -128,7 +178,6 @@ final class Authentication: AuthenticationAPI {
                 default:
                     break
                 }
-            }
             return .success
         } catch {
             return handleAuthenticationError(error: error)

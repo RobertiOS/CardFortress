@@ -43,6 +43,12 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
 //MARK: - LoginViewDelegate
 
 extension AuthCoordinator: LoginViewDelegate {
+    func loginWithBiometrics() async -> AuthenticationResult? {
+        let result = await authenticationAPI?.signInWithBiometrics()
+        await handleAuthResult(result)
+        return result
+    }
+
     func login(email: String, password: String) async -> AuthenticationResult? {
         let result = await authenticationAPI?.signIn(withEmail: email, password: password)
         await handleAuthResult(result)

@@ -22,6 +22,13 @@
 		26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC12A18A38100C9B8DA /* SecureStore.swift */; };
 		26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */; };
 		2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */ = {isa = PBXBuildFile; productRef = 2655DFBC2A059158003EFDA2 /* CreditCardValidator */; };
+		265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */; };
+		265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */; };
+		265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
+		265DC0F12AAE31D800F52769 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
+		265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
+		265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */; };
+		265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */; };
 		265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
 		266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB32A8846BA007F5427 /* CreateUserView.swift */; };
@@ -34,8 +41,9 @@
 		266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */; };
 		266EECAD2A89DF21007F5427 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAC2A89DF21007F5427 /* UserData.swift */; };
 		266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAF2A89E0A2007F5427 /* CurrentUser.swift */; };
+		266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */; };
+		266F37102AA5806600C253A3 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F370F2AA5806600C253A3 /* BiometricAuth.swift */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
-		26888FDE2A0770A400936748 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A362A63228B00DA1313 /* UIColor+Extensions.swift */; };
 		26921A392A64566D00DA1313 /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A382A64566D00DA1313 /* CFTextField.swift */; };
@@ -67,17 +75,13 @@
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
 		26B7701E29EC450400CC9FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701D29EC450400CC9FEB /* Assets.xcassets */; };
 		26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */; };
-		26B7703629EC450400CC9FEB /* CardFortressUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703529EC450400CC9FEB /* CardFortressUITests.swift */; };
-		26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */; };
 		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
 		26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */; };
 		26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */; };
-		26B830632A7EEB35002D119E /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
 		26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */; };
 		26B83A662A7FF39B002D119E /* CardFortressAppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
-		26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */; };
 		26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */; };
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
@@ -99,6 +103,7 @@
 		26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E02A002286002D224D /* UIView+Extensions.swift */; };
 		26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E22A00387E002D224D /* SecureStoreError.swift */; };
 		26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */; };
+		26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -133,6 +138,10 @@
 		263617D22A3FA4FB002E7E9E /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
 		26366FC12A18A38100C9B8DA /* SecureStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStore.swift; sourceTree = "<group>"; };
 		26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
+		265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+Presentation.swift"; sourceTree = "<group>"; };
+		265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthAPIMock.swift; sourceTree = "<group>"; };
+		265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
+		265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreCreditCard.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
@@ -141,6 +150,8 @@
 		266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
 		266EECAC2A89DF21007F5427 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		266EECAF2A89E0A2007F5427 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
+		266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		266F370F2AA5806600C253A3 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -177,8 +188,6 @@
 		26B7702229EC450400CC9FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B7702729EC450400CC9FEB /* CardFortressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		26B7703529EC450400CC9FEB /* CardFortressUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressUITests.swift; sourceTree = "<group>"; };
-		26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorTests.swift; sourceTree = "<group>"; };
 		26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFactoryMock.swift; sourceTree = "<group>"; };
@@ -209,6 +218,7 @@
 		26F5B4E02A002286002D224D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		26F5B4E22A00387E002D224D /* SecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
 		26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
+		26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -218,6 +228,7 @@
 			files = (
 				2655DFBD2A059158003EFDA2 /* CreditCardValidator in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
+				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
 				266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */,
 				266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */,
@@ -266,6 +277,7 @@
 		2631E2502A04BF0100197FEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				265DC0EF2AAE312C00F52769 /* APIMocks */,
 				2631E24E2A04BEF200197FEA /* CREDC___.otf */,
 				26B7701D29EC450400CC9FEB /* Assets.xcassets */,
 			);
@@ -278,6 +290,17 @@
 				26360D402A3DF7E9002E7E9E /* VisionKitCoordinator.swift */,
 			);
 			path = Vision;
+			sourceTree = "<group>";
+		};
+		265DC0EF2AAE312C00F52769 /* APIMocks */ = {
+			isa = PBXGroup;
+			children = (
+				265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */,
+				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
+				26888FDD2A0770A400936748 /* MockListService.swift */,
+				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
+			);
+			path = APIMocks;
 			sourceTree = "<group>";
 		};
 		265FC8582A0C532B00939A12 /* Model */ = {
@@ -301,6 +324,7 @@
 			children = (
 				26D09A942A69912700B9D885 /* LoginView.swift */,
 				26D09A962A69915A00B9D885 /* LoginViewModel.swift */,
+				265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -352,13 +376,10 @@
 		26888FDA2A076F6200936748 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
-				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
-				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 				26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */,
 				26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */,
 				26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */,
-				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
 				26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */,
 			);
 			path = Mocks;
@@ -541,8 +562,7 @@
 		26B7703429EC450400CC9FEB /* CardFortressUITests */ = {
 			isa = PBXGroup;
 			children = (
-				26B7703529EC450400CC9FEB /* CardFortressUITests.swift */,
-				26B7703729EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift */,
+				265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */,
 			);
 			path = CardFortressUITests;
 			sourceTree = "<group>";
@@ -550,6 +570,7 @@
 		26B80EA02A76F5AF002D119E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -573,8 +594,10 @@
 		26D09A692A69029900B9D885 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */,
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
 				266EECB12A89E0A6007F5427 /* Model */,
+				266F370F2AA5806600C253A3 /* BiometricAuth.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -630,6 +653,7 @@
 		26F5B4D92A000C03002D224D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */,
 				26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */,
 				26F5B4E02A002286002D224D /* UIView+Extensions.swift */,
 				26888FD82A0756FE00936748 /* UIImage+Extensions.swift */,
@@ -706,6 +730,8 @@
 				26B7703329EC450400CC9FEB /* PBXTargetDependency */,
 			);
 			name = CardFortressUITests;
+			packageProductDependencies = (
+			);
 			productName = CardFortressUITests;
 			productReference = 26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -794,8 +820,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */,
+				265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */,
 				26921A4A2A65930900DA1313 /* VisionKitViewControllerProtocol.swift in Sources */,
+				265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */,
 				26366FC22A18A38100C9B8DA /* SecureStore.swift in Sources */,
+				266F37102AA5806600C253A3 /* BiometricAuth.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
 				26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */,
@@ -803,7 +832,10 @@
 				26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */,
 				261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */,
 				263617D32A3FA4FB002E7E9E /* ImageParser.swift in Sources */,
+				265DC0F12AAE31D800F52769 /* MockListService.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
+				26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */,
+				265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
 				261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */,
 				26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */,
@@ -824,8 +856,10 @@
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
+				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
+				265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
@@ -850,8 +884,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B830632A7EEB35002D119E /* AuthenticationAPIMock.swift in Sources */,
-				26888FDE2A0770A400936748 /* MockListService.swift in Sources */,
 				26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */,
 				266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,
@@ -877,7 +909,6 @@
 				26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */,
 				26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */,
 				26921A442A64EBFD00DA1313 /* VisionKitCoordinatorTests.swift in Sources */,
-				26C84E862A1DB97000F65D32 /* SecureStoreMock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -885,8 +916,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B7703829EC450400CC9FEB /* CardFortressUITestsLaunchTests.swift in Sources */,
-				26B7703629EC450400CC9FEB /* CardFortressUITests.swift in Sources */,
+				265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1052,6 +1082,8 @@
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow Face ID usage to log-in";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -1083,6 +1115,8 @@
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "Allow Face ID usage to log-in";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
