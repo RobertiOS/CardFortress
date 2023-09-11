@@ -29,6 +29,11 @@
 		265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */; };
 		265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */; };
+		265DC0FC2AAE7FE000F52769 /* FirebaseAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */; };
+		265DC0FE2AAE826C00F52769 /* FirebaseAuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */; };
+		265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */; };
+		265DC1022AAE891000F52769 /* DataStorageAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */; };
+		265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */; };
 		265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
 		266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB32A8846BA007F5427 /* CreateUserView.swift */; };
@@ -142,6 +147,11 @@
 		265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthAPIMock.swift; sourceTree = "<group>"; };
 		265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
+		265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIWrapper.swift; sourceTree = "<group>"; };
+		265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthMock.swift; sourceTree = "<group>"; };
+		265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthtenticaitonAPITests.swift; sourceTree = "<group>"; };
+		265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPIMock.swift; sourceTree = "<group>"; };
+		265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPIMock.swift; sourceTree = "<group>"; };
 		265FC8592A0C538D00939A12 /* SecureStoreCreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreCreditCard.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
@@ -299,6 +309,9 @@
 				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
 				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
+				265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */,
+				265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */,
+				265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */,
 			);
 			path = APIMocks;
 			sourceTree = "<group>";
@@ -555,6 +568,7 @@
 				26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */,
 				26921EA42A660C9800DA1313 /* ImageParserTests.swift */,
 				266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */,
+				265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -598,6 +612,7 @@
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
 				266EECB12A89E0A6007F5427 /* Model */,
 				266F370F2AA5806600C253A3 /* BiometricAuth.swift */,
+				265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -837,6 +852,7 @@
 				26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */,
 				265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
+				265DC0FE2AAE826C00F52769 /* FirebaseAuthMock.swift in Sources */,
 				261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */,
 				26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
@@ -858,6 +874,7 @@
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
 				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
+				265DC1022AAE891000F52769 /* DataStorageAPIMock.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
@@ -872,10 +889,12 @@
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26921A392A64566D00DA1313 /* CFTextField.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
+				265DC0FC2AAE7FE000F52769 /* FirebaseAPIWrapper.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 				265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
 				26D09A952A69912700B9D885 /* LoginView.swift in Sources */,
+				265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */,
 				26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -885,6 +904,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */,
+				265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */,
 				266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,
 				26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */,
