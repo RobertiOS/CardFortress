@@ -7,7 +7,6 @@
 
 import XCTest
 import Swinject
-
 @testable import CardFortress
 
 final class CoordinatorFactoryTests: XCTestCase {

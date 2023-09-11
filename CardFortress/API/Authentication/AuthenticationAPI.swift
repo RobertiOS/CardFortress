@@ -32,7 +32,7 @@ protocol AuthenticationAPI {
     
     /// Sign out from the current account
     /// - Returns: if the user is signed out successfully it returns sucess
-    func signOut() -> AuthenticationResult?
+    func signOut() -> AuthenticationResult
     
     /// The user that is currently logged in
     var currentUser: CurrentUser? { get }
@@ -104,25 +104,26 @@ final class Authentication: AuthenticationAPI {
     let dataStorageAPI: DataStorageAPI
     let secureUserDataAPI: SecureUserDataAPI
     let biometricsAPI: BiometricAuthAPI
+    let firebaseAuthAPI: FirebaseAuthAPIWrapper
     let config: Config
     
     init(
         dataStorageAPI: DataStorageAPI = DataStorage(),
         secureUserDataAPI: SecureUserDataAPI = SecureUserData(),
         biometricsAPI: BiometricAuthAPI = BiometricAuth(),
+        firebaseAuthAPI: FirebaseAuthAPIWrapper = firebaseAuthAPIWrapper(),
         config: Config = Config.defaults
     ) {
         self.dataStorageAPI = dataStorageAPI
         self.secureUserDataAPI = secureUserDataAPI
         self.config = config
         self.biometricsAPI = biometricsAPI
+        self.firebaseAuthAPI = firebaseAuthAPI
     }
-    
-    let auth = Auth.auth()
    
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
         do {
-            _ = try await auth.signIn(withEmail: withEmail, password: password)
+            _ = try await firebaseAuthAPI.signIn(withEmail: withEmail, password: password)
             /// store credentials on keychain if the user is logged-in successfully
             if config.useBiometrics {
                 await secureUserDataAPI.storeUserCredentials(userData: .init(userName: withEmail, password: password))
@@ -164,10 +165,10 @@ final class Authentication: AuthenticationAPI {
                 image: UIImage? = nil
     ) async -> AuthenticationResult {
         do {
-            let result = try await auth.createUser(withEmail: withEmail, password: password)
+            let result = try await firebaseAuthAPI.createUser(withEmail: withEmail, password: password)
                 let userData = UserData(name: name, lastName: lastName)
                 let storeUserData = await dataStorageAPI.storeUserData(
-                    userUid: result.user.uid,
+                    userUid: result.firebaseUser.uid,
                     userData: userData)
                 switch storeUserData {
                 case .success:
@@ -184,13 +185,13 @@ final class Authentication: AuthenticationAPI {
         }
     }
     
-    func signOut() -> AuthenticationResult? {
+    func signOut() -> AuthenticationResult {
         do {
-            try auth.signOut()
+            try firebaseAuthAPI.signOut()
         } catch {
             return .other(error)
         }
-        return nil
+        return .success
     }
     // MARK: - Helper methods
     
@@ -210,14 +211,14 @@ final class Authentication: AuthenticationAPI {
     
     //TODO: - Revisit
     func setCurrentUser() async throws {
-        guard let uid = auth.currentUser?.uid else { throw NSError() }
+        guard let uid = firebaseAuthAPI.currentUser?.uid else { throw NSError() }
         let result = await dataStorageAPI.getUserData(uid: uid)
         switch result {
         case.success(let data):
             currentUser = .init(
                 name: data?.name ?? "",
                 lastName: data?.lastName ?? "",
-                email: auth.currentUser?.email ?? ""
+                email: firebaseAuthAPI.currentUser?.email ?? ""
             )
         case .failure(let error):
             throw error

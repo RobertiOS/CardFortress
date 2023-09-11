@@ -19,12 +19,8 @@ final class AuthenticationAPIMock: AuthenticationAPI {
         .success
     }
     
-    func signOut() -> AuthenticationResult? {
-        nil
-    }
-    
-    func signUp(withEmail: String, password: String) async -> AuthenticationResult {
-        return .success
+    func signOut() -> AuthenticationResult {
+        .success
     }
     
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
