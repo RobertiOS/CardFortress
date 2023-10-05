@@ -47,25 +47,21 @@ final class BiometricAuth: BiometricAuthAPI {
     func evaluate() async -> (Bool, BiometricError?) {
         
         let canEvaluateResult = canEvaluate()
-        
-        
         guard canEvaluateResult.canEvaluate else { return (canEvaluateResult.canEvaluate, canEvaluateResult.error) }
         
         return await withCheckedContinuation { continuation in
             // Asks Context to evaluate a Policy with a LocalizedReason
             context.evaluatePolicy(policy, localizedReason: localizedReason) { success, error in
                 // Moves to the main thread because completion triggers UI changes
-                DispatchQueue.main.async {
-                    if success {
-                        // Context successfully evaluated the Policy
-                        continuation.resume(returning: (true, nil))
-                    } else {
-                        // Unwraps Error
-                        // If not available, sends false for Success & nil for BiometricError
-                        guard let error = error else { return continuation.resume(returning: (false, nil)) }
-                        // Maps error to our BiometricError
-                        continuation.resume(returning: (false, BiometricError(nsError: error as NSError)))
-                    }
+                if success {
+                    // Context successfully evaluated the Policy
+                    continuation.resume(returning: (true, nil))
+                } else {
+                    // Unwraps Error
+                    // If not available, sends false for Success & nil for BiometricError
+                    guard let error = error else { return continuation.resume(returning: (false, nil)) }
+                    // Maps error to our BiometricError
+                    continuation.resume(returning: (false, BiometricError(nsError: error as NSError)))
                 }
             }
         }

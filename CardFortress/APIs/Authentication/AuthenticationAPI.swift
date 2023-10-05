@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import FirebaseAuth
 import UIKit
 
 protocol AuthenticationAPI {
@@ -40,6 +39,14 @@ protocol AuthenticationAPI {
     /// Sign-in with biometics of the device e.g: touch id, face ID
     /// - Returns:if the user is logged in, it returns success
     func signInWithBiometrics() async -> AuthenticationResult
+
+    var isUserLoggedIn: Bool { get }
+    
+    var signInWithBiometrics: Bool { get }
+}
+
+extension AuthenticationAPI {
+    var signInWithBiometrics: Bool { false }
 }
 
 enum AuthenticationResult {
@@ -70,74 +77,61 @@ enum AuthenticationResult {
 
 extension AuthenticationResult: Equatable {
     static func ==(lhs: AuthenticationResult, rhs: AuthenticationResult) -> Bool {
-            switch (lhs, rhs) {
-            case (.success, .success):
-                return true
-            case let (.other(lhsError), .other(rhsError)):
-                return lhsError.localizedDescription == rhsError.localizedDescription
-            case (.invalidEmail, .invalidEmail):
-                return true
-            case (.wrongPassword, .wrongPassword):
-                return true
-            default:
-                return false
-            }
+        switch (lhs, rhs) {
+        case (.success, .success),
+            (.invalidEmail, .invalidEmail),
+            (.wrongPassword, .wrongPassword),
+            (.emailAlreadyInUse, .emailAlreadyInUse),
+            (.unkown, .unkown):
+            return true
+        case let (.other(lhsError), .other(rhsError)):
+            return lhsError.localizedDescription == rhsError.localizedDescription
+        default:
+            return false
         }
+    }
 }
 
 
 final class Authentication: AuthenticationAPI {
     
-    //MARK: Configuration
-    
-    struct Config {
-        let useBiometrics: Bool
-        
-        static var defaults: Self {
-            .init(useBiometrics: true)
-        }
-    }
-    
-    
     //MARK: - properties
     var currentUser: CurrentUser?
-    let dataStorageAPI: DataStorageAPI
     let secureUserDataAPI: SecureUserDataAPI
     let biometricsAPI: BiometricAuthAPI
-    let firebaseAuthAPI: FirebaseAuthAPIWrapper
-    let config: Config
+    let authDataSourceAPI: AuthDataSourceAPI
     
     init(
-        dataStorageAPI: DataStorageAPI = DataStorage(),
         secureUserDataAPI: SecureUserDataAPI = SecureUserData(),
         biometricsAPI: BiometricAuthAPI = BiometricAuth(),
-        firebaseAuthAPI: FirebaseAuthAPIWrapper = firebaseAuthAPIWrapper(),
-        config: Config = Config.defaults
+        authDataSourceAPI: AuthDataSourceAPI = AuthDataSource()
     ) {
-        self.dataStorageAPI = dataStorageAPI
         self.secureUserDataAPI = secureUserDataAPI
-        self.config = config
         self.biometricsAPI = biometricsAPI
-        self.firebaseAuthAPI = firebaseAuthAPI
+        self.authDataSourceAPI = authDataSourceAPI
     }
    
-    func signIn(withEmail: String, password: String) async -> AuthenticationResult {
+    func signIn(
+        withEmail: String,
+        password: String
+    ) async -> AuthenticationResult {
         do {
-            _ = try await firebaseAuthAPI.signIn(withEmail: withEmail, password: password)
+            _ = try await authDataSourceAPI.signIn(email: withEmail, password: password)
             /// store credentials on keychain if the user is logged-in successfully
-            if config.useBiometrics {
+            if signInWithBiometrics {
                 await secureUserDataAPI.storeUserCredentials(userData: .init(userName: withEmail, password: password))
             }
-            try await setCurrentUser()
             return .success
-        } catch {
+        } catch let error as AuthDataSourceError {
             return handleAuthenticationError(error: error)
+        } catch {
+            return .other(error)
         }
         
     }
     
     func signInWithBiometrics() async -> AuthenticationResult {
-        if config.useBiometrics {
+        if signInWithBiometrics {
             let result = await biometricsAPI.evaluate()
             switch result {
             case (false, .some(let error)):
@@ -165,63 +159,46 @@ final class Authentication: AuthenticationAPI {
                 image: UIImage? = nil
     ) async -> AuthenticationResult {
         do {
-            let result = try await firebaseAuthAPI.createUser(withEmail: withEmail, password: password)
-                let userData = UserData(name: name, lastName: lastName)
-                let storeUserData = await dataStorageAPI.storeUserData(
-                    userUid: result.firebaseUser.uid,
-                    userData: userData)
-                switch storeUserData {
-                case .success:
-                    try await setCurrentUser()
-                    return .success
-                case .failure(let error):
-                    return .other(error)
-                default:
-                    break
-                }
+            try await authDataSourceAPI.createUser(
+                email: withEmail,
+                password: password,
+                name: name,
+                lastName: lastName,
+                image: image
+            )
             return .success
+        } catch let error as AuthDataSourceError {
+            return handleAuthenticationError(error: error as AuthDataSourceError)
         } catch {
-            return handleAuthenticationError(error: error)
+            return AuthenticationResult.other(error)
         }
     }
     
     func signOut() -> AuthenticationResult {
         do {
-            try firebaseAuthAPI.signOut()
+            try authDataSourceAPI.signOut()
         } catch {
             return .other(error)
         }
         return .success
     }
+
+    var isUserLoggedIn: Bool {
+        authDataSourceAPI.isUserLoggedIn
+    }
+    
     // MARK: - Helper methods
     
-    private func handleAuthenticationError(error: Error) -> AuthenticationResult {
-        switch AuthErrorCode(_nsError: error as NSError).code {
+    private func handleAuthenticationError(error: AuthDataSourceError) -> AuthenticationResult {
+        switch error {
         case .wrongPassword:
             return .wrongPassword
         case .invalidEmail:
             return .invalidEmail
         case .emailAlreadyInUse:
-            return .emailAlreadyInUse
+            return AuthenticationResult.emailAlreadyInUse
         default:
             return .other(error)
-        }
-    }
-    
-    
-    //TODO: - Revisit
-    func setCurrentUser() async throws {
-        guard let uid = firebaseAuthAPI.currentUser?.uid else { throw NSError() }
-        let result = await dataStorageAPI.getUserData(uid: uid)
-        switch result {
-        case.success(let data):
-            currentUser = .init(
-                name: data?.name ?? "",
-                lastName: data?.lastName ?? "",
-                email: firebaseAuthAPI.currentUser?.email ?? ""
-            )
-        case .failure(let error):
-            throw error
         }
     }
 }

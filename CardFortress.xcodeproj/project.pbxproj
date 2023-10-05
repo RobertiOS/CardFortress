@@ -29,8 +29,8 @@
 		265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */; };
 		265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */; };
-		265DC0FC2AAE7FE000F52769 /* FirebaseAPIWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */; };
-		265DC0FE2AAE826C00F52769 /* FirebaseAuthMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */; };
+		265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */; };
+		265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */; };
 		265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */; };
 		265DC1022AAE891000F52769 /* DataStorageAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */; };
 		265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */; };
@@ -88,6 +88,7 @@
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26C462BA29F63E3F000B06A7 /* CardCollectionViewCellTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C462B929F63E3F000B06A7 /* CardCollectionViewCellTest.swift */; };
 		26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */; };
+		26CDCEC72AB95F2D00CCBB50 /* CheckboxStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CDCEC62AB95F2D00CCBB50 /* CheckboxStyle.swift */; };
 		26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */; };
 		26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */; };
 		26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */; };
@@ -109,6 +110,8 @@
 		26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E22A00387E002D224D /* SecureStoreError.swift */; };
 		26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */; };
 		26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */; };
+		26F972142ACBB22200D35C3D /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F972132ACBB22200D35C3D /* CreditCardView.swift */; };
+		26F972172ACBBA2000D35C3D /* CreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,8 +150,8 @@
 		265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthAPIMock.swift; sourceTree = "<group>"; };
 		265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
 		265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
-		265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPIWrapper.swift; sourceTree = "<group>"; };
-		265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAuthMock.swift; sourceTree = "<group>"; };
+		265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPI.swift; sourceTree = "<group>"; };
+		265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPIMock.swift; sourceTree = "<group>"; };
 		265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthtenticaitonAPITests.swift; sourceTree = "<group>"; };
 		265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPIMock.swift; sourceTree = "<group>"; };
 		265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPIMock.swift; sourceTree = "<group>"; };
@@ -209,6 +212,7 @@
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
 		26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreMock.swift; sourceTree = "<group>"; };
 		26C84E872A1DC97400F65D32 /* SecureStore+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStore+Helpers.swift"; sourceTree = "<group>"; };
+		26CDCEC62AB95F2D00CCBB50 /* CheckboxStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxStyle.swift; sourceTree = "<group>"; };
 		26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26CEBA642A15D71D00AF62DE /* RootVCFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
 		26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerBuilderTests.swift; sourceTree = "<group>"; };
@@ -229,6 +233,8 @@
 		26F5B4E22A00387E002D224D /* SecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
 		26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
 		26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPI.swift; sourceTree = "<group>"; };
+		26F972132ACBB22200D35C3D /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
+		26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +315,7 @@
 				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
 				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
-				265DC0FD2AAE826C00F52769 /* FirebaseAuthMock.swift */,
+				265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */,
 				265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */,
 				265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */,
 			);
@@ -434,14 +440,14 @@
 			path = CardFortressAppCoordinator;
 			sourceTree = "<group>";
 		};
-		26B38C0D29ECC00C00D0CCD8 /* API */ = {
+		26B38C0D29ECC00C00D0CCD8 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
 				266EECAB2A89DF0B007F5427 /* DataStorage */,
 				26D09A692A69029900B9D885 /* Authentication */,
 				26F5B4D82A0003EA002D224D /* SecureStore */,
 			);
-			path = API;
+			path = APIs;
 			sourceTree = "<group>";
 		};
 		26B38C0E29ECC01A00D0CCD8 /* Views */ = {
@@ -453,6 +459,7 @@
 				261EA5792A3589AC00367CC4 /* AddCreditCard */,
 				26DF384929F0EA9B007091C3 /* MainList */,
 				26F5B4D229FEBD3A002D224D /* Models */,
+				26F972152ACBB22A00D35C3D /* SharedViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -467,6 +474,7 @@
 				26B38C1A29ECF66000D0CCD8 /* LocalizableString */,
 				26B38C1929ECF65300D0CCD8 /* Protocols */,
 				263617D22A3FA4FB002E7E9E /* ImageParser.swift */,
+				26CDCEC62AB95F2D00CCBB50 /* CheckboxStyle.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -539,7 +547,7 @@
 				2631E2502A04BF0100197FEA /* Resources */,
 				26B38C1329ECECEF00D0CCD8 /* Helpers */,
 				26B38C0E29ECC01A00D0CCD8 /* Views */,
-				26B38C0D29ECC00C00D0CCD8 /* API */,
+				26B38C0D29ECC00C00D0CCD8 /* APIs */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
 				26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */,
 			);
@@ -612,7 +620,7 @@
 				26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */,
 				266EECB12A89E0A6007F5427 /* Model */,
 				266F370F2AA5806600C253A3 /* BiometricAuth.swift */,
-				265DC0FB2AAE7FE000F52769 /* FirebaseAPIWrapper.swift */,
+				265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -680,6 +688,15 @@
 				261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		26F972152ACBB22A00D35C3D /* SharedViews */ = {
+			isa = PBXGroup;
+			children = (
+				26F972132ACBB22200D35C3D /* CreditCardView.swift */,
+				26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */,
+			);
+			path = SharedViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -852,7 +869,7 @@
 				26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */,
 				265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
-				265DC0FE2AAE826C00F52769 /* FirebaseAuthMock.swift in Sources */,
+				265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */,
 				261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */,
 				26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
@@ -865,12 +882,14 @@
 				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
 				26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
+				26F972142ACBB22200D35C3D /* CreditCardView.swift in Sources */,
 				266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
 				266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
+				26F972172ACBBA2000D35C3D /* CreditCardViewModel.swift in Sources */,
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
 				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
@@ -883,13 +902,14 @@
 				26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */,
 				26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */,
 				26CEBA652A15D71D00AF62DE /* RootVCFactory.swift in Sources */,
+				26CDCEC72AB95F2D00CCBB50 /* CheckboxStyle.swift in Sources */,
 				266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */,
 				269956432A4B4D9800FCACE9 /* PreviewCreditCardView.swift in Sources */,
 				26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */,
 				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26921A392A64566D00DA1313 /* CFTextField.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
-				265DC0FC2AAE7FE000F52769 /* FirebaseAPIWrapper.swift in Sources */,
+				265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */,
 				26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */,
 				265FC85A2A0C538D00939A12 /* SecureStoreCreditCard.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
@@ -1109,7 +1129,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1142,7 +1162,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
