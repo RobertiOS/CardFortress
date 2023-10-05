@@ -38,9 +38,11 @@ extension SceneDelegate {
             container.register(CardListServiceProtocol.self) { r in
                 CardListService(secureStore: secureStore)
             }
+            
+            let authDataSource = AuthDataSource()
 
             container.register(AuthenticationAPI.self) { r in
-                Authentication()
+                Authentication(authDataSourceAPI: authDataSource)
             }
             
             return container
