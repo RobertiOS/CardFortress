@@ -48,8 +48,13 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     
     override func start() {
         ///start login coordinator
-        startLoginCoordinator()
+        let authAPI = container.resolve(AuthenticationAPI.self)
         
+        if authAPI?.isUserLoggedIn ?? false {
+            startTabBarCoordinator()
+        } else {
+            startLoginCoordinator()
+        }
     }
     
     func startTabBarCoordinator() {
