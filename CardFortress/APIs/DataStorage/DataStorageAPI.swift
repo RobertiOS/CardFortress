@@ -9,11 +9,10 @@ import UIKit
 import FirebaseFirestore
 import FirebaseCore
 
-enum StorageResult {
-    case success
+enum DataStorageAPIError: Error {
     case encodingError
-    case failure(error: Error)
-    case userData(UserData)
+    case decodingError
+    case unknown(error: Error)
 }
 
 protocol DataStorageAPI {
@@ -22,11 +21,11 @@ protocol DataStorageAPI {
     ///   - userUid: unique identifier
     ///   - userData: user data object to store into the database
     /// - Returns: Storage result
-    func storeUserData(userUid: String, userData: UserData) async -> StorageResult
+    func storeUserData(userUid: String, userData: UserData) async throws
     /// Get user data given an user id
     /// - Parameter uid: the unique id of the user
     /// - Returns: either the user data or an error
-    func getUserData(uid: String) async -> Result<UserData?, Error>
+    func getUserData(uid: String) async throws -> UserData
 }
 
 
@@ -41,28 +40,35 @@ final class DataStorage: DataStorageAPI {
     
     //MARK: - Methods
     
-    func storeUserData(userUid: String, userData: UserData) async -> StorageResult {
+    func storeUserData(userUid: String, userData: UserData) async throws {
         do {
             let jsonData = try JSONEncoder().encode(userData)
             guard let dictionary = try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any] else {
-                return .encodingError
+                throw DataStorageAPIError.encodingError
             }
             try await db.collection(.userInformation).document(userUid).setData(dictionary)
-            return .success
+        } catch _ as EncodingError {
+            throw DataStorageAPIError.encodingError
+        } catch _ as DecodingError {
+            throw DataStorageAPIError.decodingError
         } catch {
-            return .failure(error: error)
+            throw DataStorageAPIError.unknown(error: error)
         }
     }
     
-    func getUserData(uid: String) async -> Result<UserData?, Error> {
+    func getUserData(uid: String) async throws -> UserData {
         let docRef = db.collection(.userInformation).document(uid)
         do {
             let data = try await docRef.getDocument(source: .default).data()
             let jsonData = try JSONSerialization.data(withJSONObject: data ?? [:], options: [])
-            let information = try JSONDecoder().decode(UserData.self, from: jsonData)
-            return .success(information)
+            let userData = try JSONDecoder().decode(UserData.self, from: jsonData)
+            return userData
+        } catch _ as EncodingError {
+            throw DataStorageAPIError.encodingError
+        } catch _ as DecodingError {
+            throw DataStorageAPIError.decodingError
         } catch {
-            return.failure(error)
+            throw DataStorageAPIError.unknown(error: error)
         }
     }
 }
