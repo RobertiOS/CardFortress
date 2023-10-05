@@ -5,22 +5,20 @@
 //  Created by Roberto Corrales on 9/10/23.
 //
 import XCTest
-import FirebaseAuth
 @testable import CardFortress
 
 final class AuthtenticaitonAPITests: XCTestCase {
 
     var authenticationAPI: AuthenticationAPI!
-    var firebaseAPIMock: FirebaseAuthAPIMock!
+    var authDataSourceAPI: AuthDataSourceAPIMock!
     
     override func setUp() {
         super.setUp()
-        firebaseAPIMock = FirebaseAuthAPIMock()
+        authDataSourceAPI = AuthDataSourceAPIMock()
         authenticationAPI = Authentication(
-            dataStorageAPI: DataStorageAPIMock(),
             secureUserDataAPI: SecureUserDataAPIMock(),
             biometricsAPI: BiometricAuthAPIMock(),
-            firebaseAuthAPI: firebaseAPIMock,
+            authDataSourceAPI: authDataSourceAPI,
             config: .defaults
         )
     }
@@ -28,7 +26,7 @@ final class AuthtenticaitonAPITests: XCTestCase {
     override func tearDown() {
         super.tearDown()
         authenticationAPI = nil
-        firebaseAPIMock = nil
+        authDataSourceAPI = nil
     }
     
     func test_signIn() async throws {
@@ -40,13 +38,31 @@ final class AuthtenticaitonAPITests: XCTestCase {
         XCTAssertEqual(result, .success)
     }
     
-    func test_signIn_WrongPassword() async throws {
+    func test_signIn_wrongPassword() async throws {
         //given
-        firebaseAPIMock.authErrorCode = AuthErrorCode(.wrongPassword)
+        authDataSourceAPI.authErrorCode = .wrongPassword
         //when
         let result = await authenticationAPI.signIn(withEmail: "1234", password: "1234")
         //then
         XCTAssertEqual(result, .wrongPassword)
+    }
+    
+    func test_signIn_emailAlreadyInUse() async throws {
+        //given
+        authDataSourceAPI.authErrorCode = .emailAlreadyInUse
+        //when
+        let result = await authenticationAPI.signIn(withEmail: "1234", password: "1234")
+        //then
+        XCTAssertEqual(result, AuthenticationResult.emailAlreadyInUse)
+    }
+    
+    func test_signIn_invalidEmail() async throws {
+        //given
+        authDataSourceAPI.authErrorCode = .invalidEmail
+        //when
+        let result = await authenticationAPI.signIn(withEmail: "1234", password: "1234")
+        //then
+        XCTAssertEqual(result, .invalidEmail)
     }
     
     func test_signInWithBiometrics() async throws {
@@ -65,7 +81,7 @@ final class AuthtenticaitonAPITests: XCTestCase {
         let result = authenticationAPI.signOut()
         //then
         XCTAssertEqual(result, .success)
-        XCTAssertEqual(firebaseAPIMock.logoutCalledCount, 1)
+        XCTAssertEqual(authDataSourceAPI.logoutCalledCount, 1)
     }
     
     func test_signUp() async {

@@ -6,9 +6,9 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 final class AuthenticationAPIMock: AuthenticationAPI {
+    
     func signInWithBiometrics() async -> AuthenticationResult {
         .success
     }
@@ -16,7 +16,8 @@ final class AuthenticationAPIMock: AuthenticationAPI {
     var currentUser: CurrentUser?
     
     func signUp(withEmail: String, password: String, name: String, lastName: String, image: UIImage?) async -> AuthenticationResult {
-        .success
+        isUserLoggedIn = true
+        return .success
     }
     
     func signOut() -> AuthenticationResult {
@@ -26,6 +27,7 @@ final class AuthenticationAPIMock: AuthenticationAPI {
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
         return .success
     }
-    
+
+    var isUserLoggedIn: Bool = false
     
 }
