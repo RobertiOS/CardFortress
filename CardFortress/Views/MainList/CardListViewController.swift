@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import SwiftUI
+import CFHelper
 import Combine
 
 protocol CardListViewControllerProtocol: UIViewController {
@@ -82,7 +84,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         
         collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         view.addSubview(collectionView)
         
         NSLayoutConstraint.activate([
@@ -93,11 +94,27 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         ])
     }
     
+    let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, CreditCard> { cell, _, creditCard in
+        cell.contentConfiguration = UIHostingConfiguration {
+            let viewModel: CreditCardView.ViewModel = .init(
+                cardHolderName: creditCard.cardHolderName,
+                cardNumber: "creditCard.numbe",
+                date: creditCard.date,
+                bankName: creditCard.cardName
+            )
+            CreditCardView(viewModel: viewModel)
+        }
+    }
+    
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, CreditCard>(collectionView: collectionView) { (collectionView, indexPath, item) -> UICollectionViewCell? in
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardCollectionViewCell
-            cell.configure(with: item)
-            return cell
+        dataSource = UICollectionViewDiffableDataSource<Int, CreditCard>(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let self else { return nil }
+            
+            return collectionView.dequeueConfiguredReusableCell(
+                using: self.creditCardCellRegistration,
+                for: indexPath,
+                item: item
+            )
         }
     }
     

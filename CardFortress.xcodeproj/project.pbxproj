@@ -101,6 +101,7 @@
 		26DF384B29F0EAB3007091C3 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
+		26F4BD542AD325690052CAFD /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 26F4BD532AD325690052CAFD /* CFHelper */; };
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
 		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
 		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
@@ -110,8 +111,6 @@
 		26F5B4E32A00387E002D224D /* SecureStoreError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E22A00387E002D224D /* SecureStoreError.swift */; };
 		26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */; };
 		26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */; };
-		26F972142ACBB22200D35C3D /* CreditCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F972132ACBB22200D35C3D /* CreditCardView.swift */; };
-		26F972172ACBBA2000D35C3D /* CreditCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */; };
 		26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */; };
 		26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */; };
 		26F9A1372ACE77CD00D35C3D /* CardFortressWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9A1362ACE77CD00D35C3D /* CardFortressWidgetBundle.swift */; };
@@ -252,6 +251,10 @@
 		26DF384A29F0EAB3007091C3 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
+		26F4BD4F2AD3221D0052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
+		26F4BD502AD323800052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
+		26F4BD512AD3239F0052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
+		26F4BD522AD323B50052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
 		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
 		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
@@ -261,8 +264,6 @@
 		26F5B4E22A00387E002D224D /* SecureStoreError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreError.swift; sourceTree = "<group>"; };
 		26F5B4E42A0039DD002D224D /* SecureStoreQueryable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreQueryable.swift; sourceTree = "<group>"; };
 		26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPI.swift; sourceTree = "<group>"; };
-		26F972132ACBB22200D35C3D /* CreditCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardView.swift; sourceTree = "<group>"; };
-		26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardViewModel.swift; sourceTree = "<group>"; };
 		26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardFortressWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -283,6 +284,7 @@
 				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
 				266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */,
+				26F4BD542AD325690052CAFD /* CFHelper in Frameworks */,
 				266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -504,7 +506,6 @@
 				261EA5792A3589AC00367CC4 /* AddCreditCard */,
 				26DF384929F0EA9B007091C3 /* MainList */,
 				26F5B4D229FEBD3A002D224D /* Models */,
-				26F972152ACBB22A00D35C3D /* SharedViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -566,6 +567,7 @@
 		26B7700829EC450200CC9FEB = {
 			isa = PBXGroup;
 			children = (
+				26F4BD4E2AD3221D0052CAFD /* Packages */,
 				26B7701329EC450200CC9FEB /* CardFortress */,
 				26B7702A29EC450400CC9FEB /* CardFortressTests */,
 				26B7703429EC450400CC9FEB /* CardFortressUITests */,
@@ -694,6 +696,17 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
+		26F4BD4E2AD3221D0052CAFD /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				26F4BD4F2AD3221D0052CAFD /* CFHelper */,
+				26F4BD502AD323800052CAFD /* CFHelper */,
+				26F4BD512AD3239F0052CAFD /* CFHelper */,
+				26F4BD522AD323B50052CAFD /* CFHelper */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
 		26F5B4CD29FEBC6F002D224D /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -739,15 +752,6 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		26F972152ACBB22A00D35C3D /* SharedViews */ = {
-			isa = PBXGroup;
-			children = (
-				26F972132ACBB22200D35C3D /* CreditCardView.swift */,
-				26F972162ACBBA2000D35C3D /* CreditCardViewModel.swift */,
-			);
-			path = SharedViews;
-			sourceTree = "<group>";
-		};
 		26F9A1352ACE77CD00D35C3D /* CardFortressWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -784,6 +788,7 @@
 				26921EAB2A6641BE00DA1313 /* SnackBar */,
 				266EEC9A2A88B071007F5427 /* FirebaseAuth */,
 				266EEC9C2A88B071007F5427 /* FirebaseFirestore */,
+				26F4BD532AD325690052CAFD /* CFHelper */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -974,14 +979,12 @@
 				26F5B4E52A0039DD002D224D /* SecureStoreQueryable.swift in Sources */,
 				26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
-				26F972142ACBB22200D35C3D /* CreditCardView.swift in Sources */,
 				266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */,
 				26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */,
 				26C84E882A1DC97400F65D32 /* SecureStore+Helpers.swift in Sources */,
 				266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
-				26F972172ACBBA2000D35C3D /* CreditCardViewModel.swift in Sources */,
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
 				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
@@ -1237,7 +1240,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1271,7 +1274,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1540,6 +1543,10 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		26F4BD532AD325690052CAFD /* CFHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CFHelper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
