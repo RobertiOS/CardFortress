@@ -15,11 +15,12 @@ enum CreditCardProperty: String, CaseIterable {
     case cardName
     case cardHolderName
 }
-enum SecureStoreResult: Equatable {
+
+public enum SecureStoreResult: Equatable {
     case success
     case failure(SecureStoreFailure)
 }
 
-enum SecureStoreFailure: Error, Equatable {
+public enum SecureStoreFailure: Error, Equatable {
     case itemNotFound
 }

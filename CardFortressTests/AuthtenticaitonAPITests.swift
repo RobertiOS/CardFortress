@@ -18,8 +18,7 @@ final class AuthtenticaitonAPITests: XCTestCase {
         authenticationAPI = Authentication(
             secureUserDataAPI: SecureUserDataAPIMock(),
             biometricsAPI: BiometricAuthAPIMock(),
-            authDataSourceAPI: authDataSourceAPI,
-            config: .defaults
+            authDataSourceAPI: authDataSourceAPI
         )
     }
     
@@ -66,6 +65,7 @@ final class AuthtenticaitonAPITests: XCTestCase {
     }
     
     func test_signInWithBiometrics() async throws {
+        let skip = XCTSkip("work in progress")
         //given
         
         //when

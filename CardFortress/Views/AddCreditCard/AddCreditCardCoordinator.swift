@@ -49,7 +49,7 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, 
             case .successfulScan(let creditCard):
                 if let creditCard {
                     self?.addCreditCardViewController.viewModel.creditCardDate = creditCard.date
-                    self?.addCreditCardViewController.viewModel.creditCardNumber = String(creditCard.number)
+                    self?.addCreditCardViewController.viewModel.creditCardNumber = creditCard.number
                     self?.addCreditCardViewController.viewModel.creditCardHolderName = creditCard.cardHolderName
                     self?.addCreditCardViewController.viewModel.creditCardName = creditCard.cardName
                 }

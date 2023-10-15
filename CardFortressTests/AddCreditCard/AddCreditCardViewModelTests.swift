@@ -35,7 +35,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
         let expectation = self.expectation(description: "Wait for the card to be added")
         
         viewModel.creditCardDate = "123"
-        viewModel.creditCardNumber = "123"
+        viewModel.creditCardNumber = 123
         viewModel.creditCardHolderName = "some name"
         
         viewModel.createAddCreditCardPublisher()?

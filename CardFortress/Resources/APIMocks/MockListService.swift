@@ -16,7 +16,7 @@ final class MockListService: CardListServiceProtocol {
         CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Bank", cardHolderName: "Juan Perez")
     ]
     
-    func deleteAllCreditCardsFromSecureStore() -> Future<CardFortress.SecureStoreResult, Error> {
+    func deleteAllCreditCardsFromSecureStore() -> Future<CardListServiceResult, Error> {
         delete = true
         return Future { promise in
             promise(.success(.success))
@@ -24,7 +24,7 @@ final class MockListService: CardListServiceProtocol {
     }
     
 
-    func addCreditCardToSecureStore(_ creditCard: CardFortress.CreditCard) -> Future<CardFortress.SecureStoreResult, Error> {
+    func addCreditCardToSecureStore(_ creditCard: CardFortress.CreditCard) -> Future<CardListServiceResult, Error> {
         Future { [unowned self] promise in
             cards.append(creditCard)
             promise(.success(.success))

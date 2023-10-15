@@ -7,34 +7,36 @@
 
 import Foundation
 
-protocol SecureStoreQueryable: AnyObject {
+public protocol SecureStoreQueryable: AnyObject {
     var query: [String: Any] { get }
 }
 
-final class CreditCardSSQueryable {
+public final class CreditCardSSQueryable {
+    
+    public struct Constants {
+        public static let accessGroup = "group.robertios.CardFortress.sharedItems"
+        public static let service = "com.robertios.cardFortress.creditCards"
+    }
     
     let service: String
     let accessGroup: String?
     
-    init(service: String, accessGroup: String? = nil) {
+    public init(
+        service: String = Constants.service,
+        accessGroup: String = Constants.accessGroup
+    ) {
       self.service = service
       self.accessGroup = accessGroup
     }
 }
 
 extension CreditCardSSQueryable: SecureStoreQueryable {
-    var query: [String : Any] {
+    public var query: [String : Any] {
         var query: [String : Any] = [:]
         query[String(kSecClass)] = kSecClassGenericPassword
         query[String(kSecReturnData)] = kCFBooleanTrue
         query[String(kSecAttrService)] = service
-        
-        #if !targetEnvironment(simulator)
-        if let accessGroup = accessGroup {
-            query[String(kSecAttrAccessGroup)] = accessGroup
-        }
-        #endif
-        
+        query[String(kSecAttrAccessGroup)] = accessGroup
         return query
     }
 }

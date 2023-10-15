@@ -23,7 +23,7 @@ extension AddCreditCardViewController {
         var creditCardName: String?
         
         @Published
-        var creditCardNumber: String?
+        var creditCardNumber: Int?
         
         @Published
         var creditCardDate: String?
@@ -43,10 +43,9 @@ extension AddCreditCardViewController {
         //MARK: - Methods
         func createAddCreditCardPublisher() -> AnyPublisher<AddCreditCardResult, Error>? {
             guard let creditCardDate,
-                  let creditCardNumber = creditCardNumber?.replacingOccurrences(of: " ", with: ""),
-                  let creditCardInt = Int(creditCardNumber) else { return nil }
+                  let creditCardNumber else { return nil }
             let creditCard: CreditCard = .init(
-                number: creditCardInt,
+                number: creditCardNumber,
                 cvv: 123,
                 date: creditCardDate,
                 cardName: creditCardName ?? "",

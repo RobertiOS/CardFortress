@@ -7,24 +7,27 @@
 
 import SwiftUI
 
-public struct CreditCardView: View {
+
+public struct CreditCardView<Content : View>: View {
     
-    private struct Constants {
-        static let fontName = "Credit Card"
-        static let copyImage = "CopyImage"
-        static let chipImage = "chip"
-    }
+    @ObservedObject public var viewModel: CreditCardViewModel
+    let bottomView: Content
     
-    @ObservedObject var viewModel: ViewModel
-    
-    public init(viewModel: ViewModel) {
+    public init(
+        viewModel: CreditCardViewModel,
+        @ViewBuilder bottomView: (() -> Content) = { EmptyView() }
+    ) {
         self.viewModel = viewModel
+        self.bottomView = bottomView()
     }
     
     public var body: some View {
+        VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .fill(Color.cfPurple)
+                    .fill(viewModel.backgroundColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 15))
+                
                 VStack(spacing:5) {
                     HStack {
                         Text(viewModel.bankName)
@@ -32,19 +35,28 @@ public struct CreditCardView: View {
                             .fontWeight(.bold)
                             .font(.title3)
                         Spacer()
+                        if let image = viewModel.cardTypeIconImage {
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fit)
+                                .frame(height: 50)
+                        }
                     }
                     
                     HStack {
-                        Image(Constants.chipImage)
+                        Image("chip", bundle: .module)
                             .resizable()
-                        .frame(width: 55, height: 40)
+                            .frame(width: 55, height: 40)
                         Spacer()
                     }
                     HStack {
-                        Text(viewModel.cardNumber)
+                        Spacer()
+                        Text(viewModel.formatedCardNumber)
                             .foregroundColor(.white)
                             .font(.title3)
                             .fontWeight(.bold)
+                            .lineLimit(2)
+                            .layoutPriority(1)
                         Spacer()
                     }
                     
@@ -77,13 +89,24 @@ public struct CreditCardView: View {
                 }
                 .padding()
             }
+            if viewModel.showBottomModule {
+                bottomView
+            }
         }
+    }
 }
 
 struct CreditCardView_Previews: PreviewProvider {
     static var previews: some View {
-        CreditCardView(viewModel: .init(cardHolderName: "Juan Perez", cardNumber: "1234 2233 2222 2222", date: "11/11", bankName: "Some bank"))
-            .frame(width: 300, height: 200)
-            .previewLayout(.fixed(width: 500, height: 500))
+        CreditCardView(viewModel: .init(
+            cardHolderName: "Juan Perez",
+            cardNumber: 4098480016653433222,
+            date: "11/11",
+            bankName: "Some bank",
+            backgroundColor: .gray,
+            cvv: 123,
+            showBottomModule: true))
+        .frame(width: 350, height: 240)
+        .previewLayout(.fixed(width: 500, height: 600))
     }
 }

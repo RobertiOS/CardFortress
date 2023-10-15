@@ -23,9 +23,10 @@ extension LoginView {
         @Published var email = ""
         @Published var password = ""
         @Published var errorMessage: String?
-        @Published var isloading: Bool = false
+        @Published var isloading = false
         @Published var canUseBiometrics = false
         @Published var biometricsImage: Image? = nil
+        @Published var rememberUser = false
         
         init(
             email: String = "",
@@ -33,7 +34,8 @@ extension LoginView {
             errorMessage: String? = nil,
             isloading: Bool = false,
             canUseBiometrics: Bool = false,
-            biometricsImage: Image? = nil
+            biometricsImage: Image? = nil,
+            rememberUser: Bool = false
         ) {
             self.email = email
             self.password = password
@@ -41,6 +43,7 @@ extension LoginView {
             self.isloading = isloading
             self.canUseBiometrics = canUseBiometrics
             self.biometricsImage = biometricsImage
+            self.rememberUser = rememberUser
         }
         
         weak var delegate: LoginViewDelegate?

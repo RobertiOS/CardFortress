@@ -9,6 +9,7 @@ import UIKit
 import SwiftUI
 import CFHelper
 import Combine
+import WidgetKit
 
 protocol CardListViewControllerProtocol: UIViewController {
     var delegate: CardListViewControllerDelegate? { get set }
@@ -68,6 +69,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchCreditCards()
+        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func setupViews() {
@@ -96,11 +98,12 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     
     let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, CreditCard> { cell, _, creditCard in
         cell.contentConfiguration = UIHostingConfiguration {
-            let viewModel: CreditCardView.ViewModel = .init(
+            let viewModel: CreditCardViewModel = .init(
                 cardHolderName: creditCard.cardHolderName,
-                cardNumber: "creditCard.numbe",
+                cardNumber: creditCard.number,
                 date: creditCard.date,
-                bankName: creditCard.cardName
+                bankName: creditCard.cardName,
+                cvv: creditCard.cvv
             )
             CreditCardView(viewModel: viewModel)
         }

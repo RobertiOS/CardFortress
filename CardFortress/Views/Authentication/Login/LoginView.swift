@@ -61,6 +61,23 @@ struct LoginView: View {
             .font(.system(size: 20))
             .padding(.bottom, 10)
         
+        HStack {
+            Text("Remember me")
+                .foregroundColor(.white)
+            if #available(iOS 17.0, *) {
+                Button {
+                    viewModel.rememberUser.toggle()
+                } label: {
+                    Image(systemName: viewModel.rememberUser ? "checkmark.square" : "square")
+                        .contentTransition(.symbolEffect(.replace))
+                        .foregroundColor(.white)
+                }
+            }
+            
+            Spacer()
+        }
+        
+        
         if let errorMessage = viewModel.errorMessage, !errorMessage.isEmpty {
             Label(errorMessage, systemImage: "exclamationmark.triangle.fill")
                 .padding(EdgeInsets(top: 5, leading: 20, bottom: 5, trailing: 30))

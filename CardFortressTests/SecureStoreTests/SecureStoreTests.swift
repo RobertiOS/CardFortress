@@ -6,12 +6,12 @@
 //
 
 import XCTest
-@testable import CardFortress
+@testable import CFHelper
 
 
 final class SecureStoreTests: XCTestCase {
 
-    var secureStore: SecureStoreProtocol!
+    var secureStore: SecureStoreAPI!
 
     override func setUp() {
         super.setUp()
@@ -34,7 +34,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
     }
 
     func test_SecureStore_EditCreditCard() async throws {
@@ -48,7 +48,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(creditCard, creditCard2)
             getCardExpectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [getCardExpectation], timeout: .defaultWait, enforceOrder: true)
 
         // add an edited card with the same identifier as the first card
 
@@ -70,7 +70,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(editedCreditCard, creditCard3)
             getCardEditedCardExpectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [getCardEditedCardExpectation], timeout: .defaultWait, enforceOrder: true)
     }
 
     func test_SecureStore_GetCreditCard() async throws {
@@ -85,7 +85,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(creditCard, creditCard2)
             expectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
     }
 
     func test_SecureStore_GetAllCreditCards() async throws {
@@ -100,7 +100,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(creditCards.count, 2)
             expectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
     }
 
 
@@ -111,7 +111,7 @@ final class SecureStoreTests: XCTestCase {
             XCTAssertEqual(result, .success)
             expectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
     }
 
     func removeAllCardsHelper() async throws {
@@ -120,6 +120,6 @@ final class SecureStoreTests: XCTestCase {
             try await secureStore.removeAllCreditCards()
             expectation.fulfill()
         }
-        await waitForExpectations(timeout: .defaultWait)
+        await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
     }
 }
