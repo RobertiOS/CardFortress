@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-protocol SecureStoreProtocol {
+public protocol SecureStoreAPI {
     /// Removes all credit cards from secure store
     /// - Returns:returns an secure store result
     @discardableResult
@@ -16,6 +16,7 @@ protocol SecureStoreProtocol {
     /// Adds a credit card to the secure store
     /// - Parameter card: the card to be added
     /// - Returns: returns an secure store result
+    @discardableResult
     func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult
     /// Returns a credit card
     /// - Parameter identifier: The identifier of the credit card (UUID)
@@ -24,24 +25,28 @@ protocol SecureStoreProtocol {
     /// Returns all credit cards from secure store
     /// - Returns: Array of credit cards
     func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard]
+    
+    func getFavoriteCreditCard() async -> SecureStoreCreditCard?
 }
 
-extension SecureStoreProtocol {
+extension SecureStoreAPI {
     func error(from status: OSStatus) -> SecureStoreError {
         let message = SecCopyErrorMessageString(status, nil) as String? ?? NSLocalizedString("Unhandled Error", comment: "")
         return SecureStoreError.unhandledError(message: message)
     }
 }
 
-actor SecureStore: SecureStoreProtocol {
+public actor SecureStore: SecureStoreAPI {
     private var sSQueryable: SecureStoreQueryable
     
-    init(sSQueryable: SecureStoreQueryable) {
+    public init(
+        sSQueryable: SecureStoreQueryable = CreditCardSSQueryable(service: "CreditCards")
+    ) {
         self.sSQueryable = sSQueryable
     }
     
     @discardableResult
-    func removeAllCreditCards() async throws -> SecureStoreResult {
+    public func removeAllCreditCards() async throws -> SecureStoreResult {
         try await withCheckedThrowingContinuation { continuation in
             let query = sSQueryable.query
             let status = SecItemDelete(query as CFDictionary)
@@ -57,7 +62,7 @@ actor SecureStore: SecureStoreProtocol {
         }
     }
 
-    func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
+    public func addCreditCardToKeychain(_ creditCard: SecureStoreCreditCard) async throws -> SecureStoreResult {
         
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecReturnData)] = false
@@ -87,7 +92,7 @@ actor SecureStore: SecureStoreProtocol {
         }
     }
     
-    func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard? {
+    public func getCreditCardFromKeychain(identifier: UUID) async throws -> SecureStoreCreditCard? {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecAttrAccount)] = identifier.uuidString
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitOne
@@ -109,7 +114,7 @@ actor SecureStore: SecureStoreProtocol {
         }
     }
     
-    func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
+    public func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
         var keychainQuery = sSQueryable.query
         keychainQuery[String(kSecMatchLimit)] = kSecMatchLimitAll
         return try await withCheckedThrowingContinuation { continuation in
@@ -132,6 +137,28 @@ actor SecureStore: SecureStoreProtocol {
                 continuation.resume(returning: [])
             default:
                 continuation.resume(throwing: error(from: status))
+            }
+        }
+    }
+    
+    public func getFavoriteCreditCard() async -> SecureStoreCreditCard? {
+        var keychainQuery = sSQueryable.query
+        keychainQuery[String(kSecMatchLimit)] = 1
+        
+        return await withCheckedContinuation { continuation in
+            var items: CFTypeRef?
+            let status = SecItemCopyMatching(keychainQuery as CFDictionary, &items)
+            switch status {
+            case errSecSuccess:
+                if let item = items as? Data,
+                   let card = try? JSONDecoder().decode(SecureStoreCreditCard.self, from: item) {
+                    continuation.resume(returning: card)
+                }
+//            case errSecItemNotFound:
+                
+            default:
+//                continuation.resume(throwing: error(from: status))
+                continuation.resume(returning: .make())
             }
         }
     }

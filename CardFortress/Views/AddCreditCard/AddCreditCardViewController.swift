@@ -7,6 +7,8 @@
 
 import UIKit
 import Combine
+import CFHelper
+import SwiftUI
 
 protocol AddCreditCardViewControllerProtocol: UIViewController {
     var viewModel: AddCreditCardViewController.ViewModel { get set }
@@ -118,7 +120,8 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     
     weak var delegate: AddCreditCardCoordinatorDelegate?
     
-    private let previewCreditCardView = PreviewCreditCardView()
+    private var previewCreditCardView = CreditCardView(viewModel: .init(cardHolderName: "", cardNumber: 1, date: "", bankName: "", cvv: 123))
+    private lazy var hostingView = UIHostingController(rootView: previewCreditCardView).view!
     
     let creditCardNumberTextField = CFTextField(
         viewModel: .init(
@@ -221,7 +224,7 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             scanCardButton
             orLabel
             ///preview
-            previewCreditCardView
+            hostingView
             
             ///textField
             creditCardNumberTextField
@@ -276,13 +279,13 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             
             
             /// credit card preview
-            previewCreditCardView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-            previewCreditCardView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-            previewCreditCardView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20)
-            previewCreditCardView.heightAnchor.constraint(equalToConstant: 200)
+            hostingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
+            hostingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
+            hostingView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20)
+            hostingView.heightAnchor.constraint(equalToConstant: 200)
             
             /// card number
-            creditCardNumberTextField.topAnchor.constraint(equalTo: previewCreditCardView.bottomAnchor, constant: 50)
+            creditCardNumberTextField.topAnchor.constraint(equalTo: hostingView.bottomAnchor, constant: 50)
             creditCardNumberTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
             creditCardNumberTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
 
@@ -332,10 +335,10 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             viewModel.$creditCardHolderName.eraseToAnyPublisher(),
             viewModel.$creditCardNumber.eraseToAnyPublisher()
         ).sink { [weak self] creditCardName, creditCardDate, creditCardHolderName, creditCardNumber in
-            self?.previewCreditCardView.viewModel.holderName = creditCardHolderName
-            self?.previewCreditCardView.viewModel.name = creditCardName
-            self?.previewCreditCardView.viewModel.date = creditCardDate
-            self?.previewCreditCardView.viewModel.number = creditCardNumber
+            self?.previewCreditCardView.viewModel.bankName = creditCardName ?? ""
+            self?.previewCreditCardView.viewModel.cardNumber = creditCardNumber ?? 0
+            self?.previewCreditCardView.viewModel.date = creditCardDate ?? ""
+            self?.previewCreditCardView.viewModel.cardHolderName = creditCardHolderName ?? ""
         }
         .store(in: &subscriptions)
         
@@ -346,6 +349,7 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
         
         viewModel.$creditCardNumber
             .receive(on: DispatchQueue.main)
+            .map { String($0 ?? 0)}
             .assign(to: \.text, on: creditCardNumberTextField)
             .store(in: &subscriptions)
         
@@ -370,7 +374,10 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case creditCardNumberTextField.textField:
-            viewModel.creditCardNumber = textField.text
+            if let text = textField.text,
+               let cardNumberInt = Int(text) {
+                viewModel.creditCardNumber = cardNumberInt
+            }
         case expiryDateTextField.textField:
             viewModel.creditCardDate = textField.text
         case cardNameTextField.textField:

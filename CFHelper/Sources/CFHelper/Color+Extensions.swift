@@ -8,5 +8,5 @@
 import SwiftUI
 
 extension Color {
-    static let cfPurple = Color(red: 96/255, green: 34/255, blue: 125/255)
+    public static let cfPurple = Color(red: 96/255, green: 34/255, blue: 125/255)
 }

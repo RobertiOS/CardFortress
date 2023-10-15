@@ -7,30 +7,45 @@
 
 import Foundation
 import Combine
+import CFHelper
 
 protocol CardListServiceProtocol {
     func getCreditCardsFromSecureStore() -> Future<[CreditCard], Error>
-    func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<SecureStoreResult, Error>
-    func deleteAllCreditCardsFromSecureStore() -> Future<SecureStoreResult, Error>
+    func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<CardListServiceResult, Error>
+    func deleteAllCreditCardsFromSecureStore() -> Future<CardListServiceResult, Error>
+}
+
+enum CardListServiceResult {
+    case success
+    case failure(Error)
+    
+    init(secureStoreResult: SecureStoreResult) {
+        switch secureStoreResult {
+        case .success:
+            self = .success
+        case .failure(let secureStoreFailure):
+            self = .failure(secureStoreFailure)
+        }
+    }
 }
 
 
 final class CardListService: CardListServiceProtocol {
 
-    private let secureStore: SecureStoreProtocol
+    private let secureStore: SecureStoreAPI
 
-    init(secureStore: SecureStoreProtocol) {
+    init(secureStore: SecureStoreAPI) {
         self.secureStore = secureStore
     }
     
-    func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<SecureStoreResult, Error> {
+    func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<CardListServiceResult, Error> {
         Future { [weak self] promise in
             guard let self else { return }
             Task(priority: .userInitiated) {
                 do {
                     let secureStoreCD: SecureStoreCreditCard = .init(creditCard: creditCard)
                     let result = try await self.secureStore.addCreditCardToKeychain(secureStoreCD)
-                    promise(.success(result))
+                    promise(.success(.init(secureStoreResult: result)))
                 } catch {
                     promise(.failure(error))
                 }
@@ -54,13 +69,13 @@ final class CardListService: CardListServiceProtocol {
         }
     }
 
-    func deleteAllCreditCardsFromSecureStore() -> Future<SecureStoreResult, Error> {
+    func deleteAllCreditCardsFromSecureStore() -> Future<CardListServiceResult, Error> {
         Future { promise in
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
                     let result = try await self.secureStore.removeAllCreditCards()
-                    promise(.success(result))
+                    promise(.success(.init(secureStoreResult: result)))
                 } catch {
                     promise(.failure(error))
                 }

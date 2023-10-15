@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import CFHelper
 import Swinject
 
 extension SceneDelegate {
@@ -34,7 +35,7 @@ extension SceneDelegate {
 
             //MARK: Card list service
             
-            let secureStore = SecureStore(sSQueryable: CreditCardSSQueryable(service: "CreditCards"))
+            let secureStore = SecureStore()
             container.register(CardListServiceProtocol.self) { r in
                 CardListService(secureStore: secureStore)
             }

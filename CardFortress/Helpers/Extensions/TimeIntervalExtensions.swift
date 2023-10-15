@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension TimeInterval {
+public extension TimeInterval {
     static var defaultWait: TimeInterval {
         1.5
     }

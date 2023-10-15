@@ -77,6 +77,6 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         XCTAssertEqual(viewModel.creditCardDate, "11/11")
         XCTAssertEqual(viewModel.creditCardName, "SomeName")
         XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
-        XCTAssertEqual(viewModel.creditCardNumber, "1234")
+        XCTAssertEqual(viewModel.creditCardNumber, 1234)
     }
 }

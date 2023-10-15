@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import CFHelper
 
-class SecureStoreMock: SecureStoreProtocol {
+class SecureStoreMock: SecureStoreAPI {
     var addCreditCardToKeychainCalledCount = 0
     var getCreditCardsCalledCount = 0
     var getCreditCardCalledCount = 0
@@ -35,5 +36,9 @@ class SecureStoreMock: SecureStoreProtocol {
     func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard] {
         getCreditCardsCalledCount += 1
         return creditCards
+    }
+    
+    func getFavoriteCreditCard() async -> SecureStoreCreditCard? {
+        .make()
     }
 }
