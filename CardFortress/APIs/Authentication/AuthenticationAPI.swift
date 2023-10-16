@@ -46,7 +46,7 @@ protocol AuthenticationAPI {
 }
 
 extension AuthenticationAPI {
-    var signInWithBiometrics: Bool { false }
+    var signInWithBiometrics: Bool { true }
 }
 
 enum AuthenticationResult {

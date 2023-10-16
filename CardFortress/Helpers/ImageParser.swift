@@ -48,8 +48,9 @@ final class ImageParser: ImageParserProtocol {
     
     func parseResults(for recognizedText: [String]) -> CreditCard {
         // Credit Card Number
-        let creditCardNumber = recognizedText.first(where: { $0.count >= 14 && ["4", "5", "3", "6"].contains($0.first) })
+//        let creditCardNumber = recognizedText.first(where: { $0.count >= 14 && ["4", "5", "3", "6"].contains($0.first) })
         
+        let creditCardNumber = recognizedText.filter { $0.count == 4 && $0.first?.isNumber ?? false }.joined()
         // Expiry Date
         let expiryDateString = recognizedText.first(where: { $0.count > 4 && $0.contains("/") })
         let expiryDate = expiryDateString?.filter({ $0.isNumber || $0 == "/" })
@@ -62,11 +63,11 @@ final class ImageParser: ImageParserProtocol {
         ingoreList2 +
         ingoreList2.map { $0.lowercased() } +
         ingoreList2.map { $0.uppercased() }
-        let name = recognizedText.filter({ !wordsToAvoid.contains($0) }).last
+        let name = recognizedText.filter({ !wordsToAvoid.contains($0) && !creditCardNumber.contains($0) }).last
         
         let creditCard = CreditCard(
-            number: Int(creditCardNumber?.replacingOccurrences(of: " ", with: "") ?? "0") ?? 0,
-            cvv: 123,
+            number: Int(creditCardNumber.replacingOccurrences(of: " ", with: "")) ?? 0,
+            cvv: 0,
             date: expiryDate ?? "",
             cardName: name ?? "",
             cardHolderName: ""
