@@ -22,11 +22,11 @@ enum CardData: CaseIterable, Identifiable {
     var buttonName: String {
         switch self {
         case .cvv:
-            "CVV"
+            return "CVV"
         case .number:
-            "Number"
+            return "Number"
         case .date:
-            "Date"
+            return "Date"
         }
     }
 }
