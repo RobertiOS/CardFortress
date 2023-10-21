@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -61,6 +61,9 @@
 		26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */ = {isa = PBXBuildFile; productRef = 26921EAB2A6641BE00DA1313 /* SnackBar */; };
 		26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */; };
 		26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */; };
+		269F4B812AE442E40048FA85 /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 269F4B802AE442E40048FA85 /* CFHelper */; };
+		269F4B832AE442EE0048FA85 /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 269F4B822AE442EE0048FA85 /* CFHelper */; };
+		269F4B852AE442F50048FA85 /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 269F4B842AE442F50048FA85 /* CFHelper */; };
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
 		26A39C2E2A2D2290001C3FAF /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C2D2A2D2290001C3FAF /* CoordinatorFactory.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
@@ -91,8 +94,6 @@
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
-		26F4BD542AD325690052CAFD /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 26F4BD532AD325690052CAFD /* CFHelper */; };
-		26F4BD562AD345300052CAFD /* CFHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 26F4BD552AD345300052CAFD /* CFHelper */; };
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
 		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
 		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
@@ -237,10 +238,6 @@
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
-		26F4BD4F2AD3221D0052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
-		26F4BD502AD323800052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
-		26F4BD512AD3239F0052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
-		26F4BD522AD323B50052CAFD /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
 		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
 		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
@@ -268,8 +265,8 @@
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
 				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
+				269F4B812AE442E40048FA85 /* CFHelper in Frameworks */,
 				266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */,
-				26F4BD542AD325690052CAFD /* CFHelper in Frameworks */,
 				266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -278,6 +275,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				269F4B832AE442EE0048FA85 /* CFHelper in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +290,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26F4BD562AD345300052CAFD /* CFHelper in Frameworks */,
+				269F4B852AE442F50048FA85 /* CFHelper in Frameworks */,
 				26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */,
 				26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */,
 			);
@@ -672,10 +670,6 @@
 		26F4BD4E2AD3221D0052CAFD /* Packages */ = {
 			isa = PBXGroup;
 			children = (
-				26F4BD4F2AD3221D0052CAFD /* CFHelper */,
-				26F4BD502AD323800052CAFD /* CFHelper */,
-				26F4BD512AD3239F0052CAFD /* CFHelper */,
-				26F4BD522AD323B50052CAFD /* CFHelper */,
 			);
 			name = Packages;
 			sourceTree = "<group>";
@@ -758,7 +752,7 @@
 				26921EAB2A6641BE00DA1313 /* SnackBar */,
 				266EEC9A2A88B071007F5427 /* FirebaseAuth */,
 				266EEC9C2A88B071007F5427 /* FirebaseFirestore */,
-				26F4BD532AD325690052CAFD /* CFHelper */,
+				269F4B802AE442E40048FA85 /* CFHelper */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -779,6 +773,7 @@
 			);
 			name = CardFortressTests;
 			packageProductDependencies = (
+				269F4B822AE442EE0048FA85 /* CFHelper */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -818,7 +813,7 @@
 			);
 			name = CardFortressWidgetExtension;
 			packageProductDependencies = (
-				26F4BD552AD345300052CAFD /* CFHelper */,
+				269F4B842AE442F50048FA85 /* CFHelper */,
 			);
 			productName = CardFortressWidgetExtension;
 			productReference = 26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */;
@@ -863,6 +858,7 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				269F4B7F2AE442A90048FA85 /* XCLocalSwiftPackageReference "CFHelper" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -1440,6 +1436,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		269F4B7F2AE442A90048FA85 /* XCLocalSwiftPackageReference "CFHelper" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = CFHelper;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -1483,18 +1486,25 @@
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
 		};
+		269F4B802AE442E40048FA85 /* CFHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 269F4B7F2AE442A90048FA85 /* XCLocalSwiftPackageReference "CFHelper" */;
+			productName = CFHelper;
+		};
+		269F4B822AE442EE0048FA85 /* CFHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 269F4B7F2AE442A90048FA85 /* XCLocalSwiftPackageReference "CFHelper" */;
+			productName = CFHelper;
+		};
+		269F4B842AE442F50048FA85 /* CFHelper */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 269F4B7F2AE442A90048FA85 /* XCLocalSwiftPackageReference "CFHelper" */;
+			productName = CFHelper;
+		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
-		};
-		26F4BD532AD325690052CAFD /* CFHelper */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFHelper;
-		};
-		26F4BD552AD345300052CAFD /* CFHelper */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFHelper;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
