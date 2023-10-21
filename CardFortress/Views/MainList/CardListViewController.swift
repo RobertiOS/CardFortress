@@ -9,7 +9,6 @@ import UIKit
 import SwiftUI
 import CFHelper
 import Combine
-import WidgetKit
 
 protocol CardListViewControllerProtocol: UIViewController {
     var delegate: CardListViewControllerDelegate? { get set }
@@ -69,7 +68,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchCreditCards()
-        WidgetCenter.shared.reloadAllTimelines()
     }
     
     private func setupViews() {

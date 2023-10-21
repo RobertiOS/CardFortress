@@ -25,7 +25,8 @@ public protocol SecureStoreAPI {
     /// Returns all credit cards from secure store
     /// - Returns: Array of credit cards
     func getAllCreditCardsFromKeychain() async throws -> [SecureStoreCreditCard]
-    
+    /// Returns the Favorite credit card from the data source
+    /// - Returns: An optional credit
     func getFavoriteCreditCard() async -> SecureStoreCreditCard?
 }
 
@@ -70,7 +71,7 @@ public actor SecureStore: SecureStoreAPI {
         
         return try await withCheckedThrowingContinuation { continuation in
             var status = SecItemCopyMatching(keychainQuery as CFDictionary, nil)
-            let creditCardData = try? getEncodedCreditCard(secureStoreCreditCard: creditCard)
+            let creditCardData = try? getCreditCardDataFrom(creditCard)
             switch status {
             case errSecSuccess:
                 var attributesToUpdate: [String: Any] = [:]
@@ -154,18 +155,17 @@ public actor SecureStore: SecureStoreAPI {
                    let card = try? JSONDecoder().decode(SecureStoreCreditCard.self, from: item) {
                     continuation.resume(returning: card)
                 }
-//            case errSecItemNotFound:
-                
+            case errSecItemNotFound:
+                continuation.resume(returning: nil)
             default:
-//                continuation.resume(throwing: error(from: status))
-                continuation.resume(returning: .make())
+                continuation.resume(returning: nil)
             }
         }
     }
     
     //MARK: Helpers
     
-    private func getEncodedCreditCard(secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
+    private func getCreditCardDataFrom(_ secureStoreCreditCard: SecureStoreCreditCard) throws -> Data {
         let payload: [String: Any] = [
             CreditCardProperty.identifier.rawValue : secureStoreCreditCard.identifier.uuidString,
             CreditCardProperty.number.rawValue : secureStoreCreditCard.number,

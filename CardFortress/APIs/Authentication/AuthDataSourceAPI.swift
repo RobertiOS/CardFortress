@@ -9,18 +9,31 @@ import UIKit.UIImage
 import FirebaseAuth
 
 protocol AuthDataSourceAPI {
-    func createUser(
+    /// Use this function to register an user
+    /// - Parameters:
+    ///   - email: The emaiil of the user
+    ///   - password: The password of the account
+    ///   - name: The first name of the user
+    ///   - lastName: The last name of the user
+    ///   - image: Image for the account
+    func signUp(
         email: String,
         password: String,
         name: String,
         lastName: String,
         image: UIImage?
     ) async throws
+    /// Use this funtion to log-in into the account
+    /// - Parameters:
+    ///   - email: The email of the account
+    ///   - password: The password of the account
     func signIn(
         email: String,
         password: String
     ) async throws
+    /// SignOut of the account
     func signOut() throws
+    /// The user that is logged in, if there's not user logged in, this property will be nil
     var currentUser: AuthDataSourceUser? { get }
     var isUserLoggedIn: Bool { get }
 }
@@ -43,7 +56,7 @@ protocol AuthDataResultProtocol {
 }
 
 final class AuthDataSource: AuthDataSourceAPI {
-    func createUser(email: String, password: String, name: String, lastName: String, image: UIImage?) async throws {
+    func signUp(email: String, password: String, name: String, lastName: String, image: UIImage?) async throws {
         do {
             let result = try await auth.createUser(withEmail: email, password: password)
             let userData = UserData(name: name, lastName: lastName)
@@ -64,6 +77,7 @@ final class AuthDataSource: AuthDataSourceAPI {
     
     //MARK: - Public properties
     var currentUser: AuthDataSourceUser?
+
     init(dataStorageAPI: DataStorageAPI = DataStorage()) {
         self.dataStorageAPI = DataStorage()
     }
@@ -103,7 +117,7 @@ enum AuthDataSourceError: Error {
     case wrongPassword
     case invalidEmail
     case emailAlreadyInUse
-    case unknowned(Error)
+    case unknown(Error)
     
     init(error: Error) {
         switch AuthErrorCode(_nsError: error as NSError).code {
@@ -114,7 +128,7 @@ enum AuthDataSourceError: Error {
         case .emailAlreadyInUse:
             self = .emailAlreadyInUse
         default:
-            self = .unknowned(error)
+            self = .unknown(error)
         }
     }
 }

@@ -132,6 +132,7 @@ final class Authentication: AuthenticationAPI {
     
     func signInWithBiometrics() async -> AuthenticationResult {
         if signInWithBiometrics {
+            
             let result = await biometricsAPI.evaluate()
             switch result {
             case (false, .some(let error)):
@@ -159,7 +160,7 @@ final class Authentication: AuthenticationAPI {
                 image: UIImage? = nil
     ) async -> AuthenticationResult {
         do {
-            try await authDataSourceAPI.createUser(
+            try await authDataSourceAPI.signUp(
                 email: withEmail,
                 password: password,
                 name: name,

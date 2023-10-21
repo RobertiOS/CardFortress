@@ -15,7 +15,7 @@ final class AuthDataSourceAPIMock: AuthDataSourceAPI {
     var logoutCalledCount = 0
     var authErrorCode: AuthDataSourceError?
 
-    func createUser(email: String, password: String, name: String, lastName: String, image: UIImage?) async throws {
+    func signUp(email: String, password: String, name: String, lastName: String, image: UIImage?) async throws {
         if let authErrorCode {
             throw authErrorCode
         }
