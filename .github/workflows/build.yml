@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-13
     steps:
       - name: Install Xcodecoverageconverter
         run: brew install twittemb/formulae/Xcodecoverageconverter
@@ -18,13 +18,13 @@ jobs:
       - name: select latest xcode
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: '15.0-beta'
+          xcode-version: '15.0'
       - name: Run tests
         run: |
           xcodebuild clean test \
             -workspace 'CardFortress.xcworkspace' \
             -scheme 'CardFortress' \
-            -destination "platform=iOS Simulator,name=iPhone 13,OS=latest" \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0" \
             -derivedDataPath Build/ \
             -enableCodeCoverage YES \
             build test
