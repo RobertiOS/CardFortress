@@ -349,7 +349,8 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
         
         viewModel.$creditCardNumber
             .receive(on: DispatchQueue.main)
-            .map { String($0 ?? 0)}
+            .compactMap { $0 }
+            .map { String($0)}
             .assign(to: \.text, on: creditCardNumberTextField)
             .store(in: &subscriptions)
         
