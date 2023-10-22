@@ -27,7 +27,12 @@ MVVM + Coordinator
 - Builder
 - Dependency injection
 
-I know the UI is not the best part of the app, but that's not my goal on this project, however I have plans to improve the UI after I finish implementing all the Features.
+### External Dependencies
+- Firebase auth: to handle authentication
+- Firebase firestore: to store user's account information
+- Swinject: Dependency injection
+
+I know the UI is not the best part of the app, but that's not my goal on this project.
 
 ## Screenshots
 
