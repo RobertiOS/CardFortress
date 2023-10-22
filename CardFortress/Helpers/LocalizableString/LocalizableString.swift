@@ -34,6 +34,18 @@ enum LocalizableString {
     
     //MARK: - snackbar
     case snackBarCardAdded
+    
+    //MARK: - Login view
+    case invalidEmail
+    case wrongPassword
+    case unknownError
+    case creditCardFortressHeader
+    case login
+    case yourEmail
+    case yourPassword
+    case rememberMe
+    case signUp
+    case orConnectWith
 }
 
 extension LocalizableString {

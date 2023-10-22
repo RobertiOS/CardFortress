@@ -33,7 +33,7 @@ struct LoginView: View {
     
     @ViewBuilder
     private var topContainerView: some View {
-        Text("Credit Card Fortress")
+        Text(LocalizableString.creditCardFortressHeader.value)
             .font(.system(size: 40, weight: .semibold))
             .foregroundColor(.white)
         Image("credit-cards")
@@ -41,20 +41,20 @@ struct LoginView: View {
             .scaledToFill()
             .frame(width: 200, height: 200)
         
-        Text("Log in")
+        Text(LocalizableString.login.value)
             .font(.system(size: 35, weight: .semibold))
             .foregroundColor(.white)
     }
     
     @ViewBuilder
     private var fieldsContainerView: some View {
-        TextField("your email", text: $viewModel.email)
+        TextField(LocalizableString.yourEmail.value, text: $viewModel.email)
             .textFieldStyle(
                 OutlinedTextFieldStyle(icon: Image(systemName: "person.fill"))
             )
             .font(.system(size: 20))
             .padding(.bottom, 10)
-        SecureField("your password", text: $viewModel.password)
+        SecureField(LocalizableString.yourPassword.value, text: $viewModel.password)
             .textFieldStyle(
                 OutlinedTextFieldStyle(icon: Image(systemName: "lock.fill"))
             )
@@ -62,13 +62,13 @@ struct LoginView: View {
             .padding(.bottom, 10)
         
         HStack {
-            Text("Remember me")
+            Text(LocalizableString.rememberMe.value)
                 .foregroundColor(.white)
             if #available(iOS 17.0, *) {
                 Button {
-                    viewModel.rememberUser.toggle()
+                    viewModel.isRememberMeEnabled.toggle()
                 } label: {
-                    Image(systemName: viewModel.rememberUser ? "checkmark.square" : "square")
+                    Image(systemName: viewModel.isRememberMeEnabled ? "checkmark.square" : "square")
                         .contentTransition(.symbolEffect(.replace))
                         .foregroundColor(.white)
                 }
@@ -99,7 +99,7 @@ struct LoginView: View {
                     if viewModel.isloading {
                         ProgressView()
                     } else {
-                        Text("Login")
+                        Text(LocalizableString.login.value)
                             .foregroundColor(Color.white)
                             .font(.system(size: 20, weight: .semibold))
                     }
@@ -135,7 +135,7 @@ struct LoginView: View {
         Button {
             viewModel.startCreateUser()
         } label: {
-            Text("Sign Up")
+            Text(LocalizableString.signUp.value)
                 .frame(maxWidth: .infinity)
                 .padding()
                 .foregroundColor(Color.cfPurple)
@@ -149,7 +149,7 @@ struct LoginView: View {
     
     @ViewBuilder
     private var bottomContainterView: some View {
-        Text("or connect with")
+        Text(LocalizableString.orConnectWith.value)
             .padding(.top)
         
         HStack {
