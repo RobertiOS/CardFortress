@@ -27,3 +27,13 @@
 
 "cfTextFieldGenericErrorMessage" = "This field is required.";
 "snackBarCardAdded" = "The Card Was Added Successfuly";
+"invalidEmail" = "invalid email";
+"wrongPassword" = "wrong password";
+"unknownError" = "unknown error";
+"creditCardFortressHeader" = "Credit Card Fortress";
+"login" = "Log in";
+"yourEmail" = "your email";
+"yourPassword" = "your password";
+"rememberMe" = "Remember me";
+"signUp" = "Sign Up";
+"orConnectWith" = "or connect with";
