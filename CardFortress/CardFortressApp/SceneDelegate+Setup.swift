@@ -27,6 +27,11 @@ extension SceneDelegate {
             container.register(AuthenticationAPI.self) { r in
                 AuthenticationAPIMock()
             }
+            
+            container.register(SecureUserDataAPI.self) { r in
+                SecureUserDataAPIMock()
+            }
+            
             return container
         }()
         
@@ -44,6 +49,10 @@ extension SceneDelegate {
 
             container.register(AuthenticationAPI.self) { r in
                 Authentication(authDataSourceAPI: authDataSource)
+            }
+            
+            container.register(SecureUserDataAPI.self) { r in
+                SecureUserData()
             }
             
             return container

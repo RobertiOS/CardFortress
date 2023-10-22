@@ -11,11 +11,13 @@ import SwiftUI
 protocol LoginViewDelegate: AnyObject {
     func login(email: String, password: String) async -> AuthenticationResult?
     func loginWithBiometrics() async -> AuthenticationResult?
+    func getUserCredentials() async -> (email: String, password: String)?
     func startCreateUser()
 }
 
 extension LoginView {
     
+    @MainActor
     final class ViewModel: ObservableObject {
         
         //MARK: - Properties
@@ -26,7 +28,17 @@ extension LoginView {
         @Published var isloading = false
         @Published var canUseBiometrics = false
         @Published var biometricsImage: Image? = nil
-        @Published var rememberUser = false
+        
+        @AppStorage("isRememberMeEnabled") var isRememberMeEnabled: Bool = false {
+            didSet {
+                if isRememberMeEnabled {
+                    getCredentials()
+                } else {
+                    email = ""
+                    password = ""
+                }
+            }
+        }
         
         init(
             email: String = "",
@@ -34,8 +46,7 @@ extension LoginView {
             errorMessage: String? = nil,
             isloading: Bool = false,
             canUseBiometrics: Bool = false,
-            biometricsImage: Image? = nil,
-            rememberUser: Bool = false
+            biometricsImage: Image? = nil
         ) {
             self.email = email
             self.password = password
@@ -43,20 +54,22 @@ extension LoginView {
             self.isloading = isloading
             self.canUseBiometrics = canUseBiometrics
             self.biometricsImage = biometricsImage
-            self.rememberUser = rememberUser
+            
+            getCredentials()
+            
         }
         
         weak var delegate: LoginViewDelegate?
         
         //MARK: - Methods
-        @MainActor
+
         func login() async {
             isloading = true
             let result = await delegate?.login(email: email, password: password)
             handleLoginResult(result)
             isloading = false
         }
-        @MainActor
+
         func loginWithBiometrics() async {
             isloading = true
             let result = await delegate?.loginWithBiometrics()
@@ -73,13 +86,29 @@ extension LoginView {
             case .success:
                 errorMessage = nil
             case .invalidEmail:
-                errorMessage = "invalid email"
+                errorMessage = LocalizableString.invalidEmail.value
             case .wrongPassword:
-                errorMessage = "wrong password"
+                errorMessage = LocalizableString.wrongPassword.value
             case .other(let error):
                 errorMessage = error.localizedDescription
             default:
-                errorMessage = "unknown error"
+                errorMessage = LocalizableString.unknownError.value
+            }
+        }
+        
+        private func getCredentials() {
+            
+            Task {
+                defer {
+                    isloading = false
+                }
+                
+                isloading = true
+                guard isRememberMeEnabled,
+                let userData = await delegate?.getUserCredentials() else { return }
+                
+                email = userData.email
+                password = userData.password
             }
         }
     }
