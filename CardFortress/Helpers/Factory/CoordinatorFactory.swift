@@ -75,10 +75,12 @@ class CoordinatorFactory:
     
     func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating {
         let authenticationAPI = container.resolve(AuthenticationAPI.self)
+        let secureUserDataAPI = container.resolve(SecureUserDataAPI.self)
         return AuthCoordinator(
             factory: viewControllerFactory,
             navigationController: navigationController,
-            authenticationAPI: authenticationAPI
+            authenticationAPI: authenticationAPI,
+            secureUserDataAPI: secureUserDataAPI
         )
     }
     

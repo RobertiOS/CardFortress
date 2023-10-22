@@ -78,6 +78,7 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
     }
     
     //MARK: - LoginFactoryProtocol
+    @MainActor
     func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
         let viewModel = LoginView.ViewModel()
         viewModel.delegate = delegate

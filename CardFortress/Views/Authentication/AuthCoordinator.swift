@@ -22,13 +22,16 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
     var navigationController: UINavigationController
     private let factory: AuthenticationFactoryProtocol
     private let authenticationAPI: AuthenticationAPI?
+    private let secureUserDataAPI: SecureUserDataAPI?
 
     init(factory: AuthenticationFactoryProtocol,
          navigationController: UINavigationController,
-         authenticationAPI: AuthenticationAPI?) {
+         authenticationAPI: AuthenticationAPI?,
+         secureUserDataAPI: SecureUserDataAPI?) {
         self.factory = factory
         self.navigationController = navigationController
         self.authenticationAPI = authenticationAPI
+        self.secureUserDataAPI = secureUserDataAPI
         super.init()
     }
 
@@ -43,6 +46,15 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
 //MARK: - LoginViewDelegate
 
 extension AuthCoordinator: LoginViewDelegate {
+    func getUserCredentials() async -> (email: String, password: String)? {
+        let userData = await secureUserDataAPI?.getUserCredentials()
+        if case .success(let loginInfo) = userData {
+            return (email: loginInfo.userName, password: loginInfo.password)
+        } else {
+            return nil
+        }
+    }
+    
     func loginWithBiometrics() async -> AuthenticationResult? {
         let result = await authenticationAPI?.signInWithBiometrics()
         await handleAuthResult(result)

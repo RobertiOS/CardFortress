@@ -52,7 +52,6 @@ final class BiometricAuth: BiometricAuthAPI {
         return await withCheckedContinuation { continuation in
             // Asks Context to evaluate a Policy with a LocalizedReason
             context.evaluatePolicy(policy, localizedReason: localizedReason) { success, error in
-                // Moves to the main thread because completion triggers UI changes
                 if success {
                     // Context successfully evaluated the Policy
                     continuation.resume(returning: (true, nil))
