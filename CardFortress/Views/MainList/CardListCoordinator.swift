@@ -40,6 +40,16 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
 }
 
 extension CardListCoordinator: CardListViewControllerDelegate {
+    func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult {
+        //no op
+        return .success
+    }
+    
+    func editCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult {
+        //no op
+        return .success
+    }
+    
     func signOut() {
         delegate?.signOut()
     }
