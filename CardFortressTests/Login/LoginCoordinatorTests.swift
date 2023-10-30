@@ -23,7 +23,8 @@ final class LoginCoordinatorTests: XCTestCase {
         coordinator = .init(
             factory: factory,
             navigationController: navigationController,
-            authenticationAPI: AuthenticationAPIMock())
+            authenticationAPI: AuthenticationAPIMock(),
+            secureUserDataAPI: SecureUserDataAPIMock())
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }

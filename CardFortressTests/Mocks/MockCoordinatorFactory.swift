@@ -81,7 +81,8 @@ final class MockLoginCoordinator: AuthCoordinator {
     convenience init() {
         self.init(factory: AuthenticationFactoryMock(),
                   navigationController: UINavigationController(),
-                  authenticationAPI: AuthenticationAPIMock()
+                  authenticationAPI: AuthenticationAPIMock(),
+                  secureUserDataAPI: SecureUserDataAPIMock()
         )
     }
 }

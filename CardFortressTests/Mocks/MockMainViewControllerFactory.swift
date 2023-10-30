@@ -22,7 +22,6 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
     let cardListViewControllerMock = CardListViewControllerMock()
     let addCreditCardViewControllerMock =  AddCreditCardViewControllerMock()
     let mockVisionVC = MockVisionVC()
-    let mockLoginView = LoginView(viewModel: .init())
     let mockCreateUserView = CreateUserView(viewModel: .init())
     
     //MARK: - AddCreditCardFactoryProtocol
@@ -47,9 +46,9 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
     }
     
     //MARK: - LoginFactoryProtocol
-    
+    @MainActor
     override func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
-        mockLoginView
+        LoginView(viewModel: .init())
     }
     
     override func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView {
