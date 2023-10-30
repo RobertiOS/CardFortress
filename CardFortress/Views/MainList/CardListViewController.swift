@@ -17,16 +17,20 @@ protocol CardListViewControllerProtocol: UIViewController {
 
 protocol CardListViewControllerDelegate: AnyObject {
     func signOut()
+    func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
+    func editCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
 }
 
 final class CardListViewController: UIViewController, CardListViewControllerProtocol {
     
-    weak var delegate: CardListViewControllerDelegate?
+    // MARK: private properties
     
-    var viewModel: ListViewModelProtocol
-    private var cancellables = Set<AnyCancellable>()
-    private var collectionView: UICollectionView!
-    private var dataSource: UICollectionViewDiffableDataSource<Int, CreditCard>!
+    private lazy var collectionView: UICollectionView = {
+        let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: collectionViewLayout)
+        return collectionView
+    }()
+    
+    private var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>!
     
     private lazy var deleteAllCardsBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -46,6 +50,15 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         return button
     }()
     
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: internal/ public properties
+    
+    weak var delegate: CardListViewControllerDelegate?
+    var viewModel: ListViewModelProtocol
+    
+    // MARK: Initialization
+    
     init(viewModel: ListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -55,7 +68,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: - Life Cicle
+    //MARK: - View Controller Life Cicle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,23 +88,138 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
         navigationItem.leftBarButtonItem = signOutButton
-        let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        layout.itemSize = CGSize(width: (view.bounds.width - 30), height: 250)
         
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(collectionView)
-        
+        constructSubviewHierarchy()
+        constructSubviewLayoutConstraints()
+    }
+    
+    private func constructSubviewHierarchy() {
+        view.addAutoLayoutSubviews {
+            collectionView
+        }
+    }
+    
+    private func constructSubviewLayoutConstraints() {
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             collectionView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
         ])
+    }
+    
+    private func bindViewModel() {
+        viewModel.fetchCreditCards()
+        viewModel.itemsPublisher
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.presentAlert(with: error)
+                }
+            }, receiveValue: { [weak self] items in
+                self?.applySnapshot(items: items)
+            })
+            .store(in: &cancellables)
+    }
+    
+    //MARK: Actions
+    
+    enum Action: Equatable {
+        case delete
+        case edit
+        
+        var title: String {
+            switch self {
+            case .delete:
+                return "Delete"
+            case .edit:
+                return "Edit"
+            }
+        }
+        
+        var style: UIContextualAction.Style {
+            switch self {
+            case .delete:
+                return .destructive
+            case .edit:
+                return .normal
+            }
+        }
+    }
+    
+    @objc
+    private func deleteAllCreditCards() {
+        let alertController = UIAlertController(title: "Delete all credit cards", message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            guard let self else { return }
+            self.viewModel.deleteAllCards()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true)
+    }
+    
+    @objc
+    private func signOut() {
+        let alertController = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] _ in
+            guard let self else { return }
+            self.delegate?.signOut()
+        }))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        present(alertController, animated: true)
+    }
+
+    // MARK: collection view layout
+
+    private lazy var collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+
+        var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
+
+        /// delete credits cards action
+        configuration.trailingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
+            let deleteAction = createContextualAction(for: .delete, indexPath: indexPath)
+            return UISwipeActionsConfiguration(actions: [deleteAction])
+        }
+
+        /// edit credits cards action
+        configuration.leadingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
+            let editAction = createContextualAction(for: .edit, indexPath: indexPath)
+            return UISwipeActionsConfiguration(actions: [editAction])
+        }
+
+        let section = NSCollectionLayoutSection.list(
+            using: configuration,
+            layoutEnvironment: layoutEnvironment
+        )
+
+        return section
+    }
+    
+    private func createContextualAction(for action: Action, indexPath: IndexPath) -> UIContextualAction {
+        let contextualAction = UIContextualAction(style: action.style, title: action.title) { [unowned self] _, _, completion in
+            guard let creditCard = dataSource.itemIdentifier(for: indexPath) else {
+                completion(false)
+                return
+            }
+            Task {
+                var result: CreditCardsOperationResult?
+                switch action {
+                case .delete:
+                    result = await delegate?.deleteCreditCard(id: creditCard.identifier)
+                case .edit:
+                    result = await delegate?.editCreditCard(id: creditCard.identifier)
+                }
+                completion(result == .success)
+            }
+        }
+        return contextualAction
+    }
+
+    // MARK: collection view data source
+    
+    enum Section {
+        case creditCard
+        case other
     }
     
     let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, CreditCard> { cell, _, creditCard in
@@ -108,7 +236,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     }
     
     private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Int, CreditCard>(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+        dataSource = UICollectionViewDiffableDataSource<Section, CreditCard>(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
             guard let self else { return nil }
             
             return collectionView.dequeueConfiguredReusableCell(
@@ -120,82 +248,15 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     }
     
     private func applySnapshot(items: [CreditCard]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Int, CreditCard>()
-        snapshot.appendSections([0])
-        snapshot.appendItems(items)
+        var snapshot = NSDiffableDataSourceSnapshot<Section, CreditCard>()
+        snapshot.appendSections([.creditCard])
+        snapshot.appendItems(items, toSection: .creditCard)
         dataSource.apply(snapshot, animatingDifferences: true)
     }
-    
-    private func bindViewModel() {
-        viewModel.fetchCreditCards()
-        viewModel.itemsPublisher
-            .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.presentAlert(with: error)
-                }
-            }, receiveValue: { [weak self] items in
-                self?.applySnapshot(items: items)
-            })
-            .store(in: &cancellables)
-    }
 
-    //MARK: Actions
-    
-    @objc
-    private func presentAddCreditCardAlertController() {
-        let alertController = UIAlertController(title: "Add Credit Card", message: nil, preferredStyle: .alert)
-        let textFieldData = [("Card Number", UIKeyboardType.numberPad), ("CVV", UIKeyboardType.numberPad), ("Expiration Date (MM/YY)", UIKeyboardType.numbersAndPunctuation), ("Card Name (optional)", nil), ("Cardholder Name (optional)", nil)]
-
-        for (placeholder, keyboardType) in textFieldData {
-            alertController.addTextField {
-                $0.placeholder = placeholder
-                $0.keyboardType = keyboardType ?? .default
-            }
-        }
-        
-        
-
-        alertController.addAction(UIAlertAction(title: "Add", style: .default, handler: { [weak self] _ in
-            guard let self,
-                  let fields = alertController.textFields,
-                  let number = fields[0].text, !number.isEmpty,
-                  let cvv = fields[1].text, !cvv.isEmpty,
-                  let date = fields[2].text, !date.isEmpty else {
-                return
-            }
-            let card = CreditCard(identifier: UUID(), number: Int(number) ?? 0, cvv: Int(cvv) ?? 0, date: date, cardName: fields[3].text ?? "", cardHolderName: fields[4].text ?? "")
-            self.viewModel.addCreditCard(card)
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-
-        present(alertController, animated: true)
-    }
-
-    @objc
-    private func deleteAllCreditCards() {
-        
-        let alertController = UIAlertController(title: "Delete all credit cards", message: nil, preferredStyle: .alert)
-
-        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            guard let self else { return }
-            self.viewModel.deleteAllCards()
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertController, animated: true)
-    }
-    
-    @objc
-    private func signOut() {
-        
-        let alertController = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .alert)
-
-        alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] _ in
-            guard let self else { return }
-            self.delegate?.signOut()
-        }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        present(alertController, animated: true)
+    enum CreditCardsOperationResult: Equatable {
+        case success
+        case failure
     }
 }
 
@@ -205,16 +266,12 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
 extension CardListViewController {
     struct TestHooks {
         let target: CardListViewController
-        var snapshot: NSDiffableDataSourceSnapshot<Int, CreditCard> {
+        var snapshot: NSDiffableDataSourceSnapshot<Section, CreditCard> {
             target.dataSource.snapshot()
         }
 
         var viewControllerTitle: String? {
             target.title
-        }
-        
-        func presentAddCreditCardAlertController() {
-            target.presentAddCreditCardAlertController()
         }
         
         func deleteAllCreditCards() {
