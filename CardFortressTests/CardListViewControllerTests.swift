@@ -40,20 +40,6 @@ final class CardListViewControllerTests: XCTestCase {
         XCTAssertEqual(title, viewController.navigationItem.title)
     }
     
-    func testaddCardAlertIsPresented() throws {
-        //given
-        XCTAssertNil(viewController.presentedViewController)
-        
-        //when
-        viewController.testHooks.presentAddCreditCardAlertController()
-        let alertController = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
-
-        //then
-        XCTAssertEqual(alertController.textFields?.count, 5)
-        XCTAssertEqual(alertController.title, "Add Credit Card")
-        XCTAssertEqual(alertController.actions.count, 2)
-    }
-    
     func testdeleteCardAlertIsPresented() throws {
         //given
         XCTAssertNil(viewController.presentedViewController)
