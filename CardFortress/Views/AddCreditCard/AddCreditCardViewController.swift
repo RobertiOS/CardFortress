@@ -7,8 +7,8 @@
 
 import UIKit
 import Combine
-import CFHelper
 import SwiftUI
+import CFSharedUI
 
 protocol AddCreditCardViewControllerProtocol: UIViewController {
     var viewModel: AddCreditCardViewController.ViewModel { get set }

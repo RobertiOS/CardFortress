@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-import CFHelper
+import CFAPIs
 import Swinject
 
 extension SceneDelegate {

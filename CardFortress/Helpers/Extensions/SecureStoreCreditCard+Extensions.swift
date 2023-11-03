@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CFHelper
+import CFAPIs
 
 extension SecureStoreCreditCard {
     init(creditCard: CreditCard) {

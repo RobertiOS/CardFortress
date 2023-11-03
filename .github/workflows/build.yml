@@ -24,9 +24,10 @@ jobs:
           xcodebuild clean test \
             -project 'CardFortress.xcodeproj' \
             -scheme 'CardFortress' \
-            -destination "platform=iOS Simulator,name=iPhone 15,OS=17.0" \
+            -destination "platform=iOS Simulator,name=iPhone 15,OS=latest" \
             -derivedDataPath Build/ \
             -enableCodeCoverage YES \
+            -allowProvisioningUpdates \
             build test
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
           /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests

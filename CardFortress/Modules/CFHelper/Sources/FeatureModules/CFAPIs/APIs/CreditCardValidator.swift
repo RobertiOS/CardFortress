@@ -8,6 +8,7 @@
 
 import Foundation
 import SwiftUI
+import CFSharedResources
 
 public enum CreditCardType: String {
     case amex = "^3[47][0-9]{5,}$"
@@ -42,15 +43,15 @@ public enum CreditCardType: String {
     public var icon: UIImage? {
         switch self {
         case .amex:
-            return UIImage(named: "amex", in: Bundle.module, compatibleWith: nil)
+            return SharedImages.amex.uiImage
         case .visa:
-            return UIImage(named: "visa", in: Bundle.module, compatibleWith: nil)
+            return SharedImages.visa.uiImage
         case .masterCard:
-            return UIImage(named: "masterCard", in: Bundle.module, compatibleWith: nil)
+            return SharedImages.masterCard.uiImage
         case .maestro:
-            return UIImage(named: "maestro", in: Bundle.module, compatibleWith: nil)
+            return SharedImages.maestro.uiImage
         case .discover:
-            return UIImage(named: "discover", in: Bundle.module, compatibleWith: nil)
+            return SharedImages.discover.uiImage
         default:
             return nil
         }
@@ -59,15 +60,15 @@ public enum CreditCardType: String {
     public var image: Image? {
         switch self {
         case .amex:
-            return .init("amex", bundle: .module)
+            return SharedImages.amex.swiftUIImage
         case .visa:
-            return .init("visa", bundle: .module)
+            return SharedImages.visa.swiftUIImage
         case .masterCard:
-            return .init("masterCard", bundle: .module)
+            return SharedImages.masterCard.swiftUIImage
         case .maestro:
-            return .init("maestro", bundle: .module)
+            return SharedImages.maestro.swiftUIImage
         case .discover:
-            return .init("discover", bundle: .module)
+            return SharedImages.discover.swiftUIImage
         default:
             return nil
         }

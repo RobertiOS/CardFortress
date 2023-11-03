@@ -7,7 +7,8 @@
 
 import WidgetKit
 import SwiftUI
-import CFHelper
+import CFAPIs
+import CFSharedUI
 
 struct CardFortressWidgetEntryView : View {
     var entry: CreditCardProvider.Entry
