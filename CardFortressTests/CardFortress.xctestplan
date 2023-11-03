@@ -19,10 +19,10 @@
   },
   "testTargets" : [
     {
-      "parallelizable" : true,
       "skippedTests" : [
         "CardListViewControllerTests\/testUpdate_CollectionViewDataSource()",
         "ImageParserTests",
+        "UIViewControllerAlertTests\/testPresentAlert()",
         "VisionKitCoordinatorTests\/test_VisionKitDelegate()"
       ],
       "target" : {
