@@ -28,6 +28,7 @@ jobs:
             -derivedDataPath Build/ \
             -enableCodeCoverage YES \
             -allowProvisioningUpdates \
+            -verbose \
             build test
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
           /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
