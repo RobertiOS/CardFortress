@@ -6,7 +6,7 @@
 //
 
 import XCTest
-@testable import CFHelper
+@testable import CFAPIs
 
 
 final class SecureStoreTests: XCTestCase {

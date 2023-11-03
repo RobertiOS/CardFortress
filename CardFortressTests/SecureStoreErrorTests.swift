@@ -1,5 +1,5 @@
 import XCTest
-@testable import CFHelper
+@testable import CFAPIs
 
 class SecureStoreErrorTests: XCTestCase {
     
