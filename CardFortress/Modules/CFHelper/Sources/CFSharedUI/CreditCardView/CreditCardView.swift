@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import CFSharedResources
 
 public struct CreditCardView<Content : View>: View {
     
@@ -44,7 +44,7 @@ public struct CreditCardView<Content : View>: View {
                     }
                     
                     HStack {
-                        Image("chip", bundle: .module)
+                        SharedImages.chip.swiftUIImage
                             .resizable()
                             .frame(width: 55, height: 40)
                         Spacer()

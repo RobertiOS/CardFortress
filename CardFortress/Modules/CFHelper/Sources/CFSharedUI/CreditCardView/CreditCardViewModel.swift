@@ -7,6 +7,8 @@
 
 import AppIntents
 import SwiftUI
+import CFAPIs
+import CFSharedResources
 
 final public class CreditCardViewModel: ObservableObject {
     //MARK: -  Public properties

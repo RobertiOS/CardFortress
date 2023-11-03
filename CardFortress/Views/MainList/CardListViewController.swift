@@ -7,8 +7,8 @@
 
 import UIKit
 import SwiftUI
-import CFHelper
 import Combine
+import CFSharedUI
 
 protocol CardListViewControllerProtocol: UIViewController {
     var delegate: CardListViewControllerDelegate? { get set }

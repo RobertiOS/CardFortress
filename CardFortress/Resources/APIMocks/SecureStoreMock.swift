@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CFHelper
+import CFAPIs
 
 class SecureStoreMock: SecureStoreAPI {
     var addCreditCardToKeychainCalledCount = 0

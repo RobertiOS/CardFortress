@@ -6,7 +6,8 @@
 //
 
 import Foundation
-import CFHelper
+import CFAPIs
+import CFSharedUI
 import WidgetKit
 import AppIntents
 
