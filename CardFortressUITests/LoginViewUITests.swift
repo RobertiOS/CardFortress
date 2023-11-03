@@ -34,7 +34,7 @@ final class LoginViewUITests: XCTestCase {
         
         app.keyboards.buttons["Return"].tap()
         
-        let loginButton = app.buttons["Login"]
+        let loginButton = app.buttons["Log in"]
         loginButton.tap()
         
         //then
