@@ -32,6 +32,7 @@
       }
     },
     {
+      "enabled" : false,
       "target" : {
         "containerPath" : "container:CardFortress.xcodeproj",
         "identifier" : "26B7703029EC450400CC9FEB",
