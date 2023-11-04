@@ -32,7 +32,6 @@ final class MockListService: CardListServiceProtocol {
     }
 
     func getCreditCardsFromSecureStore() -> Future<[CreditCard], Error> {
-        
         return Future { [unowned self] promise in
             delete ? promise(.success([])) :promise(.success(cards))
         }

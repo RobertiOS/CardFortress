@@ -82,7 +82,7 @@
 		26B7701E29EC450400CC9FEB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701D29EC450400CC9FEB /* Assets.xcassets */; };
 		26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */; };
 		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
-		26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */; };
+		26B8305F2A7EE9FE002D119E /* AuthCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */; };
 		26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */; };
 		26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */; };
 		26B83A662A7FF39B002D119E /* CardFortressAppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */; };
@@ -226,7 +226,7 @@
 		26B7702729EC450400CC9FEB /* CardFortressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
-		26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinatorTests.swift; sourceTree = "<group>"; };
+		26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorTests.swift; sourceTree = "<group>"; };
 		26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFactoryMock.swift; sourceTree = "<group>"; };
 		26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIMock.swift; sourceTree = "<group>"; };
 		26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorFactory.swift; sourceTree = "<group>"; };
@@ -645,7 +645,7 @@
 		26B8305B2A7EE9C8002D119E /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				26B8305E2A7EE9FE002D119E /* LoginCoordinatorTests.swift */,
+				26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -1002,7 +1002,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				26B8305F2A7EE9FE002D119E /* LoginCoordinatorTests.swift in Sources */,
+				26B8305F2A7EE9FE002D119E /* AuthCoordinatorTests.swift in Sources */,
 				265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */,
 				266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,

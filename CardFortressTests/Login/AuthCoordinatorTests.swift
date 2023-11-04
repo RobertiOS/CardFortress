@@ -1,5 +1,5 @@
 //
-//  LoginCoordinatorTests.swift
+//  AuthCoordinatorTests.swift
 //  CardFortressTests
 //
 //  Created by Roberto Corrales on 8/5/23.
@@ -9,7 +9,7 @@ import XCTest
 import SwiftUI
 @testable import CardFortress
 
-final class LoginCoordinatorTests: XCTestCase {
+final class AuthCoordinatorTests: XCTestCase {
 
     var coordinator: AuthCoordinator!
     var navigationController: UINavigationController!
@@ -82,6 +82,21 @@ final class LoginCoordinatorTests: XCTestCase {
         let result = await coordinator.createUser(name: "", lastName: "", email: "", password: "")
         //then
         XCTAssertEqual(result, .success)
+    }
+    
+    func test_getUserCredentials() async {
+        // When
+        let userCredentials: (email: String, password: String)? = await coordinator.getUserCredentials()
+        // Then
+        XCTAssertEqual(userCredentials?.email, "User")
+        XCTAssertEqual(userCredentials?.password, "1234")
+    }
+    
+    func test_signInWithBiometrics() async throws {
+        // When
+        let loginResult = await coordinator.loginWithBiometrics()
+        // Then
+        XCTAssertEqual(loginResult, .success)
     }
 
 }

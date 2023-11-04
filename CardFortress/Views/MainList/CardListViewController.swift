@@ -269,6 +269,10 @@ extension CardListViewController {
         var snapshot: NSDiffableDataSourceSnapshot<Section, CreditCard> {
             target.dataSource.snapshot()
         }
+        
+        var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard> {
+            target.dataSource
+        }
 
         var viewControllerTitle: String? {
             target.title

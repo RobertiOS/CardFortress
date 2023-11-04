@@ -14,7 +14,11 @@ final class MockListViewModel: ListViewModelProtocol {
         itemsSubject.send([])
     }
     
-    var cards: [CreditCard] = []
+    var cards: [CreditCard] = [] {
+        didSet {
+            itemsSubject.send(cards)
+        }
+    }
     func addCreditCard(_ creditCard: CardFortress.CreditCard) {
         cards.append(creditCard)
     }

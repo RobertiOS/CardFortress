@@ -56,33 +56,37 @@ final class CardListViewControllerTests: XCTestCase {
     }
     
     func testUpdate_CollectionViewDataSource() {
-        let snapshot = viewController.testHooks.snapshot
-        XCTAssert(snapshot.numberOfItems == 0, "Initial snapshot should have 0 items")
+        // Given
+        let viewModel = MockListViewModel(cardListService: MockListService())
+
         let cards = [
             CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
             CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez"),
             CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez")
         ]
         
-        cards.forEach {
-            viewModel.addCreditCard($0)
-        }
+        let viewController = CardListViewController(viewModel: viewModel)
+        viewController.loadViewIfNeeded()
+        
+        // Then
+        XCTAssertEqual(viewController.testHooks.snapshot.numberOfItems, 0)
+
+        // When
         
         let expectation = self.expectation(description: "Items should be emited")
-        
         viewModel.itemsPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
+            .sink { completion in
                 
-            }, receiveValue: { _ in
+            } receiveValue: { _ in
                 expectation.fulfill()
-            })
-            
+            }
             .store(in: &cancellables)
-        viewModel.fetchCreditCards()
-        
+        //update credit cards
+        viewModel.cards = cards
         waitForExpectations(timeout: .defaultWait)
-        let updatedSnapshot = viewController.testHooks.snapshot
-        XCTAssertEqual(updatedSnapshot.numberOfItems, cards.count, "\(updatedSnapshot.numberOfItems) is not equat to 3")
+        // Then
+        XCTAssertEqual(viewController.testHooks.snapshot.numberOfItems, 3)
+        
     }
 }
