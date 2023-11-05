@@ -52,6 +52,7 @@
 		267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FC02AF44DCB0062FA11 /* CFSharedResources */; };
 		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
+		268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */; };
 		26921A372A63228B00DA1313 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A362A63228B00DA1313 /* UIColor+Extensions.swift */; };
 		26921A392A64566D00DA1313 /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A382A64566D00DA1313 /* CFTextField.swift */; };
 		26921A3B2A6460A700DA1313 /* UITextField+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A3A2A6460A700DA1313 /* UITextField+Extensions.swift */; };
@@ -193,6 +194,7 @@
 		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
+		268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataTests.swift; sourceTree = "<group>"; };
 		26921A362A63228B00DA1313 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		26921A382A64566D00DA1313 /* CFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTextField.swift; sourceTree = "<group>"; };
 		26921A3A2A6460A700DA1313 /* UITextField+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Extensions.swift"; sourceTree = "<group>"; };
@@ -444,6 +446,22 @@
 			path = Mocks;
 			sourceTree = "<group>";
 		};
+		268CA9A52AF756A300074D19 /* APIs */ = {
+			isa = PBXGroup;
+			children = (
+				268CA9A82AF756BD00074D19 /* Authentication */,
+			);
+			path = APIs;
+			sourceTree = "<group>";
+		};
+		268CA9A82AF756BD00074D19 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
 		26921A402A64E79D00DA1313 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,6 +619,7 @@
 		26B7702A29EC450400CC9FEB /* CardFortressTests */ = {
 			isa = PBXGroup;
 			children = (
+				268CA9A52AF756A300074D19 /* APIs */,
 				26B8305B2A7EE9C8002D119E /* Login */,
 				26921A402A64E79D00DA1313 /* CustomViews */,
 				26AC69682A575143001404E5 /* CardFortressAppCoordinator */,
@@ -1009,6 +1028,7 @@
 				26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */,
 				26921EA52A660C9800DA1313 /* ImageParserTests.swift in Sources */,
 				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,
+				268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */,
 				26921EA92A66184700DA1313 /* AddCreditCardViewModelTests.swift in Sources */,
 				26B83A662A7FF39B002D119E /* CardFortressAppCoordinatorTests.swift in Sources */,
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,

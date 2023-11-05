@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginInfo {
+struct LoginInfo: Equatable {
     let userName: String
     let password: String
 }
