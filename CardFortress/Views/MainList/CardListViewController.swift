@@ -18,7 +18,7 @@ protocol CardListViewControllerProtocol: UIViewController {
 protocol CardListViewControllerDelegate: AnyObject {
     func signOut()
     func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
-    func editCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
+    func editCreditCard(creditCard: CreditCard)
 }
 
 final class CardListViewController: UIViewController, CardListViewControllerProtocol {
@@ -88,7 +88,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
         navigationItem.leftBarButtonItem = signOutButton
-        
+        collectionView.delegate = self
         constructSubviewHierarchy()
         constructSubviewLayoutConstraints()
     }
@@ -207,7 +207,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
                 case .delete:
                     result = await delegate?.deleteCreditCard(id: creditCard.identifier)
                 case .edit:
-                    result = await delegate?.editCreditCard(id: creditCard.identifier)
+                    result = await delegate?.deleteCreditCard(id: creditCard.identifier)
                 }
                 completion(result == .success)
             }
@@ -257,6 +257,13 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     enum CreditCardsOperationResult: Equatable {
         case success
         case failure
+    }
+}
+
+extension CardListViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let creditCard = dataSource.itemIdentifier(for: indexPath) else { return }
+        delegate?.editCreditCard(creditCard: creditCard)
     }
 }
 

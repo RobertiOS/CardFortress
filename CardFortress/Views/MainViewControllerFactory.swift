@@ -16,7 +16,7 @@ protocol CreditCardListFactoryProtocol: AnyObject {
 }
 
 protocol AddCreditCardFactoryProtocol: AnyObject {
-    func makeAddCardViewController() -> AddCreditCardViewControllerProtocol
+    func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewControllerProtocol
 }
 
 protocol VisionKitFactoryProtocol: AnyObject {
@@ -63,9 +63,9 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
     
     //MARK: - AddCreditCardFactoryProtocol
     
-    func makeAddCardViewController() -> AddCreditCardViewControllerProtocol {
+    func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewControllerProtocol {
         guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
-        let viewModel = AddCreditCardViewController.ViewModel(service: service)
+        let viewModel = AddCreditCardViewController.ViewModel(service: service, action: action)
         let viewController = AddCreditCardViewController(viewModel: viewModel)
         viewController.view.backgroundColor = .systemBackground
         return viewController

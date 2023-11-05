@@ -24,7 +24,6 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         
-        let container = Container()
         coordinator = AddCreditCardCoordinator(
             navigationController: navigationController,
             factory: MockMainViewControllerFactory(),

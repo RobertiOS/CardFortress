@@ -74,9 +74,6 @@ final class AuthCoordinatorTests: XCTestCase {
     
     @MainActor
     func test_CreateUser() async {
-        //given
-        let emailPassword = "user"
-        let password = "password"
         //when
         coordinator.start()
         let result = await coordinator.createUser(name: "", lastName: "", email: "", password: "")

@@ -21,7 +21,9 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     
     private lazy var addCreditCardButton: UIButton = {
         let button = UIButton()
-        button.setTitle(LocalizableString.addCreditCardButtonTitle.value, for: .normal)
+        button.setTitle(
+            (viewModel.action == .addCreditCard ? LocalizableString.addCreditCardButtonTitle : LocalizableString.editCreditCardButtonTitle).value,
+            for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         button.layer.cornerRadius = 15
@@ -62,14 +64,15 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             }, receiveValue: { [weak self] result in
                 guard let self else { return }
                 switch result {
-                case .success:
+                case .addSuccess, .success:
                     self.presentSnackbar(with: LocalizableString.snackBarCardAdded.value)
-                    
                 case .failure(let error):
                     UIAlertController.Builder()
                         .withTitle("Error")
                         .withMessage(error.localizedDescription)
                         .present(in: self)
+                case .editSuccess:
+                    self.presentSnackbar(with: LocalizableString.snackBarCardSaved.value)
                 }
             })
             .store(in: &self.subscriptions)
@@ -206,7 +209,8 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     //MARK: - View Construction
     
     private func constructViewHerarchy() {
-        title = LocalizableString.addCreditCardTitle.value
+        title = viewModel.action == .addCreditCard ? LocalizableString.addCreditCardTitle.value :
+        LocalizableString.editCreditCardTitle.value
         
         [
             creditCardNumberTextField.textField,

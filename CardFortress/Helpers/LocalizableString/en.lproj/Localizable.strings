@@ -24,6 +24,9 @@
 "scanYourCard" = "Scan your card";
 "cvvPlaceHolder" = "123";
 "cvvLabel" = "cvv";
+"editCreditCardButtonTitle" = "Save";
+"editCreditCardTitle" = "Edit Card";
+"snackBarCardSaved" = "Card saved";
 
 "cfTextFieldGenericErrorMessage" = "This field is required.";
 "snackBarCardAdded" = "The Card Was Added Successfuly";

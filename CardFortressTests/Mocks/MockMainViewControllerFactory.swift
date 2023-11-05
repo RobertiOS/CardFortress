@@ -25,7 +25,7 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
     let mockCreateUserView = CreateUserView(viewModel: .init())
     
     //MARK: - AddCreditCardFactoryProtocol
-    override func makeAddCardViewController() -> AddCreditCardViewControllerProtocol {
+    override func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewControllerProtocol {
         addCreditCardViewControllerMock
     }
     
@@ -63,7 +63,7 @@ final class CardListViewControllerMock: UIViewController, CardListViewController
 }
 
 final class AddCreditCardViewControllerMock: UIViewController ,AddCreditCardViewControllerProtocol {
-    var viewModel: AddCreditCardViewController.ViewModel = .init(service: MockListService())
+    var viewModel: AddCreditCardViewController.ViewModel = .init(service: MockListService(), action: .addCreditCard)
     var delegate: AddCreditCardCoordinatorDelegate?
 }
 

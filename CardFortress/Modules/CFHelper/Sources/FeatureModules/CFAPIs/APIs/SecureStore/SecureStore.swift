@@ -78,16 +78,12 @@ public actor SecureStore: SecureStoreAPI {
                 attributesToUpdate[String(kSecValueData)] = creditCardData
                 status = SecItemUpdate(keychainQuery as CFDictionary,
                                        attributesToUpdate as CFDictionary)
+                continuation.resume(returning: .editSuccess)
             case errSecItemNotFound:
                 keychainQuery[String(kSecValueData)] = creditCardData
                 status = SecItemAdd(keychainQuery as CFDictionary, nil)
+                continuation.resume(returning: .addSuccess)
             default:
-                continuation.resume(throwing: error(from: status))
-            }
-            //TODO: refactor
-            if status == errSecSuccess {
-                continuation.resume(returning: .success)
-            } else {
                 continuation.resume(throwing: error(from: status))
             }
         }

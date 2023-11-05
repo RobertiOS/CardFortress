@@ -11,6 +11,8 @@ import Combine
 
 enum AddCreditCardResult {
     case success
+    case editSuccess
+    case addSuccess
     case failure(Error)
 }
 
@@ -30,35 +32,73 @@ extension AddCreditCardViewController {
         
         @Published
         var creditCardHolderName: String?
+        
+        let action: AddCreditCardCoordinator.Action
 
         private var subscriptions = Set<AnyCancellable>()
         private let service: CardListServiceProtocol
         
         //MARK: - Initialization
         
-        init(service: CardListServiceProtocol) {
+        init(
+            service: CardListServiceProtocol,
+            action: AddCreditCardCoordinator.Action = .addCreditCard
+        ) {
             self.service = service
+            self.action = action
+            
+            setActionType()
+        }
+        
+        func setActionType() {
+            switch action {
+            case .addCreditCard:
+                return
+            case .editCreditCard(let creditCard):
+                self.creditCardDate = creditCard.date
+                self.creditCardHolderName = creditCard.cardHolderName
+                self.creditCardNumber = creditCard.number
+                self.creditCardName = creditCard.cardName
+            }
         }
         
         //MARK: - Methods
         func createAddCreditCardPublisher() -> AnyPublisher<AddCreditCardResult, Error>? {
             guard let creditCardDate,
                   let creditCardNumber else { return nil }
-            let creditCard: CreditCard = .init(
-                number: creditCardNumber,
-                cvv: 123,
-                date: creditCardDate,
-                cardName: creditCardName ?? "",
-                cardHolderName: creditCardHolderName ?? ""
-            )
+            let creditCard: CreditCard
+            
+            switch action {
+            case .addCreditCard:
+                creditCard = .init(
+                    number: creditCardNumber,
+                    cvv: 123,
+                    date: creditCardDate,
+                    cardName: creditCardName ?? "",
+                    cardHolderName: creditCardHolderName ?? ""
+                )
+            case .editCreditCard(let card):
+                creditCard = .init(
+                    identifier: card.identifier,
+                    number: creditCardNumber,
+                    cvv: 123,
+                    date: creditCardDate,
+                    cardName: creditCardName ?? "",
+                    cardHolderName: creditCardHolderName ?? ""
+                )
+            }
             return service.addCreditCardToSecureStore(creditCard)
                 .receive(on: DispatchQueue.main)
-                .map {
-                    switch $0 {
+                .map { (result: CardListServiceResult) -> (AddCreditCardResult) in
+                    switch result {
                     case .success:
-                        return AddCreditCardResult.success
+                        return .success
                     case .failure(let error):
-                        return AddCreditCardResult.failure(error)
+                        return .failure(error)
+                    case .addSuccess:
+                        return .addSuccess
+                    case .editSuccess:
+                        return .editSuccess
                     }
                 }
                 .eraseToAnyPublisher()

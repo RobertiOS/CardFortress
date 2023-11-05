@@ -25,11 +25,19 @@ protocol VisionKitCoordinatorFactory {
     func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating
 }
 
+protocol EditCreditCardCoodinatorFactory {
+    func makeEditCreditCardCoordinator(
+        creditCard: CreditCard,
+        navigationController: UINavigationController
+    ) -> AddCreditCardCoordinator
+}
+
 class CoordinatorFactory:
     TabBarCoordinatorFactory,
     AppCoordinatorFactory,
     LoginCoordinatorFactory,
-    VisionKitCoordinatorFactory {
+    VisionKitCoordinatorFactory,
+    EditCreditCardCoodinatorFactory {
     
     private let container: Container
     private let viewControllerFactory: MainViewControllerFactory
@@ -48,7 +56,8 @@ class CoordinatorFactory:
         let mainCoordinator = CardListCoordinator(
             container: container,
             viewControllerFactory: viewControllerFactory,
-            navigationController: navigationController)
+            navigationController: navigationController,
+            coordinatorFactory: self)
         return mainCoordinator
     }
     
@@ -88,5 +97,20 @@ class CoordinatorFactory:
     
     func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating {
         VisionKitCoordinator(factory: viewControllerFactory, navigationController: navigationController)
+    }
+    
+    // MARK: - Edit credit card factory
+    
+    func makeEditCreditCardCoordinator(
+        creditCard: CreditCard,
+        navigationController: UINavigationController
+    ) -> AddCreditCardCoordinator {
+        let coordinator = AddCreditCardCoordinator(
+            navigationController: navigationController,
+            factory: viewControllerFactory,
+            coordinatorFactory: self,
+            action: .editCreditCard(creditCard)
+        )
+        return coordinator
     }
 }
