@@ -73,7 +73,7 @@ class CardListServiceTests: XCTestCase {
                 
             } receiveValue: { state in
                 switch state {
-                case .success:
+                case .success, .addSuccess, .editSuccess:
                     expectation.fulfill()
                 case .failure(_):
                     XCTFail()

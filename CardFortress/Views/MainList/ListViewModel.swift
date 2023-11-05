@@ -43,6 +43,8 @@ final class ListViewModel: ListViewModelProtocol {
                     self?.fetchCreditCards()
                 case .failure(let error):
                     self?.itemsSubject.send(completion: .failure(error))
+                default:
+                    break
                 }
             }
             .store(in: &subscriptions)

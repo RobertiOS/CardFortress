@@ -22,14 +22,18 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
     private let viewControllerFactory: CreditCardListFactoryProtocol
     private let container: Container
     weak var delegate: CardListCoordinatorDelegate?
+    private var editCreditCardCoordinator: AddCreditCardCoordinator?
+    private let coordinatorFactory: EditCreditCardCoodinatorFactory
     
     //MARK: initialization
     init(container: Container,
          viewControllerFactory: CreditCardListFactoryProtocol,
-         navigationController: UINavigationController) {
+         navigationController: UINavigationController,
+         coordinatorFactory: EditCreditCardCoodinatorFactory) {
         self.container = container
         self.viewControllerFactory = viewControllerFactory
         self.navigationController = navigationController
+        self.coordinatorFactory = coordinatorFactory
     }
 
     override func start() {
@@ -37,17 +41,25 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
         viewController.delegate = self
         navigateTo(viewController, presentationStyle: .push)
     }
+    
+    private func starEditCreditCardCoordinator(creditCard: CreditCard) {
+        editCreditCardCoordinator = coordinatorFactory.makeEditCreditCardCoordinator(
+            creditCard: creditCard,
+            navigationController: navigationController
+        )
+        editCreditCardCoordinator?.start()
+    }
 }
 
 extension CardListCoordinator: CardListViewControllerDelegate {
+    
     func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult {
         //no op
         return .success
     }
     
-    func editCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult {
-        //no op
-        return .success
+    func editCreditCard(creditCard: CreditCard) {
+        starEditCreditCardCoordinator(creditCard: creditCard)
     }
     
     func signOut() {

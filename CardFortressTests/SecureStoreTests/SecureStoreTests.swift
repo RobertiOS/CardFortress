@@ -31,7 +31,7 @@ final class SecureStoreTests: XCTestCase {
         let expectation = expectation(description: "add credit card")
         Task {
             let result = try await secureStore.addCreditCardToKeychain(creditCard)
-            XCTAssertEqual(result, .success)
+            XCTAssertEqual(result, .addSuccess)
             expectation.fulfill()
         }
         await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)
@@ -40,7 +40,7 @@ final class SecureStoreTests: XCTestCase {
     func test_SecureStore_EditCreditCard() async throws {
         //given
         let creditCard: SecureStoreCreditCard = .make()
-        try await addCardHelper(creditCard: creditCard)
+        try await addCardHelper(creditCard: creditCard, expectedResultType: .addSuccess)
 
         let getCardExpectation = expectation(description: "get credit card")
         Task {
@@ -61,7 +61,7 @@ final class SecureStoreTests: XCTestCase {
             cardHolderName: "Pablo"
         )
 
-        try await addCardHelper(creditCard: editedCreditCard)
+        try await addCardHelper(creditCard: editedCreditCard, expectedResultType: .editSuccess)
 
         //when
         let getCardEditedCardExpectation = expectation(description: "get edited card")
@@ -104,11 +104,11 @@ final class SecureStoreTests: XCTestCase {
     }
 
 
-    func addCardHelper(creditCard: SecureStoreCreditCard) async throws {
+    func addCardHelper(creditCard: SecureStoreCreditCard, expectedResultType: SecureStoreResult = .addSuccess) async throws {
         let expectation = expectation(description: "add credit card")
         Task {
             let result = try await secureStore.addCreditCardToKeychain(creditCard)
-            XCTAssertEqual(result, .success)
+            XCTAssertEqual(result, expectedResultType)
             expectation.fulfill()
         }
         await fulfillment(of: [expectation], timeout: .defaultWait, enforceOrder: true)

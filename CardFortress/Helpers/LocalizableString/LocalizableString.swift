@@ -20,6 +20,9 @@ enum LocalizableString {
     case cardNameLabel
     case addCreditCardButtonTitle
     case addCreditCardTitle
+    case editCreditCardTitle
+    case editCreditCardButtonTitle
+    case snackBarCardSaved
     case cardNumberPlaceHolder
     case expirationDatePlaceHolder
     case cardHolderNamePlaceHolder

@@ -18,6 +18,8 @@ protocol CardListServiceProtocol {
 enum CardListServiceResult {
     case success
     case failure(Error)
+    case addSuccess
+    case editSuccess
     
     init(secureStoreResult: SecureStoreResult) {
         switch secureStoreResult {
@@ -25,6 +27,10 @@ enum CardListServiceResult {
             self = .success
         case .failure(let secureStoreFailure):
             self = .failure(secureStoreFailure)
+        case .editSuccess:
+            self = .editSuccess
+        case .addSuccess:
+            self = .addSuccess
         }
     }
 }

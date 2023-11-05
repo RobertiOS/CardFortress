@@ -16,21 +16,33 @@ protocol AddCreditCardCoordinatorDelegate: AnyObject {
 
 final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
     
-    //MARK: - Properties
+    enum Action: Equatable {
+        var id: Int {
+            switch self {
+            case .addCreditCard:
+                return 0
+            case .editCreditCard:
+                return 1
+            }
+        }
 
+        case addCreditCard
+        case editCreditCard(CreditCard)
+    }
+    
+    //MARK: - Properties
     var navigationController: UINavigationController
     private let addCreditCardViewController: AddCreditCardViewControllerProtocol
     private let coordinatorFactory: VisionKitCoordinatorFactory
-    
     //MARK: - Initialization
     
     init(navigationController: UINavigationController,
          factory: AddCreditCardFactoryProtocol,
-         coordinatorFactory: VisionKitCoordinatorFactory) {
+         coordinatorFactory: VisionKitCoordinatorFactory,
+         action: Action = .addCreditCard) {
         self.navigationController = navigationController
         self.coordinatorFactory = coordinatorFactory
-        addCreditCardViewController = factory.makeAddCardViewController()
-        
+        addCreditCardViewController = factory.makeAddCardViewController(action: action)
         super.init()
         addCreditCardViewController.delegate = self
     }

@@ -107,20 +107,14 @@ class SecureUserData: SecureUserDataAPI {
         return await withCheckedContinuation { continuation in
             var item: CFTypeRef?
             let status = SecItemCopyMatching(query as CFDictionary, &item)
-            guard status != errSecItemNotFound else {
-                continuation.resume(returning: .failure(error: nil))
-                return
-            }
-            guard status == errSecSuccess else {
-                continuation.resume(returning: .failure(error: nil))
-                return
-            }
             
-            guard let loginInfo = LoginInfo(item: item) else {
+            guard status != errSecItemNotFound ||
+                  status == errSecSuccess,
+                  let loginInfo = LoginInfo(item: item) else {
                 continuation.resume(returning: .failure(error: nil))
                 return
             }
-            
+
             continuation.resume(returning: .success(loginInfo: loginInfo))
         }
     }

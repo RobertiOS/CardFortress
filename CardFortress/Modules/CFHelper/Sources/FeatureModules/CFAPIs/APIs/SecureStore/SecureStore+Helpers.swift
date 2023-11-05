@@ -18,6 +18,8 @@ enum CreditCardProperty: String, CaseIterable {
 
 public enum SecureStoreResult: Equatable {
     case success
+    case editSuccess
+    case addSuccess
     case failure(SecureStoreFailure)
 }
 

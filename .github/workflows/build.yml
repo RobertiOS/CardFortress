@@ -38,14 +38,5 @@ jobs:
             build test | xcpretty
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
           /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
-      - name: Notify errors on Pull request
-        if: ${{ always() }}
-        uses: actions/github-script@v5
-        with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: |
-            const body = 'Some unit tests have failed';
-            const comment = context.issue({ body });
-            return github.issues.createComment(comment);
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
