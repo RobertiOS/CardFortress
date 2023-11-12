@@ -9,13 +9,17 @@
 - [x] Vison kit to scan credit cards.
 - [x] Sign-in and sign-out using firebase auth
 - [x] Widgets
-- [x] Login with biometrics 
+- [x] Login with biometrics
+- [ ] Clean architecture
 - [ ] Encrypt credit cards and store in remote server.
 - [ ] Feature flags
 - [ ] Analytics
 - [ ] Ombording
-- [ ] Improve UI
 - [ ] Deeplink
+
+## Todos
+- [ ] Improve UI
+- [ ] Implement some automations for localizable strings, assets, and colors accross all modules on the project.
 
 ### Architecture
 MVVM + Coordinator
