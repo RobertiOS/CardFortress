@@ -18,8 +18,9 @@
 - [ ] Deeplink
 
 ## Todos
-- [ ] Improve UI
+- [ ] Improve UI, app colors, styles, icons, etc.
 - [ ] Implement some automations for localizable strings, assets, and colors accross all modules on the project.
+- [ ] Organize files and make some minor clean ups to align with clean architecture accordingly.
 
 ### Architecture
 MVVM + Coordinator
@@ -28,7 +29,6 @@ MVVM + Coordinator
 - Coordinator
 - Factory
 - Repository
-- Builder
 - Dependency injection
 
 ### External Dependencies
