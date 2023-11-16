@@ -23,7 +23,17 @@
 - [ ] Organize files and make some minor clean ups to align with clean architecture accordingly.
 
 ### Architecture
-MVVM + Coordinator
+#### MVVM + Coordinator
+
+#### Clean architecture
+![image](https://github.com/RobertiOS/CardFortress/assets/93169254/454b0a3a-fb25-4123-884b-89d8c50a2f5f)
+
+
+#### Microapps architecture
+
+![image](https://github.com/RobertiOS/CardFortress/assets/93169254/6a1c801b-1bde-4db8-a977-c194756d1ba4)
+
+
 
 ### Design patterns
 - Coordinator
