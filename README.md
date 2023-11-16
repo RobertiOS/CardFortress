@@ -5,7 +5,7 @@
 
 
 ## Features
-- [x] Secure storage using keychain3
+- [x] Secure storage using keychain
 - [x] Vison kit to scan credit cards.
 - [x] Sign-in and sign-out using firebase auth
 - [x] Widgets
