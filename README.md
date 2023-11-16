@@ -25,6 +25,9 @@
 ### Architecture
 #### MVVM + Coordinator
 
+![image](https://github.com/RobertiOS/CardFortress/assets/93169254/43bafce4-314a-4b3a-9ac5-ec7003be55bf)
+
+
 #### Clean architecture
 ![image](https://github.com/RobertiOS/CardFortress/assets/93169254/454b0a3a-fb25-4123-884b-89d8c50a2f5f)
 
