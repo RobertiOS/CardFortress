@@ -72,7 +72,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        viewModel.fetchCreditCards()
         setupViews()
         configureDataSource()
         bindViewModel()
@@ -84,7 +84,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     }
     
     private func setupViews() {
-        navigationItem.title = LocalizableString.mainViewTitle.value
+        navigationItem.title = LocalizableString.mainViewTitle
         view.backgroundColor = .systemBackground
         navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
         navigationItem.leftBarButtonItem = signOutButton
@@ -109,16 +109,15 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     }
     
     private func bindViewModel() {
-        viewModel.fetchCreditCards()
         viewModel.itemsPublisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { [weak self] completion in
+            .sink { [weak self] completion in
                 if case .failure(let error) = completion {
                     self?.presentAlert(with: error)
                 }
-            }, receiveValue: { [weak self] items in
+            } receiveValue: { [weak self] items in
                 self?.applySnapshot(items: items)
-            })
+            }
             .store(in: &cancellables)
     }
     

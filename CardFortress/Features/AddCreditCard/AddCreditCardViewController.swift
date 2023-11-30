@@ -22,20 +22,20 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     private lazy var addCreditCardButton: UIButton = {
         let button = UIButton()
         button.setTitle(
-            (viewModel.action == .addCreditCard ? LocalizableString.addCreditCardButtonTitle : LocalizableString.editCreditCardButtonTitle).value,
+            (viewModel.action == .addCreditCard ? LocalizableString.addCreditCardButtonTitle : LocalizableString.editCreditCardButtonTitle),
             for: .normal)
         button.setTitleColor(.white, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 22, weight: .semibold)
         button.layer.cornerRadius = 15
         button.addAction(addAction, for: .touchUpInside)
-        button.backgroundColor = UIColor.cfPurple
+        button.backgroundColor = CFColors.purple.color
         return button
     }()
     
     private lazy var scanCardButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
-        button.setTitle(LocalizableString.scanYourCard.value, for: .normal)
+        button.setTitle(LocalizableString.scanYourCard, for: .normal)
         button.setImage(UIImage(systemName: "camera"), for: .normal)
         button.setTitleColor(.black, for: .normal)
         button.layer.cornerRadius = 10
@@ -65,14 +65,14 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
                 guard let self else { return }
                 switch result {
                 case .addSuccess, .success:
-                    self.presentSnackbar(with: LocalizableString.snackBarCardAdded.value)
+                    self.presentSnackbar(with: LocalizableString.snackBarCardAdded)
                 case .failure(let error):
                     UIAlertController.Builder()
                         .withTitle("Error")
                         .withMessage(error.localizedDescription)
                         .present(in: self)
                 case .editSuccess:
-                    self.presentSnackbar(with: LocalizableString.snackBarCardSaved.value)
+                    self.presentSnackbar(with: LocalizableString.snackBarCardSaved)
                 }
             })
             .store(in: &self.subscriptions)
@@ -80,7 +80,7 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     
     private let enterCardInfoLabel: UILabel = {
         let label = UILabel()
-        label.text = LocalizableString.addYourCardInformation.value
+        label.text = LocalizableString.addYourCardInformation
         label.font = UIFont.systemFont(ofSize: 18)
         return label
     }()
@@ -128,37 +128,37 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     
     let creditCardNumberTextField = CFTextField(
         viewModel: .init(
-            placeHolder: LocalizableString.cardNumberPlaceHolder.value,
-            labelText: LocalizableString.cardNumberLabel.value.uppercased(),
+            placeHolder: LocalizableString.cardNumberPlaceHolder,
+            labelText: LocalizableString.cardNumberLabel.uppercased(),
             keyboardType: .numberPad
         )
     )
     
     let expiryDateTextField = CFTextField(
         viewModel: .init(
-            placeHolder: LocalizableString.expirationDatePlaceHolder.value,
-            labelText: LocalizableString.expirationDateLabel.value.uppercased()
+            placeHolder: LocalizableString.expirationDatePlaceHolder,
+            labelText: LocalizableString.expirationDateLabel.uppercased()
         )
     )
     
     let nameOnCardTextField = CFTextField(
         viewModel: .init(
-            placeHolder: LocalizableString.cardHolderNamePlaceHolder.value,
-            labelText: LocalizableString.cardHolderNameLabel.value.uppercased()
+            placeHolder: LocalizableString.cardHolderNamePlaceHolder,
+            labelText: LocalizableString.cardHolderNameLabel.uppercased()
         )
     )
     
     let cardNameTextField = CFTextField(
         viewModel: .init(
-            placeHolder: LocalizableString.cardNamePlaceHolder.value,
-            labelText: LocalizableString.cardNameLabel.value.uppercased()
+            placeHolder: LocalizableString.cardNamePlaceHolder,
+            labelText: LocalizableString.cardNameLabel.uppercased()
         )
     )
     
     let cvvTextField = CFTextField(
         viewModel: .init(
-            placeHolder: LocalizableString.cvvPlaceHolder.value,
-            labelText: LocalizableString.cvvLabel.value.uppercased(),
+            placeHolder: LocalizableString.cvvPlaceHolder,
+            labelText: LocalizableString.cvvLabel.uppercased(),
             keyboardType: .numberPad
         )
     )
@@ -209,8 +209,8 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     //MARK: - View Construction
     
     private func constructViewHerarchy() {
-        title = viewModel.action == .addCreditCard ? LocalizableString.addCreditCardTitle.value :
-        LocalizableString.editCreditCardTitle.value
+        title = viewModel.action == .addCreditCard ? LocalizableString.addCreditCardTitle :
+        LocalizableString.editCreditCardTitle
         
         [
             creditCardNumberTextField.textField,
