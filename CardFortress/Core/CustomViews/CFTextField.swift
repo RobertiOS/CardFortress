@@ -130,7 +130,7 @@ extension CFTextField {
             labelText: String = "",
             color: UIColor = .gray,
             tag: Int = 0,
-            errorTextLabel: String = LocalizableString.cfTextFieldGenericErrorMessage.value,
+            errorTextLabel: String = LocalizableString.cfTextFieldGenericErrorMessage,
             keyboardType: UIKeyboardType = .default
             ) {
                 self.placeHolder = placeHolder

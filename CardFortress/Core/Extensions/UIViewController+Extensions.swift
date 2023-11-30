@@ -12,7 +12,7 @@ import SnackBar
 class CFSnackBar: SnackBar {
     override var style: SnackBarStyle {
         var style = SnackBarStyle()
-        style.background = .cfPurple
+        style.background = CFColors.purple.color
         style.textColor = .white
         return style
     }

@@ -86,13 +86,13 @@ extension LoginView {
             case .success:
                 errorMessage = nil
             case .invalidEmail:
-                errorMessage = LocalizableString.invalidEmail.value
+                errorMessage = LocalizableString.invalidEmail
             case .wrongPassword:
-                errorMessage = LocalizableString.wrongPassword.value
+                errorMessage = LocalizableString.wrongPassword
             case .other(let error):
                 errorMessage = error.localizedDescription
             default:
-                errorMessage = LocalizableString.unknownError.value
+                errorMessage = LocalizableString.unknownError
             }
         }
         
