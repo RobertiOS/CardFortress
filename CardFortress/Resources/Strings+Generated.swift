@@ -61,6 +61,8 @@ internal enum LocalizableString {
   internal static let mainViewTitle = LocalizableString.tr("Localizable", "mainViewTitle", fallback: "Card Fortress")
   /// or connect with
   internal static let orConnectWith = LocalizableString.tr("Localizable", "orConnectWith", fallback: "or connect with")
+  /// Passwords do not match
+  internal static let passwordsDoNotMatch = LocalizableString.tr("Localizable", "passwordsDoNotMatch", fallback: "Passwords do not match")
   /// Remember me
   internal static let rememberMe = LocalizableString.tr("Localizable", "rememberMe", fallback: "Remember me")
   /// Scan your card

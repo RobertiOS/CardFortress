@@ -27,7 +27,7 @@ final class CreateUserViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var confirmationPassword = ""
-    @Published var errorMessage = ""
+    @Published var errorMessage: String?
     
     @Published var isLoading = false
     
@@ -36,16 +36,32 @@ final class CreateUserViewModel: ObservableObject {
     //MARK: - Public methods
     
     @MainActor
-    func createUser() async {
+    func createUser() async -> CreateUserResult {
         isLoading = true
         guard password == confirmationPassword else {
-            errorMessage = "Passwords do not match"
+            errorMessage = ErrorStates.passwordsDoNotMatch.errorMessage
             isLoading = false
-            return
+            return .error
         }
-        
-        _ = await delegate?.createUser(name: name, lastName: lastName, email: email, password: password)
+        let result = await delegate?.createUser(name: name, lastName: lastName, email: email, password: password)
         isLoading = false
+        return result == .success ? .success : .error
+        
+    }
+    
+    enum ErrorStates {
+        case passwordsDoNotMatch
+        var errorMessage: String {
+            switch self {
+            case .passwordsDoNotMatch:
+                return LocalizableString.passwordsDoNotMatch
+            }
+        }
+    }
+    
+    enum CreateUserResult {
+        case success
+        case error
     }
     
 }

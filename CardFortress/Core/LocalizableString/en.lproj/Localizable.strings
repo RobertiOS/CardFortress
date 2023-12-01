@@ -40,3 +40,4 @@
 "rememberMe" = "Remember me";
 "signUp" = "Sign Up";
 "orConnectWith" = "or connect with";
+"passwordsDoNotMatch" = "Passwords do not match";

@@ -19,10 +19,6 @@ extension SceneDelegate {
             container.register(CardListServiceProtocol.self) { r in
                 MockListService()
             }
-
-            container.register(AuthenticationAPI.self) { r in
-                AuthenticationAPIMock()
-            }
             
             container.register(AuthenticationAPI.self) { r in
                 AuthenticationAPIMock()
