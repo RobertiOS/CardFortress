@@ -496,6 +496,7 @@
 		2692E7B32B1990AE0002C5BB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				269956442A4B843400FCACE9 /* AddCreditCard */,
 				2692E7B22B19909D0002C5BB /* Authentication */,
 			);
 			path = Features;
@@ -647,7 +648,6 @@
 				26921A402A64E79D00DA1313 /* CustomViews */,
 				26AC69682A575143001404E5 /* CardFortressAppCoordinator */,
 				266D71E82A552FA100E731C7 /* VisionKit */,
-				269956442A4B843400FCACE9 /* AddCreditCard */,
 				26CEBA632A15D3DD00AF62DE /* SecureStoreTests */,
 				26888FDA2A076F6200936748 /* Mocks */,
 				26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */,
