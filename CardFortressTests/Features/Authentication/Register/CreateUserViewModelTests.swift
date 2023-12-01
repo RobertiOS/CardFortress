@@ -16,9 +16,10 @@ final class CreateUserViewModelTests: XCTestCase {
         // When
         viewModel.password = "1234"
         viewModel.confirmationPassword = "123"
-        await viewModel.createUser()
+        let result = await viewModel.createUser()
         // Then
         XCTAssertEqual(viewModel.errorMessage, "Passwords do not match")
+        XCTAssertEqual(result, .error)
         
     }
     

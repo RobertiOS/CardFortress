@@ -9,11 +9,26 @@ import Foundation
 import Combine
 
 
-enum AddCreditCardResult {
+enum AddCreditCardResult: Equatable {
     case success
     case editSuccess
     case addSuccess
     case failure(Error)
+    
+    static func ==(lhs: AddCreditCardResult, rhs: AddCreditCardResult) -> Bool {
+            switch (lhs, rhs) {
+            case (.success, .success):
+                return true
+            case (.editSuccess, .editSuccess):
+                return true
+            case (.addSuccess, .addSuccess):
+                return true
+            case let (.failure(lhsError), .failure(rhsError)):
+                return lhsError.localizedDescription == rhsError.localizedDescription
+            default:
+                return false
+            }
+        }
 }
 
 extension AddCreditCardViewController {
