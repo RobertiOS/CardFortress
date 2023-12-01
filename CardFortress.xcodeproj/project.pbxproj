@@ -73,6 +73,7 @@
 		26921EA92A66184700DA1313 /* AddCreditCardViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EA82A66184700DA1313 /* AddCreditCardViewModelTests.swift */; };
 		26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */ = {isa = PBXBuildFile; productRef = 26921EAB2A6641BE00DA1313 /* SnackBar */; };
 		26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */; };
+		2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */; };
 		26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */; };
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
@@ -217,6 +218,7 @@
 		26921EA62A66160A00DA1313 /* GenericError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericError.swift; sourceTree = "<group>"; };
 		26921EA82A66184700DA1313 /* AddCreditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewModelTests.swift; sourceTree = "<group>"; };
 		26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModelTests.swift; sourceTree = "<group>"; };
 		26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStoreCreditCard+Extensions.swift"; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -482,6 +484,31 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		2692E7B22B19909D0002C5BB /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				2692E7B42B1990C00002C5BB /* Register */,
+				26B8305B2A7EE9C8002D119E /* Login */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		2692E7B32B1990AE0002C5BB /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				2692E7B22B19909D0002C5BB /* Authentication */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		2692E7B42B1990C00002C5BB /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */,
+			);
+			path = Register;
+			sourceTree = "<group>";
+		};
 		269956442A4B843400FCACE9 /* AddCreditCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -616,7 +643,7 @@
 			isa = PBXGroup;
 			children = (
 				268CA9A52AF756A300074D19 /* APIs */,
-				26B8305B2A7EE9C8002D119E /* Login */,
+				2692E7B32B1990AE0002C5BB /* Features */,
 				26921A402A64E79D00DA1313 /* CustomViews */,
 				26AC69682A575143001404E5 /* CardFortressAppCoordinator */,
 				266D71E82A552FA100E731C7 /* VisionKit */,
@@ -1069,6 +1096,7 @@
 				26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
 				26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */,
+				2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */,
 				26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */,
 				26921A3E2A64E22100DA1313 /* AddCreditCardCoordinatorTests.swift in Sources */,
 				26921A482A65822900DA1313 /* TabBarCoordinatorTests.swift in Sources */,
