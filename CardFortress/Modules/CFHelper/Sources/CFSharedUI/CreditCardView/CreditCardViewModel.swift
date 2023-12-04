@@ -30,12 +30,12 @@ final public class CreditCardViewModel: ObservableObject {
     @Published public var showBottomModule: Bool
     
     public init(
-        cardHolderName: String,
-        cardNumber: Int,
-        date: String,
-        bankName: String,
+        cardHolderName: String = "",
+        cardNumber: Int = 0,
+        date: String = "",
+        bankName: String = "",
         backgroundColor: Color = .cfPurple,
-        cvv: Int,
+        cvv: Int = 0,
         showBottomModule: Bool = false
     ) {
         self.cardHolderName = cardHolderName
