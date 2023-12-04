@@ -123,8 +123,8 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
     
     weak var delegate: AddCreditCardCoordinatorDelegate?
     
-    private var previewCreditCardView = CreditCardView(viewModel: .init(cardHolderName: "", cardNumber: 1, date: "", bankName: "", cvv: 123))
-    private lazy var hostingView = UIHostingController(rootView: previewCreditCardView).view!
+    private var previewCreditCardView = CreditCardView(viewModel: .init())
+    private lazy var hostingView = UIHostingControllerWrapper(rootView: previewCreditCardView).view ?? UIView()
     
     let creditCardNumberTextField = CFTextField(
         viewModel: .init(
@@ -338,7 +338,9 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             viewModel.$creditCardDate.eraseToAnyPublisher(),
             viewModel.$creditCardHolderName.eraseToAnyPublisher(),
             viewModel.$creditCardNumber.eraseToAnyPublisher()
-        ).sink { [weak self] creditCardName, creditCardDate, creditCardHolderName, creditCardNumber in
+        )
+        .receive(on: DispatchQueue.main)
+        .sink { [weak self] creditCardName, creditCardDate, creditCardHolderName, creditCardNumber in
             self?.previewCreditCardView.viewModel.bankName = creditCardName ?? ""
             self?.previewCreditCardView.viewModel.cardNumber = creditCardNumber ?? 0
             self?.previewCreditCardView.viewModel.date = creditCardDate ?? ""
