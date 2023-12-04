@@ -74,6 +74,7 @@
 		26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */ = {isa = PBXBuildFile; productRef = 26921EAB2A6641BE00DA1313 /* SnackBar */; };
 		26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */; };
 		2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */; };
+		2692E7B82B1D18760002C5BB /* UIHostingControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */; };
 		26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */; };
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
@@ -219,6 +220,7 @@
 		26921EA82A66184700DA1313 /* AddCreditCardViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewModelTests.swift; sourceTree = "<group>"; };
 		26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModelTests.swift; sourceTree = "<group>"; };
+		2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingControllerWrapper.swift; sourceTree = "<group>"; };
 		26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStoreCreditCard+Extensions.swift"; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 				26B38C1A29ECF66000D0CCD8 /* LocalizableString */,
 				26F0945629F7979C009B0494 /* Coordinator */,
 				262355DE2B1398F100F6B83C /* ID+Helper.swift */,
+				2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -1037,6 +1040,7 @@
 				265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */,
 				262355DA2B0F0BAF00F6B83C /* CFImages+Generated.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
+				2692E7B82B1D18760002C5BB /* UIHostingControllerWrapper.swift in Sources */,
 				265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */,
 				26E7DACE2B06C81A00FADDE2 /* CoordinatorFactory.swift in Sources */,
 				262355DF2B1398F100F6B83C /* ID+Helper.swift in Sources */,
