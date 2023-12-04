@@ -309,13 +309,13 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
             /// date
             expiryDateTextField.topAnchor.constraint(equalTo: cardNameTextField.bottomAnchor, constant: 10)
             expiryDateTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            expiryDateTextField.trailingAnchor.constraint(equalTo: cvvTextField.trailingAnchor, constant: 5)
             expiryDateTextField.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.4)
             
             
             /// cvv
 
             cvvTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
+            cvvTextField.leadingAnchor.constraint(greaterThanOrEqualTo: expiryDateTextField.leadingAnchor)
             cvvTextField.topAnchor.constraint(equalTo: expiryDateTextField.topAnchor)
             cvvTextField.widthAnchor.constraint(equalTo: expiryDateTextField.widthAnchor, multiplier: 1.0)
             
