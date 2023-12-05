@@ -40,8 +40,23 @@ protocol SecureUserDataAPI {
 
 class SecureUserData: SecureUserDataAPI {
     
-    struct Constants {
-        static let server = "com.cardFortress.login"
+    enum ServerType {
+        case defaultServer
+        case testServer
+        var value: String {
+            switch self {
+            case .defaultServer:
+                return "com.cardFortress.login"
+            case .testServer:
+                return "test.cardFortress.login"
+            }
+        }
+    }
+    
+    let server: ServerType
+    
+    init(server: ServerType = .defaultServer) {
+        self.server = server
     }
     
     //TODO: - map errors
@@ -55,7 +70,7 @@ class SecureUserData: SecureUserDataAPI {
             let account = userData.userName
             let searchAccountQuery: [String: Any] = [
                 kSecClass as String: kSecClassInternetPassword,
-                kSecAttrServer as String: Constants.server,
+                kSecAttrServer as String: server.value,
             ]
             
             let searchStatus = SecItemCopyMatching(searchAccountQuery as CFDictionary, nil)
@@ -79,7 +94,7 @@ class SecureUserData: SecureUserDataAPI {
             case errSecItemNotFound:
                 let query: [String: Any] = [
                     kSecClass as String: kSecClassInternetPassword,
-                    kSecAttrServer as String: Constants.server,
+                    kSecAttrServer as String: server.value,
                     kSecAttrAccount as String: account,
                     kSecValueData as String: pwData
                 ]
@@ -98,7 +113,7 @@ class SecureUserData: SecureUserDataAPI {
     func getUserCredentials() async -> SecureStoreUserDataResult {
         let query: [String: Any] = [
             kSecClass as String: kSecClassInternetPassword,
-            kSecAttrServer as String: Constants.server,
+            kSecAttrServer as String: server.value,
             kSecMatchLimit as String: kSecMatchLimitOne,
             kSecReturnAttributes as String: true,
             kSecReturnData as String: true
