@@ -30,7 +30,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         return collectionView
     }()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>!
+    private var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>?
     
     private lazy var deleteAllCardsBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -72,7 +72,6 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.fetchCreditCards()
         setupViews()
         configureDataSource()
         bindViewModel()
@@ -81,6 +80,11 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.fetchCreditCards()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        cancellables.removeAll()
     }
     
     private func setupViews() {
@@ -170,20 +174,27 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
 
     // MARK: collection view layout
 
-    private lazy var collectionViewLayout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
-
+    private lazy var collectionViewLayout = UICollectionViewCompositionalLayout { [weak self] sectionIndex, layoutEnvironment in
         var configuration = UICollectionLayoutListConfiguration(appearance: .insetGrouped)
 
         /// delete credits cards action
-        configuration.trailingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
-            let deleteAction = createContextualAction(for: .delete, indexPath: indexPath)
-            return UISwipeActionsConfiguration(actions: [deleteAction])
+        configuration.trailingSwipeActionsConfigurationProvider = {  indexPath in
+            if let deleteAction = self?.createContextualAction(for: .delete, indexPath: indexPath) {
+                let swipeConfig = UISwipeActionsConfiguration(actions: [deleteAction])
+                return swipeConfig
+            } else {
+                return nil
+            }
         }
 
         /// edit credits cards action
-        configuration.leadingSwipeActionsConfigurationProvider = { [unowned self] indexPath in
-            let editAction = createContextualAction(for: .edit, indexPath: indexPath)
-            return UISwipeActionsConfiguration(actions: [editAction])
+        configuration.leadingSwipeActionsConfigurationProvider = {  indexPath in
+            if let editAction = self?.createContextualAction(for: .edit, indexPath: indexPath) {
+                let swipeConfig = UISwipeActionsConfiguration(actions: [editAction])
+                return swipeConfig
+            } else {
+                return nil
+            }
         }
 
         let section = NSCollectionLayoutSection.list(
@@ -195,8 +206,8 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     }
     
     private func createContextualAction(for action: Action, indexPath: IndexPath) -> UIContextualAction {
-        let contextualAction = UIContextualAction(style: action.style, title: action.title) { [unowned self] _, _, completion in
-            guard let creditCard = dataSource.itemIdentifier(for: indexPath) else {
+        let contextualAction = UIContextualAction(style: action.style, title: action.title) { [weak self] _, _, completion in
+            guard let creditCard = self?.dataSource?.itemIdentifier(for: indexPath) else {
                 completion(false)
                 return
             }
@@ -204,9 +215,9 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
                 var result: CreditCardsOperationResult?
                 switch action {
                 case .delete:
-                    result = await delegate?.deleteCreditCard(id: creditCard.identifier)
+                    result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
                 case .edit:
-                    result = await delegate?.deleteCreditCard(id: creditCard.identifier)
+                    result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
                 }
                 completion(result == .success)
             }
@@ -250,7 +261,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
         var snapshot = NSDiffableDataSourceSnapshot<Section, CreditCard>()
         snapshot.appendSections([.creditCard])
         snapshot.appendItems(items, toSection: .creditCard)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        dataSource?.apply(snapshot, animatingDifferences: true)
     }
 
     enum CreditCardsOperationResult: Equatable {
@@ -261,7 +272,7 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
 
 extension CardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let creditCard = dataSource.itemIdentifier(for: indexPath) else { return }
+        guard let creditCard = dataSource?.itemIdentifier(for: indexPath) else { return }
         delegate?.editCreditCard(creditCard: creditCard)
     }
 }
@@ -272,11 +283,11 @@ extension CardListViewController: UICollectionViewDelegate {
 extension CardListViewController {
     struct TestHooks {
         let target: CardListViewController
-        var snapshot: NSDiffableDataSourceSnapshot<Section, CreditCard> {
-            target.dataSource.snapshot()
+        var snapshot: NSDiffableDataSourceSnapshot<Section, CreditCard>? {
+            target.dataSource?.snapshot()
         }
         
-        var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard> {
+        var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>? {
             target.dataSource
         }
 
