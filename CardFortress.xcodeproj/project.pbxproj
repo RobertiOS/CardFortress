@@ -113,6 +113,7 @@
 		26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */; };
 		26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E02A002286002D224D /* UIView+Extensions.swift */; };
 		26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */; };
+		26F926CD2B21823C000943BE /* LeakedViewControllerDetector in Frameworks */ = {isa = PBXBuildFile; productRef = 26F926CC2B21823C000943BE /* LeakedViewControllerDetector */; };
 		26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */; };
 		26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */; };
 		26F9A1372ACE77CD00D35C3D /* CardFortressWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9A1362ACE77CD00D35C3D /* CardFortressWidgetBundle.swift */; };
@@ -283,6 +284,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26F926CD2B21823C000943BE /* LeakedViewControllerDetector in Frameworks */,
 				267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */,
 				267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
@@ -855,6 +857,7 @@
 				267F0FB42AF43AE80062FA11 /* CFAPIs */,
 				267F0FB62AF43AE80062FA11 /* CFSharedUI */,
 				267F0FC02AF44DCB0062FA11 /* CFSharedResources */,
+				26F926CC2B21823C000943BE /* LeakedViewControllerDetector */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -962,6 +965,7 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -1572,6 +1576,14 @@
 				version = 2.8.3;
 			};
 		};
+		26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Janneman84/LeakedViewControllerDetector";
+			requirement = {
+				kind = exactVersion;
+				version = 1.3.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1622,6 +1634,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */;
 			productName = Swinject;
+		};
+		26F926CC2B21823C000943BE /* LeakedViewControllerDetector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */;
+			productName = LeakedViewControllerDetector;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -64,6 +64,15 @@
       }
     },
     {
+      "identity" : "leakedviewcontrollerdetector",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Janneman84/LeakedViewControllerDetector",
+      "state" : {
+        "revision" : "4fb9faba1488839b14bb238ed819fc3202c83e9c",
+        "version" : "1.3.0"
+      }
+    },
+    {
       "identity" : "leveldb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/leveldb.git",
