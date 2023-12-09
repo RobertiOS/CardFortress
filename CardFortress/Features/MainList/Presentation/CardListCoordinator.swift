@@ -47,7 +47,14 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
             creditCard: creditCard,
             navigationController: navigationController
         )
-        editCreditCardCoordinator?.start()
+        
+        guard let editCreditCardCoordinator else { return }
+        addChild(coordinator: editCreditCardCoordinator)
+        editCreditCardCoordinator.onFinish = { [weak self] void in
+            self?.editCreditCardCoordinator = nil
+        }
+        
+        editCreditCardCoordinator.start()
     }
 }
 
