@@ -12,7 +12,7 @@ final class SecureUserDataTests: XCTestCase {
     
     func test_storeUserCredentials() async {
         // Given
-        let secureUserData = SecureUserData()
+        let secureUserData = SecureUserData(server: .testServer)
         let mockloginInfo = LoginInfo(userName: "user", password: "1234")
         // When
         let result = await secureUserData.storeUserCredentials(userData: mockloginInfo)
