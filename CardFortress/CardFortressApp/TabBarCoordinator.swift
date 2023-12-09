@@ -15,14 +15,14 @@ enum TabBarCoordinatorResult {
 class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
     private let coordinatorFactory: TabBarCoordinatorFactory
     private let containerTabBarController = UITabBarController()
-    private let navigationController: UINavigationController
     private let container: Container
+    private let window: UIWindow?
     
     init(coordinatorFactory: TabBarCoordinatorFactory,
-         navigationController: UINavigationController,
+         window: UIWindow?,
          container: Container = Container()) {
         self.coordinatorFactory = coordinatorFactory
-        self.navigationController = navigationController
+        self.window = window
         self.container = container
     }
     
@@ -55,8 +55,11 @@ class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
         tabs.forEach { $0.coordinator.start() }
         
         /// set view controllers
+        UIView.transition(with: window!, duration: 0.5, options: .transitionCurlDown, animations: {
+            self.window?.rootViewController = self.containerTabBarController
+        }, completion: nil)
+        
         containerTabBarController.setViewControllers(viewControllers, animated: false)
-        navigationController.pushViewController(containerTabBarController, animated: true)
     }
 }
 
@@ -130,7 +133,6 @@ extension TabBarCoordinator: CardListCoordinatorDelegate {
         if case .other(_) = authAPI.signOut() {
             // TODO: - Handle error
         } else  {
-            containerTabBarController.dismiss(animated: true)
             finish(.signOut)
         }
     }

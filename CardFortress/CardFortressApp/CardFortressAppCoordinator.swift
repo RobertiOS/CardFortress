@@ -41,7 +41,6 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
         navigationController = MainViewControllerFactory(container: container).makeNavigationController()
         navigationController.isNavigationBarHidden = true
         super.init()
-        window?.rootViewController = navigationController
     }
     
     // MARK: Methods
@@ -58,7 +57,7 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     }
     
     func startTabBarCoordinator() {
-        let coordinator = coordinatorFactory.makeTabBarCoordinator(navigationController: navigationController)
+        let coordinator = coordinatorFactory.makeTabBarCoordinator(window: window)
         addChild(coordinator: coordinator)
 
         coordinator.onFinish = { [weak self] result in
@@ -72,7 +71,7 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     }
 
     func startLoginCoordinator() {
-        let coordinator = coordinatorFactory.makeAuthCoordinator(navigationController: navigationController)
+        let coordinator = coordinatorFactory.makeAuthCoordinator(window: window)
         addChild(coordinator: coordinator)
         
         coordinator.onFinish = { [weak self] result in

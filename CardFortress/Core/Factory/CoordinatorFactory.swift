@@ -14,11 +14,11 @@ protocol TabBarCoordinatorFactory {
 }
 
 protocol AppCoordinatorFactory {
-    func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator
+    func makeTabBarCoordinator(window: UIWindow?) -> TabBarCoordinator
 }
 
 protocol LoginCoordinatorFactory {
-    func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating
+    func makeAuthCoordinator(window: UIWindow?) -> AuthCoordinating
 }
 
 protocol VisionKitCoordinatorFactory {
@@ -72,24 +72,24 @@ class CoordinatorFactory:
     
     //MARK: - AppCoordinatorFactory
     
-    func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator {
+    func makeTabBarCoordinator(window: UIWindow?) -> TabBarCoordinator {
         TabBarCoordinator(
             coordinatorFactory: self,
-            navigationController: navigationController,
+            window: window,
             container: container
         )
     }
     
     //MARK: - LoginCoordinatorFactory
     
-    func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating {
+    func makeAuthCoordinator(window: UIWindow?) -> AuthCoordinating {
         let authenticationAPI = container.resolve(AuthenticationAPI.self)
         let secureUserDataAPI = container.resolve(SecureUserDataAPI.self)
         return AuthCoordinator(
             factory: viewControllerFactory,
-            navigationController: navigationController,
             authenticationAPI: authenticationAPI,
-            secureUserDataAPI: secureUserDataAPI
+            secureUserDataAPI: secureUserDataAPI,
+            window: window
         )
     }
     

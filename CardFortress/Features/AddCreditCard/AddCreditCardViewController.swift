@@ -190,6 +190,11 @@ final class AddCreditCardViewController: UIViewController, AddCreditCardViewCont
         hideKeyboardWhenTappedAround()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        delegate?.viewControllerWillDissapear()
+    }
+    
     @objc func keyboardWillShow(_ notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect else {
             return

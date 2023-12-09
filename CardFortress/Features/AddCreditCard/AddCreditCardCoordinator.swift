@@ -12,6 +12,11 @@ import Vision
 
 protocol AddCreditCardCoordinatorDelegate: AnyObject {
     func startVisionKitCoordinator()
+    func viewControllerWillDissapear()
+}
+
+extension AddCreditCardCoordinatorDelegate {
+    func viewControllerWillDissapear() {}
 }
 
 final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
@@ -84,6 +89,12 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, 
 extension AddCreditCardCoordinator: AddCreditCardCoordinatorDelegate {
     func startVisionKitCoordinator() {
         startVisionKit()
+    }
+    
+    func viewControllerWillDissapear() {
+        if case .editCreditCard = addCreditCardViewController.viewModel.action {
+            self.finish(())
+        }
     }
 }
 

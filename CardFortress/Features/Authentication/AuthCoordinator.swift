@@ -14,32 +14,47 @@ enum LoginCoordinatorResult {
     case failure(error: Error)
 }
 
-protocol AuthCoordinating: Coordinator<LoginCoordinatorResult>, NavigationCoordinator {
-}
+protocol AuthCoordinating: Coordinator<LoginCoordinatorResult>, NavigationCoordinator {}
 
 class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, ObservableObject {
 
-    var navigationController: UINavigationController
+    internal var navigationController = UINavigationController()
     private let factory: AuthenticationFactoryProtocol
     private let authenticationAPI: AuthenticationAPI?
     private let secureUserDataAPI: SecureUserDataAPI?
+    private let window: UIWindow?
+    private lazy var loginViewController: UIViewController = {
+        factory.makeLoginViewController(delegate: self)
+    }()
 
     init(factory: AuthenticationFactoryProtocol,
-         navigationController: UINavigationController,
          authenticationAPI: AuthenticationAPI?,
-         secureUserDataAPI: SecureUserDataAPI?) {
+         secureUserDataAPI: SecureUserDataAPI?,
+         window: UIWindow?) {
         self.factory = factory
-        self.navigationController = navigationController
         self.authenticationAPI = authenticationAPI
         self.secureUserDataAPI = secureUserDataAPI
+        self.window = window
         super.init()
     }
 
     override func start() {
         super.start()
-        let loginView = factory.makeLoginView(delegate: self)
-        let hostingController = UIHostingController(rootView: loginView)
-        navigateTo(hostingController, presentationStyle: .push)
+        navigateTo(
+            loginViewController,
+            presentationStyle: .push
+        )
+        UIView.transition(with: window!, duration: 0.5, options: .transitionCurlUp, animations: {
+            self.window?.rootViewController = self.navigationController
+        }, completion: nil)
+    }
+    
+    func startCreateUser() {
+        let createUserViewController = factory.makeCreateUserViewController(delegate: self)
+        navigateTo(
+            createUserViewController,
+            presentationStyle: .present()
+        )
     }
 }
 
@@ -65,12 +80,6 @@ extension AuthCoordinator: LoginViewDelegate {
         let result = await authenticationAPI?.signIn(withEmail: email, password: password)
         await handleAuthResult(result)
         return result
-    }
-    
-    func startCreateUser() {
-        let createUserView = factory.makeCreateUserView(delegate: self)
-        let hostingController = UIHostingController(rootView: createUserView)
-        navigateTo(hostingController, presentationStyle: .present())
     }
 }
 
@@ -101,7 +110,6 @@ extension AuthCoordinator: CreateUserViewDelegate {
     func handleAuthResult(_ result: AuthenticationResult?) {
         switch result {
         case .success:
-            navigationController.dismiss(animated: true)
             finish(.success)
         default:
             if let result {

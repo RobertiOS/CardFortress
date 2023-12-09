@@ -43,7 +43,7 @@ final class AuthCoordinatorTests: XCTestCase {
         coordinator.start()
         //then
         XCTAssertEqual(navigationController.viewControllers.count, 1)
-        _ = try XCTUnwrap(navigationController.topViewController as? UIHostingController<LoginView>)
+        _ = try XCTUnwrap(navigationController.topViewController as? UIHostingControllerWrapper<LoginView>)
     }
     
     func test_startCreateUser() throws {
@@ -55,7 +55,7 @@ final class AuthCoordinatorTests: XCTestCase {
         
         //then
         XCTAssertEqual(navigationController.viewControllers.count, 1)
-        _ = try XCTUnwrap(navigationController.presentedViewController as? UIHostingController<CreateUserView>)
+        _ = try XCTUnwrap(navigationController.presentedViewController as? UIHostingControllerWrapper<CreateUserView>)
     }
     
     
