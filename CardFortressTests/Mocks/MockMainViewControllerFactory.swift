@@ -31,7 +31,7 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
     
     //MARK: - CreditCardListFactoryProtocol
     
-    override func makeNavigationController(tabBarItem: UITabBarItem?) -> UINavigationController {
+    override func makeNavigationController(tabBarItem: UITabBarItem?, rootViewController: UIViewController?) -> UINavigationController {
         UINavigationController()
     }
     

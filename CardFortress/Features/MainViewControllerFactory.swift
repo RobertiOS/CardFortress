@@ -12,7 +12,10 @@ import SwiftUI
 
 protocol CreditCardListFactoryProtocol: AnyObject {
     func makeMainListViewController() -> CardListViewControllerProtocol
-    func makeNavigationController(tabBarItem: UITabBarItem?) -> UINavigationController
+    func makeNavigationController(
+        tabBarItem: UITabBarItem?,
+        rootViewController: UIViewController?
+    ) -> UINavigationController
 }
 
 protocol AddCreditCardFactoryProtocol: AnyObject {
@@ -24,8 +27,8 @@ protocol VisionKitFactoryProtocol: AnyObject {
 }
 
 protocol AuthenticationFactoryProtocol: AnyObject {
-    func makeLoginView(delegate: LoginViewDelegate?) -> LoginView
-    func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView
+    func makeLoginViewController(delegate: LoginViewDelegate?) -> UIViewController
+    func makeCreateUserViewController(delegate: CreateUserViewDelegate?) -> UIViewController
 }
 
 
@@ -49,15 +52,22 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
         
     }
     
-    func makeNavigationController(tabBarItem: UITabBarItem? = nil) -> UINavigationController {
-        let navigationController = UINavigationController()
+    func makeNavigationController(
+        tabBarItem: UITabBarItem? = nil,
+        rootViewController: UIViewController? = nil
+    ) -> UINavigationController {
+        var navigationController = UINavigationController()
+        if let rootViewController {
+            navigationController = UINavigationController(rootViewController: rootViewController)
+        }
+        if let tabBarItem {
+            navigationController.tabBarItem = tabBarItem
+        }
         navigationController.navigationBar.prefersLargeTitles = true
         navigationController.navigationBar.backgroundColor = UIColor.orange
         navigationController.navigationBar.backgroundColor = .systemBackground
         navigationController.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.label]
-        if let tabBarItem {
-            navigationController.tabBarItem = tabBarItem
-        }
+        
         return navigationController
     }
     
@@ -78,16 +88,19 @@ class MainViewControllerFactory: CreditCardListFactoryProtocol,
     }
     
     //MARK: - LoginFactoryProtocol
-    @MainActor
-    func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
+
+    @MainActor 
+    func makeLoginViewController(delegate: LoginViewDelegate?) -> UIViewController {
         let viewModel = LoginView.ViewModel()
         viewModel.delegate = delegate
-        return LoginView(viewModel: viewModel)
+        let view = LoginView(viewModel: viewModel)
+        return UIHostingControllerWrapper(rootView: view)
     }
     
-    func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView {
+    func makeCreateUserViewController(delegate: CreateUserViewDelegate?) -> UIViewController {
         let viewModel = CreateUserViewModel()
         viewModel.delegate = delegate
-        return CreateUserView(viewModel: viewModel)
+        let view = CreateUserView(viewModel: viewModel)
+        return UIHostingControllerWrapper(rootView: view)
     }
 }
