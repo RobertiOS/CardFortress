@@ -69,7 +69,7 @@ final class CardListViewControllerTests: XCTestCase {
         viewController.loadViewIfNeeded()
         
         // Then
-        XCTAssertEqual(viewController.testHooks.snapshot.numberOfItems, 0)
+        XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 0)
 
         // When
         
@@ -86,7 +86,7 @@ final class CardListViewControllerTests: XCTestCase {
         viewModel.cards = cards
         waitForExpectations(timeout: .defaultWait)
         // Then
-        XCTAssertEqual(viewController.testHooks.snapshot.numberOfItems, 3)
+        XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 3)
         
     }
 }

@@ -22,9 +22,10 @@ final class AuthCoordinatorTests: XCTestCase {
         navigationController = UINavigationController()
         coordinator = .init(
             factory: factory,
-            navigationController: navigationController,
             authenticationAPI: AuthenticationAPIMock(),
-            secureUserDataAPI: SecureUserDataAPIMock())
+            secureUserDataAPI: SecureUserDataAPIMock(),
+            window: window,
+            navigationController: navigationController)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
