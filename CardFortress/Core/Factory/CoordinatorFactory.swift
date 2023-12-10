@@ -54,7 +54,6 @@ class CoordinatorFactory:
         let tabBarItem: UITabBarItem = .init(tabBarIndex: .main)
         let navigationController = viewControllerFactory.makeNavigationController(tabBarItem: tabBarItem)
         let mainCoordinator = CardListCoordinator(
-            container: container,
             viewControllerFactory: viewControllerFactory,
             navigationController: navigationController,
             coordinatorFactory: self)
