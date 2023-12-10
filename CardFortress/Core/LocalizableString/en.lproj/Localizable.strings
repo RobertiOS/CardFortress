@@ -41,3 +41,8 @@
 "signUp" = "Sign Up";
 "orConnectWith" = "or connect with";
 "passwordsDoNotMatch" = "Passwords do not match";
+"deleteAllCreditCards" = "Delete all credit cards";
+"delete" = "Delete";
+"cancel" = "Cancel";
+"signOut" = "Sign Out";
+"confirm" = "Confirm";
