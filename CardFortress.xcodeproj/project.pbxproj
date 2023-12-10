@@ -114,6 +114,7 @@
 		26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E02A002286002D224D /* UIView+Extensions.swift */; };
 		26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */; };
 		26F926CD2B21823C000943BE /* LeakedViewControllerDetector in Frameworks */ = {isa = PBXBuildFile; productRef = 26F926CC2B21823C000943BE /* LeakedViewControllerDetector */; };
+		26F926D02B255DE8000943BE /* CardListCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F926CF2B255DE8000943BE /* CardListCoordinatorTests.swift */; };
 		26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */; };
 		26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */; };
 		26F9A1372ACE77CD00D35C3D /* CardFortressWidgetBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9A1362ACE77CD00D35C3D /* CardFortressWidgetBundle.swift */; };
@@ -267,6 +268,7 @@
 		26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Builder.swift"; sourceTree = "<group>"; };
 		26F5B4E02A002286002D224D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		26F81E242AA6DACA00E6E53B /* SecureUserDataAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPI.swift; sourceTree = "<group>"; };
+		26F926CF2B255DE8000943BE /* CardListCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCoordinatorTests.swift; sourceTree = "<group>"; };
 		26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = CardFortressWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
@@ -500,6 +502,7 @@
 		2692E7B32B1990AE0002C5BB /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				26F926CE2B255DC1000943BE /* MainList */,
 				269956442A4B843400FCACE9 /* AddCreditCard */,
 				2692E7B22B19909D0002C5BB /* Authentication */,
 			);
@@ -809,6 +812,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		26F926CE2B255DC1000943BE /* MainList */ = {
+			isa = PBXGroup;
+			children = (
+				26F926CF2B255DE8000943BE /* CardListCoordinatorTests.swift */,
+			);
+			path = MainList;
+			sourceTree = "<group>";
+		};
 		26F9A1352ACE77CD00D35C3D /* CardFortressWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -1107,6 +1118,7 @@
 				2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */,
 				26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */,
 				26921A3E2A64E22100DA1313 /* AddCreditCardCoordinatorTests.swift in Sources */,
+				26F926D02B255DE8000943BE /* CardListCoordinatorTests.swift in Sources */,
 				26921A482A65822900DA1313 /* TabBarCoordinatorTests.swift in Sources */,
 				265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */,
 				2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */,

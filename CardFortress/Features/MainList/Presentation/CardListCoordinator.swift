@@ -20,17 +20,14 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
     //MARK: properties
     var navigationController: UINavigationController
     private let viewControllerFactory: CreditCardListFactoryProtocol
-    private let container: Container
     weak var delegate: CardListCoordinatorDelegate?
     private var editCreditCardCoordinator: AddCreditCardCoordinator?
     private let coordinatorFactory: EditCreditCardCoodinatorFactory
     
     //MARK: initialization
-    init(container: Container,
-         viewControllerFactory: CreditCardListFactoryProtocol,
+    init(viewControllerFactory: CreditCardListFactoryProtocol,
          navigationController: UINavigationController,
          coordinatorFactory: EditCreditCardCoodinatorFactory) {
-        self.container = container
         self.viewControllerFactory = viewControllerFactory
         self.navigationController = navigationController
         self.coordinatorFactory = coordinatorFactory
@@ -73,3 +70,25 @@ extension CardListCoordinator: CardListViewControllerDelegate {
         delegate?.signOut()
     }
 }
+
+#if DEBUG
+extension CardListCoordinator {
+    
+    var testHooks: TestHooks {
+        TestHooks(target: self)
+    }
+    
+    struct TestHooks {
+        let target: CardListCoordinator
+        
+        init(target: CardListCoordinator) {
+            self.target = target
+        }
+        
+        var editCreditCardsCoordinator: AddCreditCardCoordinator? {
+            target.editCreditCardCoordinator
+        }
+        
+    }
+}
+#endif
