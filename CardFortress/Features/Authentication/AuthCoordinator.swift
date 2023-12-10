@@ -46,9 +46,7 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
             loginViewController,
             presentationStyle: .push
         )
-        UIView.transition(with: window!, duration: 0.5, options: .transitionCurlUp, animations: {
-            self.window?.rootViewController = self.navigationController
-        }, completion: nil)
+        animateWindowChanges()
     }
     
     func startCreateUser() {
@@ -57,6 +55,13 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
             createUserViewController,
             presentationStyle: .present()
         )
+    }
+    
+    func animateWindowChanges() {
+        guard let window else { return }
+        UIView.transition(with: window, duration: 0.5, options: .transitionCurlUp) {
+            window.rootViewController = self.navigationController
+        }
     }
 }
 

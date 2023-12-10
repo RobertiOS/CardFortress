@@ -26,7 +26,6 @@ final class AuthCoordinatorTests: XCTestCase {
             secureUserDataAPI: SecureUserDataAPIMock(),
             window: window,
             navigationController: navigationController)
-        window.rootViewController = navigationController
         window.makeKeyAndVisible()
     }
 

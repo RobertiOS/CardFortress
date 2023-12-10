@@ -55,11 +55,16 @@ class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
         tabs.forEach { $0.coordinator.start() }
         
         /// set view controllers
-        UIView.transition(with: window!, duration: 0.5, options: .transitionCurlDown, animations: {
-            self.window?.rootViewController = self.containerTabBarController
-        }, completion: nil)
-        
         containerTabBarController.setViewControllers(viewControllers, animated: false)
+        
+        animateWindowChanges()
+    }
+    
+    func animateWindowChanges() {
+        guard let window else { return }
+        UIView.transition(with: window, duration: 0.5, options: .transitionCurlDown) {
+            window.rootViewController = self.containerTabBarController
+        }
     }
 }
 
