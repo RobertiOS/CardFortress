@@ -43,13 +43,13 @@ final class MockCoordinatorFactory: CoordinatorFactory {
     
     //MARK: - AppCoordinatorFactory
     
-    override func makeTabBarCoordinator(navigationController: UINavigationController) -> TabBarCoordinator {
+    override func makeTabBarCoordinator(window: UIWindow?) -> TabBarCoordinator {
         tabBarCoordinator
     }
     
     //MARK: - LoginCoordinatorFactory
     
-    override func makeAuthCoordinator(navigationController: UINavigationController) -> AuthCoordinating {
+    override func makeAuthCoordinator(window: UIWindow?) -> AuthCoordinating {
         loginCoordinator
     }
     
@@ -80,9 +80,9 @@ final class MockLoginCoordinator: AuthCoordinator {
     
     convenience init() {
         self.init(factory: AuthenticationFactoryMock(),
-                  navigationController: UINavigationController(),
                   authenticationAPI: AuthenticationAPIMock(),
-                  secureUserDataAPI: SecureUserDataAPIMock()
+                  secureUserDataAPI: SecureUserDataAPIMock(),
+                  window: UIWindow()
         )
     }
 }
@@ -97,7 +97,7 @@ final class MockTabBarCoordinatorContainer: TabBarCoordinator {
     convenience init(coordinatorFactory: TabBarCoordinatorFactory) {
         self.init(
             coordinatorFactory: coordinatorFactory,
-            navigationController: UINavigationController(),
+            window: UIWindow(),
             container: Container())
     }
 }

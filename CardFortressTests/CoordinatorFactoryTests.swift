@@ -33,9 +33,9 @@ final class CoordinatorFactoryTests: XCTestCase {
     func test_makeCoordinators() {
         //when
         let listCoordinator = factory.makeMainListCoordinator()
-        let loginCoordinator = factory.makeAuthCoordinator(navigationController: UINavigationController())
+        let loginCoordinator = factory.makeAuthCoordinator(window: UIWindow())
         let addCreditCardCoordinator = factory.makeAddCreditCardCoordinator()
-        let tabbarCoordinator = factory.makeTabBarCoordinator(navigationController: UINavigationController())
+        let tabbarCoordinator = factory.makeTabBarCoordinator(window: UIWindow())
         let visionKitCoordinator = factory.makeVisionKitCoordinator(navigationController: UINavigationController())
         //then
         XCTAssertTrue(listCoordinator is CardListCoordinator)

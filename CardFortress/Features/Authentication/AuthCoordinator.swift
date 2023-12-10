@@ -18,7 +18,7 @@ protocol AuthCoordinating: Coordinator<LoginCoordinatorResult>, NavigationCoordi
 
 class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, ObservableObject {
 
-    internal var navigationController = UINavigationController()
+    internal var navigationController: UINavigationController
     private let factory: AuthenticationFactoryProtocol
     private let authenticationAPI: AuthenticationAPI?
     private let secureUserDataAPI: SecureUserDataAPI?
@@ -30,11 +30,13 @@ class AuthCoordinator: Coordinator<LoginCoordinatorResult>, AuthCoordinating, Ob
     init(factory: AuthenticationFactoryProtocol,
          authenticationAPI: AuthenticationAPI?,
          secureUserDataAPI: SecureUserDataAPI?,
-         window: UIWindow?) {
+         window: UIWindow?,
+         navigationController: UINavigationController = UINavigationController()) {
         self.factory = factory
         self.authenticationAPI = authenticationAPI
         self.secureUserDataAPI = secureUserDataAPI
         self.window = window
+        self.navigationController = navigationController
         super.init()
     }
 

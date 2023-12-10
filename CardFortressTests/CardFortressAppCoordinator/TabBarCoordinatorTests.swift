@@ -12,12 +12,12 @@ import Swinject
 final class TabBarCoordinatorTests: XCTestCase {
 
     var coordinator: TabBarCoordinator!
-    var navigationController: UINavigationController!
+    var navigationController: UIViewController!
     var mockTabBarCoordinatorFactory: MockTabBarCoordinatorFactory!
     
     override func setUp() {
         super.setUp()
-        navigationController = UINavigationController()
+        
         mockTabBarCoordinatorFactory = MockTabBarCoordinatorFactory()
         
         let container: Container = {
@@ -28,7 +28,8 @@ final class TabBarCoordinatorTests: XCTestCase {
             return container
         }()
         
-        coordinator = .init(coordinatorFactory: mockTabBarCoordinatorFactory, navigationController: navigationController, container: container)
+        coordinator = .init(coordinatorFactory: mockTabBarCoordinatorFactory, window:  UIWindow(), container: container)
+        navigationController = coordinator.testHooks.tabBarController
     }
     
     override func tearDown() {
@@ -50,14 +51,6 @@ final class TabBarCoordinatorTests: XCTestCase {
         XCTAssertEqual(viewControllers, tabBarController.viewControllers)
     }
 
-    func test_viewControllerIsPresented() {
-        //when
-        coordinator.start()
-        //then
-        XCTAssertTrue(navigationController.topViewController is UITabBarController)
-        let tabBarController = coordinator.testHooks.tabBarController
-        XCTAssertEqual(tabBarController.viewControllers, mockTabBarCoordinatorFactory.viewControllers)
-    }
     
     func test_tabBarCoordinatorIndex() {
         //given

@@ -47,12 +47,12 @@ final class MockMainViewControllerFactory: MainViewControllerFactory {
     
     //MARK: - LoginFactoryProtocol
     @MainActor
-    override func makeLoginView(delegate: LoginViewDelegate?) -> LoginView {
-        LoginView(viewModel: .init())
+    override func makeLoginViewController(delegate: LoginViewDelegate?) -> UIViewController {
+        UIHostingControllerWrapper(rootView: LoginView(viewModel: .init()))
     }
     
-    override func makeCreateUserView(delegate: CreateUserViewDelegate?) -> CreateUserView {
-        mockCreateUserView
+    override func makeCreateUserViewController(delegate: CreateUserViewDelegate?) -> UIViewController {
+        UIHostingControllerWrapper(rootView: mockCreateUserView)
     }
 }
 
