@@ -559,13 +559,6 @@
 			path = Features;
 			sourceTree = "<group>";
 		};
-		26B38C1329ECECEF00D0CCD8 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		26B38C1929ECF65300D0CCD8 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -638,7 +631,6 @@
 				26B7702229EC450400CC9FEB /* Info.plist */,
 				26D09A5F2A68FA7400B9D885 /* GoogleService-Info.plist */,
 				2631E2502A04BF0100197FEA /* Resources */,
-				26B38C1329ECECEF00D0CCD8 /* Helpers */,
 				26B38C0E29ECC01A00D0CCD8 /* Features */,
 				26B38C0D29ECC00C00D0CCD8 /* APIs */,
 				26B38C1D29ECF80500D0CCD8 /* CardFortressApp */,
