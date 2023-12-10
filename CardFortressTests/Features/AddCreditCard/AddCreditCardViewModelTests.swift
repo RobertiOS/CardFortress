@@ -53,12 +53,12 @@ final class AddCreditCardViewModelTests: XCTestCase {
             description: "wait for publisher to emit result"
         )
         
-        let subscription = viewModel.createAddCreditCardPublisher()?
+        viewModel.createAddCreditCardPublisher()?
             .sink { _ in
             } receiveValue: { result in
                 XCTAssertEqual(result, .success)
                 expectation.fulfill()
-            }
+            }.store(in: &subscriptions)
         
         wait(for: [expectation], timeout: .defaultWait)
         
@@ -84,12 +84,12 @@ final class AddCreditCardViewModelTests: XCTestCase {
             description: "wait for publisher to emit result"
         )
         
-        let subscription = viewModel.createAddCreditCardPublisher()?
+        _ = viewModel.createAddCreditCardPublisher()?
             .sink { _ in
             } receiveValue: { result in
                 XCTAssertEqual(result,.success)
                 expectation.fulfill()
-            }
+            }.store(in: &subscriptions)
         
         wait(for: [expectation], timeout: .defaultWait)
         
