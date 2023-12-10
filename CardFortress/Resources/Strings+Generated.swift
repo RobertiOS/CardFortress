@@ -18,6 +18,8 @@ internal enum LocalizableString {
   internal static let addYourCardInformation = LocalizableString.tr("Localizable", "addYourCardInformation", fallback: "Enter your card information")
   /// Go to other view
   internal static let buttonTest = LocalizableString.tr("Localizable", "buttonTest", fallback: "Go to other view")
+  /// Cancel
+  internal static let cancel = LocalizableString.tr("Localizable", "cancel", fallback: "Cancel")
   /// Name on card
   internal static let cardHolderNameLabel = LocalizableString.tr("Localizable", "cardHolderNameLabel", fallback: "Name on card")
   /// Juan Perez
@@ -32,12 +34,18 @@ internal enum LocalizableString {
   internal static let cardNumberPlaceHolder = LocalizableString.tr("Localizable", "cardNumberPlaceHolder", fallback: "0000 0000 0000 0000")
   /// This field is required.
   internal static let cfTextFieldGenericErrorMessage = LocalizableString.tr("Localizable", "cfTextFieldGenericErrorMessage", fallback: "This field is required.")
+  /// Confirm
+  internal static let confirm = LocalizableString.tr("Localizable", "confirm", fallback: "Confirm")
   /// Credit Card Fortress
   internal static let creditCardFortressHeader = LocalizableString.tr("Localizable", "creditCardFortressHeader", fallback: "Credit Card Fortress")
   /// cvv
   internal static let cvvLabel = LocalizableString.tr("Localizable", "cvvLabel", fallback: "cvv")
   /// 123
   internal static let cvvPlaceHolder = LocalizableString.tr("Localizable", "cvvPlaceHolder", fallback: "123")
+  /// Delete
+  internal static let delete = LocalizableString.tr("Localizable", "delete", fallback: "Delete")
+  /// Delete all credit cards
+  internal static let deleteAllCreditCards = LocalizableString.tr("Localizable", "deleteAllCreditCards", fallback: "Delete all credit cards")
   /// Save
   internal static let editCreditCardButtonTitle = LocalizableString.tr("Localizable", "editCreditCardButtonTitle", fallback: "Save")
   /// Edit Card
@@ -67,6 +75,8 @@ internal enum LocalizableString {
   internal static let rememberMe = LocalizableString.tr("Localizable", "rememberMe", fallback: "Remember me")
   /// Scan your card
   internal static let scanYourCard = LocalizableString.tr("Localizable", "scanYourCard", fallback: "Scan your card")
+  /// Sign Out
+  internal static let signOut = LocalizableString.tr("Localizable", "signOut", fallback: "Sign Out")
   /// Sign Up
   internal static let signUp = LocalizableString.tr("Localizable", "signUp", fallback: "Sign Up")
   /// The Card Was Added Successfuly
