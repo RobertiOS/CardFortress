@@ -89,4 +89,26 @@ final class CardListViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 3)
         
     }
+    
+    func test_signOut() throws {
+        // Given
+        
+        // When
+        viewController.testHooks.signOut()
+        // Then
+        let alert = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
+        
+        alert.title = "Sign Out"
+    }
+    
+    func test_deleteAllCreditCards() throws {
+        // Given
+        
+        // When
+        viewController.testHooks.deleteAllCreditCards()
+        // Then
+        let alert = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
+        
+        alert.title = "Delete all credit cards"
+    }
 }

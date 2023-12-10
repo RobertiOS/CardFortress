@@ -152,23 +152,23 @@ final class CardListViewController: UIViewController, CardListViewControllerProt
     
     @objc
     private func deleteAllCreditCards() {
-        let alertController = UIAlertController(title: "Delete all credit cards", message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+        let alertController = UIAlertController(title: LocalizableString.deleteAllCreditCards, message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: LocalizableString.delete, style: .destructive, handler: { [weak self] _ in
             guard let self else { return }
             self.viewModel.deleteAllCards()
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: LocalizableString.cancel, style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
     
     @objc
     private func signOut() {
-        let alertController = UIAlertController(title: "Sign Out", message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: "Confirm", style: .destructive, handler: { [weak self] _ in
+        let alertController = UIAlertController(title: LocalizableString.signOut, message: nil, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: LocalizableString.confirm, style: .destructive, handler: { [weak self] _ in
             guard let self else { return }
             self.delegate?.signOut()
         }))
-        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alertController.addAction(UIAlertAction(title: LocalizableString.cancel, style: .cancel, handler: nil))
         present(alertController, animated: true)
     }
 
@@ -290,7 +290,7 @@ extension CardListViewController {
         var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>? {
             target.dataSource
         }
-
+        
         var viewControllerTitle: String? {
             target.title
         }
@@ -298,6 +298,11 @@ extension CardListViewController {
         func deleteAllCreditCards() {
             target.deleteAllCreditCards()
         }
+        
+        func signOut() {
+            target.signOut()
+        }
+
     }
     
     var testHooks: TestHooks {
