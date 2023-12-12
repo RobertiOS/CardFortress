@@ -6,3 +6,13 @@ coverage:
         threshold: 10%
 ignore:
         - "**/CardFortress/Modules/**/*"
+
+comment:
+  layout: "header, diff, flags, components"
+  
+component_management:
+  individual_components:
+    - component_id: CardFortress  # this is an identifier that should not be changed
+      name: CardFortress  # this is a display name, and can be changed freely
+      paths:
+        - CardFortress
