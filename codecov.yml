@@ -12,7 +12,19 @@ comment:
   
 component_management:
   individual_components:
-    - component_id: CardFortress  # this is an identifier that should not be changed
-      name: CardFortress  # this is a display name, and can be changed freely
+    - component_id: CardFortress
+      name: CardFortress
       paths:
         - CardFortress
+    - component_id: CardFortressAPIs
+      name: CardFortress_APIs
+      paths:
+        - CardFortress/APIS
+    - component_id: CardFortressFeatures
+      name: CardFortress_APIs
+      paths:
+        - CardFortress/Features
+    - component_id: CardFortressModules
+      name: CardFortress_Modules
+      paths:
+        - CardFortress/Modules
