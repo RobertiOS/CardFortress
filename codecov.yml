@@ -4,8 +4,6 @@ coverage:
       default:
         target: 80%
         threshold: 10%
-ignore:
-        - "**/CardFortress/Modules/**/*"
 
 comment:
   layout: "header, diff, flags, components"
@@ -19,9 +17,9 @@ component_management:
     - component_id: CardFortressAPIs
       name: CardFortress_APIs
       paths:
-        - CardFortress/APIS
+        - CardFortress/APIs
     - component_id: CardFortressFeatures
-      name: CardFortress_APIs
+      name: CardFortress_Features
       paths:
         - CardFortress/Features
     - component_id: CardFortressModules
