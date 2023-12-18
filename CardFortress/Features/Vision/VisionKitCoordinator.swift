@@ -22,10 +22,10 @@ protocol VisionKitCoordinating: Coordinator<VisionKitResult>, NavigationCoordina
 final class VisionKitCoordinator: Coordinator<VisionKitResult>, VisionKitCoordinating {
     
     var navigationController: UINavigationController
-    private let factory: VisionKitFactoryProtocol
+    private let factory: AddCreditCardViewControllerFactoryProtocol
     private let imageParser: ImageParserProtocol
     
-    init(factory: VisionKitFactoryProtocol,
+    init(factory: AddCreditCardViewControllerFactoryProtocol,
          navigationController: UINavigationController,
          imageParser: ImageParserProtocol = ImageParser()) {
         self.factory = factory

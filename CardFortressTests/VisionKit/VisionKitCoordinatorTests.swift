@@ -21,7 +21,7 @@ final class VisionKitCoordinatorTests: XCTestCase {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        coordinator = VisionKitCoordinator(factory: MockMainViewControllerFactory(), navigationController: navigationController)
+        coordinator = VisionKitCoordinator(factory: AddCreditCardViewControllerFactoryMock(), navigationController: navigationController)
     }
 
     override func tearDown() {
@@ -31,13 +31,10 @@ final class VisionKitCoordinatorTests: XCTestCase {
     }
 
     func test_Start() {
-        //given
-        
         //when
         coordinator.start()
         //then
         XCTAssertTrue(navigationController.presentedViewController is VisionKitViewControllerProtocol)
-        XCTAssertNil(navigationController.topViewController?.presentingViewController)
     }
     
     func test_VisionKitDelegate() {

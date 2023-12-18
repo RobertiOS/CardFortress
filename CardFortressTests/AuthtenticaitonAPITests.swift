@@ -18,7 +18,8 @@ final class AuthtenticaitonAPITests: XCTestCase {
         authenticationAPI = Authentication(
             secureUserDataAPI: SecureUserDataAPIMock(),
             biometricsAPI: BiometricAuthAPIMock(),
-            authDataSourceAPI: authDataSourceAPI
+            authDataSourceAPI: authDataSourceAPI,
+            container: .mockContainer
         )
     }
     

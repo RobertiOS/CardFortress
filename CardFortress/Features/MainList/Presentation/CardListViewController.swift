@@ -10,18 +10,13 @@ import SwiftUI
 import Combine
 import CFSharedUI
 
-protocol CardListViewControllerProtocol: UIViewController {
-    var delegate: CardListViewControllerDelegate? { get set }
-    var viewModel: ListViewModelProtocol { get set }
-}
-
 protocol CardListViewControllerDelegate: AnyObject {
     func signOut()
     func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
     func editCreditCard(creditCard: CreditCard)
 }
 
-final class CardListViewController: UIViewController, CardListViewControllerProtocol {
+final class CardListViewController: UIViewController {
     
     // MARK: private properties
     

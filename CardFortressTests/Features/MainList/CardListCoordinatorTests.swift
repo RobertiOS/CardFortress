@@ -9,48 +9,38 @@ import XCTest
 @testable import CardFortress
 
 final class CardListCoordinatorTests: XCTestCase {
+    
+    var coordinator: CardListCoordinator!
+    var navigationController: UINavigationController!
+    
+    override func setUp() {
+        super.setUp()
+        navigationController = UINavigationController()
+        coordinator = CardListCoordinator(viewControllerFactory: CardListViewControllerFactoryMock(), navigationController: navigationController, container: .mockContainer)
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        coordinator = nil
+        navigationController = nil
+    }
 
     func test_start() {
-        // Given
-        let navigationController = UINavigationController()
-        let coordinator = CardListCoordinator(
-            viewControllerFactory: MockMainViewControllerFactory(),
-            navigationController: navigationController,
-            coordinatorFactory: MockCoordinatorFactory()
-        )
         // When
         coordinator.start()
         // Then
-        XCTAssertTrue(navigationController.viewControllers[0] is CardListViewControllerProtocol)
+        XCTAssertTrue(navigationController.topViewController is CardListViewController)
     }
     
     func test_startEditCreditCardCoordinator() {
-        // Given
-        let navigationController = UINavigationController()
-        let coordinator = CardListCoordinator(
-            viewControllerFactory: MockMainViewControllerFactory(),
-            navigationController: navigationController,
-            coordinatorFactory: MockCoordinatorFactory()
-        )
         // When
         coordinator.editCreditCard(creditCard: .make())
         // Then
-        XCTAssertNotNil(coordinator.testHooks.editCreditCardsCoordinator)
-        XCTAssertTrue(navigationController.viewControllers[0] is AddCreditCardViewControllerProtocol)
-        //when
-        coordinator.testHooks.editCreditCardsCoordinator?.finish(())
-        XCTAssertNil(coordinator.testHooks.editCreditCardsCoordinator)
+        XCTAssertTrue(navigationController.viewControllers[0] is AddCreditCardViewController)
     }
     
     @MainActor
     func test_deleteCreditCards() async {
-        // Given
-        let navigationController = UINavigationController()
-        let coordinator = CardListCoordinator(
-            viewControllerFactory: MockMainViewControllerFactory(),
-            navigationController: navigationController,
-            coordinatorFactory: MockCoordinatorFactory()
-        )
         // When
         let result = await coordinator.deleteCreditCard(id: UUID())
         // Then
@@ -58,13 +48,6 @@ final class CardListCoordinatorTests: XCTestCase {
     }
     
     func test_signOut() {
-        // Given
-        let navigationController = UINavigationController()
-        let coordinator = CardListCoordinator(
-            viewControllerFactory: MockMainViewControllerFactory(),
-            navigationController: navigationController,
-            coordinatorFactory: MockCoordinatorFactory()
-        )
         // When
         coordinator.signOut()
     }

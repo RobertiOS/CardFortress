@@ -24,7 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         container = getDIContainer()
         appCoordinator = .init(window: window,
-                               container: container)
+                               container: container,
+                               coordinatorFactory: CardFortressCoordinatorFactory(container: container))
         appCoordinator?.start()
         window?.makeKeyAndVisible()
     }

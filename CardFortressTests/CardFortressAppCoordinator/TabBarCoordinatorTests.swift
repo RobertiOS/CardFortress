@@ -11,24 +11,13 @@ import Swinject
 
 final class TabBarCoordinatorTests: XCTestCase {
 
-    var coordinator: TabBarCoordinator!
+    var coordinator: TabBarContainerCoordinator!
     var navigationController: UIViewController!
-    var mockTabBarCoordinatorFactory: MockTabBarCoordinatorFactory!
     
     override func setUp() {
         super.setUp()
         
-        mockTabBarCoordinatorFactory = MockTabBarCoordinatorFactory()
-        
-        let container: Container = {
-            let container = Container()
-            container.register(AuthenticationAPI.self) { r in
-                AuthenticationAPIMock()
-            }
-            return container
-        }()
-        
-        coordinator = .init(coordinatorFactory: mockTabBarCoordinatorFactory, window:  UIWindow(), container: container)
+        coordinator = .init(coordinatorFactory: CardFortressCoordinatorFactoryMock(), window: UIWindow())
         navigationController = coordinator.testHooks.tabBarController
     }
     
@@ -36,7 +25,6 @@ final class TabBarCoordinatorTests: XCTestCase {
         super.tearDown()
         coordinator = nil
         navigationController = nil
-        mockTabBarCoordinatorFactory = nil
     }
     
     func test_Initialization() {

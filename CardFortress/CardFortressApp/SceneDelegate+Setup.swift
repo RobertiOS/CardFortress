@@ -43,12 +43,20 @@ extension SceneDelegate {
             
             let authDataSource = AuthDataSource()
 
-            container.register(AuthenticationAPI.self) { r in
-                Authentication(authDataSourceAPI: authDataSource)
-            }
-            
             container.register(SecureUserDataAPI.self) { r in
                 SecureUserData()
+            }
+            
+            container.register(AddCreditCardAPI.self) { r in
+                AddCreditCardAPIImpl(container: container)
+            }
+            
+            container.register(CardListAPI.self) { r in
+                CardListAPIImpl(container: container)
+            }
+            
+            container.register(AuthenticationAPI.self) { r in
+                Authentication(authDataSourceAPI: authDataSource, container: container)
             }
             
             return container

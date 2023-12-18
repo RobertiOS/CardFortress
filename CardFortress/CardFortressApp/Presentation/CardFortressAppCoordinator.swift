@@ -13,33 +13,18 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     // MARK: properties
     private let window: UIWindow?
     private let container: Container
-    private let coordinatorFactory: CoordinatorFactory
-    private let navigationController: UINavigationController
+    private let coordinatorFactory: CardFortressCoordinatorFactoryProtocol
+    private let authenticationAPI: AuthenticationAPI?
 
     // MARK: initialization
     
-    convenience init(window: UIWindow?,
-                     container: Container,
-                     coordinatorFactory: CoordinatorFactory? = nil,
-                     viewControllerFactory: MainViewControllerFactory? = nil) {
-        self.init(
-            window: window,
-            container: container,
-            coordinatorFactory: coordinatorFactory ?? CoordinatorFactory(
-                container: container,
-                viewControllerFactory: viewControllerFactory ?? MainViewControllerFactory(container: container)
-            )
-        )
-    }
-    
     init(window: UIWindow?,
          container: Container,
-         coordinatorFactory: CoordinatorFactory) {
+         coordinatorFactory: CardFortressCoordinatorFactoryProtocol) {
         self.container = container
         self.coordinatorFactory = coordinatorFactory
         self.window = window
-        navigationController = MainViewControllerFactory(container: container).makeNavigationController()
-        navigationController.isNavigationBarHidden = true
+        self.authenticationAPI = container.resolve(AuthenticationAPI.self)
         super.init()
     }
     
@@ -71,7 +56,10 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     }
 
     func startLoginCoordinator() {
-        let coordinator = coordinatorFactory.makeAuthCoordinator(window: window)
+        guard let coordinator = authenticationAPI?.coordinatorFactory.makeAuthCoordinator(window: window) else {
+            return
+            
+        }
         addChild(coordinator: coordinator)
         
         coordinator.onFinish = { [weak self] result in

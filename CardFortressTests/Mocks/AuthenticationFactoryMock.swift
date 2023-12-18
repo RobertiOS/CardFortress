@@ -8,25 +8,13 @@
 import UIKit
 @testable import CardFortress
 
-final class AuthenticationFactoryMock: AuthenticationFactoryProtocol {
+final class AuthenticationFactoryMock: AuthViewControllerFactoryProtocol {
     func makeCreateUserViewController(delegate: CardFortress.CreateUserViewDelegate?) -> UIViewController {
         UIViewController()
     }
     
-    @MainActor
-    func makeLoginView(delegate: CardFortress.LoginViewDelegate?) -> CardFortress.LoginView {
-        LoginView(viewModel: .init())
-    }
-    
-    func makeCreateUserView(delegate: CardFortress.CreateUserViewDelegate?) -> CardFortress.CreateUserView {
-        CreateUserView(viewModel: .init())
-    }
-    
-    
-    let loginViewController = UIViewController()
-    
     func makeLoginViewController(delegate: CardFortress.LoginViewDelegate?) -> UIViewController {
-        loginViewController
+        UIViewController()
     }
     
 }

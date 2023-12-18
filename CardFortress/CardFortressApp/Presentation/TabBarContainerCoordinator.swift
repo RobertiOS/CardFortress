@@ -1,5 +1,5 @@
 //
-//  TabBarCoordinator.swift
+//  TabBarContainerCoordinator.swift
 //  CardFortress
 //
 //  Created by Roberto Corrales on 7/22/23.
@@ -12,13 +12,17 @@ enum TabBarCoordinatorResult {
     case signOut
 }
 
-class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
-    private let coordinatorFactory: TabBarCoordinatorFactory
+protocol TabBarContainerCoordinating: Coordinator<TabBarCoordinatorResult> {
+    
+}
+
+class TabBarContainerCoordinator: Coordinator<TabBarCoordinatorResult>, TabBarContainerCoordinating {
+    private let coordinatorFactory: CardFortressCoordinatorFactoryProtocol
     private let containerTabBarController = UITabBarController()
     private let container: Container
     private let window: UIWindow?
     
-    init(coordinatorFactory: TabBarCoordinatorFactory,
+    init(coordinatorFactory: CardFortressCoordinatorFactoryProtocol,
          window: UIWindow?,
          container: Container = Container()) {
         self.coordinatorFactory = coordinatorFactory
@@ -34,8 +38,7 @@ class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
         tabs =  tabsIndexes.map {
             switch $0 {
             case .main:
-                let mainCoordinator = coordinatorFactory.makeMainListCoordinator()
-                mainCoordinator.delegate = self
+                let mainCoordinator = coordinatorFactory.makeMainListCoordinator(delegate: self)
                 return Tab(coordinator: mainCoordinator, index: $0)
             case .add:
                 let addCoordinator = coordinatorFactory.makeAddCreditCardCoordinator()
@@ -68,7 +71,7 @@ class TabBarCoordinator: Coordinator<TabBarCoordinatorResult> {
     }
 }
 
-extension TabBarCoordinator {
+extension TabBarContainerCoordinator {
     struct Tab {
         let coordinator: TabBarCoordinatorProtocol
         let index: TabBarCoordinatorIndex
@@ -108,16 +111,16 @@ enum TabBarCoordinatorIndex: CaseIterable {
 }
 
 
-extension TabBarCoordinator {
+extension TabBarContainerCoordinator {
     
     var testHooks: TestHooks {
         .init(target: self)
     }
     
     struct TestHooks {
-        let target: TabBarCoordinator
+        let target: TabBarContainerCoordinator
         
-        init(target: TabBarCoordinator) {
+        init(target: TabBarContainerCoordinator) {
             self.target = target
         }
         
@@ -131,7 +134,7 @@ extension TabBarCoordinator {
     }
 }
 
-extension TabBarCoordinator: CardListCoordinatorDelegate {
+extension TabBarContainerCoordinator: CardListCoordinatorDelegate {
     func signOut() {
         guard let authAPI = container.resolve(AuthenticationAPI.self) else { return }
         
