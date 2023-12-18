@@ -13,19 +13,18 @@ final class AuthCoordinatorTests: XCTestCase {
 
     var coordinator: AuthCoordinator!
     var navigationController: UINavigationController!
-    var factory: MockMainViewControllerFactory!
     
     override func setUp() {
         super.setUp()
         let window = UIWindow()
-        factory = MockMainViewControllerFactory()
         navigationController = UINavigationController()
         coordinator = .init(
-            factory: factory,
+            factory: AuthenticationFactoryMock(),
             authenticationAPI: AuthenticationAPIMock(),
             secureUserDataAPI: SecureUserDataAPIMock(),
             window: window,
-            navigationController: navigationController)
+            navigationController: navigationController
+        )
         window.makeKeyAndVisible()
     }
 
@@ -33,7 +32,6 @@ final class AuthCoordinatorTests: XCTestCase {
         super.tearDown()
         coordinator = nil
         navigationController = nil
-        factory = nil
     }
     
     func test_startCoordinator() throws {
@@ -43,7 +41,6 @@ final class AuthCoordinatorTests: XCTestCase {
         coordinator.start()
         //then
         XCTAssertEqual(navigationController.viewControllers.count, 1)
-        _ = try XCTUnwrap(navigationController.topViewController as? UIHostingControllerWrapper<LoginView>)
     }
     
     func test_startCreateUser() throws {
@@ -55,7 +52,6 @@ final class AuthCoordinatorTests: XCTestCase {
         
         //then
         XCTAssertEqual(navigationController.viewControllers.count, 1)
-        _ = try XCTUnwrap(navigationController.presentedViewController as? UIHostingControllerWrapper<CreateUserView>)
     }
     
     

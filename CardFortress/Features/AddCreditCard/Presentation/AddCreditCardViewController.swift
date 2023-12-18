@@ -10,12 +10,7 @@ import Combine
 import SwiftUI
 import CFSharedUI
 
-protocol AddCreditCardViewControllerProtocol: UIViewController {
-    var viewModel: AddCreditCardViewController.ViewModel { get set }
-    var delegate: AddCreditCardCoordinatorDelegate? { get set }
-}
-
-final class AddCreditCardViewController: UIViewController, AddCreditCardViewControllerProtocol {
+final class AddCreditCardViewController: UIViewController {
 
     //MARK: - subviews
     

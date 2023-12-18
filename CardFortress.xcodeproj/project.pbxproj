@@ -8,7 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
-		261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */; };
+		26199F2B2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */; };
+		26199F302B2EB30900D0944E /* AddCreditCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */; };
+		26199F322B2EB95100D0944E /* CardListViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F312B2EB95100D0944E /* CardListViewControllerFactory.swift */; };
+		26199F342B2EB9A100D0944E /* CardListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F332B2EB9A100D0944E /* CardListAPI.swift */; };
+		26199F372B2F497800D0944E /* AddCreditCardViewControllerFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F362B2F497800D0944E /* AddCreditCardViewControllerFactoryMock.swift */; };
+		26199F392B2F4B4A00D0944E /* AddCreditCardCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F382B2F4B4A00D0944E /* AddCreditCardCoordinatorFactoryMock.swift */; };
+		26199F3C2B2F4D4E00D0944E /* CardListViewControllerFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F3B2B2F4D4E00D0944E /* CardListViewControllerFactoryMock.swift */; };
+		26199F3E2B2F516B00D0944E /* CardListCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F3D2B2F516B00D0944E /* CardListCoordinatorFactoryMock.swift */; };
+		26199F412B2F5F6F00D0944E /* ContainerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F402B2F5F6F00D0944E /* ContainerMock.swift */; };
+		26199F442B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F432B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift */; };
+		26199F462B2FFD8000D0944E /* AuthenticationCoordinatorFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F452B2FFD8000D0944E /* AuthenticationCoordinatorFactoryMock.swift */; };
+		26199F482B2FFF3200D0944E /* AddCreditCardAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F472B2FFF3200D0944E /* AddCreditCardAPIMock.swift */; };
+		261B56DF2A6C67EB007F69CF /* TabBarContainerCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56DE2A6C67EB007F69CF /* TabBarContainerCoordinator.swift */; };
 		261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */; };
 		261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */; };
 		261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */; };
@@ -36,7 +48,6 @@
 		265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */; };
 		265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */; };
 		265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */; };
-		265DC1022AAE891000F52769 /* DataStorageAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */; };
 		265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
 		266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB32A8846BA007F5427 /* CreateUserView.swift */; };
@@ -44,7 +55,6 @@
 		266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9A2A88B071007F5427 /* FirebaseAuth */; };
 		266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 266EEC9C2A88B071007F5427 /* FirebaseFirestore */; };
 		266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EEC9E2A894319007F5427 /* DataStorageAPI.swift */; };
-		266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */; };
 		266EECAD2A89DF21007F5427 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAC2A89DF21007F5427 /* UserData.swift */; };
 		266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAF2A89E0A2007F5427 /* CurrentUser.swift */; };
 		266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */; };
@@ -56,7 +66,6 @@
 		267F0FBD2AF43B510062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBC2AF43B510062FA11 /* CFAPIs */; };
 		267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBE2AF43B510062FA11 /* CFSharedUI */; };
 		267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FC02AF44DCB0062FA11 /* CFSharedResources */; };
-		26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FD82A0756FE00936748 /* UIImage+Extensions.swift */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */; };
 		26921A392A64566D00DA1313 /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A382A64566D00DA1313 /* CFTextField.swift */; };
@@ -75,7 +84,6 @@
 		26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */; };
 		2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */; };
 		2692E7B82B1D18760002C5BB /* UIHostingControllerWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */; };
-		26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */; };
 		26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */; };
 		26B381B529EC575900D0CCD8 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B429EC575900D0CCD8 /* Coordinator.swift */; };
 		26B381B729EC581D00D0CCD8 /* CardFortressAppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */; };
@@ -87,10 +95,8 @@
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
 		26B7701E29EC450400CC9FEB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701D29EC450400CC9FEB /* Images.xcassets */; };
 		26B7702129EC450400CC9FEB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 26B7701F29EC450400CC9FEB /* LaunchScreen.storyboard */; };
-		26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */; };
 		26B8305F2A7EE9FE002D119E /* AuthCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */; };
 		26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */; };
-		26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */; };
 		26B83A662A7FF39B002D119E /* CardFortressAppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */; };
 		26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C4628629F379CF000B06A7 /* CoordinatorTests.swift */; };
 		26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26CE97C52A11F70F00AF62DE /* MainViewControllerFactory.swift */; };
@@ -99,11 +105,16 @@
 		26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */; };
 		26D09A952A69912700B9D885 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A942A69912700B9D885 /* LoginView.swift */; };
 		26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26D09A962A69915A00B9D885 /* LoginViewModel.swift */; };
+		26DDC76E2B2D174A00913428 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 26DDC76D2B2D174A00913428 /* FirebaseAnalytics */; };
+		26DDC7712B2D4C6800913428 /* AuthViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7702B2D4C6800913428 /* AuthViewControllerFactory.swift */; };
+		26DDC7732B2D504700913428 /* AuthenticationCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7722B2D504700913428 /* AuthenticationCoordinatorFactory.swift */; };
+		26DDC7772B2D57A600913428 /* CardFortressCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7762B2D57A600913428 /* CardFortressCoordinatorFactory.swift */; };
+		26DDC7802B2DF8F200913428 /* CardListCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC77F2B2DF8F200913428 /* CardListCoordinatorFactory.swift */; };
+		26DDC7842B2DFBB000913428 /* AddCreditCardViewControllerFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7832B2DFBB000913428 /* AddCreditCardViewControllerFactory.swift */; };
+		26DDC7862B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DDC7852B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift */; };
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */; };
-		26E7DACD2B06C81A00FADDE2 /* RootVCFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7DACB2B06C81A00FADDE2 /* RootVCFactory.swift */; };
-		26E7DACE2B06C81A00FADDE2 /* CoordinatorFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E7DACC2B06C81A00FADDE2 /* CoordinatorFactory.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
@@ -166,7 +177,19 @@
 
 /* Begin PBXFileReference section */
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
-		261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerFactoryMock.swift; sourceTree = "<group>"; };
+		26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardAPI.swift; sourceTree = "<group>"; };
+		26199F312B2EB95100D0944E /* CardListViewControllerFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardListViewControllerFactory.swift; sourceTree = "<group>"; };
+		26199F332B2EB9A100D0944E /* CardListAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListAPI.swift; sourceTree = "<group>"; };
+		26199F362B2F497800D0944E /* AddCreditCardViewControllerFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewControllerFactoryMock.swift; sourceTree = "<group>"; };
+		26199F382B2F4B4A00D0944E /* AddCreditCardCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		26199F3B2B2F4D4E00D0944E /* CardListViewControllerFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerFactoryMock.swift; sourceTree = "<group>"; };
+		26199F3D2B2F516B00D0944E /* CardListCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		26199F402B2F5F6F00D0944E /* ContainerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerMock.swift; sourceTree = "<group>"; };
+		26199F432B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		26199F452B2FFD8000D0944E /* AuthenticationCoordinatorFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinatorFactoryMock.swift; sourceTree = "<group>"; };
+		26199F472B2FFF3200D0944E /* AddCreditCardAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardAPIMock.swift; sourceTree = "<group>"; };
+		261B56DE2A6C67EB007F69CF /* TabBarContainerCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarContainerCoordinator.swift; sourceTree = "<group>"; };
 		261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
 		261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldStyles.swift; sourceTree = "<group>"; };
 		261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinator.swift; sourceTree = "<group>"; };
@@ -192,19 +215,16 @@
 		265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPI.swift; sourceTree = "<group>"; };
 		265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPIMock.swift; sourceTree = "<group>"; };
 		265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthtenticaitonAPITests.swift; sourceTree = "<group>"; };
-		265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPIMock.swift; sourceTree = "<group>"; };
 		265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPIMock.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
 		266EDAB52A884739007F5427 /* CreateUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModel.swift; sourceTree = "<group>"; };
 		266EEC9E2A894319007F5427 /* DataStorageAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageAPI.swift; sourceTree = "<group>"; };
-		266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFactoryTests.swift; sourceTree = "<group>"; };
 		266EECAC2A89DF21007F5427 /* UserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		266EECAF2A89E0A2007F5427 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		266F370F2AA5806600C253A3 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		267F0FB32AF438BB0062FA11 /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
-		26888FD82A0756FE00936748 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
 		268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataTests.swift; sourceTree = "<group>"; };
@@ -223,7 +243,6 @@
 		26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		2692E7B52B1990F80002C5BB /* CreateUserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserViewModelTests.swift; sourceTree = "<group>"; };
 		2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHostingControllerWrapper.swift; sourceTree = "<group>"; };
-		26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockMainViewControllerFactory.swift; sourceTree = "<group>"; };
 		26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SecureStoreCreditCard+Extensions.swift"; sourceTree = "<group>"; };
 		26B381B429EC575900D0CCD8 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressAppCoordinator.swift; sourceTree = "<group>"; };
@@ -239,11 +258,9 @@
 		26B7702229EC450400CC9FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B7702729EC450400CC9FEB /* CardFortressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTabBarCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorTests.swift; sourceTree = "<group>"; };
 		26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFactoryMock.swift; sourceTree = "<group>"; };
 		26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIMock.swift; sourceTree = "<group>"; };
-		26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26B83A652A7FF39A002D119E /* CardFortressAppCoordinatorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardFortressAppCoordinatorTests.swift; sourceTree = "<group>"; };
 		26C4628629F379CF000B06A7 /* CoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorTests.swift; sourceTree = "<group>"; };
 		26C462BB29F647B1000B06A7 /* CardFortress.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = CardFortress.xctestplan; sourceTree = "<group>"; };
@@ -254,10 +271,14 @@
 		26D09A6A2A69029900B9D885 /* AuthenticationAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationAPI.swift; sourceTree = "<group>"; };
 		26D09A942A69912700B9D885 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		26D09A962A69915A00B9D885 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		26DDC7702B2D4C6800913428 /* AuthViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerFactory.swift; sourceTree = "<group>"; };
+		26DDC7722B2D504700913428 /* AuthenticationCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationCoordinatorFactory.swift; sourceTree = "<group>"; };
+		26DDC7762B2D57A600913428 /* CardFortressCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFortressCoordinatorFactory.swift; sourceTree = "<group>"; };
+		26DDC77F2B2DF8F200913428 /* CardListCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListCoordinatorFactory.swift; sourceTree = "<group>"; };
+		26DDC7832B2DFBB000913428 /* AddCreditCardViewControllerFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardViewControllerFactory.swift; sourceTree = "<group>"; };
+		26DDC7852B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardCoordinatorFactory.swift; sourceTree = "<group>"; };
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
-		26E7DACB2B06C81A00FADDE2 /* RootVCFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootVCFactory.swift; sourceTree = "<group>"; };
-		26E7DACC2B06C81A00FADDE2 /* CoordinatorFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorFactory.swift; sourceTree = "<group>"; };
 		26E7DAD92B0B1E1E00FADDE2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -294,6 +315,7 @@
 				267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
 				266EEC9D2A88B071007F5427 /* FirebaseFirestore in Frameworks */,
+				26DDC76E2B2D174A00913428 /* FirebaseAnalytics in Frameworks */,
 				266EEC9B2A88B071007F5427 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -328,12 +350,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		261EA5792A3589AC00367CC4 /* AddCreditCard */ = {
+		26199F292B2EAE2C00D0944E /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */,
+				26199F452B2FFD8000D0944E /* AuthenticationCoordinatorFactoryMock.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		26199F2E2B2EB1DC00D0944E /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
 				261EA57A2A3589CC00367CC4 /* AddCreditCardCoordinator.swift */,
 				261EA5812A364B0100367CC4 /* AddCreditCardViewModel.swift */,
 				261EA5832A364B4200367CC4 /* AddCreditCardViewController.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		26199F352B2F495C00D0944E /* AddCreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				26199F362B2F497800D0944E /* AddCreditCardViewControllerFactoryMock.swift */,
+				26199F382B2F4B4A00D0944E /* AddCreditCardCoordinatorFactoryMock.swift */,
+				26199F472B2FFF3200D0944E /* AddCreditCardAPIMock.swift */,
+			);
+			path = AddCreditCard;
+			sourceTree = "<group>";
+		};
+		26199F3A2B2F4D2F00D0944E /* CardList */ = {
+			isa = PBXGroup;
+			children = (
+				26199F3B2B2F4D4E00D0944E /* CardListViewControllerFactoryMock.swift */,
+				26199F3D2B2F516B00D0944E /* CardListCoordinatorFactoryMock.swift */,
+			);
+			path = CardList;
+			sourceTree = "<group>";
+		};
+		26199F422B2F647100D0944E /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				26199F432B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		261EA5792A3589AC00367CC4 /* AddCreditCard */ = {
+			isa = PBXGroup;
+			children = (
+				26199F2E2B2EB1DC00D0944E /* Presentation */,
+				26DDC7832B2DFBB000913428 /* AddCreditCardViewControllerFactory.swift */,
+				26DDC7852B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift */,
+				26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */,
 			);
 			path = AddCreditCard;
 			sourceTree = "<group>";
@@ -364,6 +433,7 @@
 		26360D3F2A3DF77C002E7E9E /* Vision */ = {
 			isa = PBXGroup;
 			children = (
+				26921A492A65930900DA1313 /* VisionKitViewControllerProtocol.swift */,
 				26360D402A3DF7E9002E7E9E /* VisionKitCoordinator.swift */,
 			);
 			path = Vision;
@@ -372,12 +442,15 @@
 		265DC0EF2AAE312C00F52769 /* APIMocks */ = {
 			isa = PBXGroup;
 			children = (
+				26199F422B2F647100D0944E /* TabBar */,
+				26199F3A2B2F4D2F00D0944E /* CardList */,
+				26199F352B2F495C00D0944E /* AddCreditCard */,
+				26199F292B2EAE2C00D0944E /* Authentication */,
 				265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */,
 				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
 				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 				265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */,
-				265DC1012AAE891000F52769 /* DataStorageAPIMock.swift */,
 				265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */,
 			);
 			path = APIMocks;
@@ -413,9 +486,7 @@
 		266EECAA2A89DECD007F5427 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
-				266EDAB22A884677007F5427 /* CreateUser */,
-				266EDAB12A88466B007F5427 /* Login */,
-				261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */,
+				26DDC76F2B2D47CA00913428 /* Presentation */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -458,10 +529,8 @@
 			isa = PBXGroup;
 			children = (
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
-				26995FE72A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift */,
-				26B830592A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift */,
 				26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */,
-				26B83A632A7FE8D2002D119E /* MockCoordinatorFactory.swift */,
+				26199F402B2F5F6F00D0944E /* ContainerMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -563,8 +632,6 @@
 			isa = PBXGroup;
 			children = (
 				26F0945429F7978E009B0494 /* NavigationCoordinator.swift */,
-				261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */,
-				26921A492A65930900DA1313 /* VisionKitViewControllerProtocol.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -581,10 +648,9 @@
 			isa = PBXGroup;
 			children = (
 				26B7701429EC450200CC9FEB /* AppDelegate.swift */,
-				26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */,
+				26DDC7752B2D577200913428 /* Presentation */,
 				26B7701629EC450200CC9FEB /* SceneDelegate.swift */,
 				26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */,
-				261B56DE2A6C67EB007F69CF /* TabBarCoordinator.swift */,
 			);
 			path = CardFortressApp;
 			sourceTree = "<group>";
@@ -659,7 +725,6 @@
 				26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */,
 				26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */,
 				26921EA42A660C9800DA1313 /* ImageParserTests.swift */,
-				266EECA82A898E23007F5427 /* CoordinatorFactoryTests.swift */,
 				265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */,
 			);
 			path = CardFortressTests;
@@ -711,11 +776,45 @@
 			path = Authentication;
 			sourceTree = "<group>";
 		};
+		26DDC76F2B2D47CA00913428 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				266EDAB22A884677007F5427 /* CreateUser */,
+				266EDAB12A88466B007F5427 /* Login */,
+				261B56E02A6C77F7007F69CF /* AuthCoordinator.swift */,
+				26DDC7742B2D509C00913428 /* Factories */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		26DDC7742B2D509C00913428 /* Factories */ = {
+			isa = PBXGroup;
+			children = (
+				26DDC7702B2D4C6800913428 /* AuthViewControllerFactory.swift */,
+				26DDC7722B2D504700913428 /* AuthenticationCoordinatorFactory.swift */,
+			);
+			path = Factories;
+			sourceTree = "<group>";
+		};
+		26DDC7752B2D577200913428 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				261EA57F2A3594D200367CC4 /* TabBarCoordinatorProtocol.swift */,
+				26B381B629EC581D00D0CCD8 /* CardFortressAppCoordinator.swift */,
+				261B56DE2A6C67EB007F69CF /* TabBarContainerCoordinator.swift */,
+				26DDC7762B2D57A600913428 /* CardFortressCoordinatorFactory.swift */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
+				26199F312B2EB95100D0944E /* CardListViewControllerFactory.swift */,
+				26DDC77F2B2DF8F200913428 /* CardListCoordinatorFactory.swift */,
 				26F5B4CD29FEBC6F002D224D /* Service */,
 				26E7DAC82B06BEF100FADDE2 /* Presentation */,
+				26199F332B2EB9A100D0944E /* CardListAPI.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -733,7 +832,6 @@
 		26E7DAC92B06C73300FADDE2 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				26E7DACA2B06C81A00FADDE2 /* Factory */,
 				26F5B4D92A000C03002D224D /* Extensions */,
 				26B38C1929ECF65300D0CCD8 /* Protocols */,
 				263617D22A3FA4FB002E7E9E /* ImageParser.swift */,
@@ -746,16 +844,6 @@
 			);
 			path = Core;
 			sourceTree = "<group>";
-		};
-		26E7DACA2B06C81A00FADDE2 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				26E7DACB2B06C81A00FADDE2 /* RootVCFactory.swift */,
-				26E7DACC2B06C81A00FADDE2 /* CoordinatorFactory.swift */,
-			);
-			name = Factory;
-			path = CardFortress/Core/Factory;
-			sourceTree = SOURCE_ROOT;
 		};
 		26F0945629F7979C009B0494 /* Coordinator */ = {
 			isa = PBXGroup;
@@ -794,7 +882,6 @@
 				265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */,
 				26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */,
 				26F5B4E02A002286002D224D /* UIView+Extensions.swift */,
-				26888FD82A0756FE00936748 /* UIImage+Extensions.swift */,
 				26A39C292A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift */,
 				261EA5852A364C5C00367CC4 /* UITabBarItem+Extensions.swift */,
 				26921A3A2A6460A700DA1313 /* UITextField+Extensions.swift */,
@@ -861,6 +948,7 @@
 				267F0FB62AF43AE80062FA11 /* CFSharedUI */,
 				267F0FC02AF44DCB0062FA11 /* CFSharedResources */,
 				26F926CC2B21823C000943BE /* LeakedViewControllerDetector */,
+				26DDC76D2B2D174A00913428 /* FirebaseAnalytics */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -1030,12 +1118,16 @@
 				26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */,
 				265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */,
 				26921A4A2A65930900DA1313 /* VisionKitViewControllerProtocol.swift in Sources */,
+				26199F342B2EB9A100D0944E /* CardListAPI.swift in Sources */,
+				26199F2B2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift in Sources */,
 				262355DC2B0F0D1D00F6B83C /* Strings+Generated.swift in Sources */,
 				265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */,
 				266F37102AA5806600C253A3 /* BiometricAuth.swift in Sources */,
+				26199F3C2B2F4D4E00D0944E /* CardListViewControllerFactoryMock.swift in Sources */,
 				26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */,
 				26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */,
 				262355D82B0F0BAF00F6B83C /* CFColors+Generated.swift in Sources */,
+				26199F3E2B2F516B00D0944E /* CardListCoordinatorFactoryMock.swift in Sources */,
 				26CE97C62A11F70F00AF62DE /* MainViewControllerFactory.swift in Sources */,
 				26B381B729EC581D00D0CCD8 /* CardFortressAppCoordinator.swift in Sources */,
 				261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */,
@@ -1043,15 +1135,22 @@
 				265DC0F12AAE31D800F52769 /* MockListService.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
 				26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */,
-				26E7DACD2B06C81A00FADDE2 /* RootVCFactory.swift in Sources */,
+				26DDC7862B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift in Sources */,
+				26DDC7802B2DF8F200913428 /* CardListCoordinatorFactory.swift in Sources */,
+				26199F302B2EB30900D0944E /* AddCreditCardAPI.swift in Sources */,
+				26DDC7842B2DFBB000913428 /* AddCreditCardViewControllerFactory.swift in Sources */,
+				26DDC7772B2D57A600913428 /* CardFortressCoordinatorFactory.swift in Sources */,
+				26199F322B2EB95100D0944E /* CardListViewControllerFactory.swift in Sources */,
 				265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */,
 				262355DA2B0F0BAF00F6B83C /* CFImages+Generated.swift in Sources */,
 				26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */,
 				2692E7B82B1D18760002C5BB /* UIHostingControllerWrapper.swift in Sources */,
+				26199F482B2FFF3200D0944E /* AddCreditCardAPIMock.swift in Sources */,
 				265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */,
-				26E7DACE2B06C81A00FADDE2 /* CoordinatorFactory.swift in Sources */,
+				26DDC7732B2D504700913428 /* AuthenticationCoordinatorFactory.swift in Sources */,
+				26199F392B2F4B4A00D0944E /* AddCreditCardCoordinatorFactoryMock.swift in Sources */,
 				262355DF2B1398F100F6B83C /* ID+Helper.swift in Sources */,
-				261B56DF2A6C67EB007F69CF /* TabBarCoordinator.swift in Sources */,
+				261B56DF2A6C67EB007F69CF /* TabBarContainerCoordinator.swift in Sources */,
 				26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */,
 				261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */,
 				261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */,
@@ -1065,24 +1164,26 @@
 				266EDAB62A884739007F5427 /* CreateUserViewModel.swift in Sources */,
 				261EA5842A364B4200367CC4 /* AddCreditCardViewController.swift in Sources */,
 				261B56E12A6C77F7007F69CF /* AuthCoordinator.swift in Sources */,
+				26199F372B2F497800D0944E /* AddCreditCardViewControllerFactoryMock.swift in Sources */,
+				26DDC7712B2D4C6800913428 /* AuthViewControllerFactory.swift in Sources */,
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
 				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
-				265DC1022AAE891000F52769 /* DataStorageAPIMock.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,
+				26199F442B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
 				26D09A6B2A69029900B9D885 /* AuthenticationAPI.swift in Sources */,
 				26921EAE2A66434300DA1313 /* UIViewController+Extensions.swift in Sources */,
 				266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */,
 				26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */,
-				26888FD92A0756FE00936748 /* UIImage+Extensions.swift in Sources */,
 				26921A392A64566D00DA1313 /* CFTextField.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
 				265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
+				26199F462B2FFD8000D0944E /* AuthenticationCoordinatorFactoryMock.swift in Sources */,
 				26D09A952A69912700B9D885 /* LoginView.swift in Sources */,
 				265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */,
 			);
@@ -1094,9 +1195,7 @@
 			files = (
 				26B8305F2A7EE9FE002D119E /* AuthCoordinatorTests.swift in Sources */,
 				265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */,
-				266EECA92A898E23007F5427 /* CoordinatorFactoryTests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,
-				26995FE82A4B8A6000FCACE9 /* MockMainViewControllerFactory.swift in Sources */,
 				26921EA52A660C9800DA1313 /* ImageParserTests.swift in Sources */,
 				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,
 				268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */,
@@ -1106,9 +1205,7 @@
 				26921A422A64E7BC00DA1313 /* CFTextFieldTests.swift in Sources */,
 				26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
-				26B83A642A7FE8D3002D119E /* MockCoordinatorFactory.swift in Sources */,
 				2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */,
-				26B8305A2A7EB78E002D119E /* MockTabBarCoordinatorFactory.swift in Sources */,
 				26921A3E2A64E22100DA1313 /* AddCreditCardCoordinatorTests.swift in Sources */,
 				26F926D02B255DE8000943BE /* CardListCoordinatorTests.swift in Sources */,
 				26921A482A65822900DA1313 /* TabBarCoordinatorTests.swift in Sources */,
@@ -1116,6 +1213,7 @@
 				2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */,
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
 				26921A462A64F57B00DA1313 /* SecureStoreErrorTests.swift in Sources */,
+				26199F412B2F5F6F00D0944E /* ContainerMock.swift in Sources */,
 				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,
 				26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */,
 				26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */,
@@ -1633,6 +1731,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
+		};
+		26DDC76D2B2D174A00913428 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 266EEC992A88B071007F5427 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

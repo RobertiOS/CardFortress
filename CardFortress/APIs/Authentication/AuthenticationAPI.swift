@@ -5,7 +5,7 @@
 //  Created by Roberto Corrales on 7/19/23.
 //
 
-import Foundation
+import Swinject
 import UIKit
 
 protocol AuthenticationAPI {
@@ -43,6 +43,8 @@ protocol AuthenticationAPI {
     var isUserLoggedIn: Bool { get }
     
     var signInWithBiometrics: Bool { get }
+    
+    var coordinatorFactory: AuthenticationCoordinatorFactoryProtocol { get }
 }
 
 extension AuthenticationAPI {
@@ -100,15 +102,22 @@ final class Authentication: AuthenticationAPI {
     let secureUserDataAPI: SecureUserDataAPI
     let biometricsAPI: BiometricAuthAPI
     let authDataSourceAPI: AuthDataSourceAPI
+    let container: Container
+    
+    lazy var coordinatorFactory: AuthenticationCoordinatorFactoryProtocol = {
+        AuthenticationCoordinatorFactory(container: self.container, factory: AuthViewControllerFactory())
+    }()
     
     init(
         secureUserDataAPI: SecureUserDataAPI = SecureUserData(),
         biometricsAPI: BiometricAuthAPI = BiometricAuth(),
-        authDataSourceAPI: AuthDataSourceAPI = AuthDataSource()
+        authDataSourceAPI: AuthDataSourceAPI = AuthDataSource(),
+        container: Container
     ) {
         self.secureUserDataAPI = secureUserDataAPI
         self.biometricsAPI = biometricsAPI
         self.authDataSourceAPI = authDataSourceAPI
+        self.container = container
     }
    
     func signIn(

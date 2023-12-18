@@ -19,7 +19,7 @@ extension AddCreditCardCoordinatorDelegate {
     func viewControllerWillDissapear() {}
 }
 
-final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
+final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator {
     
     enum Action: Equatable {
         var id: Int {
@@ -37,13 +37,13 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator, 
     
     //MARK: - Properties
     var navigationController: UINavigationController
-    private let addCreditCardViewController: AddCreditCardViewControllerProtocol
-    private let coordinatorFactory: VisionKitCoordinatorFactory
+    private let addCreditCardViewController: AddCreditCardViewController
+    private let coordinatorFactory: AddCreditCardCoordinatorFactoryProtocol
     //MARK: - Initialization
     
     init(navigationController: UINavigationController,
-         factory: AddCreditCardFactoryProtocol,
-         coordinatorFactory: VisionKitCoordinatorFactory,
+         factory: AddCreditCardViewControllerFactoryProtocol,
+         coordinatorFactory: AddCreditCardCoordinatorFactoryProtocol,
          action: Action = .addCreditCard) {
         self.navigationController = navigationController
         self.coordinatorFactory = coordinatorFactory

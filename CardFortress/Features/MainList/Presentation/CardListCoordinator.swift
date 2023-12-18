@@ -12,44 +12,39 @@ protocol CardListCoordinatorDelegate: AnyObject {
     func signOut()
 }
 
-protocol CardListCoordinating: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
+protocol CardListCoordinating: Coordinator<Void>, NavigationCoordinator {
     var delegate: CardListCoordinatorDelegate? { get set }
 }
 
 final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
     //MARK: properties
     var navigationController: UINavigationController
-    private let viewControllerFactory: CreditCardListFactoryProtocol
+    private let viewControllerFactory: CardListViewControllerFactoryProtocol
     weak var delegate: CardListCoordinatorDelegate?
-    private var editCreditCardCoordinator: AddCreditCardCoordinator?
-    private let coordinatorFactory: EditCreditCardCoodinatorFactory
+    private let container: Container
     
     //MARK: initialization
-    init(viewControllerFactory: CreditCardListFactoryProtocol,
+    init(viewControllerFactory: CardListViewControllerFactoryProtocol,
          navigationController: UINavigationController,
-         coordinatorFactory: EditCreditCardCoodinatorFactory) {
+         container: Container) {
         self.viewControllerFactory = viewControllerFactory
         self.navigationController = navigationController
-        self.coordinatorFactory = coordinatorFactory
+        self.container = container
     }
 
     override func start() {
-        let viewController = viewControllerFactory.makeMainListViewController()
-        viewController.delegate = self
+        let viewController = viewControllerFactory.makeMainListViewController(delegate: self)
         navigateTo(viewController, presentationStyle: .push)
     }
     
     private func starEditCreditCardCoordinator(creditCard: CreditCard) {
-        editCreditCardCoordinator = coordinatorFactory.makeEditCreditCardCoordinator(
+        let addCreditCardAPI = container.resolve(AddCreditCardAPI.self)
+        guard let editCreditCardCoordinator = addCreditCardAPI?.coordinatorFactory.makeEditCreditCardCoordinator(
             creditCard: creditCard,
             navigationController: navigationController
-        )
+        ) else { return }
         
-        guard let editCreditCardCoordinator else { return }
         addChild(coordinator: editCreditCardCoordinator)
-        editCreditCardCoordinator.onFinish = { [weak self] void in
-            self?.editCreditCardCoordinator = nil
-        }
         
         editCreditCardCoordinator.start()
     }
@@ -84,11 +79,6 @@ extension CardListCoordinator {
         init(target: CardListCoordinator) {
             self.target = target
         }
-        
-        var editCreditCardsCoordinator: AddCreditCardCoordinator? {
-            target.editCreditCardCoordinator
-        }
-        
     }
 }
 #endif

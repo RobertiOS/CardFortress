@@ -9,6 +9,10 @@ import UIKit
 
 final class AuthenticationAPIMock: AuthenticationAPI {
     
+    func makeAuthCoordinator(window: UIWindow?, factory: AuthViewControllerFactoryProtocol) -> AuthCoordinating {
+        MockLoginCoordinator()
+    }
+    
     func signInWithBiometrics() async -> AuthenticationResult {
         .success
     }
@@ -29,5 +33,7 @@ final class AuthenticationAPIMock: AuthenticationAPI {
     }
 
     var isUserLoggedIn: Bool = false
+    
+    var coordinatorFactory: AuthenticationCoordinatorFactoryProtocol = AuthenticationCoordinatorFactoryMock()
     
 }
