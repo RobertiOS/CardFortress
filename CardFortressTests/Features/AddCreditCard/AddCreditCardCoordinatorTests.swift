@@ -14,6 +14,7 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
 
     var navigationController: UINavigationController!
     var coordinator: AddCreditCardCoordinator!
+    var coordinatorFactory: AddCreditCardCoordinatorFactoryMock!
     
     override func setUp() {
         super.setUp()
@@ -21,13 +22,15 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         let window = UIWindow(frame: UIScreen.main.bounds)
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
-        coordinator = AddCreditCardCoordinator(navigationController: navigationController, factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: AddCreditCardCoordinatorFactoryMock())
+        coordinatorFactory = AddCreditCardCoordinatorFactoryMock()
+        coordinator = AddCreditCardCoordinator(navigationController: navigationController, factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: coordinatorFactory)
     }
 
     override func tearDown() {
         super.tearDown()
         navigationController = nil
         coordinator = nil
+        coordinatorFactory = nil
     }
 
     func test_Start() {
@@ -46,18 +49,18 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         XCTAssertTrue(navigationController.presentedViewController is VisionKitViewControllerProtocol)
     }
     
-//    func test_visionCoordinatorOnFinish() {
-//        //given
-//        let creditCard: CreditCard = .init(number: 1234, cvv: 1234, date: "11/11", cardName: "SomeName", cardHolderName: "Juan")
-//        let viewModel = coordinator.testHooks.addCreditCardVCViewModel
-//        //when
-//        coordinator.testHooks.startVisionKitCoordinator()
-//        visionKitCoordinator.finish(.successfulScan(creditCard))
-//        //then
-//        
-//        XCTAssertEqual(viewModel.creditCardDate, "11/11")
-//        XCTAssertEqual(viewModel.creditCardName, "SomeName")
-//        XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
-//        XCTAssertEqual(viewModel.creditCardNumber, 1234)
-//    }
+    func test_visionCoordinatorOnFinish() {
+        //given
+        let creditCard: CreditCard = .init(number: 1234, cvv: 1234, date: "11/11", cardName: "SomeName", cardHolderName: "Juan")
+        let viewModel = coordinator.testHooks.addCreditCardVCViewModel
+        //when
+        coordinator.testHooks.startVisionKitCoordinator()
+        coordinatorFactory.visionKitCoordinatorMock?.finish(.successfulScan(creditCard))
+        //then
+        
+        XCTAssertEqual(viewModel.creditCardDate, "11/11")
+        XCTAssertEqual(viewModel.creditCardName, "SomeName")
+        XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
+        XCTAssertEqual(viewModel.creditCardNumber, 1234)
+    }
 }

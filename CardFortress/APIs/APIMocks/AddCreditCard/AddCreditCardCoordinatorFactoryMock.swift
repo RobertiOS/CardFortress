@@ -8,15 +8,19 @@
 import UIKit
 
 final class AddCreditCardCoordinatorFactoryMock: AddCreditCardCoordinatorFactoryProtocol {
+    
+    var visionKitCoordinatorMock: VisionKitCoordinator?
+    
     func makeAddCreditCardCoordinator(tabBarItem: UITabBarItem) -> AddCreditCardCoordinator {
         AddCreditCardCoordinator(navigationController: UINavigationController(), factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: self)
     }
     
     func makeVisionKitCoordinator(navigationController: UINavigationController) -> VisionKitCoordinating {
-        VisionKitCoordinator(factory: AddCreditCardViewControllerFactoryMock(), navigationController: UINavigationController())
+        visionKitCoordinatorMock = VisionKitCoordinator(factory: AddCreditCardViewControllerFactoryMock(), navigationController: navigationController)
+        return visionKitCoordinatorMock!
     }
     
     func makeEditCreditCardCoordinator(creditCard: CreditCard, navigationController: UINavigationController) -> AddCreditCardCoordinator {
-        AddCreditCardCoordinator(navigationController: UINavigationController(), factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: self, action: .editCreditCard(creditCard))
+        AddCreditCardCoordinator(navigationController: navigationController, factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: self, action: .editCreditCard(creditCard))
     }
 }

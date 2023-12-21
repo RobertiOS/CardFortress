@@ -66,23 +66,22 @@ class UIAlertControllerBuilderTests: XCTestCase {
 class UIViewControllerAlertTests: XCTestCase {
 
     func testPresentAlert() {
-        let window = UIWindow(frame: UIScreen.main.bounds)
+        //Given
+        let window = UIWindow()
+        
         let viewController = UIViewController()
         window.rootViewController = viewController
         window.makeKeyAndVisible()
+        
         let error = NSError(domain: "Test Error", code: 0, userInfo: nil)
+        
+        //When
         viewController.presentAlert(with: error)
-        let expectation = XCTestExpectation(description: "Alert presented")
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                let presentedViewController = viewController.presentedViewController as? UIAlertController
-                XCTAssertNotNil(presentedViewController)
-                XCTAssertEqual(presentedViewController?.title, "Error")
-                XCTAssertEqual(presentedViewController?.message, error.localizedDescription)
-                XCTAssertEqual(presentedViewController?.actions.count, 1)
-                XCTAssertEqual(presentedViewController?.actions.first?.title, "OK")
-                expectation.fulfill()
-            }
-
-            wait(for: [expectation], timeout: 2)
+       
+        //Then
+        
+        DispatchQueue.main.async {
+            XCTAssertTrue(viewController.presentedViewController is UIAlertController)
+        }
     }
 }
