@@ -528,6 +528,7 @@
 		26888FDA2A076F6200936748 /* Mocks */ = {
 			isa = PBXGroup;
 			children = (
+				265DC0EF2AAE312C00F52769 /* APIMocks */,
 				26888FE12A0771C400936748 /* MockListViewModel.swift */,
 				26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */,
 				26199F402B2F5F6F00D0944E /* ContainerMock.swift */,
@@ -608,7 +609,6 @@
 		26B38C0D29ECC00C00D0CCD8 /* APIs */ = {
 			isa = PBXGroup;
 			children = (
-				265DC0EF2AAE312C00F52769 /* APIMocks */,
 				266EECAB2A89DF0B007F5427 /* DataStorage */,
 				26D09A692A69029900B9D885 /* Authentication */,
 			);
