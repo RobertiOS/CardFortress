@@ -15,8 +15,16 @@ final class CardListCoordinatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
+        
+        let window = UIWindow()
         navigationController = UINavigationController()
-        coordinator = CardListCoordinator(viewControllerFactory: CardListViewControllerFactoryMock(), navigationController: navigationController, container: .mockContainer)
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        coordinator = CardListCoordinator(
+            viewControllerFactory: CardListViewControllerFactoryMock(),
+            navigationController: navigationController,
+            container: .mockContainer
+        )
     }
     
     override func tearDown() {

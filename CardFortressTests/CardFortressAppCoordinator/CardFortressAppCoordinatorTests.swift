@@ -33,47 +33,25 @@ final class CardFortressAppCoordinatorTests: XCTestCase {
         XCTAssertEqual(navigationController.viewControllers.count, 1)
     }
 
-//    func test_loginCoordinatorFinish() {
-//        //given
-//        let loginCoordinator = mockCoordinatorFactory.loginCoordinator
-//        let tabBarCoordinator = mockCoordinatorFactory.tabBarCoordinator
-//        //then
-//        
-//        XCTAssertEqual(tabBarCoordinator.startCalledCount, 0)
-//        
-//        //when
-//        coordinator.start()
-//        loginCoordinator.finish(.success)
-//        
-//        //then
-//        XCTAssertEqual(tabBarCoordinator.startCalledCount, 1)
-//        
-//    }
-//    
-//    func test_tabBarCoordinatorFinish() {
-//        //given
-//        let loginCoordinator = mockCoordinatorFactory.loginCoordinator
-//        let tabBarCoordinator = mockCoordinatorFactory.tabBarCoordinator
-//        
-//        //then
-//        
-//        XCTAssertEqual(loginCoordinator.startCalledCount, 0)
-//        XCTAssertNil(loginCoordinator.onFinish)
-//        XCTAssertNil(tabBarCoordinator.onFinish)
-//        
-//        //when
-//        coordinator.start()
-//        loginCoordinator.finish(.success)
-//        
-//        //then
-//        XCTAssertEqual(loginCoordinator.startCalledCount, 1)
-//        XCTAssertEqual(tabBarCoordinator.startCalledCount, 1)
-//        
-//        //when
-//        tabBarCoordinator.finish(.signOut)
-//        
-//        XCTAssertEqual(loginCoordinator.startCalledCount, 2)
-//        
-//    }
+    func test_loginCoordinatorStart() {
+        //when
+        coordinator.startLoginCoordinator()
+        
+        //then
+        XCTAssertTrue(window.rootViewController is UINavigationController)
+        let navigationController = window.rootViewController as? UINavigationController
+        
+        XCTAssertTrue(navigationController?.topViewController is  UIHostingControllerWrapper<LoginView>)
+    }
+    
+    func test_tabBarCoordinatorStart() {
+        //when
+        coordinator.startTabBarCoordinator()
+        
+        
+        //then
+        XCTAssertTrue(window.rootViewController is UITabBarController)
+        
+    }
 
 }

@@ -21,11 +21,24 @@ extension SceneDelegate {
             }
             
             container.register(AuthenticationAPI.self) { r in
-                AuthenticationAPIMock()
+                Authentication(
+                    secureUserDataAPI: SecureUserDataAPIMock(),
+                    biometricsAPI: BiometricAuthAPIMock(),
+                    authDataSourceAPI: AuthDataSourceAPIMock(),
+                    container: container
+                )
             }
             
             container.register(SecureUserDataAPI.self) { r in
                 SecureUserDataAPIMock()
+            }
+            
+            container.register(AddCreditCardAPI.self) { r in
+               AddCreditCardAPIImpl(container: container)
+            }
+            
+            container.register(CardListAPI.self) { r in
+                CardListAPIImpl(container: container)
             }
             
             return container

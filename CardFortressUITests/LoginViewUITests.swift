@@ -22,13 +22,13 @@ final class LoginViewUITests: XCTestCase {
         
         //when
         
-        let username = app.textFields["your email"]
+        let username = app.textFields["Your email"]
         username.tap()
         username.typeText("test")
         
         app.keyboards.buttons["Return"].tap()
         
-        let password = app.secureTextFields["your password"]
+        let password = app.secureTextFields["Your password"]
         password.tap()
         password.typeText("1234")
         
