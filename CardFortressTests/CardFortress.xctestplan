@@ -20,8 +20,6 @@
   "testTargets" : [
     {
       "skippedTests" : [
-        "ImageParserTests",
-        "UIViewControllerAlertTests\/testPresentAlert()",
         "VisionKitCoordinatorTests\/test_VisionKitDelegate()"
       ],
       "target" : {
