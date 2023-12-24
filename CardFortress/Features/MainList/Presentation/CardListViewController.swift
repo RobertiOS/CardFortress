@@ -147,24 +147,28 @@ final class CardListViewController: UIViewController {
     
     @objc
     private func deleteAllCreditCards() {
-        let alertController = UIAlertController(title: LocalizableString.deleteAllCreditCards, message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: LocalizableString.delete, style: .destructive, handler: { [weak self] _ in
-            guard let self else { return }
-            self.viewModel.deleteAllCards()
-        }))
-        alertController.addAction(UIAlertAction(title: LocalizableString.cancel, style: .cancel, handler: nil))
-        present(alertController, animated: true)
+        UIAlertController.Builder()
+            .addActions([
+                .init(title: LocalizableString.delete, style: .destructive, handler: { [weak self] _ in
+                    self?.viewModel.deleteAllCards()
+                }),
+                .init(title: LocalizableString.cancel, style: .cancel, handler: nil)
+            ])
+            .withTitle(LocalizableString.deleteAllCreditCards)
+            .present(in: self)
     }
     
     @objc
     private func signOut() {
-        let alertController = UIAlertController(title: LocalizableString.signOut, message: nil, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: LocalizableString.confirm, style: .destructive, handler: { [weak self] _ in
-            guard let self else { return }
-            self.delegate?.signOut()
-        }))
-        alertController.addAction(UIAlertAction(title: LocalizableString.cancel, style: .cancel, handler: nil))
-        present(alertController, animated: true)
+        UIAlertController.Builder()
+            .addActions([
+                .init(title: LocalizableString.confirm, style: .destructive, handler: { [weak self] _ in
+                    self?.delegate?.signOut()
+                }),
+                .init(title: LocalizableString.cancel, style: .cancel, handler: nil)
+            ])
+            .withTitle(LocalizableString.signOut)
+            .present(in: self)
     }
 
     // MARK: collection view layout
@@ -284,10 +288,6 @@ extension CardListViewController {
         
         var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>? {
             target.dataSource
-        }
-        
-        var viewControllerTitle: String? {
-            target.title
         }
         
         var collectionView: UICollectionView {
