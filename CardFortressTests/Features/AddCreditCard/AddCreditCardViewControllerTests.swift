@@ -11,23 +11,9 @@ import Combine
 
 final class AddCreditCardViewControllerTests: XCTestCase {
 
-    var viewModel: AddCreditCardViewController.ViewModel!
-    var subscriptions: Set<AnyCancellable>!
-    
-    
-    override func setUp() {
-        viewModel = .init(service: MockListService())
-        subscriptions = .init()
-    }
-    
-    override func tearDown() {
-        viewModel = nil
-        subscriptions = nil
-    }
-
     func test_initialization_modelWithNilProperties() {
         //given
-        let viewController = AddCreditCardViewController(viewModel: viewModel)
+        let viewController = AddCreditCardViewController(viewModel: .init(service: MockListService()))
         //when
         viewController.loadViewIfNeeded()
         //then
@@ -49,5 +35,32 @@ final class AddCreditCardViewControllerTests: XCTestCase {
         XCTAssertEqual(viewController.testHooks.numberTextField.labelText, "CARD NUMBER")
         XCTAssertEqual(viewController.testHooks.nameOnCardTextField.labelText, "NAME ON CARD")
         XCTAssertEqual(viewController.testHooks.cvvTextField.labelText, "CVV")
+    }
+    
+    func test_keyboardObservers() {
+        // Given
+        let viewController = AddCreditCardViewController(viewModel: .init(service: MockListService()))
+        viewController.loadViewIfNeeded()
+        let scrollView = viewController.testHooks.scrollView
+        
+        // Then
+        XCTAssertEqual(scrollView.contentInset.bottom, 0.0)
+        XCTAssertEqual(scrollView.verticalScrollIndicatorInsets.bottom, 0.0)
+        // When
+        NotificationCenter.default.post(
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil,
+            userInfo: [UIResponder.keyboardFrameEndUserInfoKey: CGRect(x: 0, y: 0, width: 0, height: 300)]
+        )
+        
+        XCTAssertEqual(scrollView.contentInset.bottom, 300.0)
+        
+        // When
+        NotificationCenter.default.post(name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        // Then
+        XCTAssertEqual(scrollView.contentInset.bottom, 0.0)
+        XCTAssertEqual(scrollView.verticalScrollIndicatorInsets.bottom, 0.0)
+
     }
 }

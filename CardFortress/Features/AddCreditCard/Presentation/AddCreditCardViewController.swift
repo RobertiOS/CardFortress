@@ -449,6 +449,9 @@ extension AddCreditCardViewController {
             target.cvvTextField
         }
         
+        var scrollView: UIScrollView {
+            target.scrollView
+        }
         
         var addButton: UIButton {
             target.addCreditCardButton
