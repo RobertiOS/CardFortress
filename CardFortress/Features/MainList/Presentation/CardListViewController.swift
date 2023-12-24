@@ -290,6 +290,10 @@ extension CardListViewController {
             target.title
         }
         
+        var collectionView: UICollectionView {
+            target.collectionView
+        }
+        
         func deleteAllCreditCards() {
             target.deleteAllCreditCards()
         }

@@ -70,7 +70,7 @@ final class CardListViewControllerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 0)
-
+        
         // When
         
         let expectation = self.expectation(description: "Items should be emited")
@@ -87,6 +87,17 @@ final class CardListViewControllerTests: XCTestCase {
         waitForExpectations(timeout: .defaultWait)
         // Then
         XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 3)
+        let dataSource = viewController.testHooks.dataSource
+        let collectionView = viewController.testHooks.collectionView
+        let collectionViewCell = dataSource?.collectionView(
+             collectionView,
+             cellForItemAt: IndexPath(
+                 item: 0,
+                 section: 0
+             )
+         )
+         
+         XCTAssertNotNil(collectionViewCell)
         
     }
     
