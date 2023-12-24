@@ -61,8 +61,7 @@ extension UIAlertController {
         }
 
         func present(in viewController: UIViewController) {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self, viewController.isViewLoaded, viewController.view.window != nil else { return }
+                guard viewController.isViewLoaded, viewController.view.window != nil else { return }
                 let alert = UIAlertController(title: self.title, message: self.message, preferredStyle: self.alertStyle)
                 if self.showTextField {
                     alert.addTextField()
@@ -72,7 +71,6 @@ extension UIAlertController {
                 }
                 self.actions.forEach { alert.addAction($0) }
                 viewController.present(alert, animated: true)
-            }
         }
     }
 }

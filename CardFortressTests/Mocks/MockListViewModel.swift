@@ -10,7 +10,9 @@ import Combine
 import Foundation
 
 final class MockListViewModel: ListViewModelProtocol {
+    var deleteCardsCalled = false
     func deleteAllCards() {
+        deleteCardsCalled = true
         itemsSubject.send([])
     }
     
