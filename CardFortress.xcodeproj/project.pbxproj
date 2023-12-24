@@ -48,7 +48,7 @@
 		265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */; };
 		265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */; };
 		265DC0FE2AAE826C00F52769 /* AuthDataSourceAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */; };
-		265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */; };
+		265DC1002AAE878200F52769 /* AuthtenticationAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0FF2AAE878200F52769 /* AuthtenticationAPITests.swift */; };
 		265DC1042AAE896800F52769 /* SecureUserDataAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */; };
 		265FD5762A0DF7A100939A12 /* SubviewBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */; };
 		266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EDAB32A8846BA007F5427 /* CreateUserView.swift */; };
@@ -215,7 +215,7 @@
 		265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalExtensions.swift; sourceTree = "<group>"; };
 		265DC0FB2AAE7FE000F52769 /* AuthDataSourceAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPI.swift; sourceTree = "<group>"; };
 		265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthDataSourceAPIMock.swift; sourceTree = "<group>"; };
-		265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthtenticaitonAPITests.swift; sourceTree = "<group>"; };
+		265DC0FF2AAE878200F52769 /* AuthtenticationAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthtenticationAPITests.swift; sourceTree = "<group>"; };
 		265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataAPIMock.swift; sourceTree = "<group>"; };
 		265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubviewBuilderTests.swift; sourceTree = "<group>"; };
 		266EDAB32A8846BA007F5427 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
@@ -725,7 +725,7 @@
 				26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */,
 				26921A452A64F57B00DA1313 /* SecureStoreErrorTests.swift */,
 				26921EA42A660C9800DA1313 /* ImageParserTests.swift */,
-				265DC0FF2AAE878200F52769 /* AuthtenticaitonAPITests.swift */,
+				265DC0FF2AAE878200F52769 /* AuthtenticationAPITests.swift */,
 				263266EA2B37C2C5004B8A1D /* UIViewController+ExtensionsTests.swift */,
 			);
 			path = CardFortressTests;
@@ -1193,7 +1193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				26B8305F2A7EE9FE002D119E /* AuthCoordinatorTests.swift in Sources */,
-				265DC1002AAE878200F52769 /* AuthtenticaitonAPITests.swift in Sources */,
+				265DC1002AAE878200F52769 /* AuthtenticationAPITests.swift in Sources */,
 				26921A3F2A64E22100DA1313 /* AddCreditCardViewControllerTests.swift in Sources */,
 				26921EA52A660C9800DA1313 /* ImageParserTests.swift in Sources */,
 				26CEBA672A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift in Sources */,

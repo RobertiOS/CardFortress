@@ -1,5 +1,5 @@
 //
-//  AuthtenticaitonAPITests.swift
+//  AuthtenticationAPITests.swift
 //  CardFortressTests
 //
 //  Created by Roberto Corrales on 9/10/23.
@@ -7,7 +7,7 @@
 import XCTest
 @testable import CardFortress
 
-final class AuthtenticaitonAPITests: XCTestCase {
+final class AuthtenticationAPITests: XCTestCase {
 
     var authenticationAPI: AuthenticationAPI!
     var authDataSourceAPI: AuthDataSourceAPIMock!
