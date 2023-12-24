@@ -70,7 +70,7 @@ class SecureUserData: SecureUserDataAPI {
             let account = userData.userName
             let searchAccountQuery: [String: Any] = [
                 kSecClass as String: kSecClassInternetPassword,
-                kSecAttrServer as String: server.value,
+                kSecAttrServer as String: server.value
             ]
             
             let searchStatus = SecItemCopyMatching(searchAccountQuery as CFDictionary, nil)
@@ -134,8 +134,11 @@ class SecureUserData: SecureUserDataAPI {
         }
     }
     
-    private func addToKeychain(query: [String : Any]) -> Bool {
-        let result = SecItemAdd(query as CFDictionary, nil)
-        return result == errSecSuccess
+    func deleteAccount() {
+        let deleteQuery: [String: Any] = [
+            kSecClass as String: kSecClassInternetPassword,
+            kSecAttrServer as String: server.value
+        ]
+        SecItemDelete(deleteQuery as CFDictionary)
     }
 }
