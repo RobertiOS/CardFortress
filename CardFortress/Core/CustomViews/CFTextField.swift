@@ -9,7 +9,11 @@ import UIKit
 
 final class CFTextField: UIView {
     
-    weak var delegate: UITextFieldDelegate?
+    weak var delegate: UITextFieldDelegate? {
+        didSet {
+            textField.delegate = delegate
+        }
+    }
     
     let viewModel: ViewModel
     
@@ -59,7 +63,6 @@ final class CFTextField: UIView {
     }
     
     private func construct() {
-        textField.delegate = delegate
         constructViewHerarchy()
         constructConstraints()
     }
