@@ -39,6 +39,8 @@
 		26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26360D402A3DF7E9002E7E9E /* VisionKitCoordinator.swift */; };
 		263617D32A3FA4FB002E7E9E /* ImageParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 263617D22A3FA4FB002E7E9E /* ImageParser.swift */; };
 		26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */; };
+		26563A392B3FB4360038339F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26563A382B3FB4360038339F /* String+Extensions.swift */; };
+		26563A3B2B3FDF8E0038339F /* String+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26563A3A2B3FDF8E0038339F /* String+ExtensionsTests.swift */; };
 		265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */; };
 		265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */; };
 		265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
@@ -208,6 +210,8 @@
 		26366FC32A19302A00C9B8DA /* SecureStoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStoreTests.swift; sourceTree = "<group>"; };
 		26516E392AD3AD5F00B7A082 /* CardFortress.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardFortress.entitlements; sourceTree = "<group>"; };
 		26516E3A2AD3AD7900B7A082 /* CardFortressWidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = CardFortressWidgetExtension.entitlements; sourceTree = "<group>"; };
+		26563A382B3FB4360038339F /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		26563A3A2B3FDF8E0038339F /* String+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "LoginViewModel+Presentation.swift"; sourceTree = "<group>"; };
 		265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuthAPIMock.swift; sourceTree = "<group>"; };
 		265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewUITests.swift; sourceTree = "<group>"; };
@@ -724,6 +728,7 @@
 				26921EA42A660C9800DA1313 /* ImageParserTests.swift */,
 				265DC0FF2AAE878200F52769 /* AuthtenticationAPITests.swift */,
 				263266EA2B37C2C5004B8A1D /* UIViewController+ExtensionsTests.swift */,
+				26563A3A2B3FDF8E0038339F /* String+ExtensionsTests.swift */,
 			);
 			path = CardFortressTests;
 			sourceTree = "<group>";
@@ -884,6 +889,7 @@
 				261EA5852A364C5C00367CC4 /* UITabBarItem+Extensions.swift */,
 				26921EAD2A66434300DA1313 /* UIViewController+Extensions.swift */,
 				261B61C72A6CF1D8007F69CF /* TextFieldStyles.swift */,
+				26563A382B3FB4360038339F /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1164,6 +1170,7 @@
 				266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */,
 				265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */,
 				266EECAD2A89DF21007F5427 /* UserData.swift in Sources */,
+				26563A392B3FB4360038339F /* String+Extensions.swift in Sources */,
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
@@ -1199,6 +1206,7 @@
 				26C4628729F379CF000B06A7 /* CoordinatorTests.swift in Sources */,
 				26921A422A64E7BC00DA1313 /* CFTextFieldTests.swift in Sources */,
 				26366FC42A19302A00C9B8DA /* SecureStoreTests.swift in Sources */,
+				26563A3B2B3FDF8E0038339F /* String+ExtensionsTests.swift in Sources */,
 				26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */,
 				2692E7B62B1990F80002C5BB /* CreateUserViewModelTests.swift in Sources */,
 				26921A3E2A64E22100DA1313 /* AddCreditCardCoordinatorTests.swift in Sources */,
