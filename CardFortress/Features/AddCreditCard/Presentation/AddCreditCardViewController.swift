@@ -104,15 +104,17 @@ final class AddCreditCardViewController: UIViewController {
         return label
     }()
     
-    private let containerStack: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        return stackView
-    }()
-    
     private let scrollView = UIScrollView()
     
-    private let containerView = UIView()
+    
+    private let stackViewContainer: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.spacing = 20
+        stackView.isLayoutMarginsRelativeArrangement = true
+        stackView.directionalLayoutMargins = .init(top: 0, leading: 30, bottom: 0, trailing: 30)
+        return stackView
+    }()
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -219,11 +221,11 @@ final class AddCreditCardViewController: UIViewController {
             cardNameTextField.textField
         ].forEach {
             $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+            $0.delegate = self
         }
         
-        creditCardNumberTextField.delegate = self
         
-        containerView.addAutoLayoutSubviews {
+        stackViewContainer.addArrangedSubviews {
             enterCardInfoLabel
             scanCardButton
             orLabel
@@ -239,94 +241,31 @@ final class AddCreditCardViewController: UIViewController {
 
             ///buton
             addCreditCardButton
-            
         }
         
         view.addAutoLayoutSubviews {
             scrollView
         }
-        containerStack.addArrangedSubview(containerView)
         
         scrollView.addAutoLayoutSubviews {
-            containerStack
+            stackViewContainer
         }
+        
     }
     
     private func setUpConstraints() {
         view.activateConstraints {
-            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
-            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20)
+            scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor)
+            scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
             scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
             
             
-            containerStack.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
-            containerStack.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
-            containerStack.topAnchor.constraint(equalTo: scrollView.topAnchor)
-            containerStack.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
-            containerStack.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
-            
-            enterCardInfoLabel.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10)
-            enterCardInfoLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            enterCardInfoLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 10)
-            enterCardInfoLabel.heightAnchor.constraint(equalToConstant: 30)
-            
-            scanCardButton.topAnchor.constraint(equalTo: enterCardInfoLabel.bottomAnchor, constant: 10)
-            scanCardButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            scanCardButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            scanCardButton.heightAnchor.constraint(equalToConstant: 46)
-            
-            orLabel.topAnchor.constraint(equalTo: scanCardButton.bottomAnchor, constant: 10)
-            orLabel.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            orLabel.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            orLabel.heightAnchor.constraint(equalToConstant: 30)
-            
-            
-            /// credit card preview
-            hostingView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20)
-            hostingView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -20)
-            hostingView.topAnchor.constraint(equalTo: orLabel.bottomAnchor, constant: 20)
-            hostingView.heightAnchor.constraint(equalToConstant: 200)
-            
-            /// card number
-            creditCardNumberTextField.topAnchor.constraint(equalTo: hostingView.bottomAnchor, constant: 50)
-            creditCardNumberTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            creditCardNumberTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-
-            
-
-            /// card holder name
-            nameOnCardTextField.topAnchor.constraint(equalTo: creditCardNumberTextField.bottomAnchor, constant: 10)
-            nameOnCardTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            nameOnCardTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            
-            /// card alias
-            
-            cardNameTextField.topAnchor.constraint(equalTo: nameOnCardTextField.bottomAnchor, constant: 10)
-            cardNameTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            cardNameTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            
-            /// date
-            expiryDateTextField.topAnchor.constraint(equalTo: cardNameTextField.bottomAnchor, constant: 10)
-            expiryDateTextField.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            expiryDateTextField.widthAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 0.4)
-            
-            
-            /// cvv
-
-            cvvTextField.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            cvvTextField.leadingAnchor.constraint(greaterThanOrEqualTo: expiryDateTextField.leadingAnchor)
-            cvvTextField.topAnchor.constraint(equalTo: expiryDateTextField.topAnchor)
-            cvvTextField.widthAnchor.constraint(equalTo: expiryDateTextField.widthAnchor, multiplier: 1.0)
-            
-            /// add CD button
-
-            addCreditCardButton.topAnchor.constraint(greaterThanOrEqualTo: cvvTextField.bottomAnchor, constant: 40)
-            addCreditCardButton.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 10)
-            addCreditCardButton.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10)
-            addCreditCardButton.bottomAnchor.constraint(equalTo: containerView.safeAreaLayoutGuide.bottomAnchor, constant: -20)
-            addCreditCardButton.heightAnchor.constraint(equalToConstant: 45)
-            
+            stackViewContainer.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor)
+            stackViewContainer.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor)
+            stackViewContainer.topAnchor.constraint(equalTo: scrollView.topAnchor)
+            stackViewContainer.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            stackViewContainer.widthAnchor.constraint(equalTo: scrollView.widthAnchor)
         }
     }
     
@@ -400,19 +339,17 @@ final class AddCreditCardViewController: UIViewController {
 
 extension AddCreditCardViewController: UITextFieldDelegate {
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        switch textField.tag {
-        case 1:
-            let allowedCharacters = CharacterSet.decimalDigits
-            let characterSet = CharacterSet(charactersIn: string)
-            return allowedCharacters.isSuperset(of: characterSet)
-        case 2:
-            viewModel.creditCardName = textField.text
-        case 3:
-            viewModel.creditCardHolderName = textField.text
+        guard let currentText = (textField.text as NSString?)?.replacingCharacters(in: range, with: string) else { return true }
+        switch textField {
+        case creditCardNumberTextField.textField:
+            textField.text = currentText.grouping(every: 4, with: " ")
+            return false
+        case expiryDateTextField.textField:
+            textField.text = currentText.grouping(every: 2, with: "/")
+            return false
         default:
             return false
         }
-        return true
     }
 }
 
