@@ -25,9 +25,8 @@ public struct CreditCardView<Content : View>: View {
         VStack {
             ZStack {
                 RoundedRectangle(cornerRadius: 15)
-                    .fill(viewModel.backgroundColor)
-                    .clipShape(RoundedRectangle(cornerRadius: 15))
-                
+                    .fill(.linearGradient(stops: [.init(color: CFSharedColors.purple3.swiftUIColor, location: 0), .init(color: CFSharedColors.purple4.swiftUIColor, location: 1)], startPoint: .bottom, endPoint: .top))
+                BackgroundCreditCard(gradient: .linearGradient(stops: [.init(color: CFSharedColors.purple1.swiftUIColor, location: 0), .init(color: CFSharedColors.purple2.swiftUIColor, location: 1)], startPoint: .bottom, endPoint: .top))
                 VStack(spacing:5) {
                     HStack {
                         Text(viewModel.bankName)
@@ -84,11 +83,13 @@ public struct CreditCardView<Content : View>: View {
                         Text(viewModel.cardHolderName)
                             .foregroundColor(.white)
                             .fontWeight(.bold)
+                            .font(.system(size: 30))
                         Spacer()
                     }
                 }
                 .padding()
             }
+            .clipShape(RoundedRectangle(cornerRadius: 15))
             if viewModel.showBottomModule {
                 bottomView
             }
