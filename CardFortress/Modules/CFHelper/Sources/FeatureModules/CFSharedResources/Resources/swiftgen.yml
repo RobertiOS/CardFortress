@@ -1,0 +1,15 @@
+ xcassets:
+    - inputs: ./Process/Images.xcassets
+      outputs:
+      - templateName: swift5
+        output: CFSharedImages+Generated.swift
+        params:
+          enumName: CFSharedImages
+          publicAccess: yes
+    - inputs: ./Process/Colors.xcassets
+      outputs:
+      - templateName: swift5
+        output: CFSharedColors+Generated.swift
+        params:
+          enumName: CFSharedColors
+          publicAccess: yes
