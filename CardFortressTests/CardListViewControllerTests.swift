@@ -45,21 +45,6 @@ final class CardListViewControllerTests: XCTestCase {
         XCTAssertEqual(title, viewController.navigationItem.title)
     }
     
-    func testdeleteCardAlertIsPresented() throws {
-        //given
-        XCTAssertNil(viewController.presentedViewController)
-        //when
-        viewController.testHooks.deleteAllCreditCards()
-        XCTAssertNotNil(viewController.presentedViewController)
-        
-        let alertController = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
-        //then
-        XCTAssertEqual(alertController.textFields?.count, 0)
-        XCTAssertEqual(alertController.title, "Delete all credit cards")
-        XCTAssertEqual(alertController.actions.count, 2)
-
-    }
-    
     func testUpdate_CollectionViewDataSource() {
         // Given
         let viewModel = MockListViewModel(cardListService: MockListService())
@@ -104,32 +89,6 @@ final class CardListViewControllerTests: XCTestCase {
          
          XCTAssertNotNil(collectionViewCell)
         
-    }
-    
-    func test_signOut() throws {
-        // Given
-        
-        // When
-        viewController.testHooks.signOut()
-        // Then
-        let alert = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
-        let deleteAction = alert.actions.first(where: { $0.title == LocalizableString.confirm })
-        deleteAction?.trigger()
-        alert.title = "Sign Out"
-        XCTAssertTrue(delegate.signOutCalled)
-    }
-    
-    func test_deleteAllCreditCards() throws {
-        // Given
-        
-        // When
-        viewController.testHooks.deleteAllCreditCards()
-        // Then
-        let alert = try XCTUnwrap(viewController.presentedViewController as? UIAlertController)
-        let deleteAction = alert.actions.first(where: { $0.title == LocalizableString.delete })
-        deleteAction?.trigger()
-        alert.title = "Delete all credit cards"
-        XCTAssertTrue(viewModel.deleteCardsCalled)
     }
     
     func testActionTitle() {
@@ -183,6 +142,15 @@ final class CardListViewControllerTests: XCTestCase {
         // then
         XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 1)
         XCTAssertTrue(delegate.editCreditCardCalled)
+    }
+    
+    func test_presentOptionsViewController() {
+        // Given
+       
+        // When
+        viewController.testHooks.presentOptionsViewController()
+        // Then
+        XCTAssertTrue(viewController.presentedViewController is OptionsViewController)
     }
 }
 

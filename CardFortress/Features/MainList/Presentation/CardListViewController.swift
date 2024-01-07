@@ -26,22 +26,13 @@ final class CardListViewController: UIViewController {
     }()
     
     private var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>?
-    
-    private lazy var deleteAllCardsBarButton: UIBarButtonItem = {
+
+    private lazy var moreOptionsBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
-        button.image = UIImage(systemName: "trash.fill")
-        button.tintColor = .red
+        button.image = UIImage(systemName: "ellipsis")
+        button.tintColor = CFColors.purple.color
         button.target = self
-        button.action = #selector(self.deleteAllCreditCards)
-        return button
-    }()
-    
-    private lazy var signOutButton: UIBarButtonItem = {
-        let button = UIBarButtonItem()
-        button.image = UIImage(systemName: "rectangle.portrait.and.arrow.forward")
-        button.tintColor = .red
-        button.target = self
-        button.action = #selector(self.signOut)
+        button.action = #selector(self.presentOptionsViewController(_:))
         return button
     }()
     
@@ -79,14 +70,12 @@ final class CardListViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        cancellables.removeAll()
     }
     
     private func setupViews() {
         navigationItem.title = LocalizableString.mainViewTitle
         view.backgroundColor = .systemBackground
-        navigationItem.rightBarButtonItems = [deleteAllCardsBarButton]
-        navigationItem.leftBarButtonItem = signOutButton
+        navigationItem.rightBarButtonItem = moreOptionsBarButton
         collectionView.delegate = self
         constructSubviewHierarchy()
         constructSubviewLayoutConstraints()
@@ -146,29 +135,15 @@ final class CardListViewController: UIViewController {
     }
     
     @objc
-    private func deleteAllCreditCards() {
-        UIAlertController.Builder()
-            .addActions([
-                .init(title: LocalizableString.delete, style: .destructive, handler: { [weak self] _ in
-                    self?.viewModel.deleteAllCards()
-                }),
-                .init(title: LocalizableString.cancel, style: .cancel, handler: nil)
-            ])
-            .withTitle(LocalizableString.deleteAllCreditCards)
-            .present(in: self)
-    }
-    
-    @objc
-    private func signOut() {
-        UIAlertController.Builder()
-            .addActions([
-                .init(title: LocalizableString.confirm, style: .destructive, handler: { [weak self] _ in
-                    self?.delegate?.signOut()
-                }),
-                .init(title: LocalizableString.cancel, style: .cancel, handler: nil)
-            ])
-            .withTitle(LocalizableString.signOut)
-            .present(in: self)
+    private func presentOptionsViewController(_ sender: UIBarButtonItem) {
+        let viewController = OptionsViewController()
+        viewController.delegate = self
+        viewController.preferredContentSize = CGSize(width: 200,height: 300)
+        viewController.modalPresentationStyle = .popover
+        viewController.popoverPresentationController?.barButtonItem = sender
+        viewController.presentationController?.delegate = self
+        
+        self.present(viewController, animated: true)
     }
 
     // MARK: collection view layout
@@ -294,14 +269,10 @@ extension CardListViewController {
             target.collectionView
         }
         
-        func deleteAllCreditCards() {
-            target.deleteAllCreditCards()
+        func presentOptionsViewController() {
+            target.presentOptionsViewController(target.moreOptionsBarButton)
         }
-        
-        func signOut() {
-            target.signOut()
-        }
-
+    
     }
     
     var testHooks: TestHooks {
@@ -309,3 +280,19 @@ extension CardListViewController {
     }
 }
 #endif
+
+extension CardListViewController : UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
+        return .none
+    }
+}
+
+extension CardListViewController: OptionsViewControllerDelegate {
+    func logout() {
+        self.delegate?.signOut()
+    }
+    
+    func delete() {
+        self.viewModel.deleteAllCards()
+    }
+}

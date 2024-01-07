@@ -62,6 +62,7 @@
 		266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAF2A89E0A2007F5427 /* CurrentUser.swift */; };
 		266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */; };
 		266F37102AA5806600C253A3 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F370F2AA5806600C253A3 /* BiometricAuth.swift */; };
+		2679066D2B4229A800212673 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679066C2B4229A800212673 /* OptionsViewController.swift */; };
 		267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB42AF43AE80062FA11 /* CFAPIs */; };
 		267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB62AF43AE80062FA11 /* CFSharedUI */; };
 		267F0FB92AF43AFE0062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB82AF43AFE0062FA11 /* CFAPIs */; };
@@ -228,6 +229,7 @@
 		266EECAF2A89E0A2007F5427 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		266F370F2AA5806600C253A3 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
+		2679066C2B4229A800212673 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		267F0FB32AF438BB0062FA11 /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
 		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -818,6 +820,7 @@
 				26F5B4CD29FEBC6F002D224D /* Service */,
 				26E7DAC82B06BEF100FADDE2 /* Presentation */,
 				26199F332B2EB9A100D0944E /* CardListAPI.swift */,
+				2679066C2B4229A800212673 /* OptionsViewController.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -1174,6 +1177,7 @@
 				26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */,
 				265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */,
 				261EA5802A3594D200367CC4 /* TabBarCoordinatorProtocol.swift in Sources */,
+				2679066D2B4229A800212673 /* OptionsViewController.swift in Sources */,
 				26921EA72A66160A00DA1313 /* GenericError.swift in Sources */,
 				26199F442B2F649100D0944E /* CardFortressCoordinatorFactoryMock.swift in Sources */,
 				26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */,
@@ -1517,7 +1521,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -1536,7 +1540,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;

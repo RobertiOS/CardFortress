@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CFSharedResources
 
 struct LoginView: View {
 
@@ -16,19 +17,20 @@ struct LoginView: View {
     //MARK: Views
     
     var body: some View {
-        ScrollView {
-            VStack {
-                topContainerView
-                fieldsContainerView
-                buttonContainerView
-                bottomContainterView
+        ZStack {
+            backgroundView
+                .ignoresSafeArea()
+            ScrollView {
+                VStack {
+                    topContainerView
+                    fieldsContainerView
+                    buttonContainerView
+                    bottomContainterView
+                }
+                .padding()
             }
-            .padding()
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(.clear)
         }
-        .background(
-            LinearGradient(gradient: .init(colors: [Color(uiColor: CFColors.purple.color), .white]), startPoint: .top, endPoint: .bottom)
-        )
     }
     
     @ViewBuilder
@@ -43,7 +45,7 @@ struct LoginView: View {
         
         Text(LocalizableString.login)
             .font(.system(size: 35, weight: .semibold))
-            .foregroundColor(.white)
+            .foregroundColor(CFColors.purple.swiftUIColor)
     }
     
     @ViewBuilder
@@ -63,14 +65,14 @@ struct LoginView: View {
         
         HStack {
             Text(LocalizableString.rememberMe)
-                .foregroundColor(.white)
+                .foregroundColor(CFColors.purple.swiftUIColor)
             if #available(iOS 17.0, *) {
                 Button {
                     viewModel.isRememberMeEnabled.toggle()
                 } label: {
                     Image(systemName: viewModel.isRememberMeEnabled ? "checkmark.square" : "square")
                         .contentTransition(.symbolEffect(.replace))
-                        .foregroundColor(.white)
+                        .foregroundColor(CFColors.purple.swiftUIColor)
                 }
             }
             
@@ -173,6 +175,30 @@ struct LoginView: View {
         }
         .padding(.top)
         .frame(height: 50)
+    }
+    
+    @ViewBuilder
+    var backgroundView: some View {
+       
+        
+        GeometryReader { proxy in
+            let proxyWidth = proxy.size.width
+            let proxyHeight = proxy.size.height
+            
+            VStack {
+                Spacer()
+                VStack {
+                    
+                }
+                .frame(width: proxyWidth, height: proxyHeight / 1.6)
+                .background(.white)
+                .clipShape(.rect(cornerRadii: .init(topLeading: 50, topTrailing: 50)))
+            }
+            .background(
+                .linearGradient(stops: [.init(color: CFSharedColors.purple3.swiftUIColor, location: 0), .init(color: CFSharedColors.purple4.swiftUIColor, location: 1)], startPoint: .bottom, endPoint: .top)
+            )
+        }
+        
     }
     
 }
