@@ -18,7 +18,11 @@ protocol TabBarContainerCoordinating: Coordinator<TabBarCoordinatorResult> {
 
 class TabBarContainerCoordinator: Coordinator<TabBarCoordinatorResult>, TabBarContainerCoordinating {
     private let coordinatorFactory: CardFortressCoordinatorFactoryProtocol
-    private let containerTabBarController = UITabBarController()
+    private let containerTabBarController: UITabBarController = {
+        let tabbarController = UITabBarController()
+        tabbarController.tabBar.tintColor = CFColors.purple.color
+        return tabbarController
+    }()
     private let container: Container
     private let window: UIWindow?
     
@@ -29,8 +33,6 @@ class TabBarContainerCoordinator: Coordinator<TabBarCoordinatorResult>, TabBarCo
         self.window = window
         self.container = container
     }
-    
-    
     
     private var tabs: [Tab]  = []
     

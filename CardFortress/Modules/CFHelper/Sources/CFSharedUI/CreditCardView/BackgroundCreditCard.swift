@@ -11,8 +11,33 @@ import SwiftUI
 struct BackgroundCreditCard: View {
     
     let gradient: LinearGradient
+    let gradient2: LinearGradient = .linearGradient(stops: [.init(color: .red, location: 0), .init(color: .yellow, location: 1)], startPoint: .bottom, endPoint: .top)
+    let gradient3: LinearGradient = .linearGradient(stops: [.init(color: .red, location: 0), .init(color: .green, location: 1)], startPoint: .bottom, endPoint: .top)
     
     init(gradient: LinearGradient) {
+        self.gradient = gradient
+    }
+    
+    var body: some View {
+        ZStack {
+            BackgroundShape(gradient: gradient3)
+                .transformEffect(.init(scaleX: 1.2, y: 1.3))
+                .transformEffect(.init(translationX: -1, y: -64))
+            BackgroundShape(gradient: gradient2)
+                .transformEffect(.init(scaleX: 1.1, y: 1.2))
+                .transformEffect(.init(translationX: -1, y: -44))
+            BackgroundShape(gradient: gradient)
+        }
+        .clipped()
+    }
+}
+
+
+private struct BackgroundShape: View {
+    
+    let gradient: LinearGradient
+    
+    internal init(gradient: LinearGradient) {
         self.gradient = gradient
     }
     
