@@ -6,11 +6,12 @@
 //
 
 import SwiftUI
+import CFSharedResources
 
 struct OutlinedTextFieldStyle: TextFieldStyle {
     
     @State var icon: Image?
-    @State var color: Color = .white
+    @State var color: Color = CFSharedColors.purple1.swiftUIColor
     
     func _body(configuration: TextField<Self._Label>) -> some View {
         HStack {
