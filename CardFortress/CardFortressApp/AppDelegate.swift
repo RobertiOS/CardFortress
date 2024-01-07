@@ -6,7 +6,8 @@
 //
 
 import UIKit
-import Firebase
+import FirebaseCore
+import FirebaseAnalytics
 import LeakedViewControllerDetector
 
 @main
@@ -15,8 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
         LeakedViewControllerDetector.onDetect() { leakedViewController, leakedView, message in
+            if let leakedViewController {
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                  "EventType": "ViewController leaked",
+                  "View controller title": leakedViewController.title ?? "",
+                ])
+            }
+            
+            if let leakedView {
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                  "EventType": "View leaked",
+                ])
+            }
+            
             #if DEBUG
-            return false //show warning alert dialog
+            return true //show warning alert dialog
             #else
             //here you can log warning message to a server, e.g. Crashlytics
             return false //don't show warning to user
