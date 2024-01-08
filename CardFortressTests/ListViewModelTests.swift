@@ -56,7 +56,7 @@ final class ListViewModelTests: XCTestCase {
     func testAddCreditCard() {
         
         //given
-        let creditCard = CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
+        let creditCard = CreditCard(number: "123", cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
         
         //when
         let expectation = self.expectation(description: "add card")

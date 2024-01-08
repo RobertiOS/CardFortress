@@ -35,7 +35,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
     func test_editCreditCard() {
         // Given
         let creditCard: CreditCard = .make(
-            number: 1234,
+            number: "1234",
             date: "11/12",
             cardName: "test name",
             cardHolderName: "Juan"
@@ -45,7 +45,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
         XCTAssertEqual(viewModel.creditCardDate, "11/12")
-        XCTAssertEqual(viewModel.creditCardNumber, 1234)
+        XCTAssertEqual(viewModel.creditCardNumber, "1234")
         XCTAssertEqual(viewModel.creditCardName, "test name")
         // When
         
@@ -76,7 +76,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
 
         viewModel.creditCardHolderName = "holder name"
         viewModel.creditCardDate = "11/11"
-        viewModel.creditCardNumber = 1234
+        viewModel.creditCardNumber = "1234"
         viewModel.creditCardName = "name"
         
         // When

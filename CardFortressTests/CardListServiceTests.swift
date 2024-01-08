@@ -64,7 +64,7 @@ class CardListServiceTests: XCTestCase {
     
     func testAddCreditCards() {
         //given
-        let creditCard = CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
+        let creditCard = CreditCard(number: "123", cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
         let expectation = self.expectation(description: "Add credit card")
         
         cardListService.addCreditCardToSecureStore(creditCard)

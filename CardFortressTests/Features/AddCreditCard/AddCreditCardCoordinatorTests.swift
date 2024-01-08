@@ -51,7 +51,7 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
     
     func test_visionCoordinatorOnFinish() {
         //given
-        let creditCard: CreditCard = .init(number: 1234, cvv: 1234, date: "11/11", cardName: "SomeName", cardHolderName: "Juan")
+        let creditCard: CreditCard = .init(number: "1234", cvv: 1234, date: "11/11", cardName: "SomeName", cardHolderName: "Juan")
         let viewModel = coordinator.testHooks.addCreditCardVCViewModel
         //when
         coordinator.testHooks.startVisionKitCoordinator()
@@ -61,6 +61,6 @@ final class AddCreditCardCoordinatorTests: XCTestCase {
         XCTAssertEqual(viewModel.creditCardDate, "11/11")
         XCTAssertEqual(viewModel.creditCardName, "SomeName")
         XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
-        XCTAssertEqual(viewModel.creditCardNumber, 1234)
+        XCTAssertEqual(viewModel.creditCardNumber, "1234")
     }
 }

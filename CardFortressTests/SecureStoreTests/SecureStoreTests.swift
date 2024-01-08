@@ -54,7 +54,7 @@ final class SecureStoreTests: XCTestCase {
 
         let editedCreditCard = SecureStoreCreditCard(
             identifier: creditCard.identifier,
-            number: 123,
+            number: "123",
             cvv: 123,
             date: "11/22",
             cardName: "Visa",

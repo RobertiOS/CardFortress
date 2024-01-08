@@ -29,7 +29,7 @@ final class ImageParserTests: XCTestCase {
         let creditCard = await imageParser.mapUIImageToCreditCard(image: image)
         //then
         XCTAssertEqual(creditCard?.cardName, "ROBERTO CORRALES")
-        XCTAssertEqual(creditCard?.number, 4349121529668838)
+        XCTAssertEqual(creditCard?.number, "4349121529668838")
         XCTAssertEqual(creditCard?.date, "01/2025")
     }
     
