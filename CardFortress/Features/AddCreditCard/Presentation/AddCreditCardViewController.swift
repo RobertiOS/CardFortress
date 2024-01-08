@@ -281,7 +281,7 @@ final class AddCreditCardViewController: UIViewController {
         .receive(on: DispatchQueue.main)
         .sink { [weak self] creditCardName, creditCardDate, creditCardHolderName, creditCardNumber in
             self?.previewCreditCardView.viewModel.bankName = creditCardName ?? ""
-            self?.previewCreditCardView.viewModel.cardNumber = creditCardNumber ?? 0
+            self?.previewCreditCardView.viewModel.cardNumber = creditCardNumber ?? ""
             self?.previewCreditCardView.viewModel.date = creditCardDate ?? ""
             self?.previewCreditCardView.viewModel.cardHolderName = creditCardHolderName ?? ""
         }
@@ -320,10 +320,7 @@ final class AddCreditCardViewController: UIViewController {
     func textFieldDidChange(_ textField: UITextField) {
         switch textField {
         case creditCardNumberTextField.textField:
-            if let text = textField.text,
-               let cardNumberInt = Int(text) {
-                viewModel.creditCardNumber = cardNumberInt
-            }
+            viewModel.creditCardNumber = textField.text
         case expiryDateTextField.textField:
             viewModel.creditCardDate = textField.text
         case cardNameTextField.textField:

@@ -60,7 +60,7 @@ struct WidgetActionIntent: AppIntent, Identifiable  {
         case "CVV":
             value = String(creditCard?.cvv ?? 0)
         case "Number":
-            value = String(creditCard?.number ?? 0)
+            value = String(creditCard?.number ?? "")
         case "Date":
             value = creditCard?.date ?? ""
         default:

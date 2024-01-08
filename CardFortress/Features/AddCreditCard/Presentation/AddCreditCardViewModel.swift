@@ -40,7 +40,7 @@ extension AddCreditCardViewController {
         var creditCardName: String?
         
         @Published
-        var creditCardNumber: Int?
+        var creditCardNumber: String?
         
         @Published
         var creditCardDate: String?

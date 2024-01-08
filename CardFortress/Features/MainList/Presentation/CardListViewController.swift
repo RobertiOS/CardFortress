@@ -319,10 +319,6 @@ extension CardListViewController {
         var collectionView: UICollectionView {
             target.collectionView
         }
-        
-        func presentOptionsViewController() {
-            target.presentOptionsViewController(target.moreOptionsBarButton)
-        }
     
     }
     

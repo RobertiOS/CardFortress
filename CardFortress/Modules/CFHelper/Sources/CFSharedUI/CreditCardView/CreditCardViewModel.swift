@@ -13,7 +13,7 @@ import CFSharedResources
 final public class CreditCardViewModel: ObservableObject {
     //MARK: -  Public properties
     @Published public var cardHolderName: String
-    @Published public var cardNumber: Int {
+    @Published public var cardNumber: String {
         didSet {
             formatedCardNumber = getformatedTextTextForCreditCardNumber(cardNumber: cardNumber)
         }
@@ -31,7 +31,7 @@ final public class CreditCardViewModel: ObservableObject {
     
     public init(
         cardHolderName: String = "",
-        cardNumber: Int = 0,
+        cardNumber: String = "",
         date: String = "",
         bankName: String = "",
         backgroundColor: Color = .cfPurple,
@@ -49,9 +49,9 @@ final public class CreditCardViewModel: ObservableObject {
         updateCardImageType()
     }
     
-    private func getformatedTextTextForCreditCardNumber(cardNumber: Int) -> AttributedString {
+    private func getformatedTextTextForCreditCardNumber(cardNumber: String) -> AttributedString {
         var formatedText = ""
-        for (i, c) in "\(cardNumber)".enumerated() {
+        for (i, c) in cardNumber.enumerated() {
             if i > 0 && i % 4 == 0 {
                 formatedText += " "
             }
