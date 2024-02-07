@@ -14,7 +14,7 @@ public protocol SecureStoreQueryable: AnyObject {
 public final class CreditCardSSQueryable {
     
     public struct Constants {
-        public static let accessGroup = "group.robertios.CardFortress.sharedItems"
+        public static let accessGroup = "group.robertios.CF.sharedItems"
         public static let service = "com.robertios.cardFortress.creditCards"
     }
     
