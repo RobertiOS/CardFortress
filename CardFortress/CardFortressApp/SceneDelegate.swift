@@ -29,6 +29,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         appCoordinator?.start()
         window?.makeKeyAndVisible()
     }
+    
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        let url = URLContexts.first?.url
+        handleDeepLinks(url: url)
+    }
 
     func sceneDidDisconnect(_ scene: UIScene) {
         // Called as the scene is being released by the system.
@@ -58,7 +63,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // to restore the scene back to its current state.
         WidgetCenter.shared.reloadAllTimelines()
     }
-
-
 }
 
