@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Combine
 import Swinject
 
 final class CardFortressAppCoordinator: Coordinator<Void> {
@@ -15,21 +16,27 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
     private let container: Container
     private let coordinatorFactory: CardFortressCoordinatorFactoryProtocol
     private let authenticationAPI: AuthenticationAPI?
-
+    private var subscriptions = Set<AnyCancellable>()
+    private var loginCoordinator: AuthCoordinating!
+    private var tabBarCoordinator: TabBarContainerCoordinating!
+    
     // MARK: initialization
     
-    init(window: UIWindow?,
-         container: Container,
-         coordinatorFactory: CardFortressCoordinatorFactoryProtocol) {
+    init(
+        window: UIWindow?,
+        container: Container,
+        coordinatorFactory: CardFortressCoordinatorFactoryProtocol
+    ) {
         self.container = container
         self.coordinatorFactory = coordinatorFactory
         self.window = window
         self.authenticationAPI = container.resolve(AuthenticationAPI.self)
         super.init()
+        setUpSubscriptions()
     }
-    
+
     // MARK: Methods
-    
+
     override func start() {
         ///start login coordinator
         let authAPI = container.resolve(AuthenticationAPI.self)
@@ -40,37 +47,38 @@ final class CardFortressAppCoordinator: Coordinator<Void> {
             startLoginCoordinator()
         }
     }
-    
-    func startTabBarCoordinator() {
-        let coordinator = coordinatorFactory.makeTabBarCoordinator(window: window)
-        addChild(coordinator: coordinator)
 
-        coordinator.onFinish = { [weak self] result in
+    func startTabBarCoordinator() {
+        tabBarCoordinator = coordinatorFactory.makeTabBarCoordinator(window: window)
+        tabBarCoordinator.onFinish = { [weak self] result in
             switch result {
             case .signOut:
-                self?.startLoginCoordinator()
+                _ = self?.authenticationAPI?.signOut()
+                break
             }
         }
-
-        coordinator.start()
+        tabBarCoordinator.start()
     }
 
     func startLoginCoordinator() {
-        guard let coordinator = authenticationAPI?.coordinatorFactory.makeAuthCoordinator(window: window) else {
-            return
-            
-        }
-        addChild(coordinator: coordinator)
-        
-        coordinator.onFinish = { [weak self] result in
-            switch result {
-            case .success:
-                self?.startTabBarCoordinator()
-            case .failure(_):
-                return
+        loginCoordinator = authenticationAPI?.coordinatorFactory.makeAuthCoordinator(window: window)
+        loginCoordinator.start()
+    }
+    
+    func setUpSubscriptions() {
+        authenticationAPI?.isUserLoggedInPublisher
+            .removeDuplicates()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] isUserLoggedIn in
+                if isUserLoggedIn {
+                    self?.loginCoordinator = nil
+                    self?.startTabBarCoordinator()
+                } else {
+                    self?.tabBarCoordinator = nil
+                    self?.startLoginCoordinator()
+                }
             }
-        }
-        coordinator.start()
+            .store(in: &subscriptions)
     }
 }
 

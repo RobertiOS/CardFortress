@@ -117,6 +117,7 @@
 		26DF384629F0CC19007091C3 /* Swinject in Frameworks */ = {isa = PBXBuildFile; productRef = 26DF384529F0CC19007091C3 /* Swinject */; };
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */; };
+		26EEB09C2B79683900920421 /* SceneDelegate+DeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
@@ -284,6 +285,7 @@
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
 		26E7DAD92B0B1E1E00FADDE2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+DeepLinks.swift"; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
@@ -654,6 +656,7 @@
 				26DDC7752B2D577200913428 /* Presentation */,
 				26B7701629EC450200CC9FEB /* SceneDelegate.swift */,
 				26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */,
+				26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */,
 			);
 			path = CardFortressApp;
 			sourceTree = "<group>";
@@ -1124,6 +1127,7 @@
 				26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */,
 				265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */,
 				26921A4A2A65930900DA1313 /* VisionKitViewControllerProtocol.swift in Sources */,
+				26EEB09C2B79683900920421 /* SceneDelegate+DeepLinks.swift in Sources */,
 				26199F342B2EB9A100D0944E /* CardListAPI.swift in Sources */,
 				26199F2B2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift in Sources */,
 				262355DC2B0F0D1D00F6B83C /* Strings+Generated.swift in Sources */,

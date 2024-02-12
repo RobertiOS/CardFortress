@@ -7,6 +7,7 @@
 
 import Swinject
 import UIKit
+import Combine
 
 protocol AuthenticationAPI {
     /// Creates an account, if the account is created succesfully the new user is logged in
@@ -31,6 +32,7 @@ protocol AuthenticationAPI {
     
     /// Sign out from the current account
     /// - Returns: if the user is signed out successfully it returns sucess
+    @discardableResult
     func signOut() -> AuthenticationResult
     
     /// The user that is currently logged in
@@ -41,6 +43,8 @@ protocol AuthenticationAPI {
     func signInWithBiometrics() async -> AuthenticationResult
 
     var isUserLoggedIn: Bool { get }
+    
+    var isUserLoggedInPublisher: AnyPublisher<Bool, Never> { get }
     
     var signInWithBiometrics: Bool { get }
     
@@ -104,6 +108,12 @@ final class Authentication: AuthenticationAPI {
     let authDataSourceAPI: AuthDataSourceAPI
     let container: Container
     
+    private let isUserSignedInSubject: PassthroughSubject<Bool, Never> = .init()
+    
+    var isUserLoggedInPublisher: AnyPublisher<Bool, Never> {
+        isUserSignedInSubject.eraseToAnyPublisher()
+    }
+    
     lazy var coordinatorFactory: AuthenticationCoordinatorFactoryProtocol = {
         AuthenticationCoordinatorFactory(container: self.container, factory: AuthViewControllerFactory())
     }()
@@ -124,6 +134,9 @@ final class Authentication: AuthenticationAPI {
         withEmail: String,
         password: String
     ) async -> AuthenticationResult {
+        defer {
+            isUserSignedInSubject.send(isUserLoggedIn)
+        }
         do {
             _ = try await authDataSourceAPI.signIn(email: withEmail, password: password)
             /// store credentials on keychain if the user is logged-in successfully
@@ -140,8 +153,10 @@ final class Authentication: AuthenticationAPI {
     }
     
     func signInWithBiometrics() async -> AuthenticationResult {
+        defer {
+            isUserSignedInSubject.send(isUserLoggedIn)
+        }
         if signInWithBiometrics {
-            
             let result = await biometricsAPI.evaluate()
             switch result {
             case (false, .some(let error)):
@@ -185,6 +200,10 @@ final class Authentication: AuthenticationAPI {
     }
     
     func signOut() -> AuthenticationResult {
+        defer {
+            isUserSignedInSubject.send(isUserLoggedIn)
+        }
+        
         do {
             try authDataSourceAPI.signOut()
         } catch {

@@ -14,7 +14,7 @@ extension SceneDelegate {
     func getDIContainer() -> Container {
         
         let containerMock: Container = {
-            let container = Container()
+            let container = Container(defaultObjectScope: .container)
 
             container.register(CardListServiceProtocol.self) { r in
                 MockListService()
@@ -45,7 +45,7 @@ extension SceneDelegate {
         }()
         
         let appContainer: Container = {
-            let container = Container()
+            let container = Container(defaultObjectScope: .container)
 
             //MARK: Card list service
             
