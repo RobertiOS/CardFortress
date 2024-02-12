@@ -13,7 +13,10 @@
 - [ ] Feature flags
 - [ ] Analytics
 - [ ] Omboarding
-- [ ] Deeplinking
+- [x] Deeplinking
+
+### Suported deeplinks
+- Sign in: `xcrun simctl openurl booted "cardfortress://login?email=yourUser&password=yourPassword"`
 
 ## Todos
 - [ ] Improve UI, app colors, styles, icons, etc.
