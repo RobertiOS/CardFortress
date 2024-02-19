@@ -5,11 +5,11 @@
 //  Created by Roberto Corrales on 12/16/23.
 //
 
-import Foundation
+import UIKit
 import Swinject
 
 protocol CardListAPI {
-    var coordinatorFactory: CardListCoordinatorFactoryProtocol { get }
+    func makeMainListCoordinator(tabBarItem: UITabBarItem) -> CardListCoordinating
 }
 
 final class CardListAPIImpl: CardListAPI {
@@ -21,6 +21,10 @@ final class CardListAPIImpl: CardListAPI {
         self.container = container
         
         self.coordinatorFactory = CardListCoordinatorFactory(container: container)
+    }
+    
+    public func makeMainListCoordinator(tabBarItem: UITabBarItem) -> CardListCoordinating {
+        coordinatorFactory.makeMainListCoordinator(tabBarItem: tabBarItem)
     }
     
 }

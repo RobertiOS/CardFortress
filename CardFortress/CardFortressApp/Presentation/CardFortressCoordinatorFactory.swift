@@ -31,7 +31,7 @@ final class CardFortressCoordinatorFactory: CardFortressCoordinatorFactoryProtoc
     
     func makeMainListCoordinator<T: CardListCoordinatorDelegate>(delegate: T) -> TabBarCoordinatorProtocol {
         let cardListAPI = container.resolve(CardListAPI.self)!
-        let coordinator = cardListAPI.coordinatorFactory.makeMainListCoordinator(tabBarItem: .init(tabBarIndex: .main)) as! CardListCoordinator
+        let coordinator = cardListAPI.makeMainListCoordinator(tabBarItem: .init(tabBarIndex: .main)) as! CardListCoordinator
         coordinator.delegate = delegate
         return coordinator
     }
