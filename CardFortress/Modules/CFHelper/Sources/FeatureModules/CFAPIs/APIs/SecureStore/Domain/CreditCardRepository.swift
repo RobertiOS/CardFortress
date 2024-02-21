@@ -15,6 +15,15 @@ public protocol CreditCardRepository {
     /// Adds a credit card to the  the repository
     /// - Parameter card: the card to be added
     /// - Returns: returns an secure store result
+    ///
+    @discardableResult
+    /// Removes a credit card
+    /// - Parameter id: The id of the credit card
+    /// - Returns: a result indicating if the card was deleted succesfuly
+    func removeCreditCard(id: UUID) async throws -> CreditCardsRepositoryResult
+    /// Adds a credit card to the  the repository
+    /// - Parameter card: the card to be added
+    /// - Returns: returns an secure store result
     @discardableResult
     func addCreditCard(_ creditCard: SecureStoreCreditCard) async throws -> CreditCardsRepositoryResult
     /// Returns a credit card  from the repository

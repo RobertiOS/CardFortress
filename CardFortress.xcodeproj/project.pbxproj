@@ -118,6 +118,7 @@
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */; };
 		26EEB09C2B79683900920421 /* SceneDelegate+DeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */; };
+		26F030C12B83FD8C00785452 /* GetCreditCardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
 		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
@@ -286,6 +287,7 @@
 		26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
 		26E7DAD92B0B1E1E00FADDE2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+DeepLinks.swift"; sourceTree = "<group>"; };
+		26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetCreditCardsUseCase.swift; path = UseCases/GetCreditCardsUseCase.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
@@ -818,12 +820,10 @@
 		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
-				26199F312B2EB95100D0944E /* CardListViewControllerFactory.swift */,
-				26DDC77F2B2DF8F200913428 /* CardListCoordinatorFactory.swift */,
+				26F030BF2B83FD5A00785452 /* Domain */,
 				26F5B4CD29FEBC6F002D224D /* Service */,
 				26E7DAC82B06BEF100FADDE2 /* Presentation */,
 				26199F332B2EB9A100D0944E /* CardListAPI.swift */,
-				2679066C2B4229A800212673 /* OptionsViewController.swift */,
 			);
 			path = MainList;
 			sourceTree = "<group>";
@@ -831,6 +831,9 @@
 		26E7DAC82B06BEF100FADDE2 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				2679066C2B4229A800212673 /* OptionsViewController.swift */,
+				26199F312B2EB95100D0944E /* CardListViewControllerFactory.swift */,
+				26DDC77F2B2DF8F200913428 /* CardListCoordinatorFactory.swift */,
 				26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */,
 				26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */,
 				26B7701829EC450200CC9FEB /* CardListViewController.swift */,
@@ -852,6 +855,14 @@
 				2692E7B72B1D18760002C5BB /* UIHostingControllerWrapper.swift */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		26F030BF2B83FD5A00785452 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		26F0945629F7979C009B0494 /* Coordinator */ = {
@@ -1190,6 +1201,7 @@
 				266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */,
 				26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */,
 				26921A392A64566D00DA1313 /* CFTextField.swift in Sources */,
+				26F030C12B83FD8C00785452 /* GetCreditCardsUseCase.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
 				265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
