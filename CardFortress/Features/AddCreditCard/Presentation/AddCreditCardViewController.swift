@@ -348,7 +348,7 @@ extension AddCreditCardViewController: UITextFieldDelegate {
             textField.text = currentText.grouping(every: 2, with: "/")
             return false
         default:
-            return false
+            return true
         }
     }
 }
