@@ -22,7 +22,7 @@ final class CardListViewControllerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewModel = MockListViewModel(cardListService: MockListService())
+        viewModel = MockListViewModel()
         viewController = CardListViewController(viewModel: viewModel)
         delegate = MockDelegate()
         viewController.delegate = delegate
@@ -47,7 +47,7 @@ final class CardListViewControllerTests: XCTestCase {
     
     func testUpdate_CollectionViewDataSource() {
         // Given
-        let viewModel = MockListViewModel(cardListService: MockListService())
+        let viewModel = MockListViewModel()
 
         let cards = [
             CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
@@ -88,7 +88,75 @@ final class CardListViewControllerTests: XCTestCase {
          )
          
          XCTAssertNotNil(collectionViewCell)
+    }
+    
+    func test_loadingState() {
+        // Given
+        let viewModel = MockListViewModel()
         
+        let cards = [
+            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+        ]
+
+        // When
+        
+        let viewController = CardListViewController(viewModel: viewModel)
+        viewController.loadViewIfNeeded()
+        
+        // Then
+        let exp = self.expectation(description: "wait for loading to emit")
+        viewModel.isLoadingPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { _ in
+                exp.fulfill()
+            }.store(in: &cancellables)
+        viewModel.isLoadingSubject.send(true)
+        waitForExpectations(timeout: .defaultWait)
+        
+        
+        //local variables to validate the behavior
+        
+        let dataSource = viewController.testHooks.dataSource
+        let collectionView = viewController.testHooks.collectionView
+        
+        // validate that we have 3 place holder cells
+        
+        XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 3)
+        
+        let placeHolderCell = dataSource?.collectionView(
+             collectionView,
+             cellForItemAt: IndexPath(
+                 item: 0,
+                 section: 0
+             )
+         )
+        XCTAssertEqual(dataSource?.snapshot().sectionIdentifiers.count, 1)
+        XCTAssertTrue(placeHolderCell?.contentConfiguration is UIHostingConfiguration<CreditCardLoadingView, EmptyView>)
+        
+        // When
+        let expectation = self.expectation(description: "Items should be emited")
+        viewModel.itemsPublisher
+            .receive(on: DispatchQueue.main)
+            .sink { completion in
+                
+            } receiveValue: { _ in
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+        //update credit cards
+        viewModel.cards = cards
+        waitForExpectations(timeout: .defaultWait)
+        
+        let ItemCell = dataSource?.collectionView(
+             collectionView,
+             cellForItemAt: IndexPath(
+                 item: 0,
+                 section: 0
+             )
+         )
+        XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 1)
+        XCTAssertEqual(dataSource?.snapshot().sectionIdentifiers.count, 1)
+        XCTAssertTrue(ItemCell?.contentConfiguration is UIHostingConfiguration<CreditCardView<EmptyView>, EmptyView>)
     }
     
     func testActionTitle() {
