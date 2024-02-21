@@ -10,6 +10,17 @@ import Combine
 import Foundation
 
 final class MockListViewModel: ListViewModelProtocol {
+    let isLoadingSubject = PassthroughSubject<Bool, Never>()
+    let itemsSubject = PassthroughSubject<[CreditCard], Error>()
+    
+    var isLoadingPublisher: AnyPublisher<Bool, Never> {
+        isLoadingSubject.eraseToAnyPublisher()
+    }
+    
+    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
+        itemsSubject.eraseToAnyPublisher()
+    }
+    
     var deleteCardsCalled = false
     func deleteAllCards() {
         deleteCardsCalled = true
@@ -25,18 +36,8 @@ final class MockListViewModel: ListViewModelProtocol {
         cards.append(creditCard)
     }
 
-    var cardListService: CardFortress.CardListServiceProtocol
+    var cardListService: CardListServiceProtocol = MockListService()
     
-    init(cardListService: CardFortress.CardListServiceProtocol) {
-        self.cardListService = cardListService
-    }
-
-    let itemsSubject = PassthroughSubject<[CreditCard], Error>()
-
-    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
-        itemsSubject.eraseToAnyPublisher()
-    }
-
     func fetchCreditCards() {
         
         itemsSubject.send(cards)
