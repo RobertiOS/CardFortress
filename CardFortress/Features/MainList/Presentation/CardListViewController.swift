@@ -25,7 +25,7 @@ final class CardListViewController: UIViewController {
         return collectionView
     }()
     
-    private var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>?
+    private var dataSource: UICollectionViewDiffableDataSource<Section, Item>?
 
     private lazy var moreOptionsBarButton: UIBarButtonItem = {
         let button = UIBarButtonItem()
@@ -104,9 +104,24 @@ final class CardListViewController: UIViewController {
                     self?.presentAlert(with: error)
                 }
             } receiveValue: { [weak self] items in
-                self?.applySnapshot(items: items)
+                
+                debugPrint("got items")
+                self?.applySnapshot(items: items, isLoading: false)
             }
             .store(in: &cancellables)
+        
+        
+        viewModel.isLoadingPublisher
+            .receive(on: RunLoop.main)
+            .sink(receiveCompletion: { _ in
+                
+            }, receiveValue: { [weak self] isLoading in
+                
+                debugPrint("loading ...")
+                self?.applySnapshot(items: [], isLoading: isLoading)
+            })
+            .store(in: &cancellables)
+        
     }
     
     //MARK: Actions
@@ -181,7 +196,8 @@ final class CardListViewController: UIViewController {
     
     private func createContextualAction(for action: Action, indexPath: IndexPath) -> UIContextualAction {
         let contextualAction = UIContextualAction(style: action.style, title: action.title) { [weak self] _, _, completion in
-            guard let creditCard = self?.dataSource?.itemIdentifier(for: indexPath) else {
+            guard let item = self?.dataSource?.itemIdentifier(for: indexPath),
+                  case .creditCard(let creditCard) = item else {
                 completion(false)
                 return
             }
@@ -203,7 +219,22 @@ final class CardListViewController: UIViewController {
     
     enum Section {
         case creditCard
-        case other
+        case loading
+    }
+    
+    enum Item: Hashable {
+        case creditCard(CreditCard)
+        case placeHolder(UUID)
+
+        func hash(into hasher: inout Hasher) {
+            switch self {
+            case .creditCard(let card):
+                hasher.combine("creditCard")
+                hasher.combine(card.identifier)
+            case .placeHolder(let id):
+                hasher.combine(id)
+            }
+        }
     }
     
     let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, CreditCard> { cell, _, creditCard in
@@ -219,22 +250,41 @@ final class CardListViewController: UIViewController {
         }
     }
     
-    private func configureDataSource() {
-        dataSource = UICollectionViewDiffableDataSource<Section, CreditCard>(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
-            guard let self else { return nil }
-            
-            return collectionView.dequeueConfiguredReusableCell(
-                using: self.creditCardCellRegistration,
-                for: indexPath,
-                item: item
-            )
+    let placeHolderCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, Any> { cell, _, _ in
+        cell.contentConfiguration = UIHostingConfiguration {
+            CreditCardLoadingView()
         }
     }
     
-    private func applySnapshot(items: [CreditCard]) {
-        var snapshot = NSDiffableDataSourceSnapshot<Section, CreditCard>()
-        snapshot.appendSections([.creditCard])
-        snapshot.appendItems(items, toSection: .creditCard)
+    private func configureDataSource() {
+        dataSource = UICollectionViewDiffableDataSource<Section, Item>(collectionView: collectionView) { [weak self] (collectionView, indexPath, item) -> UICollectionViewCell? in
+            guard let self else { return nil }
+            switch item {
+            case .creditCard(let creditCard):
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: self.creditCardCellRegistration,
+                    for: indexPath,
+                    item: creditCard
+                )
+            case .placeHolder:
+                return collectionView.dequeueConfiguredReusableCell(
+                    using: self.placeHolderCellRegistration,
+                    for: indexPath,
+                    item: nil
+                )
+            }
+        }
+    }
+    
+    private func applySnapshot(items: [CreditCard], isLoading: Bool) {
+        var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
+        if isLoading {
+            snapshot.appendSections([.loading])
+            snapshot.appendItems([.placeHolder(UUID()), .placeHolder(UUID()), .placeHolder(UUID())], toSection: .loading)
+        } else {
+            snapshot.appendSections([.creditCard])
+            snapshot.appendItems(items.map { .creditCard($0)}, toSection: .creditCard)
+        }
         dataSource?.apply(snapshot, animatingDifferences: true)
     }
 
@@ -246,7 +296,8 @@ final class CardListViewController: UIViewController {
 
 extension CardListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let creditCard = dataSource?.itemIdentifier(for: indexPath) else { return }
+        guard let creditCard = dataSource?.itemIdentifier(for: indexPath),
+              case .creditCard(let creditCard) = creditCard else { return }
         delegate?.editCreditCard(creditCard: creditCard)
     }
 }
@@ -257,11 +308,11 @@ extension CardListViewController: UICollectionViewDelegate {
 extension CardListViewController {
     struct TestHooks {
         let target: CardListViewController
-        var snapshot: NSDiffableDataSourceSnapshot<Section, CreditCard>? {
+        var snapshot: NSDiffableDataSourceSnapshot<Section, Item>? {
             target.dataSource?.snapshot()
         }
         
-        var dataSource: UICollectionViewDiffableDataSource<Section, CreditCard>? {
+        var dataSource: UICollectionViewDiffableDataSource<Section, Item>? {
             target.dataSource
         }
         

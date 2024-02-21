@@ -12,6 +12,7 @@ protocol ListViewModelProtocol: AnyObject {
     var itemsPublisher: AnyPublisher<[CreditCard], Error> { get }
     func fetchCreditCards()
     var cardListService: CardListServiceProtocol { get set }
+    var isLoadingPublisher: AnyPublisher<Bool, Never> { get }
     /// this function can add or update a card
     func addCreditCard(_ creditCard: CreditCard)
     func deleteAllCards()
@@ -21,6 +22,10 @@ final class ListViewModel: ListViewModelProtocol {
     private var subscriptions = Set<AnyCancellable>()
     var cardListService: CardListServiceProtocol
     private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
+    private let isLoadingSubject = PassthroughSubject<Bool, Never>()
+    var isLoadingPublisher: AnyPublisher<Bool, Never> {
+        isLoadingSubject.eraseToAnyPublisher()
+    }
     
     init(cardListService: CardListServiceProtocol) {
         self.cardListService = cardListService
@@ -51,6 +56,7 @@ final class ListViewModel: ListViewModelProtocol {
     }
 
     func fetchCreditCards() {
+        isLoadingSubject.send(true)
         cardListService.getCreditCardsFromSecureStore()
             .receive(on: DispatchQueue.main)
             .sink { [weak self] completion in
