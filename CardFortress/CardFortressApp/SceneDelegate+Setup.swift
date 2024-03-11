@@ -51,7 +51,7 @@ extension SceneDelegate {
             
             let secureStore = SecureStore()
             container.register(CardListServiceProtocol.self) { r in
-                CardListService(secureStore: secureStore)
+                CardListService(secureStore: FireBaseRepository())
             }
             
             let authDataSource = AuthDataSource()

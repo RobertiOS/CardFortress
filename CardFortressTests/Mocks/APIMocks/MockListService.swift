@@ -9,6 +9,12 @@ import Combine
 import Foundation
 
 final class MockListService: CardListServiceProtocol {
+    func deleteCreditCardFromSecureStore(creditCardIdenfitifer: UUID) -> Future<[CreditCard], any Error> {
+        return Future { [unowned self] promise in
+            delete ? promise(.success([])) :promise(.success(cards))
+        }
+    }
+    
     var delete = false
     var cards = [
         CreditCard(number: "123", cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Roberto"),

@@ -8,30 +8,39 @@
 import Foundation
 import FirebaseFirestore
 
-final class FireBaseRepository: CreditCardRepository {
+final public class FireBaseRepository: CreditCardRepository {
+    
+    public init() {}
     
     private let db = Firestore.firestore()
-    private let decoder = JSONDecoder()
     
-    func removeAllCreditCards() async throws {
+    public func removeAllCreditCards() async throws {
         
     }
     
-    func removeCreditCard(id: UUID) async throws {
-        
+    public func removeCreditCard(id: UUID) async throws {
+        do {
+          try await getCreditCardsCollection()
+                .document(id.uuidString)
+                .delete()
+        } catch {
+            throw NSError(domain: "FireBaseRepository", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error while deleting credit card"])
+        }
     }
     
-    func addCreditCard(_ creditCard: DomainCreditCard) async throws {
+    public func addCreditCard(_ creditCard: DomainCreditCard) async throws {
         
         do {
             try await getCreditCardsCollection()
                 .document(creditCard.identifier.uuidString)
-                .setData(["number": creditCard.number,
+                .setData(["identifier" : creditCard.identifier.uuidString,
+                          "number": creditCard.number,
                           "cvv": creditCard.cvv,
                           "date": creditCard.date,
                           "cardName": creditCard.cardName,
                           "cardHolderName": creditCard.cardHolderName,
-                          "notes": creditCard.notes,],
+                          "notes": creditCard.notes,
+                          "isFavorite" : false],
                          merge: true)
             /// merge: true in case the document already exitsts
         } catch {
@@ -39,7 +48,7 @@ final class FireBaseRepository: CreditCardRepository {
         }
     }
     
-    func getCreditCard(identifier: UUID) async throws -> DomainCreditCard {
+    public func getCreditCard(identifier: UUID) async throws -> DomainCreditCard {
         do {
             return try await getCreditCardsCollection()
                 .document(identifier.uuidString)
@@ -51,11 +60,13 @@ final class FireBaseRepository: CreditCardRepository {
         }
     }
     
-    func getAllCreditCards() async throws -> [DomainCreditCard] {
+    public func getAllCreditCards() async throws -> [DomainCreditCard] {
         do {
             let creditCardsDTOs = try await getCreditCardsCollection()
                 .getDocuments(source: .default)
-                .documents.map( { try $0.data(as: FireBaseCreditCardDTO.self)})
+                .documents.map( {
+                        return try $0.data(as: FireBaseCreditCardDTO.self)
+                })
             
             return creditCardsDTOs.map { $0.toDomain() }
         } catch {
@@ -63,7 +74,7 @@ final class FireBaseRepository: CreditCardRepository {
         }
     }
     
-    func getFavoriteCreditCard() async throws -> DomainCreditCard? {
+    public func getFavoriteCreditCard() async throws -> DomainCreditCard? {
         do {
             return try await getCreditCardsCollection()
                 .whereField("isFavorite", isEqualTo: true)

@@ -15,6 +15,7 @@ protocol ListViewModelProtocol: AnyObject {
     var isLoadingPublisher: AnyPublisher<Bool, Never> { get }
     /// this function can add or update a card
     func addCreditCard(_ creditCard: CreditCard)
+    func deleteCreditCard(_ creditCardIdentifier: UUID)
     func deleteAllCards()
 }
 
@@ -78,6 +79,19 @@ final class ListViewModel: ListViewModelProtocol {
                 }
             } receiveValue: { [weak self] status in
                 self?.itemsSubject.send([])
+            }
+            .store(in: &subscriptions)
+    }
+    
+    func deleteCreditCard(_ creditCardIdentifier: UUID) {
+        cardListService.deleteCreditCardFromSecureStore(creditCardIdenfitifer: creditCardIdentifier)
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] completion in
+                if case .failure(let error) = completion {
+                    self?.itemsSubject.send(completion: .failure(error))
+                }
+            } receiveValue: { [weak self] cards in
+                self?.itemsSubject.send(cards)
             }
             .store(in: &subscriptions)
     }

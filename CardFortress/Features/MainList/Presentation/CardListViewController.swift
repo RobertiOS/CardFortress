@@ -205,7 +205,7 @@ final class CardListViewController: UIViewController {
                 var result: CreditCardsOperationResult?
                 switch action {
                 case .delete:
-                    result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
+                    self?.viewModel.deleteCreditCard(creditCard.identifier)
                 case .edit:
                     result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
                 }

@@ -13,6 +13,7 @@ protocol CardListServiceProtocol {
     func getCreditCardsFromSecureStore() -> Future<[CreditCard], Error>
     func addCreditCardToSecureStore(_ creditCard: CreditCard) -> Future<CardListServiceResult, Error>
     func deleteAllCreditCardsFromSecureStore() -> Future<CardListServiceResult, Error>
+    func deleteCreditCardFromSecureStore(creditCardIdenfitifer: UUID) -> Future<[CreditCard], Error>
 }
 
 enum CardListServiceResult {
@@ -38,9 +39,11 @@ enum CardListServiceResult {
 
 final class CardListService: CardListServiceProtocol {
 
-    private let secureStore: SecureStoreAPI
+    private let secureStore: CreditCardRepository
+    
+    private var subscriptions = Set<AnyCancellable>()
 
-    init(secureStore: SecureStoreAPI) {
+    init(secureStore: CreditCardRepository) {
         self.secureStore = secureStore
     }
     
@@ -50,8 +53,19 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) {
                 do {
                     let secureStoreCD: SecureStoreCreditCard = .init(creditCard: creditCard)
-                    let result = try await self.secureStore.addCreditCardToKeychain(secureStoreCD)
-                    promise(.success(.init(secureStoreResult: result)))
+                    try await self.secureStore.addCreditCard(
+                        .init(
+                            identifier: secureStoreCD.identifier,
+                            number: secureStoreCD.number,
+                            cvv: secureStoreCD.cvv,
+                            date: secureStoreCD.date,
+                            cardName: secureStoreCD.cardName,
+                            cardHolderName: secureStoreCD.cardHolderName,
+                            notes: "",
+                            isFavorite: false
+                        )
+                    )
+                    promise(.success(.addSuccess))
                 } catch {
                     promise(.failure(error))
                 }
@@ -64,8 +78,15 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
-                    let creditCards: [CreditCard] = try await self.secureStore.getAllCreditCardsFromKeychain().map {
-                        .init(creditCard: $0)
+                    let creditCards: [CreditCard] = try await self.secureStore.getAllCreditCards().map {
+                        .init(
+                            identifier: $0.identifier,
+                            number: $0.number,
+                            cvv: $0.cvv,
+                            date: $0.date,
+                            cardName: $0.cardName,
+                            cardHolderName: $0.cardHolderName
+                        )
                     }
                     promise(.success(creditCards))
                 } catch {
@@ -80,8 +101,24 @@ final class CardListService: CardListServiceProtocol {
             Task(priority: .userInitiated) { [weak self] in
                 guard let self else { return }
                 do {
-                    let result = try await self.secureStore.removeAllCreditCards()
-                    promise(.success(.init(secureStoreResult: result)))
+                    try await self.secureStore.removeAllCreditCards()
+                    promise(.success(.addSuccess))
+                } catch {
+                    promise(.failure(error))
+                }
+            }
+        }
+    }
+    
+    func deleteCreditCardFromSecureStore(creditCardIdenfitifer: UUID) -> Future<[CreditCard], Error> {
+        Future { promise in
+            Task(priority: .userInitiated) { [weak self] in
+                guard let self else { return }
+                do {
+                    try await self.secureStore.removeCreditCard(id: creditCardIdenfitifer)
+                    getCreditCardsFromSecureStore().sink(receiveCompletion: { _ in }) { reditCards in
+                        promise(.success(creditCards))
+                    }.store(in: &subscriptions)
                 } catch {
                     promise(.failure(error))
                 }
