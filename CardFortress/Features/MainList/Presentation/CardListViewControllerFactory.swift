@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CFDomain
 import Swinject
 
 protocol CardListViewControllerFactoryProtocol {
@@ -20,10 +21,22 @@ final class CardListViewControllerFactory: CardListViewControllerFactoryProtocol
         self.container = container
     }
     
-    func makeMainListViewController<T: CardListViewControllerDelegate>(delegate: T) -> CardListViewController {
-        guard let service = container.resolve(CardListServiceProtocol.self) else { fatalError("Service must be registered") }
-        let listViewModel = ListViewModel(cardListService: service)
-        let viewcontroller = CardListViewController(viewModel: listViewModel)
+    func makeMainListViewController<T: CardListViewControllerDelegate>(
+        delegate: T
+    ) -> CardListViewController {
+        guard let getCreditCardsUseCase = container.resolve(GetCreditCardsUseCaseProtocol.self),
+              let removeCreditCardsUseCase = container.resolve(RemoveCreditCardUseCaseProtocol.self) else {
+            preconditionFailure(
+                "Use Cases not registered"
+            )
+        }
+        let listViewModel = ListViewModel(
+            getCreditCardsUseCase: getCreditCardsUseCase,
+            removeCreditCardUseCase: removeCreditCardsUseCase
+        )
+        let viewcontroller = CardListViewController(
+            viewModel: listViewModel
+        )
         viewcontroller.delegate = delegate
         return viewcontroller
         

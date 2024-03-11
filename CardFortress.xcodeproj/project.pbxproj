@@ -44,7 +44,6 @@
 		265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */; };
 		265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */; };
 		265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
-		265DC0F12AAE31D800F52769 /* MockListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FDD2A0770A400936748 /* MockListService.swift */; };
 		265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */; };
 		265DC0F62AAE393300F52769 /* TimeIntervalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DC0F42AAE38F300F52769 /* TimeIntervalExtensions.swift */; };
@@ -69,6 +68,10 @@
 		267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBE2AF43B510062FA11 /* CFSharedUI */; };
 		267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FC02AF44DCB0062FA11 /* CFSharedResources */; };
 		2688466A2B9F5EB700D94D97 /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 268846692B9F5EB700D94D97 /* CFFireBase */; };
+		2688466C2B9F9DCD00D94D97 /* CFDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 2688466B2B9F9DCD00D94D97 /* CFDomain */; };
+		2688466E2B9FA09F00D94D97 /* MockSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2688466D2B9FA09F00D94D97 /* MockSupport */; };
+		268846722B9FA5C300D94D97 /* CFDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 268846712B9FA5C300D94D97 /* CFDomain */; };
+		268846762B9FA66900D94D97 /* MockSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 268846752B9FA66900D94D97 /* MockSupport */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */; };
 		26921A392A64566D00DA1313 /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A382A64566D00DA1313 /* CFTextField.swift */; };
@@ -92,6 +95,8 @@
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
 		26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */; };
 		26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B38C2429ECF9EC00D0CCD8 /* Localizable.strings */; };
+		26B52C472B9FAC300036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C462B9FAC300036171B /* CFFireBase */; };
+		26B52C492B9FAD9B0036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C482B9FAD9B0036171B /* CFFireBase */; };
 		26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701429EC450200CC9FEB /* AppDelegate.swift */; };
 		26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701629EC450200CC9FEB /* SceneDelegate.swift */; };
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
@@ -116,10 +121,8 @@
 		26DF384829F0D4BA007091C3 /* SceneDelegate+Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */; };
 		26E3248B2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */; };
 		26EEB09C2B79683900920421 /* SceneDelegate+DeepLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */; };
-		26F030C12B83FD8C00785452 /* GetCreditCardsUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */; };
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
-		26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BC29FDA8B7002D224D /* CardListService.swift */; };
 		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
 		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
 		26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4D029FEBD33002D224D /* CreditCard.swift */; };
@@ -231,7 +234,6 @@
 		266F370F2AA5806600C253A3 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
 		2679066C2B4229A800212673 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		267F0FB32AF438BB0062FA11 /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
-		26888FDD2A0770A400936748 /* MockListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListService.swift; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
 		268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureUserDataTests.swift; sourceTree = "<group>"; };
 		26921A382A64566D00DA1313 /* CFTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CFTextField.swift; sourceTree = "<group>"; };
@@ -285,10 +287,8 @@
 		26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
 		26E7DAD92B0B1E1E00FADDE2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+DeepLinks.swift"; sourceTree = "<group>"; };
-		26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GetCreditCardsUseCase.swift; path = UseCases/GetCreditCardsUseCase.swift; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
-		26F5B4BC29FDA8B7002D224D /* CardListService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListService.swift; sourceTree = "<group>"; };
 		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
 		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
 		26F5B4D029FEBD33002D224D /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
@@ -315,10 +315,12 @@
 			files = (
 				26F926CD2B21823C000943BE /* LeakedViewControllerDetector in Frameworks */,
 				267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */,
+				2688466E2B9FA09F00D94D97 /* MockSupport in Frameworks */,
 				267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
 				2688466A2B9F5EB700D94D97 /* CFFireBase in Frameworks */,
 				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
+				2688466C2B9F9DCD00D94D97 /* CFDomain in Frameworks */,
 				267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
 			);
@@ -328,6 +330,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				268846722B9FA5C300D94D97 /* CFDomain in Frameworks */,
+				26B52C472B9FAC300036171B /* CFFireBase in Frameworks */,
+				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
 				267F0FBD2AF43B510062FA11 /* CFAPIs in Frameworks */,
 			);
@@ -345,6 +350,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				267F0FBB2AF43AFE0062FA11 /* CFSharedUI in Frameworks */,
+				26B52C492B9FAD9B0036171B /* CFFireBase in Frameworks */,
 				267F0FB92AF43AFE0062FA11 /* CFAPIs in Frameworks */,
 				26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */,
 				26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */,
@@ -452,7 +458,6 @@
 				26199F292B2EAE2C00D0944E /* Authentication */,
 				265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */,
 				26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */,
-				26888FDD2A0770A400936748 /* MockListService.swift */,
 				26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */,
 				265DC0FD2AAE826C00F52769 /* AuthDataSourceAPIMock.swift */,
 				265DC1032AAE896800F52769 /* SecureUserDataAPIMock.swift */,
@@ -816,8 +821,6 @@
 		26DF384929F0EA9B007091C3 /* MainList */ = {
 			isa = PBXGroup;
 			children = (
-				26F030BF2B83FD5A00785452 /* Domain */,
-				26F5B4CD29FEBC6F002D224D /* Service */,
 				26E7DAC82B06BEF100FADDE2 /* Presentation */,
 				26199F332B2EB9A100D0944E /* CardListAPI.swift */,
 			);
@@ -853,14 +856,6 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
-		26F030BF2B83FD5A00785452 /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				26F030C02B83FD8C00785452 /* GetCreditCardsUseCase.swift */,
-			);
-			path = Domain;
-			sourceTree = "<group>";
-		};
 		26F0945629F7979C009B0494 /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,14 +869,6 @@
 			children = (
 			);
 			name = Packages;
-			sourceTree = "<group>";
-		};
-		26F5B4CD29FEBC6F002D224D /* Service */ = {
-			isa = PBXGroup;
-			children = (
-				26F5B4BC29FDA8B7002D224D /* CardListService.swift */,
-			);
-			path = Service;
 			sourceTree = "<group>";
 		};
 		26F5B4D229FEBD3A002D224D /* Models */ = {
@@ -963,6 +950,8 @@
 				267F0FC02AF44DCB0062FA11 /* CFSharedResources */,
 				26F926CC2B21823C000943BE /* LeakedViewControllerDetector */,
 				268846692B9F5EB700D94D97 /* CFFireBase */,
+				2688466B2B9F9DCD00D94D97 /* CFDomain */,
+				2688466D2B9FA09F00D94D97 /* MockSupport */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -985,6 +974,9 @@
 			packageProductDependencies = (
 				267F0FBC2AF43B510062FA11 /* CFAPIs */,
 				267F0FBE2AF43B510062FA11 /* CFSharedUI */,
+				268846712B9FA5C300D94D97 /* CFDomain */,
+				268846752B9FA66900D94D97 /* MockSupport */,
+				26B52C462B9FAC300036171B /* CFFireBase */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -1026,6 +1018,7 @@
 			packageProductDependencies = (
 				267F0FB82AF43AFE0062FA11 /* CFAPIs */,
 				267F0FBA2AF43AFE0062FA11 /* CFSharedUI */,
+				26B52C482B9FAD9B0036171B /* CFFireBase */,
 			);
 			productName = CardFortressWidgetExtension;
 			productReference = 26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */;
@@ -1039,7 +1032,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1410;
-				LastUpgradeCheck = 1410;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					26B7701029EC450200CC9FEB = {
 						CreatedOnToolsVersion = 14.1;
@@ -1145,7 +1138,6 @@
 				26B381B729EC581D00D0CCD8 /* CardFortressAppCoordinator.swift in Sources */,
 				261EA5862A364C5C00367CC4 /* UITabBarItem+Extensions.swift in Sources */,
 				263617D32A3FA4FB002E7E9E /* ImageParser.swift in Sources */,
-				265DC0F12AAE31D800F52769 /* MockListService.swift in Sources */,
 				26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */,
 				26F81E252AA6DACA00E6E53B /* SecureUserDataAPI.swift in Sources */,
 				26DDC7862B2DFCFB00913428 /* AddCreditCardCoordinatorFactory.swift in Sources */,
@@ -1168,7 +1160,6 @@
 				261B61C82A6CF1D8007F69CF /* TextFieldStyles.swift in Sources */,
 				261EA57B2A3589CC00367CC4 /* AddCreditCardCoordinator.swift in Sources */,
 				26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */,
-				26F5B4BD29FDA8B7002D224D /* CardListService.swift in Sources */,
 				26D09A972A69915A00B9D885 /* LoginViewModel.swift in Sources */,
 				26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */,
 				266EEC9F2A89431A007F5427 /* DataStorageAPI.swift in Sources */,
@@ -1194,7 +1185,6 @@
 				266EDAB42A8846BA007F5427 /* CreateUserView.swift in Sources */,
 				26360D412A3DF7E9002E7E9E /* VisionKitCoordinator.swift in Sources */,
 				26921A392A64566D00DA1313 /* CFTextField.swift in Sources */,
-				26F030C12B83FD8C00785452 /* GetCreditCardsUseCase.swift in Sources */,
 				26A39C2A2A2C3ECE001C3FAF /* SecureStoreCreditCard+Extensions.swift in Sources */,
 				265DC0FC2AAE7FE000F52769 /* AuthDataSourceAPI.swift in Sources */,
 				261EA5822A364B0100367CC4 /* AddCreditCardViewModel.swift in Sources */,
@@ -1334,6 +1324,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
@@ -1395,6 +1386,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1730,10 +1722,34 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = CFFireBase;
 		};
+		2688466B2B9F9DCD00D94D97 /* CFDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CFDomain;
+		};
+		2688466D2B9FA09F00D94D97 /* MockSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MockSupport;
+		};
+		268846712B9FA5C300D94D97 /* CFDomain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CFDomain;
+		};
+		268846752B9FA66900D94D97 /* MockSupport */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = MockSupport;
+		};
 		26921EAB2A6641BE00DA1313 /* SnackBar */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
+		};
+		26B52C462B9FAC300036171B /* CFFireBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CFFireBase;
+		};
+		26B52C482B9FAD9B0036171B /* CFFireBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CFFireBase;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

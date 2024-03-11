@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 import CFAPIs
 import Swinject
+import CFDomain
 
 extension SceneDelegate {
     func getDIContainer() -> Container {
@@ -16,10 +17,6 @@ extension SceneDelegate {
         let containerMock: Container = {
             let container = Container(defaultObjectScope: .container)
 
-            container.register(CardListServiceProtocol.self) { r in
-                MockListService()
-            }
-            
             container.register(AuthenticationAPI.self) { r in
                 Authentication(
                     secureUserDataAPI: SecureUserDataAPIMock(),
@@ -50,8 +47,27 @@ extension SceneDelegate {
             //MARK: Card list service
             
             let secureStore = SecureStore()
-            container.register(CardListServiceProtocol.self) { r in
-                CardListService(secureStore: FireBaseRepository())
+            
+            let repository = FireBaseRepository()
+            
+            container.register(GetCreditCardUseCase.self) { _ in
+                GetCreditCardUseCase(repository: repository)
+            }
+            
+            container.register(GetCreditCardUseCaseProtocol.self) { _ in
+                GetCreditCardUseCase(repository: repository)
+            }
+            
+            container.register(GetCreditCardsUseCaseProtocol.self) { _ in
+                GetCreditCardsUseCase(repository: repository)
+            }
+            
+            container.register(RemoveCreditCardUseCaseProtocol.self) { _ in
+                RemoveCreditCardUseCase(repository: repository)
+            }
+            
+            container.register(AddCreditCardsUseCaseProtocol.self) { _ in
+                AddCreditCardsUseCase(repository: repository)
             }
             
             let authDataSource = AuthDataSource()

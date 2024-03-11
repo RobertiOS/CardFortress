@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import MockSupport
 
 final class CardListViewControllerFactoryMock: CardListViewControllerFactoryProtocol {
     func makeMainListViewController<T>(delegate: T) -> CardListViewController where T : CardListViewControllerDelegate {
-        CardListViewController(viewModel: ListViewModel(cardListService: MockListService()))
+        CardListViewController(viewModel: ListViewModel(getCreditCardsUseCase: GetCreditCardsUseCaseMock(), removeCreditCardUseCase: RemoveCreditCardUseCaseMock()))
     }
 }
 

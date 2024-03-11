@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CFDomain
 
 protocol AddCreditCardCoordinatorFactoryProtocol {
     func makeAddCreditCardCoordinator(
@@ -15,7 +16,7 @@ protocol AddCreditCardCoordinatorFactoryProtocol {
         navigationController: UINavigationController
     ) -> VisionKitCoordinating
     func makeEditCreditCardCoordinator(
-        creditCard: CreditCard,
+        creditCard: DomainCreditCard,
         navigationController: UINavigationController
     ) -> AddCreditCardCoordinator
 }
@@ -41,7 +42,7 @@ final class AddCreditCardCoordinatorFactory: AddCreditCardCoordinatorFactoryProt
     }
     
     func makeEditCreditCardCoordinator(
-        creditCard: CreditCard,
+        creditCard: DomainCreditCard,
         navigationController: UINavigationController
     ) -> AddCreditCardCoordinator {
         let coordinator = AddCreditCardCoordinator(

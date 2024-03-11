@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import CFDomain
 
 final public class FireBaseRepository: CreditCardRepository {
     

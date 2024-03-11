@@ -7,6 +7,7 @@
 
 import UIKit
 import Swinject
+import CFDomain
 
 protocol CardListCoordinatorDelegate: AnyObject {
     func signOut()
@@ -37,7 +38,7 @@ final class CardListCoordinator: Coordinator<Void>, CardListCoordinating {
         navigateTo(viewController, presentationStyle: .push)
     }
     
-    private func starEditCreditCardCoordinator(creditCard: CreditCard) {
+    private func starEditCreditCardCoordinator(creditCard: DomainCreditCard) {
         let addCreditCardAPI = container.resolve(AddCreditCardAPI.self)
         guard let editCreditCardCoordinator = addCreditCardAPI?.coordinatorFactory.makeEditCreditCardCoordinator(
             creditCard: creditCard,
@@ -57,7 +58,7 @@ extension CardListCoordinator: CardListViewControllerDelegate {
         return .success
     }
     
-    func editCreditCard(creditCard: CreditCard) {
+    func editCreditCard(creditCard: DomainCreditCard) {
         starEditCreditCardCoordinator(creditCard: creditCard)
     }
     

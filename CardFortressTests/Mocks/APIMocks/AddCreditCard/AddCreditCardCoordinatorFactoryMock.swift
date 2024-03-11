@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CFDomain
 
 final class AddCreditCardCoordinatorFactoryMock: AddCreditCardCoordinatorFactoryProtocol {
     
@@ -20,7 +21,7 @@ final class AddCreditCardCoordinatorFactoryMock: AddCreditCardCoordinatorFactory
         return visionKitCoordinatorMock!
     }
     
-    func makeEditCreditCardCoordinator(creditCard: CreditCard, navigationController: UINavigationController) -> AddCreditCardCoordinator {
+    func makeEditCreditCardCoordinator(creditCard: DomainCreditCard, navigationController: UINavigationController) -> AddCreditCardCoordinator {
         AddCreditCardCoordinator(navigationController: navigationController, factory: AddCreditCardViewControllerFactoryMock(), coordinatorFactory: self, action: .editCreditCard(creditCard))
     }
 }

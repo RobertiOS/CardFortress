@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import CFDomain
 
 protocol AddCreditCardAPI {
     var coordinatorFactory: AddCreditCardCoordinatorFactoryProtocol { get }
@@ -18,8 +19,7 @@ final class AddCreditCardAPIImpl: AddCreditCardAPI {
     
     init(container: Container) {
         self.container = container
-        let service = container.resolve(CardListServiceProtocol.self)!
-        let viewControllerFactory = AddCreditCardViewControllerFactory(service: service)
+        let viewControllerFactory = AddCreditCardViewControllerFactory(container: container)
         self.coordinatorFactory = AddCreditCardCoordinatorFactory(viewControllerFactory: viewControllerFactory)
     }
     

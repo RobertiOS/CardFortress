@@ -7,93 +7,70 @@
 
 import Foundation
 import Combine
+import CFDomain
 
 protocol ListViewModelProtocol: AnyObject {
-    var itemsPublisher: AnyPublisher<[CreditCard], Error> { get }
+    var itemsPublisher: AnyPublisher<[DomainCreditCard], Error> { get }
     func fetchCreditCards()
-    var cardListService: CardListServiceProtocol { get set }
     var isLoadingPublisher: AnyPublisher<Bool, Never> { get }
     /// this function can add or update a card
-    func addCreditCard(_ creditCard: CreditCard)
+//    func addCreditCard(_ creditCard: CreditCard)
     func deleteCreditCard(_ creditCardIdentifier: UUID)
-    func deleteAllCards()
 }
 
 final class ListViewModel: ListViewModelProtocol {
     private var subscriptions = Set<AnyCancellable>()
-    var cardListService: CardListServiceProtocol
-    private let itemsSubject = PassthroughSubject<[CreditCard], Error>()
+    private let itemsSubject = PassthroughSubject<[DomainCreditCard], Error>()
     private let isLoadingSubject = PassthroughSubject<Bool, Never>()
+    
+    private let getCreditCardsUseCase: GetCreditCardsUseCaseProtocol
+    private let removeCreditCardUseCase: RemoveCreditCardUseCaseProtocol
+    
     var isLoadingPublisher: AnyPublisher<Bool, Never> {
         isLoadingSubject.eraseToAnyPublisher()
     }
-    
-    init(cardListService: CardListServiceProtocol) {
-        self.cardListService = cardListService
-    }
 
-    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
+    var itemsPublisher: AnyPublisher<[DomainCreditCard], Error> {
         itemsSubject.eraseToAnyPublisher()
     }
     
-    func addCreditCard(_ creditCard: CreditCard) {
-        cardListService.addCreditCardToSecureStore(creditCard)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.itemsSubject.send(completion: .failure(error))
-                }
-            } receiveValue: { [weak self] result in
-                switch result {
-                case .success:
-                    self?.fetchCreditCards()
-                case .failure(let error):
-                    self?.itemsSubject.send(completion: .failure(error))
-                default:
-                    break
-                }
-            }
-            .store(in: &subscriptions)
-    }
-
-    func fetchCreditCards() {
-        isLoadingSubject.send(true)
-        cardListService.getCreditCardsFromSecureStore()
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.itemsSubject.send(completion: .failure(error))
-                }
-            } receiveValue: { [weak self] cards in
-                self?.itemsSubject.send(cards)
-            }
-            .store(in: &subscriptions)
+    public init(
+        getCreditCardsUseCase: any GetCreditCardsUseCaseProtocol,
+        removeCreditCardUseCase: any RemoveCreditCardUseCaseProtocol
+    ) {
+        self.getCreditCardsUseCase = getCreditCardsUseCase
+        self.removeCreditCardUseCase = removeCreditCardUseCase
     }
     
-    func deleteAllCards() {
-        cardListService.deleteAllCreditCardsFromSecureStore()
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.itemsSubject.send(completion: .failure(error))
-                }
-            } receiveValue: { [weak self] status in
-                self?.itemsSubject.send([])
+    func fetchCreditCards() {
+        isLoadingSubject.send(true)
+        Task {
+            do {
+                let creditCards = try await getCreditCardsUseCase.execute()
+                itemsSubject.send(creditCards)
+            } catch {
+                itemsSubject.send(
+                    completion: .failure(
+                        NSError(domain: "CC list VM", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error while fetching the credit cards"])
+                    )
+                )
             }
-            .store(in: &subscriptions)
+        }
     }
     
     func deleteCreditCard(_ creditCardIdentifier: UUID) {
-        cardListService.deleteCreditCardFromSecureStore(creditCardIdenfitifer: creditCardIdentifier)
-            .receive(on: DispatchQueue.main)
-            .sink { [weak self] completion in
-                if case .failure(let error) = completion {
-                    self?.itemsSubject.send(completion: .failure(error))
-                }
-            } receiveValue: { [weak self] cards in
-                self?.itemsSubject.send(cards)
+        Task {
+            do {
+                let creditCards = try await removeCreditCardUseCase.execute(identifier: creditCardIdentifier)
+                itemsSubject.send(creditCards)
+            } catch {
+                itemsSubject.send(
+                    completion: .failure(
+                        NSError(domain: "CC list VM", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error while Deleting the credit card"])
+                    )
+                )
             }
-            .store(in: &subscriptions)
+        }
     }
 }
 

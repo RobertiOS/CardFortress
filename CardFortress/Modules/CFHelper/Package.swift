@@ -24,6 +24,14 @@ let package = Package(
         .library(
             name: "CFFireBase",
             targets: ["CFFireBase"]
+        ),
+        .library(
+            name: "CFDomain",
+            targets: ["CFDomain"]
+        ),
+        .library(
+            name: "MockSupport",
+            targets: ["MockSupport"]
         )
         
     ],
@@ -53,6 +61,8 @@ let package = Package(
                     name: "FirebaseFirestore",
                     package: "firebase-ios-sdk"
                 ),
+                .target(name: "CFDomain"),
+                .target(name: "CFFireBase")
             ],
             path: "Sources/FeatureModules/CFAPIs"
         ),
@@ -86,7 +96,18 @@ let package = Package(
                 
             ],
             path: "Sources/Core"
-        )
+        ),
+        .target(
+            name: "CFDomain",
+            path: "Sources/Domain"
+        ),
+        .target(
+            name: "MockSupport",
+            dependencies: [
+                .target(name: "CFDomain")
+            ],
+            path: "Sources/MockSupport"
+        ),
         
     ]
 )

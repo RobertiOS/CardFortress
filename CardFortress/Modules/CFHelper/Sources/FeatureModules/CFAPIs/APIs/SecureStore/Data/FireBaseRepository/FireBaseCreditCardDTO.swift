@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CFDomain
 
 struct FireBaseCreditCardDTO: Decodable {
     public let identifier: UUID

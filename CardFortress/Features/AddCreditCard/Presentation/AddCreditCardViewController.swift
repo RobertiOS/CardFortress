@@ -54,19 +54,22 @@ final class AddCreditCardViewController: UIViewController {
         guard let self else { return }
         self.viewModel.createAddCreditCardPublisher()?
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { _ in
-                //TODO: hanlde completion
-            }, receiveValue: { [weak self] result in
-                guard let self else { return }
-                switch result {
-                case .addSuccess, .success:
-                    self.presentSnackbar(with: LocalizableString.snackBarCardAdded)
-                case .failure(let error):
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break;
+                case .failure(let failure):
                     UIAlertController.Builder()
                         .withTitle("Error")
-                        .withMessage(error.localizedDescription)
+                        .withMessage(failure.localizedDescription)
                         .present(in: self)
-                case .editSuccess:
+                }
+            }, receiveValue: { [weak self] result in
+                guard let self else { return }
+                switch viewModel.action {
+                case .addCreditCard:
+                    self.presentSnackbar(with: LocalizableString.snackBarCardAdded)
+                case .editCreditCard:
                     self.presentSnackbar(with: LocalizableString.snackBarCardSaved)
                 }
             })
