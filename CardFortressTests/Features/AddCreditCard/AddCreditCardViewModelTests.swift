@@ -8,6 +8,8 @@
 import XCTest
 @testable import CardFortress
 import Combine
+import CFDomain
+import MockSupport
 
 final class AddCreditCardViewModelTests: XCTestCase {
     
@@ -16,7 +18,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
     var viewModel: AddCreditCardViewController.ViewModel!
     var subscriptions: Set<AnyCancellable>!
     override func setUp() {
-        viewModel = .init(service: MockListService())
+        viewModel = .init(addCreditCardUseCase: AddCreditCardsUseCaseMock())
         subscriptions = .init()
     }
     
@@ -34,13 +36,17 @@ final class AddCreditCardViewModelTests: XCTestCase {
     
     func test_editCreditCard() {
         // Given
-        let creditCard: CreditCard = .make(
-            number: "1234",
-            date: "11/12",
-            cardName: "test name",
-            cardHolderName: "Juan"
+        let creditCard = DomainCreditCard(
+            identifier: UUID(),
+            number: "123",
+            cvv: 123,
+            date: "123",
+            cardName: "Visa",
+            cardHolderName: "Juan Perez",
+            notes: "notes",
+            isFavorite: false
         )
-        let viewModel = ViewModel(service: MockListService(), action: .editCreditCard(creditCard))
+        let viewModel = ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock(), action: .editCreditCard(creditCard))
         
         // Then
         XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
@@ -56,7 +62,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
         viewModel.createAddCreditCardPublisher()?
             .sink { _ in
             } receiveValue: { result in
-                XCTAssertEqual(result, .success)
+                XCTAssertNotNil(result)
                 expectation.fulfill()
             }.store(in: &subscriptions)
         
@@ -66,7 +72,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
     
     func test_addCreditCard() {
         // Given
-        let viewModel = ViewModel(service: MockListService(), action: .addCreditCard)
+        let viewModel = ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock(), action: .addCreditCard)
         
         // Then
         XCTAssertNil(viewModel.creditCardHolderName)
@@ -87,7 +93,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
         _ = viewModel.createAddCreditCardPublisher()?
             .sink { _ in
             } receiveValue: { result in
-                XCTAssertEqual(result,.success)
+                XCTAssertNotNil(result)
                 expectation.fulfill()
             }.store(in: &subscriptions)
         

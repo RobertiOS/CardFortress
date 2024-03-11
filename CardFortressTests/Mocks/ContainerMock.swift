@@ -12,9 +12,6 @@ import Foundation
 extension Container {
     static let mockContainer: Container = {
         let container = Container()
-        container.register(CardListServiceProtocol.self) { r in
-            MockListService()
-        }
         
         container.register(AuthenticationAPI.self) { r in
             Authentication(

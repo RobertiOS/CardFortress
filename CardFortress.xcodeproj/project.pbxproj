@@ -97,6 +97,7 @@
 		26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B38C2429ECF9EC00D0CCD8 /* Localizable.strings */; };
 		26B52C472B9FAC300036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C462B9FAC300036171B /* CFFireBase */; };
 		26B52C492B9FAD9B0036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C482B9FAD9B0036171B /* CFFireBase */; };
+		26B52C4C2B9FAFA00036171B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C4B2B9FAFA00036171B /* FirebaseFirestore */; };
 		26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701429EC450200CC9FEB /* AppDelegate.swift */; };
 		26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701629EC450200CC9FEB /* SceneDelegate.swift */; };
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
@@ -124,7 +125,6 @@
 		26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945229F74045009B0494 /* CardListViewControllerTests.swift */; };
 		26F0945529F7978E009B0494 /* NavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F0945429F7978E009B0494 /* NavigationCoordinator.swift */; };
 		26F5B4BF29FDB3D8002D224D /* ListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */; };
-		26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */; };
 		26F5B4D129FEBD33002D224D /* CreditCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4D029FEBD33002D224D /* CreditCard.swift */; };
 		26F5B4DB2A000C1D002D224D /* UIAlertController+Builder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */; };
 		26F5B4E12A002286002D224D /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F5B4E02A002286002D224D /* UIView+Extensions.swift */; };
@@ -290,7 +290,6 @@
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
 		26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListViewModelTests.swift; sourceTree = "<group>"; };
-		26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListServiceTests.swift; sourceTree = "<group>"; };
 		26F5B4D029FEBD33002D224D /* CreditCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCard.swift; sourceTree = "<group>"; };
 		26F5B4DA2A000C1D002D224D /* UIAlertController+Builder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+Builder.swift"; sourceTree = "<group>"; };
 		26F5B4E02A002286002D224D /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
@@ -335,6 +334,7 @@
 				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
 				267F0FBD2AF43B510062FA11 /* CFAPIs in Frameworks */,
+				26B52C4C2B9FAFA00036171B /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -728,7 +728,6 @@
 				26C4628629F379CF000B06A7 /* CoordinatorTests.swift */,
 				26F0945229F74045009B0494 /* CardListViewControllerTests.swift */,
 				26F5B4BE29FDB3D8002D224D /* ListViewModelTests.swift */,
-				26F5B4C029FDBE62002D224D /* CardListServiceTests.swift */,
 				2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */,
 				265FD5752A0DF7A100939A12 /* SubviewBuilderTests.swift */,
 				26CEBA662A15DE1100AF62DE /* UIAlertControllerBuilderTests.swift */,
@@ -977,6 +976,7 @@
 				268846712B9FA5C300D94D97 /* CFDomain */,
 				268846752B9FA66900D94D97 /* MockSupport */,
 				26B52C462B9FAC300036171B /* CFFireBase */,
+				26B52C4B2B9FAFA00036171B /* FirebaseFirestore */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -1063,6 +1063,7 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */,
+				26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -1220,7 +1221,6 @@
 				26F0945329F74045009B0494 /* CardListViewControllerTests.swift in Sources */,
 				26921A462A64F57B00DA1313 /* SecureStoreErrorTests.swift in Sources */,
 				26199F412B2F5F6F00D0944E /* ContainerMock.swift in Sources */,
-				26F5B4C129FDBE62002D224D /* CardListServiceTests.swift in Sources */,
 				26B830612A7EEA6D002D119E /* AuthenticationFactoryMock.swift in Sources */,
 				26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */,
 				263266EB2B37C2C5004B8A1D /* UIViewController+ExtensionsTests.swift in Sources */,
@@ -1671,6 +1671,14 @@
 				minimumVersion = 0.1.2;
 			};
 		};
+		26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.22.1;
+			};
+		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -1750,6 +1758,11 @@
 		26B52C482B9FAD9B0036171B /* CFFireBase */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CFFireBase;
+		};
+		26B52C4B2B9FAFA00036171B /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

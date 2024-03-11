@@ -8,16 +8,20 @@
 @testable import CardFortress
 import Combine
 import Foundation
+import CFDomain
 
 final class MockListViewModel: ListViewModelProtocol {
+    
+   
+    
     let isLoadingSubject = PassthroughSubject<Bool, Never>()
-    let itemsSubject = PassthroughSubject<[CreditCard], Error>()
+    let itemsSubject = PassthroughSubject<[DomainCreditCard], Error>()
     
     var isLoadingPublisher: AnyPublisher<Bool, Never> {
         isLoadingSubject.eraseToAnyPublisher()
     }
     
-    var itemsPublisher: AnyPublisher<[CreditCard], Error> {
+    var itemsPublisher: AnyPublisher<[DomainCreditCard], Error> {
         itemsSubject.eraseToAnyPublisher()
     }
     
@@ -27,16 +31,18 @@ final class MockListViewModel: ListViewModelProtocol {
         itemsSubject.send([])
     }
     
-    var cards: [CreditCard] = [] {
+    func deleteCreditCard(_ creditCardIdentifier: UUID) {
+    }
+    
+    var cards: [DomainCreditCard] = [] {
         didSet {
             itemsSubject.send(cards)
         }
     }
-    func addCreditCard(_ creditCard: CardFortress.CreditCard) {
+    func addCreditCard(_ creditCard: DomainCreditCard) {
         cards.append(creditCard)
     }
 
-    var cardListService: CardListServiceProtocol = MockListService()
     
     func fetchCreditCards() {
         

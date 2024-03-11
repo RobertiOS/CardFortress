@@ -7,6 +7,8 @@
 
 import XCTest
 import Combine
+import CFDomain
+import MockSupport
 @testable import CardFortress
 
 final class ListViewModelTests: XCTestCase {
@@ -15,7 +17,10 @@ final class ListViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        viewModel = ListViewModel(cardListService: MockListService())
+        viewModel = ListViewModel(
+            getCreditCardsUseCase: GetCreditCardsUseCaseMock(),
+            removeCreditCardUseCase: RemoveCreditCardUseCaseMock()
+        )
         subscriptions = .init()
     }
     
@@ -28,7 +33,7 @@ final class ListViewModelTests: XCTestCase {
     func testViewModelFetchCards() {
         
         //given
-        var creditCards = [CreditCard]()
+        var creditCards = [DomainCreditCard]()
 
         //when
         let expectation = self.expectation(description: "fetch cards")
@@ -51,49 +56,5 @@ final class ListViewModelTests: XCTestCase {
         
         XCTAssertFalse(creditCards.isEmpty)
         XCTAssertEqual(creditCards.count, 3)
-    }
-    
-    func testAddCreditCard() {
-        
-        //given
-        let creditCard = CreditCard(number: "123", cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez")
-        
-        //when
-        let expectation = self.expectation(description: "add card")
-        
-        viewModel.itemsPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { cards in
-                XCTAssertEqual(cards.count, 4)
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
-        viewModel.addCreditCard(creditCard)
-
-        waitForExpectations(timeout: .defaultWait)
-
-    }
-    
-    func testDeleteAllCards() {
-        
-        //given
-        let expectation = self.expectation(description: "add card")
-
-        //when
-        viewModel.itemsPublisher
-            .receive(on: DispatchQueue.main)
-            .sink { _ in
-                
-            } receiveValue: { cards in
-                XCTAssertTrue(cards.isEmpty)
-                expectation.fulfill()
-            }
-            .store(in: &subscriptions)
-        viewModel.deleteAllCards()
-
-        waitForExpectations(timeout: .defaultWait)
-
     }
 }

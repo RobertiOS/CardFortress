@@ -61,8 +61,7 @@ let package = Package(
                     name: "FirebaseFirestore",
                     package: "firebase-ios-sdk"
                 ),
-                .target(name: "CFDomain"),
-                .target(name: "CFFireBase")
+                .target(name: "CFDomain")
             ],
             path: "Sources/FeatureModules/CFAPIs"
         ),
