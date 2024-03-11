@@ -8,27 +8,25 @@
 import Foundation
 
 final class DefaultRepository: CreditCardRepository {
-    func removeCreditCard(id: UUID) async throws -> CreditCardsRepositoryResult {
-        .success
+    
+    func removeCreditCard(id: UUID) async throws {
     }
     
-    func removeAllCreditCards() async throws -> CreditCardsRepositoryResult {
-        .success
+    func removeAllCreditCards() async throws {
     }
     
-    func addCreditCard(_ creditCard: SecureStoreCreditCard) async throws -> CreditCardsRepositoryResult {
-        .success
+    func addCreditCard(_ creditCard: DomainCreditCard) async throws {
     }
     
-    func getCreditCard(identifier: UUID) async throws -> DomainCreditCard? {
-        .init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "")
+    func getCreditCard(identifier: UUID) async throws -> DomainCreditCard {
+        .init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "", isFavorite: true)
     }
     
     func getAllCreditCards() async throws -> [DomainCreditCard] {
-        [.init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "")]
+        [.init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "", isFavorite: true)]
     }
     
     func getFavoriteCreditCard() async -> DomainCreditCard? {
-        .init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "")
+        .init(identifier: UUID(), number: "", cvv: 1, date: "", cardName: "", cardHolderName: "", notes: "", isFavorite: true)
     }
 }

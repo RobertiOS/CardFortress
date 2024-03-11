@@ -1,13 +1,13 @@
 //
-//  DomainCreditCard.swift
+//  FireBaseCreditCardDTO.swift
 //
 //
-//  Created by Roberto Corrales on 1/7/24.
+//  Created by Roberto Corrales on 3/11/24.
 //
 
 import Foundation
 
-public struct DomainCreditCard {
+struct FireBaseCreditCardDTO: Decodable {
     public let identifier: UUID
     public let number: String
     public let cvv: Int
@@ -36,4 +36,19 @@ public struct DomainCreditCard {
         self.notes = notes
         self.isFavorite = isFavorite
     }
+    
+    
+    func toDomain() -> DomainCreditCard {
+        .init(
+            identifier: identifier,
+            number: number,
+            cvv: cvv,
+            date: date,
+            cardName: cardName,
+            cardHolderName: cardHolderName,
+            notes: notes,
+            isFavorite: isFavorite
+        )
+    }
 }
+

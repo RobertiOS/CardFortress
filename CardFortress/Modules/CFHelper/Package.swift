@@ -5,38 +5,88 @@ import PackageDescription
 
 let package = Package(
     name: "CFHelper",
-    platforms: [.iOS("16.1")],
+    platforms: [.iOS(
+        "16.1"
+    )],
     products: [
         .library(
             name: "CFSharedResources",
-            targets: ["CFSharedResources"]),
+            targets: ["CFSharedResources"]
+        ),
         .library(
             name: "CFAPIs",
-            targets: ["CFAPIs"]),
+            targets: ["CFAPIs"]
+        ),
         .library(
             name: "CFSharedUI",
-            targets: ["CFSharedUI"]),
+            targets: ["CFSharedUI"]
+        ),
+        .library(
+            name: "CFFireBase",
+            targets: ["CFFireBase"]
+        )
         
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(
+            url: "https://github.com/firebase/firebase-ios-sdk.git",
+            .upToNextMajor(
+                from: "10.22.1"
+            )
+        ),
     ],
     targets: [
         .target(
             name: "CFSharedResources",
             path: "Sources/FeatureModules/CFSharedResources",
-            resources: [.process("Resources/Process")]
+            resources: [.process(
+                "Resources/Process"
+            )]
         ),
         .target(
             name: "CFAPIs",
-            dependencies: [.target(name: "CFSharedResources")],
+            dependencies: [
+                .target(
+                    name: "CFSharedResources"
+                ),
+                .product(
+                    name: "FirebaseFirestore",
+                    package: "firebase-ios-sdk"
+                ),
+            ],
             path: "Sources/FeatureModules/CFAPIs"
         ),
         .target(
             name: "CFSharedUI",
-            dependencies: [.target(name: "CFAPIs"), .target(name: "CFSharedResources")],
+            dependencies: [
+                .target(
+                    name: "CFAPIs"
+                ),
+                .target(
+                    name: "CFSharedResources"
+                )
+            ],
             path: "Sources/CFSharedUI"
+        ),
+        .target(
+            name: "CFFireBase",
+            dependencies: [
+                .product(
+                    name: "FirebaseFirestore",
+                    package: "firebase-ios-sdk"
+                ),
+                .product(
+                    name: "FirebaseAnalytics",
+                    package: "firebase-ios-sdk"
+                ),
+                .product(
+                    name: "FirebaseAuth",
+                    package: "firebase-ios-sdk"
+                )
+                
+            ],
+            path: "Sources/Core"
         )
+        
     ]
 )
