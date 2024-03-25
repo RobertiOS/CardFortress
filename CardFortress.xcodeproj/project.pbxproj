@@ -64,10 +64,8 @@
 		267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB62AF43AE80062FA11 /* CFSharedUI */; };
 		267F0FB92AF43AFE0062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB82AF43AFE0062FA11 /* CFAPIs */; };
 		267F0FBB2AF43AFE0062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBA2AF43AFE0062FA11 /* CFSharedUI */; };
-		267F0FBD2AF43B510062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBC2AF43B510062FA11 /* CFAPIs */; };
 		267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBE2AF43B510062FA11 /* CFSharedUI */; };
 		267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FC02AF44DCB0062FA11 /* CFSharedResources */; };
-		2688466A2B9F5EB700D94D97 /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 268846692B9F5EB700D94D97 /* CFFireBase */; };
 		2688466C2B9F9DCD00D94D97 /* CFDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 2688466B2B9F9DCD00D94D97 /* CFDomain */; };
 		2688466E2B9FA09F00D94D97 /* MockSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 2688466D2B9FA09F00D94D97 /* MockSupport */; };
 		268846722B9FA5C300D94D97 /* CFDomain in Frameworks */ = {isa = PBXBuildFile; productRef = 268846712B9FA5C300D94D97 /* CFDomain */; };
@@ -95,9 +93,8 @@
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
 		26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */; };
 		26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B38C2429ECF9EC00D0CCD8 /* Localizable.strings */; };
-		26B52C472B9FAC300036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C462B9FAC300036171B /* CFFireBase */; };
-		26B52C492B9FAD9B0036171B /* CFFireBase in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C482B9FAD9B0036171B /* CFFireBase */; };
-		26B52C4C2B9FAFA00036171B /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C4B2B9FAFA00036171B /* FirebaseFirestore */; };
+		26B52C5A2B9FFF360036171B /* CFFireBaseLib in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C592B9FFF360036171B /* CFFireBaseLib */; };
+		26B52C5C2B9FFF430036171B /* CFFireBaseLib in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C5B2B9FFF430036171B /* CFFireBaseLib */; };
 		26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701429EC450200CC9FEB /* AppDelegate.swift */; };
 		26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701629EC450200CC9FEB /* SceneDelegate.swift */; };
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
@@ -169,14 +166,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		26F9A1452ACE77CE00D35C3D /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
 				26F9A1412ACE77CE00D35C3D /* CardFortressWidgetExtension.appex in Embed Foundation Extensions */,
 			);
 			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -316,8 +313,8 @@
 				267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */,
 				2688466E2B9FA09F00D94D97 /* MockSupport in Frameworks */,
 				267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */,
+				26B52C5A2B9FFF360036171B /* CFFireBaseLib in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
-				2688466A2B9F5EB700D94D97 /* CFFireBase in Frameworks */,
 				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
 				2688466C2B9F9DCD00D94D97 /* CFDomain in Frameworks */,
 				267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */,
@@ -330,11 +327,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				268846722B9FA5C300D94D97 /* CFDomain in Frameworks */,
-				26B52C472B9FAC300036171B /* CFFireBase in Frameworks */,
 				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
-				267F0FBD2AF43B510062FA11 /* CFAPIs in Frameworks */,
-				26B52C4C2B9FAFA00036171B /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,10 +344,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				267F0FBB2AF43AFE0062FA11 /* CFSharedUI in Frameworks */,
-				26B52C492B9FAD9B0036171B /* CFFireBase in Frameworks */,
 				267F0FB92AF43AFE0062FA11 /* CFAPIs in Frameworks */,
 				26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */,
 				26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */,
+				26B52C5C2B9FFF430036171B /* CFFireBaseLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -948,9 +942,9 @@
 				267F0FB62AF43AE80062FA11 /* CFSharedUI */,
 				267F0FC02AF44DCB0062FA11 /* CFSharedResources */,
 				26F926CC2B21823C000943BE /* LeakedViewControllerDetector */,
-				268846692B9F5EB700D94D97 /* CFFireBase */,
 				2688466B2B9F9DCD00D94D97 /* CFDomain */,
 				2688466D2B9FA09F00D94D97 /* MockSupport */,
+				26B52C592B9FFF360036171B /* CFFireBaseLib */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -971,12 +965,9 @@
 			);
 			name = CardFortressTests;
 			packageProductDependencies = (
-				267F0FBC2AF43B510062FA11 /* CFAPIs */,
 				267F0FBE2AF43B510062FA11 /* CFSharedUI */,
 				268846712B9FA5C300D94D97 /* CFDomain */,
 				268846752B9FA66900D94D97 /* MockSupport */,
-				26B52C462B9FAC300036171B /* CFFireBase */,
-				26B52C4B2B9FAFA00036171B /* FirebaseFirestore */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -1018,7 +1009,7 @@
 			packageProductDependencies = (
 				267F0FB82AF43AFE0062FA11 /* CFAPIs */,
 				267F0FBA2AF43AFE0062FA11 /* CFSharedUI */,
-				26B52C482B9FAD9B0036171B /* CFFireBase */,
+				26B52C5B2B9FFF430036171B /* CFFireBaseLib */,
 			);
 			productName = CardFortressWidgetExtension;
 			productReference = 26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */;
@@ -1063,7 +1054,6 @@
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
 				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */,
-				26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
 			projectDirPath = "";
@@ -1416,7 +1406,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
@@ -1432,7 +1422,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.cf;
+				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS)-ObjC\"";
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1451,7 +1442,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
@@ -1467,7 +1458,8 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.cf;
+				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS)-ObjC\"";
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1483,16 +1475,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS) -ObjC\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardFortress.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CardFortress";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardFortress.app/CardFortress";
 			};
 			name = Debug;
 		};
@@ -1503,16 +1496,17 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
+				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS) -ObjC\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardFortress.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/CardFortress";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CardFortress.app/CardFortress";
 			};
 			name = Release;
 		};
@@ -1563,7 +1557,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortressWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardFortressWidget;
@@ -1574,7 +1568,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.cf.CardFortressWidget;
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1592,7 +1586,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3WNZJM4GTR;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortressWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardFortressWidget;
@@ -1603,7 +1597,7 @@
 					"@executable_path/../../Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.robertios.cf.secureStore-CardFortressWidget";
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress.Widgets;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -1671,14 +1665,6 @@
 				minimumVersion = 0.1.2;
 			};
 		};
-		26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.22.1;
-			};
-		};
 		26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Swinject/Swinject.git";
@@ -1714,10 +1700,6 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = CFSharedUI;
 		};
-		267F0FBC2AF43B510062FA11 /* CFAPIs */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFAPIs;
-		};
 		267F0FBE2AF43B510062FA11 /* CFSharedUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CFSharedUI;
@@ -1725,10 +1707,6 @@
 		267F0FC02AF44DCB0062FA11 /* CFSharedResources */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = CFSharedResources;
-		};
-		268846692B9F5EB700D94D97 /* CFFireBase */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFFireBase;
 		};
 		2688466B2B9F9DCD00D94D97 /* CFDomain */ = {
 			isa = XCSwiftPackageProductDependency;
@@ -1751,18 +1729,13 @@
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
 		};
-		26B52C462B9FAC300036171B /* CFFireBase */ = {
+		26B52C592B9FFF360036171B /* CFFireBaseLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CFFireBase;
+			productName = CFFireBaseLib;
 		};
-		26B52C482B9FAD9B0036171B /* CFFireBase */ = {
+		26B52C5B2B9FFF430036171B /* CFFireBaseLib */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = CFFireBase;
-		};
-		26B52C4B2B9FAFA00036171B /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 26B52C4A2B9FAFA00036171B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
+			productName = CFFireBaseLib;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

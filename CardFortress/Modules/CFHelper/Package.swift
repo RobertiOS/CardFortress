@@ -22,10 +22,6 @@ let package = Package(
             targets: ["CFSharedUI"]
         ),
         .library(
-            name: "CFFireBase",
-            targets: ["CFFireBase"]
-        ),
-        .library(
             name: "CFDomain",
             targets: ["CFDomain"]
         ),
@@ -36,12 +32,6 @@ let package = Package(
         
     ],
     dependencies: [
-        .package(
-            url: "https://github.com/firebase/firebase-ios-sdk.git",
-            .upToNextMajor(
-                from: "10.22.1"
-            )
-        ),
     ],
     targets: [
         .target(
@@ -56,10 +46,6 @@ let package = Package(
             dependencies: [
                 .target(
                     name: "CFSharedResources"
-                ),
-                .product(
-                    name: "FirebaseFirestore",
-                    package: "firebase-ios-sdk"
                 ),
                 .target(name: "CFDomain")
             ],
@@ -76,25 +62,6 @@ let package = Package(
                 )
             ],
             path: "Sources/CFSharedUI"
-        ),
-        .target(
-            name: "CFFireBase",
-            dependencies: [
-                .product(
-                    name: "FirebaseFirestore",
-                    package: "firebase-ios-sdk"
-                ),
-                .product(
-                    name: "FirebaseAnalytics",
-                    package: "firebase-ios-sdk"
-                ),
-                .product(
-                    name: "FirebaseAuth",
-                    package: "firebase-ios-sdk"
-                )
-                
-            ],
-            path: "Sources/Core"
         ),
         .target(
             name: "CFDomain",
