@@ -21,19 +21,23 @@ jobs:
       - name: select latest xcode
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: '15.0'
+          xcode-version: '15.0.1'
       - name: Kill Simulators
         run: |
           xcrun simctl shutdown all
           xcrun simctl erase all
       - name: Install xcpretty
         run: gem install xcpretty
+      - name: Install Cocoa pods
+        run: |
+         gem install cocoa pods
+         pod install
       - name: Build & Test
         run: |
           xcodebuild clean test \
-            -project 'CardFortress.xcodeproj' \
-            -scheme 'CardFortress' \
-            -destination "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=latest" \
+            -scheme CardFortress \
+            -workspace CardFortress.xcworkspace
+            -destination "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=17.2" \
             -derivedDataPath Build/ \
             -enableCodeCoverage YES \
             -allowProvisioningUpdates \
