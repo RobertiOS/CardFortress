@@ -4,4 +4,10 @@
    <FileRef
       location = "group:CardFortress.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:CardFortressTests/CardFortressTests.xctestplan">
+   </FileRef>
 </Workspace>

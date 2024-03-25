@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B47BECABD6ACB8DD313AA0C /* Pods_CardFortressTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */; };
+		129EDD604009FB303A6F1A2F /* Pods_CardFortress_CardFortressUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01434CFF22FD8BF212FEAABA /* Pods_CardFortress_CardFortressUITests.framework */; };
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
 		26199F2B2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */; };
 		26199F302B2EB30900D0944E /* AddCreditCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */; };
@@ -93,8 +95,6 @@
 		26B38C1029ECC03200D0CCD8 /* ListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C0F29ECC03200D0CCD8 /* ListViewModel.swift */; };
 		26B38C1229ECC22100D0CCD8 /* CardListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B38C1129ECC22100D0CCD8 /* CardListCoordinator.swift */; };
 		26B38C2629ECF9EC00D0CCD8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 26B38C2429ECF9EC00D0CCD8 /* Localizable.strings */; };
-		26B52C5A2B9FFF360036171B /* CFFireBaseLib in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C592B9FFF360036171B /* CFFireBaseLib */; };
-		26B52C5C2B9FFF430036171B /* CFFireBaseLib in Frameworks */ = {isa = PBXBuildFile; productRef = 26B52C5B2B9FFF430036171B /* CFFireBaseLib */; };
 		26B7701529EC450200CC9FEB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701429EC450200CC9FEB /* AppDelegate.swift */; };
 		26B7701729EC450200CC9FEB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701629EC450200CC9FEB /* SceneDelegate.swift */; };
 		26B7701929EC450200CC9FEB /* CardListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B7701829EC450200CC9FEB /* CardListViewController.swift */; };
@@ -137,6 +137,8 @@
 		26F9A1412ACE77CE00D35C3D /* CardFortressWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		26F9F4212ADC7ABD00408093 /* CreditCardWidgetProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9F41F2ADC7A5200408093 /* CreditCardWidgetProvider.swift */; };
 		26F9F4242ADC838700408093 /* CreditCardWidgetActionIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26F9F4222ADC838100408093 /* CreditCardWidgetActionIntent.swift */; };
+		9617A2D0A135B027644E93AD /* Pods_CardFortress.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4778C75A055912D63EC18186 /* Pods_CardFortress.framework */; };
+		E96DB1978C131F6A9B7A092C /* Pods_CardFortressWidgetExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39A82579038C60611061A4AE /* Pods_CardFortressWidgetExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -178,6 +180,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01434CFF22FD8BF212FEAABA /* Pods_CardFortress_CardFortressUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortress_CardFortressUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinatorTests.swift; sourceTree = "<group>"; };
 		26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewControllerFactoryMock.swift; sourceTree = "<group>"; };
 		26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCreditCardAPI.swift; sourceTree = "<group>"; };
@@ -283,6 +286,9 @@
 		26DF384729F0D4BA007091C3 /* SceneDelegate+Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+Setup.swift"; sourceTree = "<group>"; };
 		26E3248A2AE4A68F008C4948 /* UserDefaults+PropertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+PropertyWrapper.swift"; sourceTree = "<group>"; };
 		26E7DAD92B0B1E1E00FADDE2 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		26E7EFCF2BB118A7002A916E /* FirebaseAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26E7EFD12BB118A7002A916E /* FirebaseCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		26E7EFD32BB118A7002A916E /* FirebaseFirestore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = FirebaseFirestore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		26EEB09B2B79683900920421 /* SceneDelegate+DeepLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SceneDelegate+DeepLinks.swift"; sourceTree = "<group>"; };
 		26F0945229F74045009B0494 /* CardListViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardListViewControllerTests.swift; sourceTree = "<group>"; };
 		26F0945429F7978E009B0494 /* NavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationCoordinator.swift; sourceTree = "<group>"; };
@@ -302,6 +308,17 @@
 		26F9A13E2ACE77CE00D35C3D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26F9F41F2ADC7A5200408093 /* CreditCardWidgetProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardWidgetProvider.swift; sourceTree = "<group>"; };
 		26F9F4222ADC838100408093 /* CreditCardWidgetActionIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardWidgetActionIntent.swift; sourceTree = "<group>"; };
+		39A82579038C60611061A4AE /* Pods_CardFortressWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortressWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		417220373AD1AA9FE235543E /* Pods-CardFortress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress.debug.xcconfig"; path = "Target Support Files/Pods-CardFortress/Pods-CardFortress.debug.xcconfig"; sourceTree = "<group>"; };
+		4778C75A055912D63EC18186 /* Pods_CardFortress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4F16C2B0671B0EF454175319 /* Pods-CardFortress-CardFortressUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress-CardFortressUITests.debug.xcconfig"; path = "Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C17DEFA927B1DF46276194B /* Pods-CardFortress-CardFortressUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress-CardFortressUITests.release.xcconfig"; path = "Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests.release.xcconfig"; sourceTree = "<group>"; };
+		63E856E43942D1F538CC0A58 /* Pods-CardFortressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressTests.debug.xcconfig"; path = "Target Support Files/Pods-CardFortressTests/Pods-CardFortressTests.debug.xcconfig"; sourceTree = "<group>"; };
+		7DEB78EA9AF6E712F1EAB7B8 /* Pods-CardFortressWidgetExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressWidgetExtension.release.xcconfig"; path = "Target Support Files/Pods-CardFortressWidgetExtension/Pods-CardFortressWidgetExtension.release.xcconfig"; sourceTree = "<group>"; };
+		84E1314E84CEB55ECAD7856F /* Pods-CardFortressWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-CardFortressWidgetExtension/Pods-CardFortressWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
+		BF72C878BA0B37594E563E0C /* Pods-CardFortressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressTests.release.xcconfig"; path = "Target Support Files/Pods-CardFortressTests/Pods-CardFortressTests.release.xcconfig"; sourceTree = "<group>"; };
+		CD337AA048451F1C2446A7D1 /* Pods-CardFortress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress.release.xcconfig"; path = "Target Support Files/Pods-CardFortress/Pods-CardFortress.release.xcconfig"; sourceTree = "<group>"; };
+		DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortressTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,12 +330,12 @@
 				267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */,
 				2688466E2B9FA09F00D94D97 /* MockSupport in Frameworks */,
 				267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */,
-				26B52C5A2B9FFF360036171B /* CFFireBaseLib in Frameworks */,
 				26DF384629F0CC19007091C3 /* Swinject in Frameworks */,
 				266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */,
 				2688466C2B9F9DCD00D94D97 /* CFDomain in Frameworks */,
 				267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */,
 				26921EAC2A6641BE00DA1313 /* SnackBar in Frameworks */,
+				9617A2D0A135B027644E93AD /* Pods_CardFortress.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +346,7 @@
 				268846722B9FA5C300D94D97 /* CFDomain in Frameworks */,
 				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
+				0B47BECABD6ACB8DD313AA0C /* Pods_CardFortressTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,6 +354,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129EDD604009FB303A6F1A2F /* Pods_CardFortress_CardFortressUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,7 +366,7 @@
 				267F0FB92AF43AFE0062FA11 /* CFAPIs in Frameworks */,
 				26F9A1342ACE77CD00D35C3D /* SwiftUI.framework in Frameworks */,
 				26F9A1322ACE77CD00D35C3D /* WidgetKit.framework in Frameworks */,
-				26B52C5C2B9FFF430036171B /* CFFireBaseLib in Frameworks */,
+				E96DB1978C131F6A9B7A092C /* Pods_CardFortressWidgetExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -678,6 +697,7 @@
 				26F9A1352ACE77CD00D35C3D /* CardFortressWidget */,
 				26B7701229EC450200CC9FEB /* Products */,
 				26B80EA02A76F5AF002D119E /* Frameworks */,
+				4DBF56E89AB03EA9E9DB1FCC /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -745,9 +765,16 @@
 		26B80EA02A76F5AF002D119E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26E7EFCF2BB118A7002A916E /* FirebaseAuth.framework */,
+				26E7EFD12BB118A7002A916E /* FirebaseCore.framework */,
+				26E7EFD32BB118A7002A916E /* FirebaseFirestore.framework */,
 				266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */,
 				26F9A1312ACE77CD00D35C3D /* WidgetKit.framework */,
 				26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */,
+				4778C75A055912D63EC18186 /* Pods_CardFortress.framework */,
+				01434CFF22FD8BF212FEAABA /* Pods_CardFortress_CardFortressUITests.framework */,
+				DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */,
+				39A82579038C60611061A4AE /* Pods_CardFortressWidgetExtension.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -917,6 +944,21 @@
 			path = CreditCardWidget;
 			sourceTree = "<group>";
 		};
+		4DBF56E89AB03EA9E9DB1FCC /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				417220373AD1AA9FE235543E /* Pods-CardFortress.debug.xcconfig */,
+				CD337AA048451F1C2446A7D1 /* Pods-CardFortress.release.xcconfig */,
+				4F16C2B0671B0EF454175319 /* Pods-CardFortress-CardFortressUITests.debug.xcconfig */,
+				5C17DEFA927B1DF46276194B /* Pods-CardFortress-CardFortressUITests.release.xcconfig */,
+				63E856E43942D1F538CC0A58 /* Pods-CardFortressTests.debug.xcconfig */,
+				BF72C878BA0B37594E563E0C /* Pods-CardFortressTests.release.xcconfig */,
+				84E1314E84CEB55ECAD7856F /* Pods-CardFortressWidgetExtension.debug.xcconfig */,
+				7DEB78EA9AF6E712F1EAB7B8 /* Pods-CardFortressWidgetExtension.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -924,10 +966,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B7703B29EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortress" */;
 			buildPhases = (
+				2E70123E406074F95BA09A37 /* [CP] Check Pods Manifest.lock */,
 				26B7700D29EC450200CC9FEB /* Sources */,
 				26B7700E29EC450200CC9FEB /* Frameworks */,
 				26B7700F29EC450200CC9FEB /* Resources */,
 				26F9A1452ACE77CE00D35C3D /* Embed Foundation Extensions */,
+				3D49A01D97E41D75EDA303DD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -944,7 +988,6 @@
 				26F926CC2B21823C000943BE /* LeakedViewControllerDetector */,
 				2688466B2B9F9DCD00D94D97 /* CFDomain */,
 				2688466D2B9FA09F00D94D97 /* MockSupport */,
-				26B52C592B9FFF360036171B /* CFFireBaseLib */,
 			);
 			productName = CardFortress;
 			productReference = 26B7701129EC450200CC9FEB /* CardFortress.app */;
@@ -954,6 +997,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B7703E29EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortressTests" */;
 			buildPhases = (
+				7F7AC326FB82EB184048E802 /* [CP] Check Pods Manifest.lock */,
 				26B7702329EC450400CC9FEB /* Sources */,
 				26B7702429EC450400CC9FEB /* Frameworks */,
 				26B7702529EC450400CC9FEB /* Resources */,
@@ -977,9 +1021,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B7704129EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortressUITests" */;
 			buildPhases = (
+				A3990C5A0D6AB4092991108C /* [CP] Check Pods Manifest.lock */,
 				26B7702D29EC450400CC9FEB /* Sources */,
 				26B7702E29EC450400CC9FEB /* Frameworks */,
 				26B7702F29EC450400CC9FEB /* Resources */,
+				624D12189CC1E3BB97F3E8E4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -987,8 +1033,6 @@
 				26B7703329EC450400CC9FEB /* PBXTargetDependency */,
 			);
 			name = CardFortressUITests;
-			packageProductDependencies = (
-			);
 			productName = CardFortressUITests;
 			productReference = 26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -997,6 +1041,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F9A1422ACE77CE00D35C3D /* Build configuration list for PBXNativeTarget "CardFortressWidgetExtension" */;
 			buildPhases = (
+				AFEC93088BF7DEBDEE1DEAEF /* [CP] Check Pods Manifest.lock */,
 				26F9A12C2ACE77CD00D35C3D /* Sources */,
 				26F9A12D2ACE77CD00D35C3D /* Frameworks */,
 				26F9A12E2ACE77CD00D35C3D /* Resources */,
@@ -1009,7 +1054,6 @@
 			packageProductDependencies = (
 				267F0FB82AF43AFE0062FA11 /* CFAPIs */,
 				267F0FBA2AF43AFE0062FA11 /* CFSharedUI */,
-				26B52C5B2B9FFF430036171B /* CFFireBaseLib */,
 			);
 			productName = CardFortressWidgetExtension;
 			productReference = 26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */;
@@ -1105,6 +1149,131 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2E70123E406074F95BA09A37 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CardFortress-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3D49A01D97E41D75EDA303DD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CardFortress/Pods-CardFortress-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CardFortress/Pods-CardFortress-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardFortress/Pods-CardFortress-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		624D12189CC1E3BB97F3E8E4 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7F7AC326FB82EB184048E802 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CardFortressTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3990C5A0D6AB4092991108C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CardFortress-CardFortressUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AFEC93088BF7DEBDEE1DEAEF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-CardFortressWidgetExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		26B7700D29EC450200CC9FEB /* Sources */ = {
@@ -1398,6 +1567,7 @@
 		};
 		26B7703C29EC450400CC9FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 417220373AD1AA9FE235543E /* Pods-CardFortress.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1407,6 +1577,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
@@ -1422,7 +1593,71 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS)-ObjC\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"BoringSSL-GRPC\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAppCheckInterop\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreExtension\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseSharedSwift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleAppMeasurementIdentitySupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"RecaptchaInterop\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"abseil\"",
+					"-framework",
+					"\"gRPC-C++\"",
+					"-framework",
+					"\"gRPC-Core\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"FirebaseFirestoreInternal\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1434,6 +1669,7 @@
 		};
 		26B7703D29EC450400CC9FEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CD337AA048451F1C2446A7D1 /* Pods-CardFortress.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1443,6 +1679,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortress/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "Allow camera usage to obtain credit card credentials from Credit cards.";
@@ -1458,7 +1695,71 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS)-ObjC\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"BoringSSL-GRPC\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAppCheckInterop\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreExtension\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseSharedSwift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleAppMeasurementIdentitySupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"RecaptchaInterop\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"abseil\"",
+					"-framework",
+					"\"gRPC-C++\"",
+					"-framework",
+					"\"gRPC-Core\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"FirebaseFirestoreInternal\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortress;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1470,16 +1771,82 @@
 		};
 		26B7703F29EC450400CC9FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63E856E43942D1F538CC0A58 /* Pods-CardFortressTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS) -ObjC\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"BoringSSL-GRPC\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAppCheckInterop\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreExtension\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseSharedSwift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleAppMeasurementIdentitySupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"RecaptchaInterop\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"abseil\"",
+					"-framework",
+					"\"gRPC-C++\"",
+					"-framework",
+					"\"gRPC-Core\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"FirebaseFirestoreInternal\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1491,16 +1858,82 @@
 		};
 		26B7704029EC450400CC9FEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF72C878BA0B37594E563E0C /* Pods-CardFortressTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.1;
 				MARKETING_VERSION = 1.0;
-				OTHER_LDFLAGS = "\"$(OTHER_LDFLAGS) -ObjC\"";
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"c++\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"BoringSSL-GRPC\"",
+					"-framework",
+					"\"FBLPromises\"",
+					"-framework",
+					"\"FirebaseAnalytics\"",
+					"-framework",
+					"\"FirebaseAppCheckInterop\"",
+					"-framework",
+					"\"FirebaseAuth\"",
+					"-framework",
+					"\"FirebaseCore\"",
+					"-framework",
+					"\"FirebaseCoreExtension\"",
+					"-framework",
+					"\"FirebaseCoreInternal\"",
+					"-framework",
+					"\"FirebaseFirestore\"",
+					"-framework",
+					"\"FirebaseFirestoreInternal\"",
+					"-framework",
+					"\"FirebaseInstallations\"",
+					"-framework",
+					"\"FirebaseSharedSwift\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"GTMSessionFetcher\"",
+					"-framework",
+					"\"GoogleAppMeasurement\"",
+					"-framework",
+					"\"GoogleAppMeasurementIdentitySupport\"",
+					"-framework",
+					"\"GoogleUtilities\"",
+					"-framework",
+					"\"RecaptchaInterop\"",
+					"-framework",
+					"\"SafariServices\"",
+					"-framework",
+					"\"Security\"",
+					"-framework",
+					"\"StoreKit\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"abseil\"",
+					"-framework",
+					"\"gRPC-C++\"",
+					"-framework",
+					"\"gRPC-Core\"",
+					"-framework",
+					"\"leveldb\"",
+					"-framework",
+					"\"nanopb\"",
+					"-weak_framework",
+					"\"FirebaseFirestoreInternal\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
@@ -1512,11 +1945,13 @@
 		};
 		26B7704229EC450400CC9FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4F16C2B0671B0EF454175319 /* Pods-CardFortress-CardFortressUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -1531,11 +1966,13 @@
 		};
 		26B7704329EC450400CC9FEB /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5C17DEFA927B1DF46276194B /* Pods-CardFortress-CardFortressUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MARKETING_VERSION = 1.0;
@@ -1550,6 +1987,7 @@
 		};
 		26F9A1432ACE77CE00D35C3D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84E1314E84CEB55ECAD7856F /* Pods-CardFortressWidgetExtension.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1558,6 +1996,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortressWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardFortressWidget;
@@ -1579,6 +2018,7 @@
 		};
 		26F9A1442ACE77CE00D35C3D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7DEB78EA9AF6E712F1EAB7B8 /* Pods-CardFortressWidgetExtension.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
@@ -1587,6 +2027,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CardFortressWidget/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CardFortressWidget;
@@ -1728,14 +2169,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
-		};
-		26B52C592B9FFF360036171B /* CFFireBaseLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFFireBaseLib;
-		};
-		26B52C5B2B9FFF430036171B /* CFFireBaseLib */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = CFFireBaseLib;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {
 			isa = XCSwiftPackageProductDependency;

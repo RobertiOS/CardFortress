@@ -94,6 +94,10 @@
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
+            argument = "-Tests"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
             argument = "-FIRDebugDisabled"
             isEnabled = "YES">
          </CommandLineArgument>
