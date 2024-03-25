@@ -8,11 +8,13 @@
 @testable import CardFortress
 import Swinject
 import Foundation
+import MockSupport
+import CFDomain
 
 extension Container {
     static let mockContainer: Container = {
-        let container = Container()
-        
+        let container = Container(defaultObjectScope: .container)
+
         container.register(AuthenticationAPI.self) { r in
             Authentication(
                 secureUserDataAPI: SecureUserDataAPIMock(),
@@ -24,6 +26,22 @@ extension Container {
         
         container.register(SecureUserDataAPI.self) { r in
             SecureUserDataAPIMock()
+        }
+        
+        container.register(GetCreditCardUseCaseProtocol.self) { _ in
+            GetCreditCardUseCaseMock()
+        }
+        
+        container.register(GetCreditCardsUseCaseProtocol.self) { _ in
+            GetCreditCardsUseCaseMock()
+        }
+        
+        container.register(RemoveCreditCardUseCaseProtocol.self) { _ in
+           RemoveCreditCardUseCaseMock()
+        }
+        
+        container.register(AddCreditCardsUseCaseProtocol.self) { _ in
+           AddCreditCardsUseCaseMock()
         }
         
         container.register(AddCreditCardAPI.self) { r in

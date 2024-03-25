@@ -10,6 +10,7 @@ import UIKit
 import CFAPIs
 import Swinject
 import CFDomain
+import MockSupport
 
 extension SceneDelegate {
     func getDIContainer() -> Container {
@@ -30,6 +31,22 @@ extension SceneDelegate {
                 SecureUserDataAPIMock()
             }
             
+            container.register(GetCreditCardUseCaseProtocol.self) { _ in
+                GetCreditCardUseCaseMock()
+            }
+            
+            container.register(GetCreditCardsUseCaseProtocol.self) { _ in
+                GetCreditCardsUseCaseMock()
+            }
+            
+            container.register(RemoveCreditCardUseCaseProtocol.self) { _ in
+               RemoveCreditCardUseCaseMock()
+            }
+            
+            container.register(AddCreditCardsUseCaseProtocol.self) { _ in
+               AddCreditCardsUseCaseMock()
+            }
+            
             container.register(AddCreditCardAPI.self) { r in
                AddCreditCardAPIImpl(container: container)
             }
@@ -37,7 +54,6 @@ extension SceneDelegate {
             container.register(CardListAPI.self) { r in
                 CardListAPIImpl(container: container)
             }
-            
             return container
         }()
         
@@ -49,10 +65,6 @@ extension SceneDelegate {
             let secureStore = SecureStore()
             
             let repository = FireBaseRepository()
-            
-            container.register(GetCreditCardUseCase.self) { _ in
-                GetCreditCardUseCase(repository: repository)
-            }
             
             container.register(GetCreditCardUseCaseProtocol.self) { _ in
                 GetCreditCardUseCase(repository: repository)
@@ -91,7 +103,7 @@ extension SceneDelegate {
             return container
         }()
 
-        return CommandLine.arguments.contains("-UITests") ?
+        return CommandLine.arguments.contains("-Tests") ?
         containerMock :
         appContainer
     }

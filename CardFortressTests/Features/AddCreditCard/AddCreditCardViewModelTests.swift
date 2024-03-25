@@ -40,7 +40,7 @@ final class AddCreditCardViewModelTests: XCTestCase {
             identifier: UUID(),
             number: "123",
             cvv: 123,
-            date: "123",
+            date: "12/23",
             cardName: "Visa",
             cardHolderName: "Juan Perez",
             notes: "notes",
@@ -49,10 +49,11 @@ final class AddCreditCardViewModelTests: XCTestCase {
         let viewModel = ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock(), action: .editCreditCard(creditCard))
         
         // Then
-        XCTAssertEqual(viewModel.creditCardHolderName, "Juan")
-        XCTAssertEqual(viewModel.creditCardDate, "11/12")
-        XCTAssertEqual(viewModel.creditCardNumber, "1234")
-        XCTAssertEqual(viewModel.creditCardName, "test name")
+        //TODO: - refactor viewmodel to hold a credit card model resposible for managing credit card properties
+        XCTAssertEqual(viewModel.creditCardHolderName, "Juan Perez")
+        XCTAssertEqual(viewModel.creditCardDate, "12/23")
+        XCTAssertEqual(viewModel.creditCardNumber, "123")
+        XCTAssertEqual(viewModel.creditCardName, "Visa")
         // When
         
         let expectation = expectation(
