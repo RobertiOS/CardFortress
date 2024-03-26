@@ -7,8 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0B47BECABD6ACB8DD313AA0C /* Pods_CardFortressTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */; };
-		129EDD604009FB303A6F1A2F /* Pods_CardFortress_CardFortressUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01434CFF22FD8BF212FEAABA /* Pods_CardFortress_CardFortressUITests.framework */; };
+		09C5427366EBD71B18F9266B /* libPods-CardFortressTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 48C380DEC0124B119B1869EC /* libPods-CardFortressTests.a */; };
 		2612432E2A03331300057A52 /* NavigationCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2612432D2A03331300057A52 /* NavigationCoordinatorTests.swift */; };
 		26199F2B2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2A2B2EAE7F00D0944E /* AuthViewControllerFactoryMock.swift */; };
 		26199F302B2EB30900D0944E /* AddCreditCardAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26199F2F2B2EB30900D0944E /* AddCreditCardAPI.swift */; };
@@ -44,7 +43,6 @@
 		26563A392B3FB4360038339F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26563A382B3FB4360038339F /* String+Extensions.swift */; };
 		26563A3B2B3FDF8E0038339F /* String+ExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26563A3A2B3FDF8E0038339F /* String+ExtensionsTests.swift */; };
 		265DBFCB2AAE16CD00F52769 /* LoginViewModel+Presentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCA2AAE16CD00F52769 /* LoginViewModel+Presentation.swift */; };
-		265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */; };
 		265DC0F02AAE31BB00F52769 /* AuthenticationAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */; };
 		265DC0F22AAE31D800F52769 /* SecureStoreMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C84E852A1DB97000F65D32 /* SecureStoreMock.swift */; };
 		265DC0F32AAE31D800F52769 /* BiometricAuthAPIMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFCC2AAE292200F52769 /* BiometricAuthAPIMock.swift */; };
@@ -143,13 +141,6 @@
 
 /* Begin PBXContainerItemProxy section */
 		26B7702829EC450400CC9FEB /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 26B7700929EC450200CC9FEB /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 26B7701029EC450200CC9FEB;
-			remoteInfo = CardFortress;
-		};
-		26B7703229EC450400CC9FEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26B7700929EC450200CC9FEB /* Project object */;
 			proxyType = 1;
@@ -264,7 +255,6 @@
 		26B7702029EC450400CC9FEB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		26B7702229EC450400CC9FEB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		26B7702729EC450400CC9FEB /* CardFortressTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		26B8305E2A7EE9FE002D119E /* AuthCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinatorTests.swift; sourceTree = "<group>"; };
 		26B830602A7EEA6D002D119E /* AuthenticationFactoryMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFactoryMock.swift; sourceTree = "<group>"; };
 		26B830622A7EEB35002D119E /* AuthenticationAPIMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationAPIMock.swift; sourceTree = "<group>"; };
@@ -311,6 +301,7 @@
 		39A82579038C60611061A4AE /* Pods_CardFortressWidgetExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortressWidgetExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		417220373AD1AA9FE235543E /* Pods-CardFortress.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress.debug.xcconfig"; path = "Target Support Files/Pods-CardFortress/Pods-CardFortress.debug.xcconfig"; sourceTree = "<group>"; };
 		4778C75A055912D63EC18186 /* Pods_CardFortress.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortress.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48C380DEC0124B119B1869EC /* libPods-CardFortressTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CardFortressTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F16C2B0671B0EF454175319 /* Pods-CardFortress-CardFortressUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress-CardFortressUITests.debug.xcconfig"; path = "Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		5C17DEFA927B1DF46276194B /* Pods-CardFortress-CardFortressUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress-CardFortressUITests.release.xcconfig"; path = "Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests.release.xcconfig"; sourceTree = "<group>"; };
 		63E856E43942D1F538CC0A58 /* Pods-CardFortressTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressTests.debug.xcconfig"; path = "Target Support Files/Pods-CardFortressTests/Pods-CardFortressTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -318,7 +309,6 @@
 		84E1314E84CEB55ECAD7856F /* Pods-CardFortressWidgetExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressWidgetExtension.debug.xcconfig"; path = "Target Support Files/Pods-CardFortressWidgetExtension/Pods-CardFortressWidgetExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		BF72C878BA0B37594E563E0C /* Pods-CardFortressTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortressTests.release.xcconfig"; path = "Target Support Files/Pods-CardFortressTests/Pods-CardFortressTests.release.xcconfig"; sourceTree = "<group>"; };
 		CD337AA048451F1C2446A7D1 /* Pods-CardFortress.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CardFortress.release.xcconfig"; path = "Target Support Files/Pods-CardFortress/Pods-CardFortress.release.xcconfig"; sourceTree = "<group>"; };
-		DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CardFortressTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -346,15 +336,7 @@
 				268846722B9FA5C300D94D97 /* CFDomain in Frameworks */,
 				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
-				0B47BECABD6ACB8DD313AA0C /* Pods_CardFortressTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26B7702E29EC450400CC9FEB /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				129EDD604009FB303A6F1A2F /* Pods_CardFortress_CardFortressUITests.framework in Frameworks */,
+				09C5427366EBD71B18F9266B /* libPods-CardFortressTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -706,7 +688,6 @@
 			children = (
 				26B7701129EC450200CC9FEB /* CardFortress.app */,
 				26B7702729EC450400CC9FEB /* CardFortressTests.xctest */,
-				26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */,
 				26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */,
 			);
 			name = Products;
@@ -773,8 +754,8 @@
 				26F9A1332ACE77CD00D35C3D /* SwiftUI.framework */,
 				4778C75A055912D63EC18186 /* Pods_CardFortress.framework */,
 				01434CFF22FD8BF212FEAABA /* Pods_CardFortress_CardFortressUITests.framework */,
-				DC3CCC8EE02AABCF68504196 /* Pods_CardFortressTests.framework */,
 				39A82579038C60611061A4AE /* Pods_CardFortressWidgetExtension.framework */,
+				48C380DEC0124B119B1869EC /* libPods-CardFortressTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1017,26 +998,6 @@
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		26B7703029EC450400CC9FEB /* CardFortressUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 26B7704129EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortressUITests" */;
-			buildPhases = (
-				A3990C5A0D6AB4092991108C /* [CP] Check Pods Manifest.lock */,
-				26B7702D29EC450400CC9FEB /* Sources */,
-				26B7702E29EC450400CC9FEB /* Frameworks */,
-				26B7702F29EC450400CC9FEB /* Resources */,
-				624D12189CC1E3BB97F3E8E4 /* [CP] Copy Pods Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				26B7703329EC450400CC9FEB /* PBXTargetDependency */,
-			);
-			name = CardFortressUITests;
-			productName = CardFortressUITests;
-			productReference = 26B7703129EC450400CC9FEB /* CardFortressUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		26F9A12F2ACE77CD00D35C3D /* CardFortressWidgetExtension */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26F9A1422ACE77CE00D35C3D /* Build configuration list for PBXNativeTarget "CardFortressWidgetExtension" */;
@@ -1076,10 +1037,6 @@
 						CreatedOnToolsVersion = 14.1;
 						TestTargetID = 26B7701029EC450200CC9FEB;
 					};
-					26B7703029EC450400CC9FEB = {
-						CreatedOnToolsVersion = 14.1;
-						TestTargetID = 26B7701029EC450200CC9FEB;
-					};
 					26F9A12F2ACE77CD00D35C3D = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -1105,7 +1062,6 @@
 			targets = (
 				26B7701029EC450200CC9FEB /* CardFortress */,
 				26B7702629EC450400CC9FEB /* CardFortressTests */,
-				26B7703029EC450400CC9FEB /* CardFortressUITests */,
 				26F9A12F2ACE77CD00D35C3D /* CardFortressWidgetExtension */,
 			);
 		};
@@ -1127,13 +1083,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		26B7702529EC450400CC9FEB /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		26B7702F29EC450400CC9FEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -1190,23 +1139,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardFortress/Pods-CardFortress-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		624D12189CC1E3BB97F3E8E4 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CardFortress-CardFortressUITests/Pods-CardFortress-CardFortressUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		7F7AC326FB82EB184048E802 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1223,28 +1155,6 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-CardFortressTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A3990C5A0D6AB4092991108C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CardFortress-CardFortressUITests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1387,14 +1297,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		26B7702D29EC450400CC9FEB /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				265DBFD12AAE29B400F52769 /* LoginViewUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		26F9A12C2ACE77CD00D35C3D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1414,11 +1316,6 @@
 			isa = PBXTargetDependency;
 			target = 26B7701029EC450200CC9FEB /* CardFortress */;
 			targetProxy = 26B7702829EC450400CC9FEB /* PBXContainerItemProxy */;
-		};
-		26B7703329EC450400CC9FEB /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 26B7701029EC450200CC9FEB /* CardFortress */;
-			targetProxy = 26B7703229EC450400CC9FEB /* PBXContainerItemProxy */;
 		};
 		26F9A1402ACE77CE00D35C3D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -1479,6 +1376,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1541,6 +1440,8 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_INJECT_BASE_ENTITLEMENTS = NO;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1573,7 +1474,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CardFortress/CardFortress.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
@@ -1675,7 +1576,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = CardFortress/CardFortress.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
@@ -1943,52 +1844,6 @@
 			};
 			name = Release;
 		};
-		26B7704229EC450400CC9FEB /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4F16C2B0671B0EF454175319 /* Pods-CardFortress-CardFortressUITests.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HY5HVV22ZQ;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CardFortress;
-			};
-			name = Debug;
-		};
-		26B7704329EC450400CC9FEB /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5C17DEFA927B1DF46276194B /* Pods-CardFortress-CardFortressUITests.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_IDENTITY = "Apple Development";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = HY5HVV22ZQ;
-				ENABLE_USER_SCRIPT_SANDBOXING = NO;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.CardFortressUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = CardFortress;
-			};
-			name = Release;
-		};
 		26F9A1432ACE77CE00D35C3D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 84E1314E84CEB55ECAD7856F /* Pods-CardFortressWidgetExtension.debug.xcconfig */;
@@ -1996,7 +1851,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = CardFortressWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
@@ -2027,7 +1882,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CODE_SIGN_ENTITLEMENTS = CardFortressWidgetExtension.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HY5HVV22ZQ;
@@ -2077,15 +1932,6 @@
 			buildConfigurations = (
 				26B7703F29EC450400CC9FEB /* Debug */,
 				26B7704029EC450400CC9FEB /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		26B7704129EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortressUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				26B7704229EC450400CC9FEB /* Debug */,
-				26B7704329EC450400CC9FEB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
