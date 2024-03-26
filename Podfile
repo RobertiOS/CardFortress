@@ -6,15 +6,16 @@ target 'CardFortress' do
 use_frameworks! :linkage => :static
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
-pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.22.0'
+pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.20.0'
 end
 
 target 'CardFortressTests' do
+use_frameworks! :linkage => :static
 inherit! :search_paths
 # Pods for testing
-#pod 'FirebaseAnalytics'
-#pod 'FirebaseAuth'
-#pod 'FirebaseFirestore'
+pod 'FirebaseAnalytics'
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.20.0'
 end
 
 #target 'CardFortressUITests' do
