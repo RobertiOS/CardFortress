@@ -60,7 +60,7 @@
             skipped = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26B7703029EC450400CC9FEB"
+               BlueprintIdentifier = "26781C922BB375AE008A1B0A"
                BuildableName = "CardFortressUITests.xctest"
                BlueprintName = "CardFortressUITests"
                ReferencedContainer = "container:CardFortress.xcodeproj">

@@ -58,6 +58,7 @@
 		266EECB02A89E0A2007F5427 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266EECAF2A89E0A2007F5427 /* CurrentUser.swift */; };
 		266F370E2AA43E7800C253A3 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */; };
 		266F37102AA5806600C253A3 /* BiometricAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 266F370F2AA5806600C253A3 /* BiometricAuth.swift */; };
+		26781C9E2BB37684008A1B0A /* LoginViewUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */; };
 		2679066D2B4229A800212673 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2679066C2B4229A800212673 /* OptionsViewController.swift */; };
 		267F0FB52AF43AE80062FA11 /* CFAPIs in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB42AF43AE80062FA11 /* CFAPIs */; };
 		267F0FB72AF43AE80062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FB62AF43AE80062FA11 /* CFSharedUI */; };
@@ -140,6 +141,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		26781C992BB375AE008A1B0A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 26B7700929EC450200CC9FEB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 26B7701029EC450200CC9FEB;
+			remoteInfo = CardFortress;
+		};
 		26B7702829EC450400CC9FEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 26B7700929EC450200CC9FEB /* Project object */;
@@ -198,7 +206,7 @@
 		262355D72B0F0BAF00F6B83C /* CFImages+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFImages+Generated.swift"; sourceTree = "<group>"; };
 		262355DB2B0F0D1D00F6B83C /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		262355DE2B1398F100F6B83C /* ID+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ID+Helper.swift"; sourceTree = "<group>"; };
-		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CREDC___.otf; sourceTree = "<group>"; };
+		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
 		263266EA2B37C2C5004B8A1D /* UIViewController+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		26360D402A3DF7E9002E7E9E /* VisionKitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionKitCoordinator.swift; sourceTree = "<group>"; };
 		263617D22A3FA4FB002E7E9E /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 		266EECAF2A89E0A2007F5427 /* CurrentUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		266F370C2AA43E4D00C253A3 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
 		266F370F2AA5806600C253A3 /* BiometricAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BiometricAuth.swift; sourceTree = "<group>"; };
+		26781C932BB375AE008A1B0A /* CardFortressUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CardFortressUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2679066C2B4229A800212673 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		267F0FB32AF438BB0062FA11 /* CFHelper */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = CFHelper; sourceTree = "<group>"; };
 		26888FE12A0771C400936748 /* MockListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockListViewModel.swift; sourceTree = "<group>"; };
@@ -309,6 +318,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		26781C902BB375AE008A1B0A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26B7700E29EC450200CC9FEB /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -517,6 +533,14 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		26781C942BB375AE008A1B0A /* CardFortressUITests */ = {
+			isa = PBXGroup;
+			children = (
+				265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */,
+			);
+			path = CardFortressUITests;
+			sourceTree = "<group>";
+		};
 		267F0FB22AF438BB0062FA11 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -672,8 +696,8 @@
 				26F4BD4E2AD3221D0052CAFD /* Packages */,
 				26B7701329EC450200CC9FEB /* CardFortress */,
 				26B7702A29EC450400CC9FEB /* CardFortressTests */,
-				26B7703429EC450400CC9FEB /* CardFortressUITests */,
 				26F9A1352ACE77CD00D35C3D /* CardFortressWidget */,
+				26781C942BB375AE008A1B0A /* CardFortressUITests */,
 				26B7701229EC450200CC9FEB /* Products */,
 				26B80EA02A76F5AF002D119E /* Frameworks */,
 				4DBF56E89AB03EA9E9DB1FCC /* Pods */,
@@ -686,6 +710,7 @@
 				26B7701129EC450200CC9FEB /* CardFortress.app */,
 				26B7702729EC450400CC9FEB /* CardFortressTests.xctest */,
 				26F9A1302ACE77CD00D35C3D /* CardFortressWidgetExtension.appex */,
+				26781C932BB375AE008A1B0A /* CardFortressUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -730,14 +755,6 @@
 				26563A3A2B3FDF8E0038339F /* String+ExtensionsTests.swift */,
 			);
 			path = CardFortressTests;
-			sourceTree = "<group>";
-		};
-		26B7703429EC450400CC9FEB /* CardFortressUITests */ = {
-			isa = PBXGroup;
-			children = (
-				265DBFD02AAE29B400F52769 /* LoginViewUITests.swift */,
-			);
-			path = CardFortressUITests;
 			sourceTree = "<group>";
 		};
 		26B80EA02A76F5AF002D119E /* Frameworks */ = {
@@ -937,6 +954,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		26781C922BB375AE008A1B0A /* CardFortressUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 26781C9D2BB375AE008A1B0A /* Build configuration list for PBXNativeTarget "CardFortressUITests" */;
+			buildPhases = (
+				26781C8F2BB375AE008A1B0A /* Sources */,
+				26781C902BB375AE008A1B0A /* Frameworks */,
+				26781C912BB375AE008A1B0A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				26781C9A2BB375AE008A1B0A /* PBXTargetDependency */,
+			);
+			name = CardFortressUITests;
+			productName = CardFortressUITests;
+			productReference = 26781C932BB375AE008A1B0A /* CardFortressUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 		26B7701029EC450200CC9FEB /* CardFortress */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 26B7703B29EC450400CC9FEB /* Build configuration list for PBXNativeTarget "CardFortress" */;
@@ -1022,9 +1057,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1410;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1530;
 				TargetAttributes = {
+					26781C922BB375AE008A1B0A = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 26B7701029EC450200CC9FEB;
+					};
 					26B7701029EC450200CC9FEB = {
 						CreatedOnToolsVersion = 14.1;
 					};
@@ -1048,7 +1087,7 @@
 			mainGroup = 26B7700829EC450200CC9FEB;
 			packageReferences = (
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
-				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */,
+				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
@@ -1058,11 +1097,19 @@
 				26B7701029EC450200CC9FEB /* CardFortress */,
 				26B7702629EC450400CC9FEB /* CardFortressTests */,
 				26F9A12F2ACE77CD00D35C3D /* CardFortressWidgetExtension */,
+				26781C922BB375AE008A1B0A /* CardFortressUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		26781C912BB375AE008A1B0A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26B7700F29EC450200CC9FEB /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1198,6 +1245,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		26781C8F2BB375AE008A1B0A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				26781C9E2BB37684008A1B0A /* LoginViewUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		26B7700D29EC450200CC9FEB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1324,6 +1379,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		26781C9A2BB375AE008A1B0A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 26B7701029EC450200CC9FEB /* CardFortress */;
+			targetProxy = 26781C992BB375AE008A1B0A /* PBXContainerItemProxy */;
+		};
 		26B7702929EC450400CC9FEB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 26B7701029EC450200CC9FEB /* CardFortress */;
@@ -1356,6 +1416,49 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		26781C9B2BB375AE008A1B0A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.cardFortress.CardFortressUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CardFortress;
+			};
+			name = Debug;
+		};
+		26781C9C2BB375AE008A1B0A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = HY5HVV22ZQ;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.robertios.cardFortress.CardFortressUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = CardFortress;
+			};
+			name = Release;
+		};
 		26B7703929EC450400CC9FEB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1921,6 +2024,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		26781C9D2BB375AE008A1B0A /* Build configuration list for PBXNativeTarget "CardFortressUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				26781C9B2BB375AE008A1B0A /* Debug */,
+				26781C9C2BB375AE008A1B0A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		26B7700C29EC450200CC9FEB /* Build configuration list for PBXProject "CardFortress" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1960,7 +2072,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */ = {
+		26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
 			requirement = {
@@ -2029,7 +2141,7 @@
 		};
 		26921EAB2A6641BE00DA1313 /* SnackBar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */;
+			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {

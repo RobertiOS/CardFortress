@@ -15,12 +15,13 @@
       shouldAutocreateTestPlan = "YES">
       <Testables>
          <TestableReference
-            skipped = "NO">
+            skipped = "NO"
+            parallelizable = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "26B7702629EC450400CC9FEB"
-               BuildableName = "CardFortressTests.xctest"
-               BlueprintName = "CardFortressTests"
+               BlueprintIdentifier = "26781C922BB375AE008A1B0A"
+               BuildableName = "CardFortressUITests.xctest"
+               BlueprintName = "CardFortressUITests"
                ReferencedContainer = "container:CardFortress.xcodeproj">
             </BuildableReference>
          </TestableReference>

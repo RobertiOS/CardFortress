@@ -29,10 +29,9 @@
       }
     },
     {
-      "enabled" : false,
       "target" : {
         "containerPath" : "container:CardFortress.xcodeproj",
-        "identifier" : "26B7703029EC450400CC9FEB",
+        "identifier" : "26781C922BB375AE008A1B0A",
         "name" : "CardFortressUITests"
       }
     }
