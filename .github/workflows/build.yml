@@ -44,6 +44,6 @@ jobs:
             -verbose \
             build test | xcpretty
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
-          /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
+          /opt/homebrew/Cellar/xcodecoverageconverter/0.2.2/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
