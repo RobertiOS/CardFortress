@@ -13,8 +13,6 @@ protocol ListViewModelProtocol: AnyObject {
     var itemsPublisher: AnyPublisher<[DomainCreditCard], Error> { get }
     func fetchCreditCards()
     var isLoadingPublisher: AnyPublisher<Bool, Never> { get }
-    /// this function can add or update a card
-//    func addCreditCard(_ creditCard: CreditCard)
     func deleteCreditCard(_ creditCardIdentifier: UUID)
 }
 

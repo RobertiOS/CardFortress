@@ -13,7 +13,7 @@ protocol CardListCoordinatorDelegate: AnyObject {
     func signOut()
 }
 
-protocol CardListCoordinating: Coordinator<Void>, NavigationCoordinator {
+protocol CardListCoordinating: Coordinator<Void>, NavigationCoordinator, TabBarCoordinatorProtocol {
     var delegate: CardListCoordinatorDelegate? { get set }
 }
 

@@ -30,8 +30,8 @@ final class CardFortressCoordinatorFactory: CardFortressCoordinatorFactoryProtoc
     }
     
     func makeMainListCoordinator<T: CardListCoordinatorDelegate>(delegate: T) -> TabBarCoordinatorProtocol {
-        let cardListAPI = container.resolve(CardListAPI.self)!
-        let coordinator = cardListAPI.makeMainListCoordinator(tabBarItem: .init(tabBarIndex: .main)) as! CardListCoordinator
+        guard let cardListAPI = container.resolve(CardListAPI.self) else { preconditionFailure("CardList API must be registered in the container")}
+        let coordinator = cardListAPI.makeMainListCoordinator(tabBarItem: .init(tabBarIndex: .main))
         coordinator.delegate = delegate
         return coordinator
     }
