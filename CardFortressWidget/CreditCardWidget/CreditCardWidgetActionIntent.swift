@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import CFAPIs
 import CFSharedUI
 import WidgetKit
 import AppIntents
+import Data
 
 enum CardData: CaseIterable, Identifiable {
     public var id: Int {

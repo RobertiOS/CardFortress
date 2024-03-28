@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import Combine
 import CFSharedUI
-import CFDomain
+import Domain
 
 protocol CardListViewControllerDelegate: AnyObject {
     func signOut()

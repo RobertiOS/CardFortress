@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CFDomain
+import Domain
 import Swinject
 
 protocol CardListViewControllerFactoryProtocol {

@@ -7,7 +7,7 @@
 
 import Foundation
 import Swinject
-import CFDomain
+import Domain
 
 protocol AddCreditCardAPI {
     var coordinatorFactory: AddCreditCardCoordinatorFactoryProtocol { get }

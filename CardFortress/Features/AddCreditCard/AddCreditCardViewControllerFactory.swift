@@ -7,7 +7,7 @@
 
 import Foundation
 import Swinject
-import CFDomain
+import Domain
 
 protocol AddCreditCardViewControllerFactoryProtocol {
     func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewController

@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CFDomain
+import Domain
 
 protocol AddCreditCardCoordinatorFactoryProtocol {
     func makeAddCreditCardCoordinator(

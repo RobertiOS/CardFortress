@@ -9,7 +9,7 @@ import UIKit
 import Swinject
 import VisionKit
 import Vision
-import CFDomain
+import Domain
 
 protocol AddCreditCardCoordinatorDelegate: AnyObject {
     func startVisionKitCoordinator()

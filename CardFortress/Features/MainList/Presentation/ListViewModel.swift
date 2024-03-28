@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import CFDomain
+import Domain
 
 protocol ListViewModelProtocol: AnyObject {
     var itemsPublisher: AnyPublisher<[DomainCreditCard], Error> { get }

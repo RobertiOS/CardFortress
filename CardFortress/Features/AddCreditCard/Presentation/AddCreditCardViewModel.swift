@@ -7,7 +7,7 @@
 
 import Foundation
 import Combine
-import CFDomain
+import Domain
 
 
 enum AddCreditCardResult: Equatable {

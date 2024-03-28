@@ -7,7 +7,7 @@
 
 import UIKit
 import Swinject
-import CFDomain
+import Domain
 
 protocol CardListCoordinatorDelegate: AnyObject {
     func signOut()

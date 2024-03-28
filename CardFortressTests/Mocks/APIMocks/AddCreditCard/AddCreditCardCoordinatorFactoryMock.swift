@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import CFDomain
+import Domain
 
 final class AddCreditCardCoordinatorFactoryMock: AddCreditCardCoordinatorFactoryProtocol {
     

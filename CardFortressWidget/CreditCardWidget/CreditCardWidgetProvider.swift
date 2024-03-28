@@ -7,7 +7,7 @@
 
 import Foundation
 import WidgetKit
-import CFAPIs
+import Data
 
 struct CreditCardProvider: TimelineProvider {
     

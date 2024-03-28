@@ -7,10 +7,10 @@
 
 import Foundation
 import UIKit
-import CFAPIs
+//import CFAPIs
 import Swinject
-import CFDomain
-import MockSupport
+import Domain
+import Data
 
 extension SceneDelegate {
     func getDIContainer() -> Container {

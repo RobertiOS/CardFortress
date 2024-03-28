@@ -20,14 +20,6 @@ let package = Package(
         .library(
             name: "CFSharedUI",
             targets: ["CFSharedUI"]
-        ),
-        .library(
-            name: "CFDomain",
-            targets: ["CFDomain"]
-        ),
-        .library(
-            name: "MockSupport",
-            targets: ["MockSupport"]
         )
         
     ],
@@ -46,8 +38,7 @@ let package = Package(
             dependencies: [
                 .target(
                     name: "CFSharedResources"
-                ),
-                .target(name: "CFDomain")
+                )
             ],
             path: "Sources/FeatureModules/CFAPIs"
         ),
@@ -62,18 +53,7 @@ let package = Package(
                 )
             ],
             path: "Sources/CFSharedUI"
-        ),
-        .target(
-            name: "CFDomain",
-            path: "Sources/Domain"
-        ),
-        .target(
-            name: "MockSupport",
-            dependencies: [
-                .target(name: "CFDomain")
-            ],
-            path: "Sources/MockSupport"
-        ),
+        )
         
     ]
 )

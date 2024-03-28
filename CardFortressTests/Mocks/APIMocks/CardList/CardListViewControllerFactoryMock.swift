@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import MockSupport
+import Domain
 
 final class CardListViewControllerFactoryMock: CardListViewControllerFactoryProtocol {
     func makeMainListViewController<T>(delegate: T) -> CardListViewController where T : CardListViewControllerDelegate {
