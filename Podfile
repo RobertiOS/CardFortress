@@ -7,6 +7,8 @@ use_frameworks! :linkage => :static
 pod 'FirebaseAnalytics'
 pod 'FirebaseAuth'
 pod 'FirebaseFirestore', :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git', :tag => '10.20.0'
+pod 'Domain', :path => 'LocalPods/Domain'
+pod 'Data', :path => 'LocalPods/Data'
 end
 
 target 'CardFortressTests' do
@@ -26,7 +28,9 @@ end
 
 target 'CardFortressWidgetExtension' do
 # Comment the next line if you don't want to use dynamic frameworks
-use_frameworks!
+use_frameworks! :linkage => :static
+pod 'Domain', :path => 'LocalPods/Domain'
+pod 'Data', :path => 'LocalPods/Data'
 
 # Pods for CardFortressWidgetExtension
 

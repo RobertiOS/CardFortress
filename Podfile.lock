@@ -1,4 +1,9 @@
 PODS:
+  - Data (0.1.0):
+    - Domain
+    - FirebaseAuth
+    - FirebaseFirestore
+  - Domain (0.1.0)
   - FirebaseAnalytics (10.23.0):
     - FirebaseAnalytics/AdIdSupport (= 10.23.0)
     - FirebaseCore (~> 10.0)
@@ -119,6 +124,8 @@ PODS:
   - RecaptchaInterop (100.0.0)
 
 DEPENDENCIES:
+  - Data (from `LocalPods/Data`)
+  - Domain (from `LocalPods/Domain`)
   - FirebaseAnalytics
   - FirebaseAuth
   - FirebaseFirestore (from `https://github.com/invertase/firestore-ios-sdk-frameworks.git`, tag `10.20.0`)
@@ -148,6 +155,10 @@ SPEC REPOS:
     - RecaptchaInterop
 
 EXTERNAL SOURCES:
+  Data:
+    :path: LocalPods/Data
+  Domain:
+    :path: LocalPods/Domain
   FirebaseFirestore:
     :git: https://github.com/invertase/firestore-ios-sdk-frameworks.git
     :tag: 10.20.0
@@ -158,6 +169,8 @@ CHECKOUT OPTIONS:
     :tag: 10.20.0
 
 SPEC CHECKSUMS:
+  Data: 96871adc4682cdcd3b61804e39811d582d3b987a
+  Domain: b4f7ed19788e5948fb7fc71ec39f4af23f3125cd
   FirebaseAnalytics: 45f6e2e5ef8ccbb90be73ae983c3b20fa78837f7
   FirebaseAppCheckInterop: a1955ce8c30f38f87e7d091630e871e91154d65d
   FirebaseAuth: 22eb85d3853141de7062bfabc131aa7d6335cade
@@ -181,6 +194,6 @@ SPEC CHECKSUMS:
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
   RecaptchaInterop: 7d1a4a01a6b2cb1610a47ef3f85f0c411434cb21
 
-PODFILE CHECKSUM: b3ed21b5b5ae4bc43fe27d326a9b69d3a73d3c9c
+PODFILE CHECKSUM: 5b41683f1c6ab44d1e2462c1b5c5d8b4b77c6839
 
 COCOAPODS: 1.15.0
