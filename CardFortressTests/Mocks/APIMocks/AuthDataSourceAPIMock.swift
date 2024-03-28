@@ -24,6 +24,8 @@ final class AuthDataSourceAPIMock: AuthDataSourceAPI {
         if let authErrorCode {
             throw authErrorCode
         }
+        
+        isUserLoggedIn = true
     }
     
     func signOut() throws {

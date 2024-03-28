@@ -12,7 +12,7 @@ on:
 
 jobs:
   build:
-    runs-on: macos-13
+    runs-on: macos-14
     steps:
       - name: Install Xcodecoverageconverter
         run: brew install twittemb/formulae/Xcodecoverageconverter
@@ -21,25 +21,29 @@ jobs:
       - name: select latest xcode
         uses: maxim-lobanov/setup-xcode@v1.6.0
         with:
-          xcode-version: '15.0'
-      - name: Kill Simulators
-        run: |
-          xcrun simctl shutdown all
-          xcrun simctl erase all
+          xcode-version: '15.0.1'
+      # - name: Kill Simulators
+      #   run: |
+      #     xcrun simctl shutdown all
+      #     xcrun simctl erase all
       - name: Install xcpretty
         run: gem install xcpretty
+      - name: Install Cocoa pods
+        run: |
+         gem install cocoa pods
+         pod install
       - name: Build & Test
         run: |
           xcodebuild clean test \
-            -project 'CardFortress.xcodeproj' \
-            -scheme 'CardFortress' \
-            -destination "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=latest" \
+            -scheme CardFortress \
+            -workspace CardFortress.xcworkspace \
+            -destination "platform=iOS Simulator,name=iPhone 15 Pro Max,OS=17.2" \
             -derivedDataPath Build/ \
             -enableCodeCoverage YES \
             -allowProvisioningUpdates \
             -verbose \
             build test | xcpretty
           xcrun xccov view --report --json Build/Logs/Test/*.xcresult > coverage.json
-          /usr/local/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
+          /opt/homebrew/Cellar/xcodecoverageconverter/0.2.2/bin/xcc generate coverage.json . cobertura-xml --exclude-packages Tests
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3

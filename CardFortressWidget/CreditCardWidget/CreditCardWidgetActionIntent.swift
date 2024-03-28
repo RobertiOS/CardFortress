@@ -6,10 +6,10 @@
 //
 
 import Foundation
-import CFAPIs
 import CFSharedUI
 import WidgetKit
 import AppIntents
+import Data
 
 enum CardData: CaseIterable, Identifiable {
     public var id: Int {
@@ -60,7 +60,7 @@ struct WidgetActionIntent: AppIntent, Identifiable  {
         case "CVV":
             value = String(creditCard?.cvv ?? 0)
         case "Number":
-            value = String(creditCard?.number ?? 0)
+            value = String(creditCard?.number ?? "")
         case "Date":
             value = creditCard?.date ?? ""
         default:

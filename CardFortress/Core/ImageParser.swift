@@ -66,7 +66,7 @@ final class ImageParser: ImageParserProtocol {
         let name = recognizedText.filter({ !wordsToAvoid.contains($0) && !creditCardNumber.contains($0) }).last
         
         let creditCard = CreditCard(
-            number: Int(creditCardNumber.replacingOccurrences(of: " ", with: "")) ?? 0,
+            number: creditCardNumber.replacingOccurrences(of: " ", with: ""),
             cvv: 0,
             date: expiryDate ?? "",
             cardName: name ?? "",

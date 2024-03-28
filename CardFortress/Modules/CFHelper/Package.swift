@@ -5,38 +5,55 @@ import PackageDescription
 
 let package = Package(
     name: "CFHelper",
-    platforms: [.iOS("16.1")],
+    platforms: [.iOS(
+        "16.1"
+    )],
     products: [
         .library(
             name: "CFSharedResources",
-            targets: ["CFSharedResources"]),
+            targets: ["CFSharedResources"]
+        ),
         .library(
             name: "CFAPIs",
-            targets: ["CFAPIs"]),
+            targets: ["CFAPIs"]
+        ),
         .library(
             name: "CFSharedUI",
-            targets: ["CFSharedUI"]),
+            targets: ["CFSharedUI"]
+        )
         
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
     ],
     targets: [
         .target(
             name: "CFSharedResources",
             path: "Sources/FeatureModules/CFSharedResources",
-            resources: [.process("Resources/Process")]
+            resources: [.process(
+                "Resources/Process"
+            )]
         ),
         .target(
             name: "CFAPIs",
-            dependencies: [.target(name: "CFSharedResources")],
+            dependencies: [
+                .target(
+                    name: "CFSharedResources"
+                )
+            ],
             path: "Sources/FeatureModules/CFAPIs"
         ),
         .target(
             name: "CFSharedUI",
-            dependencies: [.target(name: "CFAPIs"), .target(name: "CFSharedResources")],
+            dependencies: [
+                .target(
+                    name: "CFAPIs"
+                ),
+                .target(
+                    name: "CFSharedResources"
+                )
+            ],
             path: "Sources/CFSharedUI"
         )
+        
     ]
 )

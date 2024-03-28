@@ -7,6 +7,7 @@
 
 import Foundation
 import Combine
+import Domain
 
 
 enum AddCreditCardResult: Equatable {
@@ -40,7 +41,7 @@ extension AddCreditCardViewController {
         var creditCardName: String?
         
         @Published
-        var creditCardNumber: Int?
+        var creditCardNumber: String?
         
         @Published
         var creditCardDate: String?
@@ -51,15 +52,15 @@ extension AddCreditCardViewController {
         let action: AddCreditCardCoordinator.Action
 
         private var subscriptions = Set<AnyCancellable>()
-        private let service: CardListServiceProtocol
+        private let addCreditCardUseCase: AddCreditCardsUseCaseProtocol
         
         //MARK: - Initialization
         
         init(
-            service: CardListServiceProtocol,
+            addCreditCardUseCase: AddCreditCardsUseCaseProtocol,
             action: AddCreditCardCoordinator.Action = .addCreditCard
         ) {
-            self.service = service
+            self.addCreditCardUseCase = addCreditCardUseCase
             self.action = action
             
             setActionType()
@@ -78,45 +79,50 @@ extension AddCreditCardViewController {
         }
         
         //MARK: - Methods
-        func createAddCreditCardPublisher() -> AnyPublisher<AddCreditCardResult, Error>? {
+        func createAddCreditCardPublisher() -> AnyPublisher<Void, Error>? {
             guard let creditCardDate,
                   let creditCardNumber else { return nil }
-            let creditCard: CreditCard
             
-            switch action {
-            case .addCreditCard:
-                creditCard = .init(
-                    number: creditCardNumber,
-                    cvv: 123,
-                    date: creditCardDate,
-                    cardName: creditCardName ?? "",
-                    cardHolderName: creditCardHolderName ?? ""
-                )
-            case .editCreditCard(let card):
-                creditCard = .init(
-                    identifier: card.identifier,
-                    number: creditCardNumber,
-                    cvv: 123,
-                    date: creditCardDate,
-                    cardName: creditCardName ?? "",
-                    cardHolderName: creditCardHolderName ?? ""
-                )
-            }
-            return service.addCreditCardToSecureStore(creditCard)
-                .receive(on: DispatchQueue.main)
-                .map { (result: CardListServiceResult) -> (AddCreditCardResult) in
-                    switch result {
-                    case .success:
-                        return .success
-                    case .failure(let error):
-                        return .failure(error)
-                    case .addSuccess:
-                        return .addSuccess
-                    case .editSuccess:
-                        return .editSuccess
+            return Future<Void, Error> { [weak self] promise in
+                guard let self else { return }
+                let creditCard: DomainCreditCard
+                
+                switch action {
+                case .addCreditCard:
+                    creditCard = .init(
+                        identifier: UUID(),
+                        number: creditCardNumber,
+                        cvv: 123,
+                        date: creditCardDate,
+                        cardName: creditCardName ?? "",
+                        cardHolderName: creditCardHolderName ?? "",
+                        notes: "",
+                        isFavorite: false
+                    )
+                case .editCreditCard(let card):
+                    creditCard = .init(
+                        identifier: card.identifier,
+                        number: creditCardNumber,
+                        cvv: 123,
+                        date: creditCardDate,
+                        cardName: creditCardName ?? "",
+                        cardHolderName: creditCardHolderName ?? "",
+                        notes: "",
+                        isFavorite: false
+                    )
+                }
+                
+                Task { [weak self] in
+                    do {
+                        try await self?.addCreditCardUseCase.execute(creditCard: creditCard)
+                        promise(.success(()))
+                    } catch {
+                        promise(.failure(NSError(domain: "Add CC View Controller", code: 0, userInfo: [NSLocalizedDescriptionKey: "Error while Adding or Editing the CC"])))
                     }
                 }
-                .eraseToAnyPublisher()
+            }
+            .eraseToAnyPublisher()
+            
         }
     }
 }
@@ -129,7 +135,7 @@ extension AddCreditCardViewController.ViewModel {
             self.target = target
         }
         
-        func createAddCreditCardPublisher() -> AnyPublisher<AddCreditCardResult, Error>? {
+        func createAddCreditCardPublisher() -> AnyPublisher<Void, Error>? {
             target.createAddCreditCardPublisher()
         }
     }

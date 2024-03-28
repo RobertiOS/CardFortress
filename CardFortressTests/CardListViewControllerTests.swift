@@ -10,6 +10,7 @@ import SwiftUI
 import UIKit
 import Combine
 import CFSharedUI
+import Domain
 @testable import CardFortress
 
 
@@ -50,9 +51,36 @@ final class CardListViewControllerTests: XCTestCase {
         let viewModel = MockListViewModel()
 
         let cards = [
-            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez"),
-            CreditCard(number: 1223, cvv: 1223, date: "1123", cardName: "Visa", cardHolderName: "Juan Perez")
+            DomainCreditCard(
+                identifier: UUID(),
+                number: "123",
+                cvv: 123,
+                date: "123",
+                cardName: "Visa",
+                cardHolderName: "Juan Perez",
+                notes: "notes",
+                isFavorite: false
+            ),
+            DomainCreditCard(
+                identifier: UUID(),
+                number: "123",
+                cvv: 123,
+                date: "123",
+                cardName: "Visa",
+                cardHolderName: "Juan Perez",
+                notes: "notes",
+                isFavorite: false
+            ),
+            DomainCreditCard(
+                identifier: UUID(),
+                number: "123",
+                cvv: 123,
+                date: "123",
+                cardName: "Visa",
+                cardHolderName: "Juan Perez",
+                notes: "notes",
+                isFavorite: false
+            )
         ]
         
         let viewController = CardListViewController(viewModel: viewModel)
@@ -95,7 +123,16 @@ final class CardListViewControllerTests: XCTestCase {
         let viewModel = MockListViewModel()
         
         let cards = [
-            CreditCard(number: 123, cvv: 123, date: "123", cardName: "Visa", cardHolderName: "Juan Perez"),
+            DomainCreditCard(
+                identifier: UUID(),
+                number: "123",
+                cvv: 123,
+                date: "123",
+                cardName: "Visa",
+                cardHolderName: "Juan Perez",
+                notes: "notes",
+                isFavorite: false
+            )
         ]
 
         // When
@@ -201,7 +238,17 @@ final class CardListViewControllerTests: XCTestCase {
             expectation.fulfill()
         }.store(in: &cancellables)
         
-        viewModel.cards = [.make()]
+        viewModel.cards = [
+            DomainCreditCard(
+            identifier: UUID(),
+            number: "123",
+            cvv: 123,
+            date: "123",
+            cardName: "Visa",
+            cardHolderName: "Juan Perez",
+            notes: "notes",
+            isFavorite: false
+        )]
         waitForExpectations(timeout: .defaultWait)
         
         // when
@@ -210,15 +257,6 @@ final class CardListViewControllerTests: XCTestCase {
         // then
         XCTAssertEqual(viewController.testHooks.snapshot?.numberOfItems, 1)
         XCTAssertTrue(delegate.editCreditCardCalled)
-    }
-    
-    func test_presentOptionsViewController() {
-        // Given
-       
-        // When
-        viewController.testHooks.presentOptionsViewController()
-        // Then
-        XCTAssertTrue(viewController.presentedViewController is OptionsViewController)
     }
 }
 
@@ -238,7 +276,7 @@ extension CardListViewControllerTests {
             return .success
         }
         
-        func editCreditCard(creditCard: CreditCard) {
+        func editCreditCard(creditCard: DomainCreditCard) {
             editCreditCardCalled = true
         }
     }

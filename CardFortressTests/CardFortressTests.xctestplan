@@ -1,0 +1,28 @@
+{
+  "configurations" : [
+    {
+      "id" : "886D93E4-599B-451F-AA31-12C222EF041A",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "commandLineArgumentEntries" : [
+      {
+        "argument" : "-Tests"
+      }
+    ]
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:CardFortress.xcodeproj",
+        "identifier" : "26B7702629EC450400CC9FEB",
+        "name" : "CardFortressTests"
+      }
+    }
+  ],
+  "version" : 1
+}

@@ -7,10 +7,11 @@
 
 import UIKit
 import VisionKit
+import Domain
 
 final class AddCreditCardViewControllerFactoryMock: AddCreditCardViewControllerFactoryProtocol {
     func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewController {
-        AddCreditCardViewController(viewModel: .init(service: MockListService()))
+        AddCreditCardViewController(viewModel: AddCreditCardViewController.ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock()))
     }
     
     func makeVNDocumentCameraViewController() -> VisionKitViewControllerProtocol {

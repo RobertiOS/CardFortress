@@ -7,6 +7,7 @@
 
 import Foundation
 import Swinject
+import Domain
 
 protocol AddCreditCardViewControllerFactoryProtocol {
     func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewController
@@ -14,14 +15,17 @@ protocol AddCreditCardViewControllerFactoryProtocol {
 }
 
 final class AddCreditCardViewControllerFactory: AddCreditCardViewControllerFactoryProtocol {
-    private let service: CardListServiceProtocol
+    private let container: Container
     
-    internal init(service: CardListServiceProtocol) {
-        self.service = service
+    internal init(container: Container) {
+        self.container = container
     }
     
     func makeAddCardViewController(action: AddCreditCardCoordinator.Action) -> AddCreditCardViewController {
-        let viewModel = AddCreditCardViewController.ViewModel(service: service, action: action)
+        
+        guard let addCreditCardsUseCaseProtocol = container.resolve(AddCreditCardsUseCaseProtocol.self) else { preconditionFailure("Use cases not registered on the container") }
+        
+        let viewModel = AddCreditCardViewController.ViewModel(addCreditCardUseCase: addCreditCardsUseCaseProtocol, action: action)
         let viewController = AddCreditCardViewController(viewModel: viewModel)
         viewController.view.backgroundColor = .systemBackground
         return viewController

@@ -6,6 +6,7 @@
 //
 
 import XCTest
+import Domain
 @testable import CardFortress
 
 final class CardListCoordinatorTests: XCTestCase {
@@ -41,8 +42,19 @@ final class CardListCoordinatorTests: XCTestCase {
     }
     
     func test_startEditCreditCardCoordinator() {
+        //given
+        let creditCard = DomainCreditCard(
+            identifier: UUID(),
+            number: "123",
+            cvv: 123,
+            date: "123",
+            cardName: "Visa",
+            cardHolderName: "Juan Perez",
+            notes: "notes",
+            isFavorite: false
+        )
         // When
-        coordinator.editCreditCard(creditCard: .make())
+        coordinator.editCreditCard(creditCard: creditCard)
         // Then
         XCTAssertTrue(navigationController.viewControllers[0] is AddCreditCardViewController)
     }

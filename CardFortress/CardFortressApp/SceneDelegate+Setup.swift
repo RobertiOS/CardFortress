@@ -7,8 +7,10 @@
 
 import Foundation
 import UIKit
-import CFAPIs
+//import CFAPIs
 import Swinject
+import Domain
+import Data
 
 extension SceneDelegate {
     func getDIContainer() -> Container {
@@ -16,10 +18,6 @@ extension SceneDelegate {
         let containerMock: Container = {
             let container = Container(defaultObjectScope: .container)
 
-            container.register(CardListServiceProtocol.self) { r in
-                MockListService()
-            }
-            
             container.register(AuthenticationAPI.self) { r in
                 Authentication(
                     secureUserDataAPI: SecureUserDataAPIMock(),
@@ -33,6 +31,22 @@ extension SceneDelegate {
                 SecureUserDataAPIMock()
             }
             
+            container.register(GetCreditCardUseCaseProtocol.self) { _ in
+                GetCreditCardUseCaseMock()
+            }
+            
+            container.register(GetCreditCardsUseCaseProtocol.self) { _ in
+                GetCreditCardsUseCaseMock()
+            }
+            
+            container.register(RemoveCreditCardUseCaseProtocol.self) { _ in
+               RemoveCreditCardUseCaseMock()
+            }
+            
+            container.register(AddCreditCardsUseCaseProtocol.self) { _ in
+               AddCreditCardsUseCaseMock()
+            }
+            
             container.register(AddCreditCardAPI.self) { r in
                AddCreditCardAPIImpl(container: container)
             }
@@ -40,7 +54,6 @@ extension SceneDelegate {
             container.register(CardListAPI.self) { r in
                 CardListAPIImpl(container: container)
             }
-            
             return container
         }()
         
@@ -50,8 +63,23 @@ extension SceneDelegate {
             //MARK: Card list service
             
             let secureStore = SecureStore()
-            container.register(CardListServiceProtocol.self) { r in
-                CardListService(secureStore: secureStore)
+            
+            let repository = FireBaseRepository()
+            
+            container.register(GetCreditCardUseCaseProtocol.self) { _ in
+                GetCreditCardUseCase(repository: repository)
+            }
+            
+            container.register(GetCreditCardsUseCaseProtocol.self) { _ in
+                GetCreditCardsUseCase(repository: repository)
+            }
+            
+            container.register(RemoveCreditCardUseCaseProtocol.self) { _ in
+                RemoveCreditCardUseCase(repository: repository)
+            }
+            
+            container.register(AddCreditCardsUseCaseProtocol.self) { _ in
+                AddCreditCardsUseCase(repository: repository)
             }
             
             let authDataSource = AuthDataSource()
@@ -75,7 +103,7 @@ extension SceneDelegate {
             return container
         }()
 
-        return CommandLine.arguments.contains("-UITests") ?
+        return CommandLine.arguments.contains("-Tests") ?
         containerMock :
         appContainer
     }

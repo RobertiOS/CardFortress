@@ -9,6 +9,7 @@ import UIKit
 import Swinject
 import VisionKit
 import Vision
+import Domain
 
 protocol AddCreditCardCoordinatorDelegate: AnyObject {
     func startVisionKitCoordinator()
@@ -32,7 +33,7 @@ final class AddCreditCardCoordinator: Coordinator<Void>, NavigationCoordinator {
         }
 
         case addCreditCard
-        case editCreditCard(CreditCard)
+        case editCreditCard(DomainCreditCard)
     }
     
     //MARK: - Properties

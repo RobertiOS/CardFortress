@@ -40,6 +40,7 @@ final class AuthenticationAPIMock: AuthenticationAPI {
     }
     
     func signIn(withEmail: String, password: String) async -> AuthenticationResult {
+        isUserLoggedIn = true
         return .success
     }
     

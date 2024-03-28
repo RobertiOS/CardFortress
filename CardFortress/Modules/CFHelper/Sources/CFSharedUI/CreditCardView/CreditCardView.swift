@@ -102,7 +102,7 @@ struct CreditCardView_Previews: PreviewProvider {
     static var previews: some View {
         CreditCardView(viewModel: .init(
             cardHolderName: "Juan Perez",
-            cardNumber: 4098480016653433222,
+            cardNumber: "4098480016653433222",
             date: "11/11",
             bankName: "Some bank",
             backgroundColor: .gray,

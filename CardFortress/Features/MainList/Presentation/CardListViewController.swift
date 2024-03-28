@@ -9,11 +9,12 @@ import UIKit
 import SwiftUI
 import Combine
 import CFSharedUI
+import Domain
 
 protocol CardListViewControllerDelegate: AnyObject {
     func signOut()
     func deleteCreditCard(id: UUID) async -> CardListViewController.CreditCardsOperationResult
-    func editCreditCard(creditCard: CreditCard)
+    func editCreditCard(creditCard: DomainCreditCard)
 }
 
 final class CardListViewController: UIViewController {
@@ -205,7 +206,7 @@ final class CardListViewController: UIViewController {
                 var result: CreditCardsOperationResult?
                 switch action {
                 case .delete:
-                    result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
+                    self?.viewModel.deleteCreditCard(creditCard.identifier)
                 case .edit:
                     result = await self?.delegate?.deleteCreditCard(id: creditCard.identifier)
                 }
@@ -223,7 +224,7 @@ final class CardListViewController: UIViewController {
     }
     
     enum Item: Hashable {
-        case creditCard(CreditCard)
+        case creditCard(DomainCreditCard)
         case placeHolder(UUID)
 
         func hash(into hasher: inout Hasher) {
@@ -237,7 +238,7 @@ final class CardListViewController: UIViewController {
         }
     }
     
-    let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, CreditCard> { cell, _, creditCard in
+    let creditCardCellRegistration = UICollectionView.CellRegistration<UICollectionViewCell, DomainCreditCard> { cell, _, creditCard in
         cell.contentConfiguration = UIHostingConfiguration {
             let viewModel: CreditCardViewModel = .init(
                 cardHolderName: creditCard.cardHolderName,
@@ -276,7 +277,7 @@ final class CardListViewController: UIViewController {
         }
     }
     
-    private func applySnapshot(items: [CreditCard], isLoading: Bool) {
+    private func applySnapshot(items: [DomainCreditCard], isLoading: Bool) {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Item>()
         if isLoading {
             snapshot.appendSections([.loading])
@@ -319,10 +320,6 @@ extension CardListViewController {
         var collectionView: UICollectionView {
             target.collectionView
         }
-        
-        func presentOptionsViewController() {
-            target.presentOptionsViewController(target.moreOptionsBarButton)
-        }
     
     }
     
@@ -344,6 +341,12 @@ extension CardListViewController: OptionsViewControllerDelegate {
     }
     
     func delete() {
-        self.viewModel.deleteAllCards()
+//        self.viewModel.deleteAllCards()
+    }
+}
+
+extension DomainCreditCard: Equatable {
+    public static func == (lhs: DomainCreditCard, rhs: DomainCreditCard) -> Bool {
+        lhs.identifier == rhs.identifier
     }
 }

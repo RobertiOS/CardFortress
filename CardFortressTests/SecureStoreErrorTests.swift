@@ -1,5 +1,5 @@
 import XCTest
-@testable import CFAPIs
+@testable import Data
 
 class SecureStoreErrorTests: XCTestCase {
     

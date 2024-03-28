@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import CFAPIs
+import Data
 
 extension SecureStoreCreditCard {
     init(creditCard: CreditCard) {

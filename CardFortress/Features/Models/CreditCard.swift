@@ -10,7 +10,7 @@ import Foundation
 struct CreditCard: Decodable {
     /// unique identifier for the cards
     let identifier: UUID
-    let number: Int
+    let number: String
     let cvv: Int
     let date: String
     let cardName: String
@@ -20,7 +20,7 @@ struct CreditCard: Decodable {
 
 
 extension CreditCard {
-    init(number: Int, cvv: Int, date: String, cardName: String, cardHolderName: String) {
+    init(number: String, cvv: Int, date: String, cardName: String, cardHolderName: String) {
         self.init(identifier: UUID(),
                   number: number,
                   cvv: cvv,
@@ -34,7 +34,7 @@ extension CreditCard: Hashable {}
 
 extension CreditCard {
     static func make(
-        number: Int = 111,
+        number: String = "111",
         cvv: Int = 111,
         date: String = "12221",
         cardName: String = "Visa",

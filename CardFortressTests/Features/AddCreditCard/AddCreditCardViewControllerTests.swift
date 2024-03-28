@@ -8,12 +8,13 @@
 @testable import CardFortress
 import XCTest
 import Combine
+import Domain
 
 final class AddCreditCardViewControllerTests: XCTestCase {
 
     func test_initialization_modelWithNilProperties() {
         //given
-        let viewController = AddCreditCardViewController(viewModel: .init(service: MockListService()))
+        let viewController = AddCreditCardViewController(viewModel: AddCreditCardViewController.ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock()))
         //when
         viewController.loadViewIfNeeded()
         //then
@@ -39,7 +40,7 @@ final class AddCreditCardViewControllerTests: XCTestCase {
     
     func test_keyboardObservers() {
         // Given
-        let viewController = AddCreditCardViewController(viewModel: .init(service: MockListService()))
+        let viewController = AddCreditCardViewController(viewModel: AddCreditCardViewController.ViewModel(addCreditCardUseCase: AddCreditCardsUseCaseMock()))
         viewController.loadViewIfNeeded()
         let scrollView = viewController.testHooks.scrollView
         

@@ -13,7 +13,7 @@ final class LoginViewUITests: XCTestCase {
     func testLogin() throws {
         //given
         let app = XCUIApplication()
-        app.launchArguments = ["-UITests"]
+        app.launchArguments = ["-Tests"]
         app.launch()
         
         //then
