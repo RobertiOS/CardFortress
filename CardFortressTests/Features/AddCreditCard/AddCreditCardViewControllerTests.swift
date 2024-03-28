@@ -8,7 +8,7 @@
 @testable import CardFortress
 import XCTest
 import Combine
-import MockSupport
+import Domain
 
 final class AddCreditCardViewControllerTests: XCTestCase {
 

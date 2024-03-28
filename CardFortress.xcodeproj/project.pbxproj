@@ -67,7 +67,6 @@
 		267F0FBB2AF43AFE0062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBA2AF43AFE0062FA11 /* CFSharedUI */; };
 		267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FBE2AF43B510062FA11 /* CFSharedUI */; };
 		267F0FC12AF44DCB0062FA11 /* CFSharedResources in Frameworks */ = {isa = PBXBuildFile; productRef = 267F0FC02AF44DCB0062FA11 /* CFSharedResources */; };
-		268846762B9FA66900D94D97 /* MockSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 268846752B9FA66900D94D97 /* MockSupport */; };
 		26888FE22A0771C400936748 /* MockListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26888FE12A0771C400936748 /* MockListViewModel.swift */; };
 		268CA9AA2AF7573E00074D19 /* SecureUserDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 268CA9A92AF7573E00074D19 /* SecureUserDataTests.swift */; };
 		26921A392A64566D00DA1313 /* CFTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26921A382A64566D00DA1313 /* CFTextField.swift */; };
@@ -203,7 +202,7 @@
 		262355D72B0F0BAF00F6B83C /* CFImages+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CFImages+Generated.swift"; sourceTree = "<group>"; };
 		262355DB2B0F0D1D00F6B83C /* Strings+Generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Strings+Generated.swift"; sourceTree = "<group>"; };
 		262355DE2B1398F100F6B83C /* ID+Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ID+Helper.swift"; sourceTree = "<group>"; };
-		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CREDC___.otf; sourceTree = "<group>"; };
+		2631E24E2A04BEF200197FEA /* CREDC___.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "CREDC___.otf"; sourceTree = "<group>"; };
 		263266EA2B37C2C5004B8A1D /* UIViewController+ExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+ExtensionsTests.swift"; sourceTree = "<group>"; };
 		26360D402A3DF7E9002E7E9E /* VisionKitCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionKitCoordinator.swift; sourceTree = "<group>"; };
 		263617D22A3FA4FB002E7E9E /* ImageParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageParser.swift; sourceTree = "<group>"; };
@@ -341,7 +340,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				268846762B9FA66900D94D97 /* MockSupport in Frameworks */,
 				267F0FBF2AF43B510062FA11 /* CFSharedUI in Frameworks */,
 				6C32ABF6DAF0777C84B7F590 /* Pods_CardFortressTests.framework in Frameworks */,
 			);
@@ -1013,7 +1011,6 @@
 			name = CardFortressTests;
 			packageProductDependencies = (
 				267F0FBE2AF43B510062FA11 /* CFSharedUI */,
-				268846752B9FA66900D94D97 /* MockSupport */,
 			);
 			productName = CardFortressTests;
 			productReference = 26B7702729EC450400CC9FEB /* CardFortressTests.xctest */;
@@ -1079,7 +1076,7 @@
 			mainGroup = 26B7700829EC450200CC9FEB;
 			packageReferences = (
 				26DF384429F0CC19007091C3 /* XCRemoteSwiftPackageReference "Swinject" */,
-				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */,
+				26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */,
 				26F926CB2B21823C000943BE /* XCRemoteSwiftPackageReference "LeakedViewControllerDetector" */,
 			);
 			productRefGroup = 26B7701229EC450200CC9FEB /* Products */;
@@ -2081,7 +2078,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */ = {
+		26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/ahmedAlmasri/SnackBar.swift";
 			requirement = {
@@ -2132,13 +2129,9 @@
 			isa = XCSwiftPackageProductDependency;
 			productName = CFSharedResources;
 		};
-		268846752B9FA66900D94D97 /* MockSupport */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = MockSupport;
-		};
 		26921EAB2A6641BE00DA1313 /* SnackBar */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar.swift" */;
+			package = 26921EAA2A6641BE00DA1313 /* XCRemoteSwiftPackageReference "SnackBar" */;
 			productName = SnackBar;
 		};
 		26DF384529F0CC19007091C3 /* Swinject */ = {

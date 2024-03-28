@@ -10,7 +10,7 @@ import SwiftUI
 import UIKit
 import Combine
 import CFSharedUI
-import CFDomain
+import Domain
 @testable import CardFortress
 
 

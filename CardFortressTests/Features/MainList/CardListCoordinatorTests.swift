@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import CFDomain
+import Domain
 @testable import CardFortress
 
 final class CardListCoordinatorTests: XCTestCase {

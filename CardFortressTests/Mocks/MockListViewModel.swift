@@ -8,7 +8,7 @@
 @testable import CardFortress
 import Combine
 import Foundation
-import CFDomain
+import Domain
 
 final class MockListViewModel: ListViewModelProtocol {
     

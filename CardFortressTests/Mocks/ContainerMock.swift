@@ -8,8 +8,7 @@
 @testable import CardFortress
 import Swinject
 import Foundation
-import MockSupport
-import CFDomain
+import Domain
 
 extension Container {
     static let mockContainer: Container = {

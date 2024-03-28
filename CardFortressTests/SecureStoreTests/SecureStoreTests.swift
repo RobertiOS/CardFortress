@@ -6,7 +6,8 @@
 //
 
 import XCTest
-@testable import CFAPIs
+import Domain
+import Data
 
 
 final class SecureStoreTests: XCTestCase {

@@ -7,8 +7,7 @@
 
 import XCTest
 import Combine
-import CFDomain
-import MockSupport
+import Domain
 @testable import CardFortress
 
 final class ListViewModelTests: XCTestCase {
